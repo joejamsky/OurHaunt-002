@@ -1,0 +1,28 @@
+{
+  "name": "ThreeOrbitWebWorking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-template": "^5.0.0",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.57.1",
+    "three": "^0.148.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.11",
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "start": "npm install && gulp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
