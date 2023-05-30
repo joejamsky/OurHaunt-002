@@ -5,19 +5,18 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="./styles/app.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+		<!-- Add the slick-theme.css if you want default styling -->
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+		<!-- Add the slick-theme.css if you want default styling -->
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
+
+
 	</head>
 	<body>
-		<div id="overlay">
-			<button id="startButton">Start Demo</button>
-		</div>
-		<div id="info">
-			Game Menu
-		</div>
-
-		<video id="video" autoplay></video>
-
-
-		<div id="ui-container">
+		<div id="debug">
+			Debug
 			<div>Test 125</div>
 			<div id="start-lat"></div>
 			<div id="start-lon"></div>
@@ -27,6 +26,29 @@
 			<div id="camera-z"></div>
 		</div>
 
+		<div id="overlay">
+			<button id="startButton">Start Demo</button>
+		</div>
+
+
+		<video id="video" autoplay></video>
+
+
+		<div id="ui-container">
+			<div id="ui-slider">
+				<div class="slide-card"><div class="slide-content">1</div></div>
+				<div class="slide-card"><div class="slide-content">2</div></div>
+				<div class="slide-card"><div class="slide-content">3</div></div>
+				<div class="slide-card"><div class="slide-content">4</div></div>
+				<div class="slide-card"><div class="slide-content">5</div></div>
+				<div class="slide-card"><div class="slide-content">6</div></div>
+			</div>
+		</div>
+		<!-- <div id="items"></div> -->
+
+
+		<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+		<script type="text/javascript" src="./scripts/uiSlider.js"></script>
 		<script type="module" src="./scripts/three.module.js"></script>
 		<script type="module" src="./scripts/DeviceOrientationControls.js"></script>
 		<script type="module" src="./scripts/app.js"></script>

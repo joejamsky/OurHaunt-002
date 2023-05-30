@@ -279,7 +279,7 @@ function animate() {
             scene.remove(intersects[i].object);
             sceneCubes.splice(deadCubeIndex, 1);
             cubesDestroyed += 1;
-            document.getElementById("info").innerText =
+            document.getElementById("debug").innerText =
                 "Cubes destroyed: " + cubesDestroyed;
         }
     }

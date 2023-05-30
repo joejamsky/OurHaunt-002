@@ -22,19 +22,20 @@ button {
 	text-transform: uppercase;
 }
 
-#info {
+#debug {
 	position: absolute;
+	opacity: 0.75;
 	top: 0px;
-	width: 100%;
+	left: 0px;
+	border: solid 1px yellow;
 	padding: 10px;
 	box-sizing: border-box;
-	text-align: center;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
 	pointer-events: none;
-	z-index: 1; /* TODO Solve this in HTML */
+	z-index: 10000; /* TODO Solve this in HTML */
 }
 
 a, button, input, select {
@@ -95,7 +96,38 @@ video{
 	bottom: 0;
 	left: 0;
 	z-index: 100;
-	background-color: rgb(251, 255, 0);
+	background-color: rgb(76, 0, 255);
 	height: 30%;
 	width: 100vw;
+}
+
+#ui-slider {
+	// width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+
+.slide-card {
+	height: inherit;
+	width: 100%;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: solid 1px red;
+}
+
+.slide-content {
+	width: 40%;
+	background-color: green;
+}
+
+.slick-list {
+	height: 100%;
+}
+
+.slick-track {
+	height: 100%;
 }
