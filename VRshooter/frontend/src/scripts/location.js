@@ -37,22 +37,23 @@ function startPosition(position) {
 
 function currentLocation(position) {
 
-    positionsList.push(position);
-    if (positionsList.length > 5) {
-        positionsList.shift();
-    }
-
 
     // Debug
     currentLatDiv.innerHTML = "current Latitude: " + position.coords.latitude
     currentLonDiv.innerHTML = "current Longitude: " +  position.coords.longitude
 
     
+
+    positionsList.push(position);
+    if (positionsList.length > 5) {
+        positionsList.shift();
+    }
+
     stabilizedCoords = stabilizeCoordinates(positionsList);
     currentLat = stabilizedCoords.latitude;
     currentLon = stabilizedCoords.longitude;
 
-    
+
     distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspot
     distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspot
 
