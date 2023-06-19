@@ -42,11 +42,21 @@ function currentLocation(position) {
         positionsList.shift();
     }
 
-    stabilizedCoords = stabilizeCoordinates(positionsList);
+
+    // Debug
+    currentLatDiv.innerHTML = "current Latitude: " + position.coords.latitude
+    currentLonDiv.innerHTML = "current Longitude: " +  position.coords.longitude
 
     
+    stabilizedCoords = stabilizeCoordinates(positionsList);
     currentLat = stabilizedCoords.latitude;
     currentLon = stabilizedCoords.longitude;
+
+    
+    distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspot
+    distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspot
+
+
 
     distanceFromHotspot = getDistanceFromLatLonInM(
         stabilizedCoords.latitude,
@@ -55,17 +65,9 @@ function currentLocation(position) {
         startLon
     );
 
-    // Debug
-    currentLatDiv.innerHTML = "current Latitude: " + currentLat
-    // .toFixed(5);
-    currentLonDiv.innerHTML = "current Longitude: " + currentLon
-    // .toFixed(5);
 
-    
-    distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspot
-    // .toFixed(5);
-    distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspot
-    // .toFixed(5);
+
+
 
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
     // if (distance <= radius) {
