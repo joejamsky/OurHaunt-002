@@ -6,12 +6,15 @@ const stabalizedLatDiv = document.getElementById("stabalized-lat");
 const stabalizedLonDiv = document.getElementById("stabalized-lon");
 const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
+const distanceTotalDiv = document.getElementById("distance-total");
 
 let currentLat,
     currentLon,
     startLat,
     startLon,
-    distanceFromHotspot,
+    distanceFromHotspotTotal,
+    distanceFromHotspotLon,
+    distanceFromHotspotLat,
     stabilizedCoords;
 
 let positionsList = [];
@@ -59,21 +62,28 @@ function currentLocation(position) {
     currentLon = stabilizedCoords.longitude;
 
 
-    distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspot
-    distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspot
+    distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspotLon
+    distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspotLat
+    distanceTotalDiv.innerHTML = "distance Total: " + distanceFromHotspotTotal
 
 
-
-    distanceFromHotspot = getDistanceFromLatLonInM(
-        stabilizedCoords.latitude,
-        stabilizedCoords.longitude,
+    distanceFromHotspotLat = calculateLatitudeDistance(
         startLat,
-        startLon
+        currentLat
+      );
+
+    distanceFromHotspotLon = calculateLongitudeDistance(
+        startLon,
+        currentLon,
+        currentLat
     );
 
-
-
-
+    // Calculate the total distance
+    distanceFromHotspotTotal = calculateTotalDistance (
+        distanceFromHotspotLon,
+        distanceFromHotspotLat
+    );
+    
 
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
     // if (distance <= radius) {
@@ -102,24 +112,37 @@ function locationError() {
     }
 }
 
-function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
-    var R = 6371e3; // Radius of the earth in meters
-    var dLat = deg2rad(lat2 - lat1); // deg2rad below
-    var dLon = deg2rad(lon2 - lon1);
-    var a =
-        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(deg2rad(lat1)) *
-            Math.cos(deg2rad(lat2)) *
-            Math.sin(dLon / 2) *
-            Math.sin(dLon / 2);
+// Function to calculate the distance between two points on the earth's surface for latitude
+function calculateLatitudeDistance(lat1, lat2) {
+    var earthRadius = 6371e3; // Radius of the earth in meters
+    var dLat = deg2rad(lat2 - lat1);
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c; // Distance in meters
-    return d;
+    var distance = earthRadius * c;
+    return distance;
 }
 
+// Function to calculate the distance between two points on the earth's surface for longitude
+function calculateLongitudeDistance(lon1, lon2, lat) {
+    var earthRadius = 6371e3; // Radius of the earth in meters
+    var dLon = deg2rad(lon2 - lon1);
+    var a =
+        Math.sin(dLon / 2) * Math.sin(dLon / 2) *
+        Math.cos(deg2rad(lat)) * Math.cos(deg2rad(lat));
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var distance = earthRadius * c;
+    return distance;
+}
+
+function calculateTotalDistance (latitudeDistance, longitudeDistance) {
+    return Math.sqrt( Math.pow(latitudeDistance, 2) + Math.pow(longitudeDistance, 2) );
+}
+
+// Function to convert degrees to radians
 function deg2rad(deg) {
     return deg * (Math.PI / 180);
 }
+
 
 function stabilizeCoordinates(positionsList) {
     var stabilizedCoords = {
