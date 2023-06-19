@@ -96,7 +96,7 @@ video{
 	bottom: 0;
 	left: 0;
 	z-index: 100;
-	background-color: rgb(76, 0, 255);
+	background-color: rgb(50, 50, 50);
 	height: 30%;
 	width: 100vw;
 }
@@ -108,19 +108,34 @@ video{
 }
 
 
+// Leave this alone. This is for slick slider
 .slide-card {
 	height: inherit;
 	width: 100%;
-	
-	display: flex;
+	display: flex !important;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: solid 1px red;
 }
 
-.slide-content {
-	width: 40%;
+// Use this as the container for the slider content
+.slide-body {
+	height: inherit;
+	width: 100%;
+	
+	display: flex !important;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color: rgb(76, 0, 255);
+}
+
+
+.slide-item-name {
+	
+	// height: 20%;
+	margin: 0 auto;
 	background-color: green;
 }
 

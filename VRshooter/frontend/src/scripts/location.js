@@ -8,6 +8,8 @@ const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
 
+
+
 let currentLat,
     currentLon,
     startLat,
@@ -16,6 +18,8 @@ let currentLat,
     distanceFromHotspotLon,
     distanceFromHotspotLat,
     stabilizedCoords;
+
+const radius = 10;
 
 let positionsList = [];
 
@@ -84,15 +88,13 @@ function currentLocation(position) {
         distanceFromHotspotLat
     );
     
-
+   
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
-    // if (distance <= radius) {
-    // distanceDiv.innerHTML = 'You are inside the radius. Distance from center: ' + distance.toFixed(2) + 'm';
-    // distanceDiv.style.color = 'black';
-    // } else {
-    // distanceDiv.innerHTML = 'You are outside the radius. Distance from center: ' + distance.toFixed(2) + 'm';
-    // distanceDiv.style.color = 'red';
-    // }
+    if (distanceFromHotspotTotal <= radius) {
+        $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
+    } else {
+        $("#slide-GPS > .slide-item-info ").html('You are outside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
+    }
 }
 
 function locationError() {
