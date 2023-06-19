@@ -8,21 +8,12 @@ let camera,
     raycaster,
     pointerPosition,
     sceneCubes,
-    cubesDestroyed,
-    currentLat,
-    currentLon,
-    startLat,
-    startLon,
-    positions;
-positions = [];
+    cubesDestroyed;
+// positions = [];
 sceneCubes = [];
 cubesDestroyed = 0;
 
 const startButton = document.getElementById("startButton");
-const startLatDiv = document.getElementById("start-lat");
-const startLonDiv = document.getElementById("start-lon");
-const currentLatDiv = document.getElementById("current-lat");
-const currentLonDiv = document.getElementById("current-lon");
 const cameraXDiv = document.getElementById("camera-x");
 const cameraZDiv = document.getElementById("camera-z");
 
@@ -46,97 +37,7 @@ startButton.addEventListener(
     false
 );
 
-function initLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(startPosition);
-        navigator.geolocation.watchPosition(currentLocation);
-    } else {
-        console.error("Geolocation is not supported by this browser.");
-    }
-}
 
-
-function startPosition(position) {
-    startLat = position.coords.latitude;
-    startLon = position.coords.longitude;
-    startLatDiv.innerHTML = "start lat " + startLat;
-    startLonDiv.innerHTML = "start lon " + startLon;
-}
-
-function currentLocation(position) {
-    positions.push(position);
-    if (positions.length > 5) {
-        positions.shift();
-    }
-
-    var stabilizedCoords = stabilizeCoordinates(positions);
-
-    console.log('stablized coords', stabilizedCoords)
-    currentLat = stabilizedCoords.latitude;
-    currentLon = stabilizedCoords.longitude;
-    // currentLatDiv.innerHTML = "current lat " + currentLat;
-    // currentLonDiv.innerHTML = "current lon " + currentLon;
-
-    // var distance = getDistanceFromLatLonInM(
-    //     stabilizedCoords.latitude,
-    //     stabilizedCoords.longitude,
-    //     startLat,
-    //     startLon
-    // );
-
-    // Update the latitude and longitude in the HTML divs
-    currentLatDiv.innerHTML = "current Latitude: " + currentLat
-    // .toFixed(5);
-    currentLonDiv.innerHTML = "current Longitude: " + currentLon
-    // .toFixed(5);
-
-    // Update the distance in the HTML div and change the text color based on whether the user is within the radius
-    // if (distance <= radius) {
-    // distanceDiv.innerHTML = 'You are inside the radius. Distance from center: ' + distance.toFixed(2) + 'm';
-    // distanceDiv.style.color = 'black';
-    // } else {
-    // distanceDiv.innerHTML = 'You are outside the radius. Distance from center: ' + distance.toFixed(2) + 'm';
-    // distanceDiv.style.color = 'red';
-    // }
-}
-
-// function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
-//     var R = 6371e3; // Radius of the earth in meters
-//     var dLat = deg2rad(lat2 - lat1); // deg2rad below
-//     var dLon = deg2rad(lon2 - lon1);
-//     var a =
-//         Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-//         Math.cos(deg2rad(lat1)) *
-//             Math.cos(deg2rad(lat2)) *
-//             Math.sin(dLon / 2) *
-//             Math.sin(dLon / 2);
-//     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-//     var d = R * c; // Distance in meters
-//     return d;
-// }
-
-// function deg2rad(deg) {
-//     return deg * (Math.PI / 180);
-// }
-
-function stabilizeCoordinates(positions) {
-    var stabilizedCoords = {
-        latitude: 0,
-        longitude: 0,
-    };
-
-    for (var i = 0; i < positions.length; i++) {
-        stabilizedCoords.latitude += positions[i].coords.latitude;
-        stabilizedCoords.longitude += positions[i].coords.longitude;
-    }
-
-    console.log("coords lat", stabilizedCoords.latitude)
-    console.log("coords lon", stabilizedCoords.longitude)
-    stabilizedCoords.latitude /= positions.length;
-    stabilizedCoords.longitude /= positions.length;
-
-    return stabilizedCoords;
-}
 
 function startVideo() {
     const video = document.getElementById("video");
@@ -163,20 +64,22 @@ function startVideo() {
         });
 }
 
-function openFullscreen() {
-    var elem = document.documentElement;
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) {
-        /* Safari */
-        elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-        /* IE11 */
-        elem.msRequestFullscreen();
-    }
 
-    screen.orientation.lock("landscape");
-}
+// Open full screen doesn't work on apple products
+// function openFullscreen() {
+//     var elem = document.documentElement;
+//     if (elem.requestFullscreen) {
+//         elem.requestFullscreen();
+//     } else if (elem.webkitRequestFullscreen) {
+//         /* Safari */
+//         elem.webkitRequestFullscreen();
+//     } else if (elem.msRequestFullscreen) {
+//         /* IE11 */
+//         elem.msRequestFullscreen();
+//     }
+
+//     screen.orientation.lock("landscape");
+// }
 
 function handleTouch(e) {
     pointerPosition.x = (e.touches[0].clientX / videoWidth) * 2 - 1;
