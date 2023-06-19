@@ -16,10 +16,15 @@ let currentLat,
 
 let positionsList = [];
 
+const geolocationOptions = {
+    enableHighAccuracy: true,
+    maximumAge: 0
+};
+
 function initLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(startPosition);
-        navigator.geolocation.watchPosition(currentLocation);
+        navigator.geolocation.watchPosition(currentLocation, locationError, geolocationOptions);
     } else {
         alert("This device does not support the required geolocation functions for this app to work properly. For best results see FAQ section.");
     }
@@ -35,14 +40,14 @@ function startPosition(position) {
     startLonDiv.innerHTML = "start lon " + startLon;
 }
 
-function currentLocation(position) {
 
+function currentLocation(position) {
 
     // Debug
     currentLatDiv.innerHTML = "current Latitude: " + position.coords.latitude
     currentLonDiv.innerHTML = "current Longitude: " +  position.coords.longitude
 
-    
+
 
     positionsList.push(position);
     if (positionsList.length > 5) {
@@ -78,6 +83,23 @@ function currentLocation(position) {
     // distanceDiv.innerHTML = 'You are outside the radius. Distance from center: ' + distance.toFixed(2) + 'm';
     // distanceDiv.style.color = 'red';
     // }
+}
+
+function locationError() {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+          alert('User denied the request for Geolocation.');
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert('Location information is unavailable.');
+          break;
+        case error.TIMEOUT:
+          alert('The request to get user location timed out.');
+          break;
+        case error.UNKNOWN_ERROR:
+          alert('An unknown error occurred.');
+          break;
+    }
 }
 
 function getDistanceFromLatLonInM(lat1, lon1, lat2, lon2) {
