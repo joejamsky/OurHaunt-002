@@ -1,6 +1,7 @@
 import * as THREE from "./three.module.js";
 import { DeviceOrientationControls } from "./DeviceOrientationControls.js";
 
+
 let camera,
     scene,
     renderer,
@@ -111,18 +112,25 @@ function addItemTimed() {
 
 }
 
-function getRandomPosition() {
+function getRandomPosition(mesh) {
     var x = Math.random();
-    var y = 0; // Keep the vertical position constant
-    var z = 0;
+    var y = mesh.position.y; // Keep the vertical position constant
+    var z = mesh.position.z;
     return { x: x, y: y, z: z };
 }
 
 function moveObjectRandom(mesh) {
-    var position = getRandomPosition();
-    mesh.position.x = position.x;
-    mesh.position.y = position.y;
-    mesh.position.z = position.z;
+    // var targetPosition = getRandomPosition(mesh);
+    var targetPosition = {x: 2, y: 1, z: -3}
+    console.log('move obj', targetPosition)
+    var tween = new TWEEN.Tween(mesh.position)
+        .to(targetPosition, 2000)                   //targetPosition, duration in milliseconds
+        .easing(TWEEN.Easing.Quadratic.InOut)       
+        .start();
+
+    // mesh.position.x = position.x;
+    // mesh.position.y = position.y;
+    // mesh.position.z = position.z;
 }
 
 function initMonster() {
@@ -134,13 +142,20 @@ function initMonster() {
     // let yPos = THREE.MathUtils.randFloat(0, 5);
     // let zPos = generateSplitRandomClamped();
     // monsterMesh.position.set(xPos, yPos, zPos);
-    monsterMesh.position.set(0, 0, 4);
-    console.log('monster', monsterMesh)
+    monsterMesh.position.set(0, 1, -3);
     scene.add(monsterMesh);
+    moveObjectRandom(monsterMesh)
+}
+
+function rotateCamera() {
+    // Rotate the camera around its Y-axis
+    camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
 
 function init() {
     camera = new THREE.PerspectiveCamera(75, videoWidth / videoHeight, 1, 1100);
+    camera.position.set(0,1,0)
+
 
     orientationControls = new DeviceOrientationControls(camera);
     raycaster = new THREE.Raycaster();
@@ -199,13 +214,16 @@ function animate() {
     orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    moveObjectRandom(monsterMesh);
+    // rotateCamera();
+    TWEEN.update();
+
+    // moveObjectRandom(monsterMesh);
     
-    camera.position.set(
-        (startLon - currentLon),    // z?
-        0,                          // y
-        (startLat - currentLat)     // x?
-    );
+    // camera.position.set(
+    //     (startLon - currentLon),    // z?
+    //     0,                          // y
+    //     (startLat - currentLat)     // x?
+    // );
 
     cameraXDiv.innerHTML = "camera x " + (startLat - currentLat);
     cameraZDiv.innerHTML = "camera z " + (startLon - currentLon);
