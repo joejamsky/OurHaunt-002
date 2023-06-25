@@ -91,8 +91,7 @@ function currentLocation(position) {
         distanceFromHotspotLat
     );
     
-    document.querySelector('iframe').document
-   
+ 
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
     if (distanceFromHotspotTotal <= radius) {
         $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
@@ -148,7 +147,6 @@ function calculateTotalDistance (latitudeDistance, longitudeDistance) {
 function deg2rad(deg) {
     return deg * (Math.PI / 180);
 }
-
 
 function stabilizeCoordinates(positionsList) {
     var stabilizedCoords = {

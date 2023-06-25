@@ -4,14 +4,14 @@ import { DeviceOrientationControls } from "./DeviceOrientationControls.js";
 let camera,
     scene,
     renderer,
-    controls,
+    orientationControls,
     raycaster,
     pointerPosition,
     sceneCubes,
     cubesDestroyed;
-// positions = [];
 sceneCubes = [];
 cubesDestroyed = 0;
+var monsterMesh
 
 const startButton = document.getElementById("startButton");
 const cameraXDiv = document.getElementById("camera-x");
@@ -19,8 +19,6 @@ const cameraZDiv = document.getElementById("camera-z");
 
 const videoWidth = window.innerWidth;
 const videoHeight = window.innerHeight * (70 / 100);
-console.log("video height", videoHeight);
-console.log("window height", window.innerHeight);
 
 startButton.addEventListener(
     "click",
@@ -99,26 +97,50 @@ function generateSplitRandomClamped() {
 }
 
 function addItemTimed() {
-    if (sceneCubes.length < 5) {
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        let xPos = generateSplitRandomClamped();
-        let yPos = THREE.MathUtils.randFloat(0, 5);
-        let zPos = generateSplitRandomClamped();
-        cube.position.set(xPos, yPos, zPos);
-        scene.add(cube);
-        sceneCubes.push(cube.id);
-        console.log("cubes", sceneCubes);
-    }
+    // if (sceneCubes.length < 5) {
+    //     const geometry = new THREE.BoxGeometry(1, 1, 1);
+    //     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    //     const cube = new THREE.Mesh(geometry, material);
+    //     let xPos = generateSplitRandomClamped();
+    //     let yPos = THREE.MathUtils.randFloat(0, 5);
+    //     let zPos = generateSplitRandomClamped();
+    //     cube.position.set(xPos, yPos, zPos);
+    //     scene.add(cube);
+    //     sceneCubes.push(cube.id);
+    // }
 
-    console.log("running");
+}
+
+function getRandomPosition() {
+    var x = Math.random();
+    var y = 0; // Keep the vertical position constant
+    var z = 0;
+    return { x: x, y: y, z: z };
+}
+
+function moveObjectRandom(mesh) {
+    var position = getRandomPosition();
+    mesh.position.x = position.x;
+    mesh.position.y = position.y;
+    mesh.position.z = position.z;
+}
+
+function initMonster() {
+    const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
+    const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
+
+    let xPos = generateSplitRandomClamped();
+    let yPos = THREE.MathUtils.randFloat(0, 5);
+    let zPos = generateSplitRandomClamped();
+    monsterMesh.position.set(xPos, yPos, zPos);
+    scene.add(monsterMesh);
 }
 
 function init() {
     camera = new THREE.PerspectiveCamera(75, videoWidth / videoHeight, 1, 1100);
 
-    controls = new DeviceOrientationControls(camera);
+    orientationControls = new DeviceOrientationControls(camera);
     raycaster = new THREE.Raycaster();
     pointerPosition = new THREE.Vector2();
 
@@ -128,15 +150,18 @@ function init() {
     // invert the geometry on the x-axis so that all of the faces point inward
     geometry.scale(-1, 1, 1);
 
-    const material = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load(
-            "./src/textures/2294472375_24a3b8ef46_o.jpg"
-        ),
-    });
+    // < Mesh for default room environment
+    // const material = new THREE.MeshBasicMaterial({
+    //     map: new THREE.TextureLoader().load(
+    //         "./src/textures/2294472375_24a3b8ef46_o.jpg"
+    //     ),
+    // });
 
-    const mesh = new THREE.Mesh(geometry, material);
+    // const mesh = new THREE.Mesh(geometry, material);
     // scene.add( mesh );
+    // </ 
 
+    // < Mesh for wireframe
     const helperGeometry = new THREE.BoxBufferGeometry(100, 100, 100, 4, 4, 4);
     const helperMaterial = new THREE.MeshBasicMaterial({
         color: 0xff00ff,
@@ -144,47 +169,58 @@ function init() {
     });
     const helper = new THREE.Mesh(helperGeometry, helperMaterial);
     scene.add(helper);
+    // </ 
 
-    //
 
+    // < Setup renderer
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(videoWidth, videoHeight);
     document.body.appendChild(renderer.domElement);
+    // </
 
-    //
-    window.addEventListener("resize", onWindowResize, false);
-    window.addEventListener("touchstart", handleTouch);
-    window.setInterval(function () {
-        addItemTimed();
-    }, 1000);
+
+    
+    window.addEventListener("resize", onWindowResize, false);   // Setup window resize
+
+    window.addEventListener("touchstart", handleTouch);         // Setup screen tap
+
+    // window.setInterval(function () {                            // Setup add items
+    //     addItemTimed();
+    // }, 1000);
+    initMonster();
 }
 
 function animate() {
     window.requestAnimationFrame(animate);
-    controls.update();
+    orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
-    const intersects = raycaster.intersectObjects(scene.children);
-
+    const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
+    moveObjectRandom(monsterMesh);
+    
     camera.position.set(
-        (startLon - currentLon) * 100000,
-        0,
-        (startLat - currentLat) * 100000
+        (startLon - currentLon),    // z?
+        0,                          // y
+        (startLat - currentLat)     // x?
     );
-    cameraXDiv.innerHTML = "camera x " + (startLat - currentLat) * 100000;
-    cameraZDiv.innerHTML = "camera z " + (startLon - currentLon) * 100000;
 
-    for (let i = 0; i < intersects.length; i++) {
-        if (sceneCubes.includes(intersects[i].object.id)) {
-            const deadCubeIndex = sceneCubes.findIndex(
-                (elem) => elem == intersects[i].object.id
-            );
-            scene.remove(intersects[i].object);
-            sceneCubes.splice(deadCubeIndex, 1);
-            cubesDestroyed += 1;
-            document.getElementById("debug").innerText =
-                "Cubes destroyed: " + cubesDestroyed;
-        }
+    cameraXDiv.innerHTML = "camera x " + (startLat - currentLat);
+    cameraZDiv.innerHTML = "camera z " + (startLon - currentLon);
+
+    // Check if ray trace intersects any objects
+    for (let i = 0; i < sceneObjectIntersects.length; i++) {
+
+
+        // if (sceneCubes.includes(sceneObjectIntersects[i].object.id)) {
+        //     const deadCubeIndex = sceneCubes.findIndex(
+        //         (elem) => elem == sceneObjectIntersects[i].object.id
+        //     );
+        //     scene.remove(sceneObjectIntersects[i].object);
+        //     sceneCubes.splice(deadCubeIndex, 1);
+        //     cubesDestroyed += 1;
+        //     document.getElementById("debug").innerText =
+        //         "Cubes destroyed: " + cubesDestroyed;
+        // }
     }
     renderer.render(scene, camera);
 }
