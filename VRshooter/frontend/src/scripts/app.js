@@ -11,7 +11,7 @@ let camera,
     cubesDestroyed;
 sceneCubes = [];
 cubesDestroyed = 0;
-var monsterMesh
+// var monsterMesh
 
 const startButton = document.getElementById("startButton");
 const cameraXDiv = document.getElementById("camera-x");
@@ -128,7 +128,7 @@ function moveObjectRandom(mesh) {
 function initMonster() {
     const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
     const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
+    const monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
 
     // let xPos = generateSplitRandomClamped();
     // let yPos = THREE.MathUtils.randFloat(0, 5);
