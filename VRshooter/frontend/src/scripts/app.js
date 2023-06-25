@@ -134,7 +134,7 @@ function initMonster() {
     // let yPos = THREE.MathUtils.randFloat(0, 5);
     // let zPos = generateSplitRandomClamped();
     // monsterMesh.position.set(xPos, yPos, zPos);
-    monsterMesh.position.set(0, 0, 0);
+    monsterMesh.position.set(1, 1, 1);
     scene.add(monsterMesh);
 }
 
@@ -147,11 +147,12 @@ function init() {
 
     scene = new THREE.Scene();
 
-    const geometry = new THREE.SphereBufferGeometry(500, 60, 40);
-    // invert the geometry on the x-axis so that all of the faces point inward
-    geometry.scale(-1, 1, 1);
-
     // < Mesh for default room environment
+    // const geometry = new THREE.SphereBufferGeometry(500, 60, 40);
+    // invert the geometry on the x-axis so that all of the faces point inward
+    // geometry.scale(-1, 1, 1);
+
+    
     // const material = new THREE.MeshBasicMaterial({
     //     map: new THREE.TextureLoader().load(
     //         "./src/textures/2294472375_24a3b8ef46_o.jpg"
