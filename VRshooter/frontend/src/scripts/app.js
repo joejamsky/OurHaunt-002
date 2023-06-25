@@ -125,11 +125,12 @@ function moveObjectRandom(mesh) {
     var tween = new TWEEN.Tween(mesh.position)
         .to(targetPosition, 2000)                   //targetPosition, duration in milliseconds
         .easing(TWEEN.Easing.Quadratic.InOut)       
+        .onComplete(function () {
+            // Animation completed, start a new motion
+            moveObjectRandom(mesh);
+        })
         .start();
-        // .onComplete(function () {
-        //     // Animation completed, start a new motion
-        //     moveObjectRandom(mesh);
-        // })
+
 
 }
 
