@@ -32,6 +32,9 @@ function initLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(startPosition);
         navigator.geolocation.watchPosition(currentLocation, locationError, geolocationOptions);
+        setTimeout(() => {
+            navigator.geolocation.getCurrentPosition(startPosition);
+        }, "3000");
     } else {
         alert("This device does not support the required geolocation functions for this app to work properly. For best results see FAQ section.");
     }
@@ -88,6 +91,7 @@ function currentLocation(position) {
         distanceFromHotspotLat
     );
     
+    document.querySelector('iframe').document
    
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
     if (distanceFromHotspotTotal <= radius) {
