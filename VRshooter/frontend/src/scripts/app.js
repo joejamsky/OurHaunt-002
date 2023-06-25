@@ -130,10 +130,11 @@ function initMonster() {
     const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
 
-    let xPos = generateSplitRandomClamped();
-    let yPos = THREE.MathUtils.randFloat(0, 5);
-    let zPos = generateSplitRandomClamped();
-    monsterMesh.position.set(xPos, yPos, zPos);
+    // let xPos = generateSplitRandomClamped();
+    // let yPos = THREE.MathUtils.randFloat(0, 5);
+    // let zPos = generateSplitRandomClamped();
+    // monsterMesh.position.set(xPos, yPos, zPos);
+    monsterMesh.position.set(0, 0, 0);
     scene.add(monsterMesh);
 }
 
@@ -196,7 +197,7 @@ function animate() {
     orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    moveObjectRandom(monsterMesh);
+    // moveObjectRandom(monsterMesh);
     
     camera.position.set(
         (startLon - currentLon),    // z?
