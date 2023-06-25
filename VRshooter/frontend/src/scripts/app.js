@@ -113,24 +113,24 @@ function addItemTimed() {
 }
 
 function getRandomPosition(mesh) {
-    var x = Math.random();
+    var x = Math.floor(Math.random() * (3 - 0 + 1) + 0);
     var y = mesh.position.y; // Keep the vertical position constant
     var z = mesh.position.z;
     return { x: x, y: y, z: z };
 }
 
 function moveObjectRandom(mesh) {
-    // var targetPosition = getRandomPosition(mesh);
-    var targetPosition = {x: 2, y: 1, z: -3}
-    console.log('move obj', targetPosition)
+    var targetPosition = getRandomPosition(mesh);
+    // var targetPosition = {x: 2, y: 1, z: -3}
     var tween = new TWEEN.Tween(mesh.position)
         .to(targetPosition, 2000)                   //targetPosition, duration in milliseconds
         .easing(TWEEN.Easing.Quadratic.InOut)       
         .start();
+        // .onComplete(function () {
+        //     // Animation completed, start a new motion
+        //     moveObjectRandom(mesh);
+        // })
 
-    // mesh.position.x = position.x;
-    // mesh.position.y = position.y;
-    // mesh.position.z = position.z;
 }
 
 function initMonster() {
@@ -217,8 +217,6 @@ function animate() {
     // rotateCamera();
     TWEEN.update();
 
-    // moveObjectRandom(monsterMesh);
-    
     // camera.position.set(
     //     (startLon - currentLon),    // z?
     //     0,                          // y
