@@ -11,7 +11,7 @@ let camera,
     cubesDestroyed;
 sceneCubes = [];
 cubesDestroyed = 0;
-// var monsterMesh
+var monsterMesh
 
 const startButton = document.getElementById("startButton");
 const cameraXDiv = document.getElementById("camera-x");
@@ -128,13 +128,14 @@ function moveObjectRandom(mesh) {
 function initMonster() {
     const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
     const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
+    monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
 
     // let xPos = generateSplitRandomClamped();
     // let yPos = THREE.MathUtils.randFloat(0, 5);
     // let zPos = generateSplitRandomClamped();
     // monsterMesh.position.set(xPos, yPos, zPos);
-    monsterMesh.position.set(1, 1, 1);
+    monsterMesh.position.set(0, 0, 4);
+    console.log('monster', monsterMesh)
     scene.add(monsterMesh);
 }
 
@@ -198,7 +199,7 @@ function animate() {
     orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    // moveObjectRandom(monsterMesh);
+    moveObjectRandom(monsterMesh);
     
     camera.position.set(
         (startLon - currentLon),    // z?
