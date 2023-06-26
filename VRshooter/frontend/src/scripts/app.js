@@ -228,15 +228,15 @@ function animate() {
     
     if(startLat && startLon){
  
-        var x = distanceFromHotspotLon;
+        var x = distanceFromHotspotLon * 10;
         var y = 1;
-        var z = distanceFromHotspotLat; 
+        var z = distanceFromHotspotLat * 10; 
 
         camera.position.set(x, y, z);
 
 
-        cameraXDiv.innerHTML = "camera x " + distanceFromHotspotLon;
-        cameraZDiv.innerHTML = "camera z " + distanceFromHotspotLat;
+        cameraXDiv.innerHTML = "camera x " + x;
+        cameraZDiv.innerHTML = "camera z " + z;
     }
 
 
