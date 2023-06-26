@@ -228,11 +228,11 @@ function animate() {
     
     if(startLat && startLon){
  
-        var x = distanceFromHotspotLon * 1.4;
+        var x = distanceFromHotspotLon * 1.7;
         var y = 1;
-        var z = distanceFromHotspotLat * 1.4; 
+        var z = distanceFromHotspotLat * 1.7; 
 
-        camera.position.set(x, y, z);
+        camera.position.lerp({x, y, z}, 0.1);
 
 
         cameraXDiv.innerHTML = "camera x " + x;

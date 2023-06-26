@@ -7,6 +7,7 @@ const stabalizedLonDiv = document.getElementById("stabalized-lon");
 const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
+const headingDiv = document.getElementById("geo-heading");
 
 
 
@@ -18,7 +19,7 @@ let currentLat,
     distanceFromHotspotLon,
     distanceFromHotspotLat,
     stabilizedCoords,
-    coordsMeters;
+    geoHeading;
 
 const radius = 10;
 
@@ -59,6 +60,7 @@ function currentLocation(position) {
     currentLonDiv.innerHTML = "current Longitude: " +  position.coords.longitude
 
 
+    geoHeading = position.coords.heading
 
     positionsList.push(position);
     if (positionsList.length > 5) {
@@ -73,6 +75,7 @@ function currentLocation(position) {
     distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspotLon
     distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspotLat
     distanceTotalDiv.innerHTML = "distance Total: " + distanceFromHotspotTotal
+    headingDiv.innerHTML = "Heading: " + geoHeading
 
 
     distanceFromHotspotLat = calculateLatitudeDistance(
@@ -92,12 +95,7 @@ function currentLocation(position) {
         distanceFromHotspotLat
     );
 
-    coordsMeters = convertLonLatToXY (
-        currentLat,
-        currentLon
-    )
-    
- 
+
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
     if (distanceFromHotspotTotal <= radius) {
         $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
