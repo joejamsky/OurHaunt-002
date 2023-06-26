@@ -239,8 +239,8 @@ function animate() {
         camera.position.set(x, y, z);
     }
 
-    cameraXDiv.innerHTML = "camera x " + (startLat - currentLat);
-    cameraZDiv.innerHTML = "camera z " + (startLon - currentLon);
+    cameraXDiv.innerHTML = "camera x " + x;
+    cameraZDiv.innerHTML = "camera z " + z;
 
     // Check if ray trace intersects any objects
     for (let i = 0; i < sceneObjectIntersects.length; i++) {
