@@ -210,6 +210,12 @@ function init() {
     initMonster();
 }
 
+
+const planeWidth = 100;
+const planeHeight = 100;
+
+
+
 function animate() {
     window.requestAnimationFrame(animate);
     orientationControls.update();
@@ -219,12 +225,18 @@ function animate() {
     TWEEN.update();
 
 
+    
     if(startLat && startLon){
-        camera.position.set(
-            (startLon - currentLon),    // x
-            1,                          // y
-            (startLat - currentLat)     // z
-        );
+        const minLon = startLon - 50;
+        const maxLon = startLon + 50;
+        const minLat = startLat - 50;
+        const maxLat = startLat + 50;
+    
+        var x = THREE.MathUtils.mapLinear(currentLon, minLon, maxLon, -planeWidth / 2, planeWidth / 2);
+        var y = 1;
+        var z = THREE.MathUtils.mapLinear(currentLat, minLat, maxLat, -planeHeight / 2, planeHeight / 2); 
+
+        camera.position.set(x, y, z);
     }
 
     cameraXDiv.innerHTML = "camera x " + (startLat - currentLat);
