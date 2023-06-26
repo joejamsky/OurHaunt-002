@@ -17,7 +17,8 @@ let currentLat,
     distanceFromHotspotTotal,
     distanceFromHotspotLon,
     distanceFromHotspotLat,
-    stabilizedCoords;
+    stabilizedCoords,
+    coordsMeters;
 
 const radius = 10;
 
@@ -90,6 +91,11 @@ function currentLocation(position) {
         distanceFromHotspotLon,
         distanceFromHotspotLat
     );
+
+    coordsMeters = convertLonLatToXY (
+        currentLat,
+        currentLon
+    )
     
  
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
@@ -120,6 +126,7 @@ function locationError() {
 // Function to calculate the distance between two points on the earth's surface for latitude
 function calculateLatitudeDistance(lat1, lat2) {
     var earthRadius = 6371e3; // Radius of the earth in meters
+    console.log('radius', earthRadius)
     var dLat = deg2rad(lat2 - lat1);
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
@@ -142,6 +149,13 @@ function calculateLongitudeDistance(lon1, lon2, lat) {
 function calculateTotalDistance (latitudeDistance, longitudeDistance) {
     return Math.sqrt( Math.pow(latitudeDistance, 2) + Math.pow(longitudeDistance, 2) );
 }
+
+function convertLonLatToXY(lon, lat) {
+    const R = 6371e3; // Earth's radius in meters
+    const x = lon * Math.PI / 180 * R * Math.cos(lat * Math.PI / 180);
+    const y = lat * Math.PI / 180 * R;
+    return { x, y };
+  }
 
 // Function to convert degrees to radians
 function deg2rad(deg) {

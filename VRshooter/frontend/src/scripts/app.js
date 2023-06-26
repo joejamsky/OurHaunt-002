@@ -211,8 +211,8 @@ function init() {
 }
 
 
-const planeWidth = 50;
-const planeHeight = 50;
+const planeWidth = 100;
+const planeHeight = 100;
 
 
 
@@ -227,20 +227,18 @@ function animate() {
 
     
     if(startLat && startLon){
-        const minLon = startLon - planeWidth / 2;
-        const maxLon = startLon + planeWidth / 2;
-        const minLat = startLat - planeHeight / 2;
-        const maxLat = startLat + planeHeight / 2;
-    
-        var x = THREE.MathUtils.mapLinear(currentLon, minLon, maxLon, -planeWidth / 2, planeWidth / 2);
+ 
+        var x = distanceFromHotspotLon;
         var y = 1;
-        var z = THREE.MathUtils.mapLinear(currentLat, minLat, maxLat, -planeHeight / 2, planeHeight / 2); 
+        var z = distanceFromHotspotLat; 
 
         camera.position.set(x, y, z);
+
+
+        cameraXDiv.innerHTML = "camera x " + distanceFromHotspotLon;
+        cameraZDiv.innerHTML = "camera z " + distanceFromHotspotLat;
     }
 
-    cameraXDiv.innerHTML = "camera x " + x;
-    cameraZDiv.innerHTML = "camera z " + z;
 
     // Check if ray trace intersects any objects
     for (let i = 0; i < sceneObjectIntersects.length; i++) {
