@@ -211,8 +211,8 @@ function init() {
 }
 
 
-const planeWidth = 100;
-const planeHeight = 100;
+const planeWidth = 10;
+const planeHeight = 10;
 
 
 
@@ -227,10 +227,10 @@ function animate() {
 
     
     if(startLat && startLon){
-        const minLon = startLon - 50;
-        const maxLon = startLon + 50;
-        const minLat = startLat - 50;
-        const maxLat = startLat + 50;
+        const minLon = startLon - planeWidth / 2;
+        const maxLon = startLon + planeWidth / 2;
+        const minLat = startLat - planeHeight / 2;
+        const maxLat = startLat + planeHeight / 2;
     
         var x = THREE.MathUtils.mapLinear(currentLon, minLon, maxLon, -planeWidth / 2, planeWidth / 2);
         var y = 1;
