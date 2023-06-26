@@ -113,8 +113,8 @@ function addItemTimed() {
 }
 
 function getRandomPosition(mesh) {
-    var x = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-    var y = mesh.position.y; // Keep the vertical position constant
+    var x = mesh.position.x
+    var y = Math.floor(Math.random() * (3 - 0 + 1) + 0); 
     var z = mesh.position.z;
     return { x: x, y: y, z: z };
 }
@@ -181,7 +181,7 @@ function init() {
     // </ 
 
     // < Mesh for wireframe
-    const helperGeometry = new THREE.BoxBufferGeometry(100, 100, 100, 4, 4, 4);
+    const helperGeometry = new THREE.BoxBufferGeometry(100, 100, 100, 4, 4, 4);     //BoxGeometry(width, height, depth, widthSegments, heightSegments, depthSegments)
     const helperMaterial = new THREE.MeshBasicMaterial({
         color: 0xff00ff,
         wireframe: true,
@@ -218,11 +218,14 @@ function animate() {
     // rotateCamera();
     TWEEN.update();
 
-    // camera.position.set(
-    //     (startLon - currentLon),    // z?
-    //     0,                          // y
-    //     (startLat - currentLat)     // x?
-    // );
+
+    if(startLat && startLon){
+        camera.position.set(
+            (startLon - currentLon),    // x
+            1,                          // y
+            (startLat - currentLat)     // z
+        );
+    }
 
     cameraXDiv.innerHTML = "camera x " + (startLat - currentLat);
     cameraZDiv.innerHTML = "camera z " + (startLon - currentLon);
