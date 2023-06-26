@@ -211,8 +211,8 @@ function init() {
 }
 
 
-const planeWidth = 10;
-const planeHeight = 10;
+const planeWidth = 50;
+const planeHeight = 50;
 
 
 
