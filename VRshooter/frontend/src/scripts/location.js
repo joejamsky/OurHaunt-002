@@ -43,6 +43,8 @@ function initLocation() {
 }
 
 
+
+
 function startPosition(position) {
     startLat = position.coords.latitude;
     startLon = position.coords.longitude;

@@ -153,6 +153,29 @@ function rotateCamera() {
     camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
 
+function handleOrientation(event) {
+    if (event.webkitCompassHeading) {
+        // For WebKit-based browsers (iOS Safari, Chrome)
+        var compassHeading = event.webkitCompassHeading;
+      // Use compassHeading value
+    } else if (event.alpha) {
+        // For non-WebKit-based browsers (Firefox)
+        var compassHeading = event.alpha;
+        // Use compassHeading value
+    }
+
+      // Rotate the camera based on compass heading
+    if (compassHeading !== null && compassHeading !== undefined) {
+        // Convert compass heading to radians
+        var headingRad = compassHeading * (Math.PI / 180);
+
+        // Adjust the camera's rotation based on the heading
+        camera.rotation.y = -headingRad;
+    }
+}
+
+window.addEventListener("deviceorientationabsolute", handleOrientation, true);
+
 function init() {
     camera = new THREE.PerspectiveCamera(75, videoWidth / videoHeight, 1, 1100);
     camera.position.set(0,1,0)
@@ -218,6 +241,7 @@ const planeHeight = 100;
 
 function animate() {
     window.requestAnimationFrame(animate);
+    
     orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
