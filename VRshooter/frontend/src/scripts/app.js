@@ -153,30 +153,54 @@ function rotateCamera() {
     camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
 
-function handleOrientation(event) {
-    if (event.webkitCompassHeading) {
-        // For WebKit-based browsers (iOS Safari, Chrome)
-        var compassHeading = event.webkitCompassHeading;
-      // Use compassHeading value
-    } else if (event.alpha) {
-        // For non-WebKit-based browsers (Firefox)
-        var compassHeading = event.alpha;
-        // Use compassHeading value
+let compass
+
+function startCompassListener(callback) {
+    if (!window.DeviceOrientationEvent) {
+      console.warn("DeviceOrientation API not available");
+      return;
     }
-
-      // Rotate the camera based on compass heading
-    if (compassHeading !== null && compassHeading !== undefined) {
-        // Convert compass heading to radians
-        var headingRad = compassHeading * (Math.PI / 180);
-
-        // Adjust the camera's rotation based on the heading
+    
+    function absoluteListener(e) {
+      if (!e.absolute || e.alpha == null || e.beta == null || e.gamma == null)
+        return;
         
+      compass = -(e.alpha + e.beta * e.gamma / 90);
+      compass -= Math.floor(compass / 360) * 360; // Wrap into range [0,360].
+      window.removeEventListener("deviceorientation", webkitListener);
+      callback(compass);
+    }
+    
+    function webkitListener(e) {
+      compass = e.webkitCompassHeading;
+      if (compass != null && !isNaN(compass)) {
+        callback(compass);
+        window.removeEventListener("deviceorientationabsolute", absoluteListener);
+      }
+    }
+    
+    function addListeners() {
+      // Add both listeners, and if either succeeds then remove the other one.
+      window.addEventListener("deviceorientationabsolute", absoluteListener);
+      window.addEventListener("deviceorientation", webkitListener);
+    }
+    
+    if (typeof DeviceOrientationEvent.requestPermission === "function") {
+      DeviceOrientationEvent.requestPermission()
+        .then(response => {
+          if (response === "granted") {
+            addListeners();
+          } else {
+            console.warn("Permission for DeviceMotionEvent not granted");
+          }
+        });
+    } else {
+      addListeners();
     }
 }
-
-window.addEventListener("deviceorientationabsolute", handleOrientation, true);
-
+  
 function init() {
+    startCompassListener();
     camera = new THREE.PerspectiveCamera(75, videoWidth / videoHeight, 1, 1100);
     camera.position.set(0,1,0)
 
@@ -242,8 +266,8 @@ const planeHeight = 100;
 function animate() {
     window.requestAnimationFrame(animate);
     
-    orientationControls.update();
-    camera.rotation.y = -headingRad;
+    // orientationControls.update();
+    camera.rotation.y = compass
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
     // rotateCamera();
