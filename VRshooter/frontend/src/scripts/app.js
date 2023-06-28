@@ -266,7 +266,7 @@ const planeHeight = 100;
 function animate() {
     window.requestAnimationFrame(animate);
     
-    // orientationControls.update();
+    orientationControls.update();
     camera.rotation.y = compass
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
