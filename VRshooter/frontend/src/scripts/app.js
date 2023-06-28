@@ -170,7 +170,7 @@ function handleOrientation(event) {
         var headingRad = compassHeading * (Math.PI / 180);
 
         // Adjust the camera's rotation based on the heading
-        camera.rotation.y = -headingRad;
+        
     }
 }
 
@@ -243,6 +243,7 @@ function animate() {
     window.requestAnimationFrame(animate);
     
     orientationControls.update();
+    camera.rotation.y = -headingRad;
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
     // rotateCamera();
