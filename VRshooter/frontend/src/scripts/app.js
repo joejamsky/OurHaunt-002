@@ -156,61 +156,52 @@ function rotateCamera() {
 
 let compass
 
-// function startCompassListener(callback) {
-//     if (!window.DeviceOrientationEvent) {
-//       console.warn("DeviceOrientation API not available");
-//       return;
-//     }
+function startCompassListener(callback) {
+    if (!window.DeviceOrientationEvent) {
+      console.warn("DeviceOrientation API not available");
+      return;
+    }
     
-//     function absoluteListener(e) {
-//       if (!e.absolute || e.alpha == null || e.beta == null || e.gamma == null)
-//         return;
+    function absoluteListener(e) {
+      if (!e.absolute || e.alpha == null || e.beta == null || e.gamma == null)
+        return;
         
-//       compass = -(e.alpha + e.beta * e.gamma / 90);
-//       compass -= Math.floor(compass / 360) * 360; // Wrap into range [0,360].
-//       window.removeEventListener("deviceorientation", webkitListener);
-//       callback(compass);
-//     }
+      compass = -(e.alpha + e.beta * e.gamma / 90);
+      compass -= Math.floor(compass / 360) * 360; // Wrap into range [0,360].
+      window.removeEventListener("deviceorientation", webkitListener);
+    //   callback(compass);     // if this code needs a callback pass a parameter through this function. Right now there is no use for this.
+    }
     
-//     function webkitListener(e) {
-//       compass = e.webkitCompassHeading;
-//       if (compass != null && !isNaN(compass)) {
-//         callback(compass);
-//         window.removeEventListener("deviceorientationabsolute", absoluteListener);
-//       }
-//     }
+    function webkitListener(e) {
+      compass = e.webkitCompassHeading;
+      if (compass != null && !isNaN(compass)) {
+        //   callback(compass);     // if this code needs a callback pass a parameter through this function. Right now there is no use for this.
+        window.removeEventListener("deviceorientationabsolute", absoluteListener);
+      }
+    }
     
-//     function addListeners() {
-//       // Add both listeners, and if either succeeds then remove the other one.
-//       window.addEventListener("deviceorientationabsolute", absoluteListener);
-//       window.addEventListener("deviceorientation", webkitListener);
-//     }
+    function addListeners() {
+      // Add both listeners, and if either succeeds then remove the other one.
+      window.addEventListener("deviceorientationabsolute", absoluteListener);
+      window.addEventListener("deviceorientation", webkitListener);
+    }
     
-//     if (typeof DeviceOrientationEvent.requestPermission === "function") {
-//       DeviceOrientationEvent.requestPermission()
-//         .then(response => {
-//           if (response === "granted") {
-//             addListeners();
-//           } else {
-//             console.warn("Permission for DeviceMotionEvent not granted");
-//           }
-//         });
-//     } else {
-//       addListeners();
-//     }
-// }
-
-const northHeadingDegrees = 0;
-
-// Convert the north heading to radians
-const northHeadingRadians = THREE.MathUtils.degToRad(northHeadingDegrees);
-
-// Create a Quaternion for the rotation
-const quaternion = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), northHeadingRadians);
-
+    if (typeof DeviceOrientationEvent.requestPermission === "function") {
+      DeviceOrientationEvent.requestPermission()
+        .then(response => {
+          if (response === "granted") {
+            addListeners();
+          } else {
+            console.warn("Permission for DeviceMotionEvent not granted");
+          }
+        });
+    } else {
+      addListeners();
+    }
+}
 
 function init() {
-    // startCompassListener();
+    startCompassListener();
     camera = new THREE.PerspectiveCamera(75, videoWidth / videoHeight, 1, 1100);
     camera.position.set(0,1,0)
 
@@ -220,8 +211,7 @@ function init() {
     pointerPosition = new THREE.Vector2();
 
     scene = new THREE.Scene();
-    scene.rotation.setFromQuaternion(quaternion.y);
-    compassDiv.innerHTML = "compass " + quaternion.y;
+    scene.rotation.compass;
 
 
 
