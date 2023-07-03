@@ -220,8 +220,8 @@ function init() {
     pointerPosition = new THREE.Vector2();
 
     scene = new THREE.Scene();
-    scene.rotation.setFromQuaternion(quaternion);
-    compassDiv.innerHTML = "compass " + quaternion.y();
+    scene.rotation.setFromQuaternion(quaternion.y);
+    compassDiv.innerHTML = "compass " + quaternion.y;
 
 
 
