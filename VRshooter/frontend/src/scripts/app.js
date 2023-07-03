@@ -17,6 +17,7 @@ var monsterMesh
 const startButton = document.getElementById("startButton");
 const cameraXDiv = document.getElementById("camera-x");
 const cameraZDiv = document.getElementById("camera-z");
+const compassDiv = document.getElementById("compass");
 
 const videoWidth = window.innerWidth;
 const videoHeight = window.innerHeight * (70 / 100);
@@ -219,8 +220,10 @@ function init() {
     pointerPosition = new THREE.Vector2();
 
     scene = new THREE.Scene();
-    console.log('quaternion', quaternion)
     scene.rotation.setFromQuaternion(quaternion);
+    compassDiv.innerHTML = "compass " + quaternion;
+
+
 
     // < Mesh for default room environment
     // const geometry = new THREE.SphereBufferGeometry(500, 60, 40);
