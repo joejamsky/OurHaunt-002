@@ -173,6 +173,7 @@ function handleOrientation(event) {
       // ...
     }
     // ...
+   
     geoHeadingDiv.innerHTML = "Geo-Heading: " + heading;
 }
 
@@ -248,16 +249,16 @@ function initScene() {
     window.setInterval(function () {                            // Setup add items
         // addItemTimed();
     }, 4000);
+    startCompassListener();
 
-    window.setTimeout(function () {                             // Setup scene orientation
-        startCompassListener();
-        if(heading){
-            scene.rotation.set(0, heading, 0);
+    setTimeout(() => {
+        console.log('heading',heading)
+        if(heading === undefined || heading === null){
+            alert("Heading is null", heading);
         } else {
-            scene.rotation.set(0, 180, 0);
+            scene.rotation.set(0, heading, 0);           
         }
-        
-    }, 2000);
+    }, 4000);
 }
 
 
