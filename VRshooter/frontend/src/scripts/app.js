@@ -207,7 +207,7 @@ const northHeadingRadians = THREE.MathUtils.degToRad(northHeadingDegrees);
 // Create a Quaternion for the rotation
 const quaternion = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), northHeadingRadians);
 
-  
+
 function init() {
     // startCompassListener();
     camera = new THREE.PerspectiveCamera(75, videoWidth / videoHeight, 1, 1100);
@@ -219,6 +219,7 @@ function init() {
     pointerPosition = new THREE.Vector2();
 
     scene = new THREE.Scene();
+    console.log('quaternion', quaternion)
     scene.rotation.setFromQuaternion(quaternion);
 
     // < Mesh for default room environment
@@ -277,7 +278,7 @@ function animate() {
     window.requestAnimationFrame(animate);
     
     orientationControls.update();
-    camera.rotation.y = compass
+    // camera.rotation.y = compass
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
     // rotateCamera();
@@ -285,18 +286,18 @@ function animate() {
 
 
     
-    if(startLat && startLon){
+    // if(startLat && startLon){
  
-        var x = distanceFromHotspotLon * 1.7;
-        var y = 1;
-        var z = distanceFromHotspotLat * 1.7; 
+    //     var x = distanceFromHotspotLon * 1.7;
+    //     var y = 1;
+    //     var z = distanceFromHotspotLat * 1.7; 
 
-        camera.position.lerp({x, y, z}, 0.1);
+    //     camera.position.lerp({x, y, z}, 0.1);
 
 
-        cameraXDiv.innerHTML = "camera x " + x;
-        cameraZDiv.innerHTML = "camera z " + z;
-    }
+    //     cameraXDiv.innerHTML = "camera x " + x;
+    //     cameraZDiv.innerHTML = "camera z " + z;
+    // }
 
 
     // Check if ray trace intersects any objects
