@@ -15,9 +15,6 @@ cubesDestroyed = 0;
 var monsterMesh
 
 const startButton = document.getElementById("startButton");
-const cameraXDiv = document.getElementById("camera-x");
-const cameraZDiv = document.getElementById("camera-z");
-const compassDiv = document.getElementById("compass");
 
 const videoWidth = window.innerWidth;
 const videoHeight = window.innerHeight * (70 / 100);
@@ -31,7 +28,8 @@ startButton.addEventListener(
         // openFullscreen()
         startVideo();
         initLocation();
-        init();
+        initScene();
+        initMonster();
         animate();
     },
     false
@@ -66,20 +64,20 @@ function startVideo() {
 
 
 // Open full screen doesn't work on apple products
-// function openFullscreen() {
-//     var elem = document.documentElement;
-//     if (elem.requestFullscreen) {
-//         elem.requestFullscreen();
-//     } else if (elem.webkitRequestFullscreen) {
-//         /* Safari */
-//         elem.webkitRequestFullscreen();
-//     } else if (elem.msRequestFullscreen) {
-//         /* IE11 */
-//         elem.msRequestFullscreen();
-//     }
+function openFullscreen() {
+    var elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+        /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+        /* IE11 */
+        elem.msRequestFullscreen();
+    }
 
-//     screen.orientation.lock("landscape");
-// }
+    screen.orientation.lock("landscape");
+}
 
 function handleTouch(e) {
     pointerPosition.x = (e.touches[0].clientX / videoWidth) * 2 - 1;
@@ -150,7 +148,6 @@ function initMonster() {
 }
 
 function rotateCamera() {
-    console.log('test')
     // Rotate the camera around its Y-axis
     camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
@@ -201,7 +198,14 @@ function startCompassListener(callback) {
     }
 }
 
-function init() {
+function onWindowResize() {
+    camera.aspect = videoWidth / videoHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(videoWidth, videoHeight);
+}
+
+
+function initScene() {
     startCompassListener();
     camera = new THREE.PerspectiveCamera(75, videoWidth / videoHeight, 1, 1100);
     camera.position.set(0,1,0)
@@ -212,7 +216,7 @@ function init() {
     pointerPosition = new THREE.Vector2();
 
     scene = new THREE.Scene();
-    scene.rotation.set(0, camera, 0);
+    scene.rotation.set(0, compass, 0);
 
 
 
@@ -259,39 +263,17 @@ function init() {
     // window.setInterval(function () {                            // Setup add items
     //     addItemTimed();
     // }, 1000);
-    initMonster();
 }
-
-
-const planeWidth = 100;
-const planeHeight = 100;
-
 
 
 function animate() {
     window.requestAnimationFrame(animate);
     
     orientationControls.update();
-    // camera.rotation.y = compass
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    // rotateCamera();
+    // rotateCamera();     // This is for debug
     TWEEN.update();
-
-
-    
-    // if(startLat && startLon){
- 
-    //     var x = distanceFromHotspotLon * 1.7;
-    //     var y = 1;
-    //     var z = distanceFromHotspotLat * 1.7; 
-
-    //     camera.position.lerp({x, y, z}, 0.1);
-
-
-    //     cameraXDiv.innerHTML = "camera x " + x;
-    //     cameraZDiv.innerHTML = "camera z " + z;
-    // }
 
 
     // Check if ray trace intersects any objects
@@ -310,10 +292,4 @@ function animate() {
         // }
     }
     renderer.render(scene, camera);
-}
-
-function onWindowResize() {
-    camera.aspect = videoWidth / videoHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(videoWidth, videoHeight);
 }
