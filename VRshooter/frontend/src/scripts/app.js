@@ -150,6 +150,7 @@ function initMonster() {
 }
 
 function rotateCamera() {
+    console.log('test')
     // Rotate the camera around its Y-axis
     camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
@@ -211,7 +212,7 @@ function init() {
     pointerPosition = new THREE.Vector2();
 
     scene = new THREE.Scene();
-    scene.rotation.compass;
+    scene.rotation.set(0, camera, 0);
 
 
 
