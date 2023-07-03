@@ -59,7 +59,7 @@ function handleSuccessfulHeading(position) {
 function startPosition(position) {
     startLat = position.coords.latitude;
     startLon = position.coords.longitude;
-    geoHeading = position.coords.latitude;
+    geoHeading = position.coords.heading;
 
     // Debug
     startLatDiv.innerHTML = "start lat " + startLat;
