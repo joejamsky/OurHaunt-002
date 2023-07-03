@@ -221,7 +221,7 @@ function init() {
 
     scene = new THREE.Scene();
     scene.rotation.setFromQuaternion(quaternion);
-    compassDiv.innerHTML = "compass " + quaternion;
+    compassDiv.innerHTML = "compass " + quaternion.y();
 
 
 
