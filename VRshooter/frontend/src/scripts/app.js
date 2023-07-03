@@ -247,6 +247,9 @@ function initScene() {
 
     window.setInterval(function () {                            // Setup add items
         // addItemTimed();
+    }, 4000);
+
+    window.setTimeout(function () {                             // Setup scene orientation
         startCompassListener();
         scene.rotation.set(0, heading, 0);
     }, 4000);
