@@ -153,10 +153,10 @@ function rotateCamera() {
 }
 
 
+
+
 const geoHeadingDiv = document.getElementById('geo-heading')
-
 let heading
-
 
 function handleOrientation(event) {
     if (event.webkitCompassHeading) {
@@ -197,7 +197,7 @@ function initScene() {
     camera.position.set(0,1,0)
 
 
-    orientationControls = new DeviceOrientationControls(camera);
+    // orientationControls = new DeviceOrientationControls(camera);
     raycaster = new THREE.Raycaster();
     pointerPosition = new THREE.Vector2();
 
@@ -251,7 +251,7 @@ function initScene() {
 
     window.setTimeout(function () {                             // Setup scene orientation
         startCompassListener();
-        scene.rotation.set(0, heading, 0);
+        scene.rotation.set(0, 360, 0);
     }, 4000);
 }
 
@@ -259,10 +259,10 @@ function initScene() {
 function animate() {
     window.requestAnimationFrame(animate);
     
-    orientationControls.update();
+    // orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    // rotateCamera();     // This is for debug
+    rotateCamera();     // This is for debug
     TWEEN.update();
 
 
