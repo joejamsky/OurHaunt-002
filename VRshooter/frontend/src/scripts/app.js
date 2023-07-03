@@ -198,7 +198,7 @@ function initScene() {
     camera.position.set(0,1,0)
 
 
-    // orientationControls = new DeviceOrientationControls(camera);
+    orientationControls = new DeviceOrientationControls(camera);
     raycaster = new THREE.Raycaster();
     pointerPosition = new THREE.Vector2();
 
@@ -265,10 +265,10 @@ function initScene() {
 function animate() {
     window.requestAnimationFrame(animate);
     
-    // orientationControls.update();
+    orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    rotateCamera();     // This is for debug
+    // rotateCamera();     // This is for debug
     TWEEN.update();
 
 
