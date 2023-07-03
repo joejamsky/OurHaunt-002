@@ -8,6 +8,7 @@ const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
 const geoHeadingDiv = document.getElementById('geo-heading')
+const geoSpeedDiv = document.getElementById('geo-speed')
 
 
 let currentLat,
@@ -18,7 +19,8 @@ let currentLat,
     distanceFromHotspotLon,
     distanceFromHotspotLat,
     stabilizedCoords,
-    geoHeading;
+    geoHeading,
+    geoSpeed;
 
 const radius = 10;
 
@@ -26,19 +28,15 @@ let positionsList = [];
 
 const geolocationOptions = {
     enableHighAccuracy: true,
-    maximumAge: 1000        // 1000 = 1 second
+    timeout: 1000,                  // 1000 = 1 second
+    maximumAge: 0       
 };
 
-const geolocationHeadingOptions = {
-    enableHighAccuracy: true,
-    maximumAge: 10000
-};
 
 function initLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(startPosition);
         navigator.geolocation.watchPosition(currentLocation, locationError, geolocationOptions);
-        // navigator.geolocation.watchPosition(handleSuccessfulHeading, locationError, geolocationHeadingOptions);
         setTimeout(() => {
             navigator.geolocation.getCurrentPosition(startPosition);
         }, "3000");
@@ -47,24 +45,18 @@ function initLocation() {
     }
 }
 
-
-function handleSuccessfulHeading(position) {
-    
-
-    // Debug
-
-}
-
-
 function startPosition(position) {
     startLat = position.coords.latitude;
     startLon = position.coords.longitude;
     geoHeading = position.coords.heading;
+    geoSpeed = position.coords.speed;    
+    console.log("coords", position)
 
     // Debug
     startLatDiv.innerHTML = "start lat " + startLat;
     startLonDiv.innerHTML = "start lon " + startLon;
     geoHeadingDiv.innerHTML = "Geo heading " + geoHeading;
+    geoSpeedDiv.innerHTML = "Geo Speed " + geoSpeed;
 }
 
 
