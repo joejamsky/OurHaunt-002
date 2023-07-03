@@ -152,65 +152,6 @@ function rotateCamera() {
     camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
 
-
-
-
-const geoHeadingDiv = document.getElementById('geo-heading')
-let heading
-
-
-function compassHeading(alpha, beta, gamma) {
-
-    // Convert degrees to radians
-    var alphaRad = alpha * (Math.PI / 180);
-    var betaRad = beta * (Math.PI / 180);
-    var gammaRad = gamma * (Math.PI / 180);
-  
-    // Calculate equation components
-    var cA = Math.cos(alphaRad);
-    var sA = Math.sin(alphaRad);
-    var cB = Math.cos(betaRad);
-    var sB = Math.sin(betaRad);
-    var cG = Math.cos(gammaRad);
-    var sG = Math.sin(gammaRad);
-  
-    // Calculate A, B, C rotation components
-    var rA = - cA * sG - sA * sB * cG;
-    var rB = - sA * sG + cA * sB * cG;
-    var rC = - cB * cG;
-  
-    // Calculate compass heading
-    var compassHeading = Math.atan(rA / rB);
-  
-    // Convert from half unit circle to whole unit circle
-    if(rB < 0) {
-      compassHeading += Math.PI;
-    }else if(rA < 0) {
-      compassHeading += 2 * Math.PI;
-    }
-  
-    // Convert radians to degrees
-    compassHeading *= 180 / Math.PI;
-    
-    return compassHeading;
-  
-  }
-  
-function startCompassListener() {
-    window.addEventListener('deviceorientation', function(evt) {
-        // var heading = null;
-        
-        console.log('test', evt)
-        heading = compassHeading(evt.alpha, evt.beta, evt.gamma);
-        geoHeadingDiv.innerHTML = "Geo-Heading: " + heading;
-        if(evt.absolute === true && evt.alpha !== null) {
-        }
-      
-        // Do something with 'heading'...
-      
-      }, false);
-}
-
 function onWindowResize() {
     camera.aspect = videoWidth / videoHeight;
     camera.updateProjectionMatrix();
@@ -275,14 +216,12 @@ function initScene() {
     window.setInterval(function () {                            // Setup add items
         // addItemTimed();
     }, 4000);
-    startCompassListener();
 
     setTimeout(() => {
-        console.log('heading',heading)
-        if(heading === undefined || heading === null){
-            alert("Heading is null", heading);
+        if(geoHeading === undefined || geoHeading === null){
+            alert("Heading is null", geoHeading);
         } else {
-            scene.rotation.set(0, heading, 0);           
+            scene.rotation.set(0, geoHeading, 0);           
         }
     }, 4000);
 }
