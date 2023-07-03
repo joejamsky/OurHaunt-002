@@ -152,6 +152,9 @@ function rotateCamera() {
     camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
 
+
+const geoHeadingDiv = document.getElementById('geo-heading')
+
 let heading
 
 
@@ -170,6 +173,7 @@ function handleOrientation(event) {
       // ...
     }
     // ...
+    geoHeadingDiv.innerHTML = "Geo-Heading: " + heading;
 }
 
 function startCompassListener() {

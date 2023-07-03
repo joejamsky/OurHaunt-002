@@ -7,7 +7,6 @@ const stabalizedLonDiv = document.getElementById("stabalized-lon");
 const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
-const headingDiv = document.getElementById("geo-heading");
 
 
 
@@ -18,8 +17,7 @@ let currentLat,
     distanceFromHotspotTotal,
     distanceFromHotspotLon,
     distanceFromHotspotLat,
-    stabilizedCoords,
-    geoHeading;
+    stabilizedCoords;
 
 const radius = 10;
 
@@ -61,9 +59,6 @@ function currentLocation(position) {
     currentLatDiv.innerHTML = "current Latitude: " + position.coords.latitude
     currentLonDiv.innerHTML = "current Longitude: " +  position.coords.longitude
 
-
-    geoHeading = position.coords.heading
-
     positionsList.push(position);
     if (positionsList.length > 5) {
         positionsList.shift();
@@ -77,8 +72,6 @@ function currentLocation(position) {
     distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspotLon
     distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspotLat
     distanceTotalDiv.innerHTML = "distance Total: " + distanceFromHotspotTotal
-    headingDiv.innerHTML = "Heading: " + geoHeading
-
 
     distanceFromHotspotLat = calculateLatitudeDistance(
         startLat,
