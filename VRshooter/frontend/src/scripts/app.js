@@ -191,18 +191,19 @@ function compassHeading(alpha, beta, gamma) {
   
     // Convert radians to degrees
     compassHeading *= 180 / Math.PI;
-    geoHeadingDiv.innerHTML = "Geo-Heading: " + heading;
+    
     return compassHeading;
   
   }
   
 function startCompassListener() {
     window.addEventListener('deviceorientation', function(evt) {
-  
         // var heading = null;
-      
+        
+        console.log('test', evt)
+        heading = compassHeading(evt.alpha, evt.beta, evt.gamma);
+        geoHeadingDiv.innerHTML = "Geo-Heading: " + heading;
         if(evt.absolute === true && evt.alpha !== null) {
-          heading = compassHeading(evt.alpha, evt.beta, evt.gamma);
         }
       
         // Do something with 'heading'...
