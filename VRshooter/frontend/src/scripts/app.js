@@ -152,49 +152,31 @@ function rotateCamera() {
     camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
 
-let compass
+let heading
 
-function startCompassListener(callback) {
-    if (!window.DeviceOrientationEvent) {
-      console.warn("DeviceOrientation API not available");
-      return;
+
+function handleOrientation(event) {
+    if (event.webkitCompassHeading) {
+      // Some devices provide the compass heading directly
+      heading = event.webkitCompassHeading;
+      // Use the compass heading value
+      // (0 degrees represents magnetic north, rotating clockwise)
+      // ...
+    } else if (event.alpha !== null) {
+      // For other devices, calculate the compass heading
+      heading = 360 - event.alpha;
+      // Use the calculated heading value
+      // (0 degrees represents true north, rotating clockwise)
+      // ...
     }
-    
-    function absoluteListener(e) {
-      if (!e.absolute || e.alpha == null || e.beta == null || e.gamma == null)
-        return;
-        
-      compass = -(e.alpha + e.beta * e.gamma / 90);
-      compass -= Math.floor(compass / 360) * 360; // Wrap into range [0,360].
-      window.removeEventListener("deviceorientation", webkitListener);
-    //   callback(compass);     // if this code needs a callback pass a parameter through this function. Right now there is no use for this.
-    }
-    
-    function webkitListener(e) {
-      compass = e.webkitCompassHeading;
-      if (compass != null && !isNaN(compass)) {
-        //   callback(compass);     // if this code needs a callback pass a parameter through this function. Right now there is no use for this.
-        window.removeEventListener("deviceorientationabsolute", absoluteListener);
-      }
-    }
-    
-    function addListeners() {
-      // Add both listeners, and if either succeeds then remove the other one.
-      window.addEventListener("deviceorientationabsolute", absoluteListener);
-      window.addEventListener("deviceorientation", webkitListener);
-    }
-    
-    if (typeof DeviceOrientationEvent.requestPermission === "function") {
-      DeviceOrientationEvent.requestPermission()
-        .then(response => {
-          if (response === "granted") {
-            addListeners();
-          } else {
-            console.warn("Permission for DeviceMotionEvent not granted");
-          }
-        });
-    } else {
-      addListeners();
+    // ...
+}
+
+function startCompassListener() {
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', handleOrientation, false);
+      } else {
+        console.warn("DeviceOrientation API not supported");
     }
 }
 
@@ -206,7 +188,7 @@ function onWindowResize() {
 
 
 function initScene() {
-    startCompassListener();
+
     camera = new THREE.PerspectiveCamera(75, videoWidth / videoHeight, 1, 1100);
     camera.position.set(0,1,0)
 
@@ -216,7 +198,6 @@ function initScene() {
     pointerPosition = new THREE.Vector2();
 
     scene = new THREE.Scene();
-    scene.rotation.set(0, compass, 0);
 
 
 
@@ -260,9 +241,11 @@ function initScene() {
 
     window.addEventListener("touchstart", handleTouch);         // Setup screen tap
 
-    // window.setInterval(function () {                            // Setup add items
-    //     addItemTimed();
-    // }, 1000);
+    window.setInterval(function () {                            // Setup add items
+        // addItemTimed();
+        startCompassListener();
+        scene.rotation.set(0, heading, 0);
+    }, 4000);
 }
 
 
