@@ -48,20 +48,19 @@ function initLocation() {
 function startPosition(position) {
     startLat = position.coords.latitude;
     startLon = position.coords.longitude;
-    geoHeading = position.coords.heading;
-    geoSpeed = position.coords.speed;    
-    console.log("coords", position)
+
 
     // Debug
     startLatDiv.innerHTML = "start lat " + startLat;
     startLonDiv.innerHTML = "start lon " + startLon;
-    geoHeadingDiv.innerHTML = "Geo heading " + geoHeading;
-    geoSpeedDiv.innerHTML = "Geo Speed " + geoSpeed;
+
 }
 
 
 function currentLocation(position) {
 
+
+    
     // Debug
     currentLatDiv.innerHTML = "current Latitude: " + position.coords.latitude
     currentLonDiv.innerHTML = "current Longitude: " +  position.coords.longitude
@@ -74,11 +73,16 @@ function currentLocation(position) {
     stabilizedCoords = stabilizeCoordinates(positionsList);
     currentLat = stabilizedCoords.latitude;
     currentLon = stabilizedCoords.longitude;
+    geoHeading = position.coords.heading;
+    geoSpeed = position.coords.speed;    
+    console.log("coords", position)
 
 
     distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspotLon
     distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspotLat
     distanceTotalDiv.innerHTML = "distance Total: " + distanceFromHotspotTotal
+    geoHeadingDiv.innerHTML = "Geo heading " + geoHeading;
+    geoSpeedDiv.innerHTML = "Geo Speed " + geoSpeed;
 
     distanceFromHotspotLat = calculateLatitudeDistance(
         startLat,
