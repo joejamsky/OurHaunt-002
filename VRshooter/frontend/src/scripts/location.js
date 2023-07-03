@@ -38,7 +38,7 @@ function initLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(startPosition);
         navigator.geolocation.watchPosition(currentLocation, locationError, geolocationOptions);
-        navigator.geolocation.watchPosition(handleSuccessfulHeading, locationError, geolocationHeadingOptions);
+        // navigator.geolocation.watchPosition(handleSuccessfulHeading, locationError, geolocationHeadingOptions);
         setTimeout(() => {
             navigator.geolocation.getCurrentPosition(startPosition);
         }, "3000");
@@ -49,20 +49,22 @@ function initLocation() {
 
 
 function handleSuccessfulHeading(position) {
-    startLat = position.coords.latitude;
+    
 
     // Debug
-    geoHeadingDiv.innerHTML = "Geo heading " + geoHeading;
+
 }
 
 
 function startPosition(position) {
     startLat = position.coords.latitude;
     startLon = position.coords.longitude;
+    geoHeading = position.coords.latitude;
 
     // Debug
     startLatDiv.innerHTML = "start lat " + startLat;
     startLonDiv.innerHTML = "start lon " + startLon;
+    geoHeadingDiv.innerHTML = "Geo heading " + geoHeading;
 }
 
 
