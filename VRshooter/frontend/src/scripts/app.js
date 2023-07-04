@@ -111,13 +111,19 @@ function getRandomPosition() {
 
 function moveObjectRandom(mesh) {
     var targetPosition = getRandomPosition();
-    // var targetPosition = {x: 2, y: 1, z: -3}
+    var randomSpeed = Math.floor(Math.random() * (5000 - 4000) + 4000);
+    var randomDelay = Math.floor(Math.random() * (5000 - 4000) + 4000);
+
     var tween = new TWEEN.Tween(mesh.position)
-        .to(targetPosition, 2000)                   //targetPosition, duration in milliseconds
+        .to(targetPosition, randomSpeed)                   //targetPosition, duration in milliseconds
         .easing(TWEEN.Easing.Quadratic.InOut)
         .onComplete(function () {
             // Animation completed, start a new motion
-            moveObjectRandom(mesh);
+            setTimeout(() => {
+                moveObjectRandom(mesh);
+                console.log("Delayed for 1 second.");
+              }, `${randomDelay}`);
+            
         })
         .start();
 
@@ -137,7 +143,7 @@ function initMonster() {
 
 function initScene() {
 
-    camera = new THREE.PerspectiveCamera(45, videoWidth / videoHeight, 1, 1100);
+    camera = new THREE.PerspectiveCamera(60, videoWidth / videoHeight, 1, 1100);
     camera.position.set(0,1,0)
 
     orientationControls = new DeviceOrientationControls(camera);
