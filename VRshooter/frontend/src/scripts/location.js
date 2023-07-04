@@ -7,8 +7,6 @@ const stabalizedLonDiv = document.getElementById("stabalized-lon");
 const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
-const geoHeadingDiv = document.getElementById('geo-heading')
-const geoSpeedDiv = document.getElementById('geo-speed')
 
 
 let currentLat,
@@ -18,9 +16,7 @@ let currentLat,
     distanceFromHotspotTotal,
     distanceFromHotspotLon,
     distanceFromHotspotLat,
-    stabilizedCoords,
-    geoHeading,
-    geoSpeed;
+    stabilizedCoords;
 
 const radius = 10;
 
@@ -73,16 +69,11 @@ function currentLocation(position) {
     stabilizedCoords = stabilizeCoordinates(positionsList);
     currentLat = stabilizedCoords.latitude;
     currentLon = stabilizedCoords.longitude;
-    geoHeading = position.coords.heading;
-    geoSpeed = position.coords.speed;    
-    console.log("coords", position)
 
 
     distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspotLon
     distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspotLat
     distanceTotalDiv.innerHTML = "distance Total: " + distanceFromHotspotTotal
-    geoHeadingDiv.innerHTML = "Geo heading " + geoHeading;
-    geoSpeedDiv.innerHTML = "Geo Speed " + geoSpeed;
 
     distanceFromHotspotLat = calculateLatitudeDistance(
         startLat,
@@ -130,7 +121,6 @@ function locationError() {
 // Function to calculate the distance between two points on the earth's surface for latitude
 function calculateLatitudeDistance(lat1, lat2) {
     var earthRadius = 6371e3; // Radius of the earth in meters
-    console.log('radius', earthRadius)
     var dLat = deg2rad(lat2 - lat1);
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
