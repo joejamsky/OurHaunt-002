@@ -121,7 +121,6 @@ function moveObjectRandom(mesh) {
             // Animation completed, start a new motion
             setTimeout(() => {
                 moveObjectRandom(mesh);
-                console.log("Delayed for 1 second.");
               }, `${randomDelay}`);
             
         })
@@ -189,7 +188,7 @@ function rotateCamera() {
 function animate(time) {
     window.requestAnimationFrame(animate);
     
-    // orientationControls.update();
+    orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
     // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
