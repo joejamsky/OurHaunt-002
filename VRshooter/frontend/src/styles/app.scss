@@ -86,6 +86,8 @@ a, button, input, select {
 	letter-spacing: -2px;
 	box-shadow: inset 0px 0px 25px 28px #818181;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	min-width: 160px;
+    min-height: 160px;
 }
 
 #notSupported {
