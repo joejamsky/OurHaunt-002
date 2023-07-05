@@ -7,6 +7,7 @@ const stabalizedLonDiv = document.getElementById("stabalized-lon");
 const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
+const staticOverlay = document.getElementById("static-overlay");
 
 
 let currentLat,
@@ -57,9 +58,7 @@ function currentLocation(position) {
 
 
     
-    // Debug
-    currentLatDiv.innerHTML = "current Latitude: " + position.coords.latitude
-    currentLonDiv.innerHTML = "current Longitude: " +  position.coords.longitude
+
 
     positionsList.push(position);
     if (positionsList.length > 5) {
@@ -69,11 +68,6 @@ function currentLocation(position) {
     stabilizedCoords = stabilizeCoordinates(positionsList);
     currentLat = stabilizedCoords.latitude;
     currentLon = stabilizedCoords.longitude;
-
-
-    distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspotLon
-    distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspotLat
-    distanceTotalDiv.innerHTML = "distance Total: " + distanceFromHotspotTotal
 
     distanceFromHotspotLat = calculateLatitudeDistance(
         startLat,
@@ -94,11 +88,26 @@ function currentLocation(position) {
 
 
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
-    if (distanceFromHotspotTotal <= radius) {
-        $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
-    } else {
+    if (distanceFromHotspotTotal > radius) {
         $("#slide-GPS > .slide-item-info ").html('You are outside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
+        staticOverlay.style.opacity = '1';
+    } else if (distanceFromHotspotTotal <= radius - 2) {
+        $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
+        staticOverlay.style.opacity = `${distanceFromHotspotLat / 10}`;
+    } else {
+        $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
+        staticOverlay.style.opacity = '0';
     }
+
+
+
+    // Debug
+    currentLatDiv.innerHTML = "current Latitude: " + position.coords.latitude
+    currentLonDiv.innerHTML = "current Longitude: " +  position.coords.longitude
+    distanceLatDiv.innerHTML = "distance Latitude: " + distanceFromHotspotLon
+    distanceLonDiv.innerHTML = "distance Longitude: " + distanceFromHotspotLat
+    distanceTotalDiv.innerHTML = "distance Total: " + distanceFromHotspotTotal
+    
 }
 
 function locationError() {
