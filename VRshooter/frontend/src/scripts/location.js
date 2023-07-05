@@ -8,6 +8,7 @@ const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
 const staticOverlay = document.getElementById("static-overlay");
+const outofboundsWarning = document.getElementById("outofbounds-warning-container");
 
 
 let currentLat,
@@ -91,12 +92,15 @@ function currentLocation(position) {
     if (distanceFromHotspotTotal > radius) {
         $("#slide-GPS > .slide-item-info ").html('You are outside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
         staticOverlay.style.opacity = '1';
+        outofboundsWarning.style.opacity = '1';
     } else if (distanceFromHotspotTotal > radius - 2) {
         $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
         staticOverlay.style.opacity = `${distanceFromHotspotLat / 10}`;
+        outofboundsWarning.style.opacity = `${distanceFromHotspotLat / 10}`;
     } else {
         $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
         staticOverlay.style.opacity = '0';
+        outofboundsWarning.style.opacity = '0';
     }
 
 

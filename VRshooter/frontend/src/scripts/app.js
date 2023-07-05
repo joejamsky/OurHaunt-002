@@ -140,6 +140,15 @@ function initMonster() {
     moveObjectRandom(monsterMesh)
 }
 
+function handleIntersectVibration(mesh) {
+    if (mesh.x <= 1 || mesh.z <= 1) {
+        navigator.vibrate(200);
+        // navigator.vibrate([
+        //     100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100,
+        //   ]); // Vibrate 'SOS' in Morse.
+    }
+}
+
 function initScene() {
 
     camera = new THREE.PerspectiveCamera(60, videoWidth / videoHeight, 1, 1100);
@@ -195,6 +204,8 @@ function animate(time) {
     TWEEN.update();
 
 
+    handleIntersectVibration(monsterMesh.position)
+    
 
     // Check if ray trace intersects any objects
     for (let i = 0; i < sceneObjectIntersects.length; i++) {
