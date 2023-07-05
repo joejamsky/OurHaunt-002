@@ -93,6 +93,7 @@ function currentLocation(position) {
         $("#slide-GPS > .slide-item-info ").html('You are outside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
         staticOverlay.style.opacity = '1';
         outofboundsWarning.style.opacity = '1';
+        navigator.vibrate([ 100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100 ]); 
     } else if (distanceFromHotspotTotal > radius - 2) {
         $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
         staticOverlay.style.opacity = `${distanceFromHotspotLat / 10}`;

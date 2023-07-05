@@ -17,18 +17,19 @@ cubesDestroyed = 0;
 const videoWidth = window.innerWidth;
 const videoHeight = window.innerHeight * (70 / 100);
 
-const startButton = document.getElementById("startButton");
+const startButton = document.getElementById("start-button");
 
 
 startButton.addEventListener("click", handleInitClick);
 
 function handleInitClick() {
-    const overlay = document.getElementById("overlay");
-    overlay.remove();
+    const startOverlay = document.getElementById("start-overlay");
+    startOverlay.remove();
 
     startVideo();
     initLocation();
     initScene();
+    initGPSslide();
     initMonster();
     animate();
 }
@@ -39,6 +40,14 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(videoWidth, videoHeight);
 }
+
+
+function initGPSslide() {
+    const gpsDiv = document.getElementById('slide-GPS')
+    const gpsPremade = document.getElementById('gps-premade')
+    gpsDiv.append(gpsPremade)
+}
+
 
 function startVideo() {
     const video = document.getElementById("video");
@@ -141,13 +150,12 @@ function initMonster() {
 }
 
 function handleIntersectVibration(mesh) {
-    if (mesh.x <= 1 || mesh.z <= 1) {
+    if (mesh.x <= 1 && mesh.z <= 1) {
         navigator.vibrate(200);
-        // navigator.vibrate([
-        //     100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100,
-        //   ]); // Vibrate 'SOS' in Morse.
     }
 }
+
+
 
 function initScene() {
 

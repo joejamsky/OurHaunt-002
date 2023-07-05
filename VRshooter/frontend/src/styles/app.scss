@@ -8,6 +8,11 @@ body {
 	overscroll-behavior: none;
 }
 
+.warning {
+	color: red;
+}
+
+
 a {
 	color: #ff0;
 	text-decoration: none;
@@ -50,27 +55,38 @@ a, button, input, select {
 	z-index: 2 !important; /* TODO Solve this in HTML */
 }
 
-#overlay {
+#start-overlay {
 	position: absolute;
-	z-index: 2;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
+	gap: 5%;
 	justify-content: center;
-	background: rgba(0,0,0,0.7);
+	background: rgba(0,0,0,1);
+    z-index: 100000;
 }
 
-	#overlay button {
-		background: #ffffff;
-		border: 0;
-		color: #000000;
-		padding: 16px 20px;
-		text-transform: uppercase;
-		cursor: pointer;
-	}
+#start-overlay button {
+	background: #ffffff;
+	border: solid 1px #000;
+	color: #000000;
+	padding: 16px 20px;
+	text-transform: uppercase;
+	cursor: pointer;
+	width: 20vw;
+	height: 20vw;
+	border-radius: 50%;
+	font-size: 40px;
+	font-weight: 500;
+	// letter-spacing: -3.5px;
+	letter-spacing: -2px;
+	box-shadow: inset 0px 0px 25px 28px #818181;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
 #notSupported {
 	width: 50%;
@@ -170,21 +186,57 @@ video{
 .slide-body {
 	height: inherit;
 	width: 100%;
+	position: relative;
 	
 	display: flex !important;
-	flex-direction: column;
-	justify-content: space-between;
+	flex-direction: row;
+	justify-content: space-around;
 	align-items: center;
 	padding: 20px;
-	background-color: rgb(76, 0, 255);
+	background-color: rgb(65, 65, 65);
 }
 
+
+.item-details-container {
+	display: none;
+	position: relative;
+}
+.item-details{
+	display: flex;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: rgb(66, 66, 66);
+	color: rgb(13, 0, 128);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20%;
+}
+
+.details-button {
+	border: 0;
+	background-color: rgb(21, 1, 78);
+	border-radius: 50%;
+	height: 85px;
+	width: 85px;
+	color: white;
+	font-weight: 800;
+	justify-self: baseline;
+	// font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.details-close-btn {
+	// position: absolute;
+	top: 40px;
+	right: 40px;
+}
 
 .slide-item-name {
 	
 	// height: 20%;
 	margin: 0 auto;
-	background-color: green;
+	// background-color: green;
 }
 
 .slick-list {
@@ -193,4 +245,59 @@ video{
 
 .slick-track {
 	height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+// About page
+#about-page {
+	display: none;
+
+}
+
+.about-page-details {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(32, 32, 32);
+}
+
+#about-close{
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	cursor: pointer;
+	transform: rotate(180deg);
+}
+
+.about-page-copy h1{
+	// text-align: center;
+	margin-bottom: 10vh;
+}
+
+#close-line-l,
+#close-line-r{
+	width: 35px;
+	height: 3px;
+	background-color: red;
+}
+
+#close-line-l{
+	transform: rotate(45deg);
+}
+#close-line-r{
+	transform: rotate(-45deg);
 }

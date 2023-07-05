@@ -32,7 +32,6 @@ const slideData = [
 function initSlider(){
     
     $("#ui-slider").slick({
- 
         // normal options...
         dots: false,
         infinite: true,
@@ -40,32 +39,64 @@ function initSlider(){
         // adaptiveHeight: true,
         // centerMode: true,
         arrows: false,
-
       });
+}
 
-
-    }
+function initAbout(){
+    $('#about-button').on("click", function(){
+        $( "#about-page" ).show();
+    })
+    $('#about-close').on("click", function(){
+        $('#about-page').hide();
+    })
+}
     
+function initDetailsButtons(){
+    $('.details-button').each(function() {
+        $(this).on("click", function() {
+            $( ".item-details-container" ).show();
+        })
+    })
+    
+
+    $('.details-close-btn').each(function() {
+        $(this).on("click", function() {
+            $( ".item-details-container" ).hide();
+        })
+    })
+}
+    
+
 window.onload = function() {
     if (window.jQuery) {  
         // jQuery is loaded  
 
         // Add slides
+        // <div class='slide-item-unlocked'> Unlocked: ` + slide.unlocked + `</div>
         $.each(slideData, function(index, slide) {
             $('#ui-slider').append(`
                 <div class='slide-card'>
                     <div class='slide-body' id='` + slide.slideID + `'>
+                        
+                        <button class="details-button" data-slide-button-id="` + index + `">Details</button>
+                        <div class="item-details-container"> 
+                            <div class="item-details">                             
+                                <div class='slide-item-summary'> Summary: ` + slide.summaryText + `</div>
+                                <div class='slide-item-info'> Info: </div>
+                                <button class="details-close-btn" data-slide-close-button-id=` + index + `> EXIT </button>
+                            </div>
+                        </div>
+
                         <div class='slide-item-name'> Item: ` + slide.itemName + `</div>
-                        <div class='slide-item-unlocked'> Unlocked: ` + slide.unlocked + `</div>
-                        <div class='slide-item-summary'> Summary: ` + slide.summaryText + `</div>
-                        <div class='slide-item-info'> Info: </div>
                     </div>
                 </div>`)
         })
 
         initSlider()
+        initAbout()
+        initDetailsButtons()
     } else {
         // jQuery is not loaded
-        alert("Doesn't Work");
+        alert("jQuery is not loaded.");
     }
 }
