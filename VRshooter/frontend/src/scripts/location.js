@@ -55,10 +55,18 @@ function startPosition(position) {
 }
 
 function calculatePIP(lat, lon){
-    gpsIdentifier.style.top = `${lat * 10}%`
-    gpsIdentifier.style.left = `${lon * 10}%`
-    gpsIdentifier.style.transform = `translate(${lat * 10}%,${lon * 10}%)`
+    gpsIdentifier.style.top = `${convertRange(lat)}%`
+    gpsIdentifier.style.left = `${convertRange(lon)}%`
+    gpsIdentifier.style.transform = `translate(${convertRange(-1 * lat)}%,${convertRange(-1 * lon)}%)`
 }
+
+function convertRange(value, min1 = -10, max1 = 10, min2 = 0, max2 = 100) {
+    var range1 = max1 - min1;
+    var range2 = max2 - min2;
+    var scaledValue = (value - min1) / range1;  // Scale the value to a range of 0 to 1
+    var convertedValue = (scaledValue * range2) + min2;  // Scale the value to the desired range
+    return convertedValue;
+  }
 
 function currentLocation(position) {
 
