@@ -55,11 +55,9 @@ function startPosition(position) {
 }
 
 function calculatePIP(lat, lon){
-    console.log('lat', lat)
-    console.log('lon', lon)
-    gpsIdentifier.style.top = `(${lat + 50})%`
-    gpsIdentifier.style.left = `(${long + 50})%`
-    gpsIdentifier.style.transform = `translate(${lat},${lon})`
+    gpsIdentifier.style.top = `${lat + 50}%`
+    gpsIdentifier.style.left = `${lon + 50}%`
+    gpsIdentifier.style.transform = `translate(${lat}%,${lon}%)`
 }
 
 function currentLocation(position) {
@@ -144,7 +142,8 @@ function calculateLatitudeDistance(lat1, lat2) {
     var dLat = deg2rad(lat2 - lat1);
     // var a = Math.sin(dLat / 2) * Math.sin(dLat / 2);
     // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var distance = earthRadius * c;
+    // var distance = earthRadius * c;
+    var distance = earthRadius * dLat;
     return distance;
 }
 
