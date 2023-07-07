@@ -44,8 +44,8 @@ function onWindowResize() {
 
 function initGPSslide() {
     const gpsDiv = document.getElementById('slide-GPS')
-    const gpsPremade = document.getElementById('gps-premade')
-    gpsDiv.append(gpsPremade)
+    const gpsModuleContainer = document.getElementById('gps-module-container')
+    gpsDiv.append(gpsModuleContainer)
 }
 
 

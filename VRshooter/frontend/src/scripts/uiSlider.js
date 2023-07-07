@@ -59,7 +59,7 @@ function initDetailsButtons(){
     })
     
 
-    $('.details-close-btn').each(function() {
+    $('.details-close-button').each(function() {
         $(this).on("click", function() {
             $( ".item-details-container" ).hide();
         })
@@ -78,16 +78,18 @@ window.onload = function() {
                 <div class='slide-card'>
                     <div class='slide-body' id='` + slide.slideID + `'>
                         
-                        <button class="details-button" data-slide-button-id="` + index + `">Details</button>
+                        
+                            <button class="details-button" data-slide-button-id="` + index + `">?</button>
+                        
                         <div class="item-details-container"> 
                             <div class="item-details">                             
                                 <div class='slide-item-summary'> Summary: ` + slide.summaryText + `</div>
                                 <div class='slide-item-info'> Info: </div>
-                                <button class="details-close-btn" data-slide-close-button-id=` + index + `> EXIT </button>
+                                <button class="details-close-button" data-slide-close-button-id=` + index + `> EXIT </button>
                             </div>
                         </div>
 
-                        <div class='slide-item-name'> Item: ` + slide.itemName + `</div>
+                        <div class='slide-item-name'>` + slide.itemName + `</div>
                     </div>
                 </div>`)
         })

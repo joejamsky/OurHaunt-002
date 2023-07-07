@@ -9,7 +9,7 @@ const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
 const staticOverlay = document.getElementById("static-overlay");
 const outofboundsWarning = document.getElementById("outofbounds-warning-container");
-
+const gpsIdentifier = document.getElementById("gps-identifier");
 
 let currentLat,
     currentLon,
@@ -54,12 +54,15 @@ function startPosition(position) {
 
 }
 
+function calculatePIP(lat, lon){
+    console.log('lat', lat)
+    console.log('lon', lon)
+    gpsIdentifier.style.top = `(${lat + 50})%`
+    gpsIdentifier.style.left = `(${long + 50})%`
+    gpsIdentifier.style.transform = `translate(${lat},${lon})`
+}
 
 function currentLocation(position) {
-
-
-    
-
 
     positionsList.push(position);
     if (positionsList.length > 5) {
@@ -81,6 +84,8 @@ function currentLocation(position) {
         currentLat
     );
 
+    calculatePIP(distanceFromHotspotLat, distanceFromHotspotLon)
+
     // Calculate the total distance
     distanceFromHotspotTotal = calculateTotalDistance (
         distanceFromHotspotLon,
@@ -93,7 +98,8 @@ function currentLocation(position) {
         $("#slide-GPS > .slide-item-info ").html('You are outside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
         staticOverlay.style.opacity = '1';
         outofboundsWarning.style.opacity = '1';
-        navigator.vibrate([ 100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100 ]); 
+        // navigator.vibrate([ 100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100 ]); 
+        navigator.vibrate(10); 
     } else if (distanceFromHotspotTotal > radius - 2) {
         $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
         staticOverlay.style.opacity = `${distanceFromHotspotLat / 10}`;
@@ -136,23 +142,26 @@ function locationError() {
 function calculateLatitudeDistance(lat1, lat2) {
     var earthRadius = 6371e3; // Radius of the earth in meters
     var dLat = deg2rad(lat2 - lat1);
-    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    // var a = Math.sin(dLat / 2) * Math.sin(dLat / 2);
+    // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var distance = earthRadius * c;
     return distance;
 }
 
-// Function to calculate the distance between two points on the earth's surface for longitude
 function calculateLongitudeDistance(lon1, lon2, lat) {
     var earthRadius = 6371e3; // Radius of the earth in meters
     var dLon = deg2rad(lon2 - lon1);
-    var a =
-        Math.sin(dLon / 2) * Math.sin(dLon / 2) *
-        Math.cos(deg2rad(lat)) * Math.cos(deg2rad(lat));
+    var a = Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(deg2rad(lat)) * Math.cos(deg2rad(lat));
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var distance = earthRadius * c;
+    if (lon2 < lon1) {
+        distance *= -1; // Apply negative sign for negative longitude difference
+      }
     return distance;
 }
+
+
+
 
 function calculateTotalDistance (latitudeDistance, longitudeDistance) {
     return Math.sqrt( Math.pow(latitudeDistance, 2) + Math.pow(longitudeDistance, 2) );
