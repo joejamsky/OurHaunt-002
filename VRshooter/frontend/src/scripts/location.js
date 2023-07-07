@@ -55,8 +55,8 @@ function startPosition(position) {
 }
 
 function calculatePIP(lat, lon){
-    gpsIdentifier.style.top = `${lat + 50}%`
-    gpsIdentifier.style.left = `${lon + 50}%`
+    gpsIdentifier.style.top = `${lat * 10}%`
+    gpsIdentifier.style.left = `${lon * 10}%`
     gpsIdentifier.style.transform = `translate(${lat}%,${lon}%)`
 }
 
