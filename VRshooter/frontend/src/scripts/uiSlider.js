@@ -3,6 +3,13 @@
 
 
 const slideData = [
+    
+    { 
+        slideID: 'slide-Voice',
+        itemName: 'Voice', 
+        unlocked: false,
+        summaryText: "Allows you to communicate with spirit. Voice Commands: 'close channel', 'reset input', 'go';" 
+    },
     { 
         slideID: 'slide-GPS',
         itemName: 'GPS', 

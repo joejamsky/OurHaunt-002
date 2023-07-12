@@ -29,7 +29,7 @@ function handleInitClick() {
     startVideo();
     initLocation();
     initScene();
-    initGPSslide();
+    initSlides();
     initMonster();
     animate();
 }
@@ -42,10 +42,18 @@ function onWindowResize() {
 }
 
 
-function initGPSslide() {
+function initSlides() {
     const gpsDiv = document.getElementById('slide-GPS')
     const gpsModuleContainer = document.getElementById('gps-module-container')
     gpsDiv.append(gpsModuleContainer)
+
+    const voiceDiv = document.getElementById('slide-Voice')
+    const voiceModuleContainer = document.getElementById('voice-module-container')
+    voiceDiv.append(voiceModuleContainer)
+
+    const soundDiv = document.getElementById('slide-SS')
+    const soundModuleContainer = document.getElementById('sound-module-container')
+    soundDiv.append(soundModuleContainer)
 }
 
 
@@ -151,7 +159,7 @@ function initMonster() {
 
 function handleIntersectVibration(mesh) {
     if (mesh.x <= 1 && mesh.z <= 1) {
-        navigator.vibrate(200);
+        navigator.vibrate([10,10,10,10]);
     }
 }
 

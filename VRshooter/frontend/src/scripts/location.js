@@ -55,9 +55,9 @@ function startPosition(position) {
 }
 
 function calculatePIP(lat, lon){
-    gpsIdentifier.style.top = `${convertRange(lat)}%`
-    gpsIdentifier.style.left = `${convertRange(lon)}%`
-    gpsIdentifier.style.transform = `translate(${convertRange(-1 * lat)}%,${convertRange(-1 * lon)}%)`
+    gpsIdentifier.style.top = `${convertRange( lat )}%`
+    gpsIdentifier.style.left = `${convertRange( lon )}%`
+    gpsIdentifier.style.transform = `translate(-${convertRange( lat )}%, -${convertRange( lon )}%)`
 }
 
 function convertRange(value, min1 = -10, max1 = 10, min2 = 0, max2 = 100) {
@@ -127,7 +127,8 @@ function currentLocation(position) {
     
 }
 
-function locationError() {
+function locationError(error) {
+    console.log('Location error: ', error)
     switch (error.code) {
         case error.PERMISSION_DENIED:
           alert('User denied the request for Geolocation.');

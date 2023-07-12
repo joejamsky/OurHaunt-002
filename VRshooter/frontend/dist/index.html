@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="./styles/app.css">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 		<!-- Add the slick-theme.css if you want default styling -->
 		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
@@ -15,7 +17,7 @@
 
 	</head>
 	<body>
-		<div id="debug">
+		<div id="debug" class="test">
 			Debug
 			<div id="start-lat">start-lat</div>
 			<div id="start-lon">start-lon</div>
@@ -76,6 +78,29 @@
 			</div>
 		</div>
 
+		<div id="voice-module-container">
+			<div id="voice-module">
+				<div id="voice-identifier">
+					<form action="https://www.google.com/search" method="get" target="_blank" id="voice-form">
+						<input name="message" type="text" placeholder="Speak a message..." id="voice-input" class="hide" autocomplete="off" autofocus>
+						<button type="button" id="voice-mic-button" class="hide"><i class="fas fa-microphone"></i></button>
+						<!-- <button type="button" id="voice-mic-button"><i class="fas fa-microphone"></i></button> -->
+					</form>
+
+					<p id="voice-response"></p>
+				</div>
+			</div>
+		</div>
+
+		<div id="sound-module-container">
+			<div id="sound-module">
+				<div id="sound-identifier">
+					<!-- <audio id="audio" autoplay loop  controls src="https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav"></audio> -->
+				</div>
+			</div>
+		</div>
+
+
 		<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/20.0.0/tween.umd.js"></script>
 		<script type="module" src="./scripts/three.module.js"></script>
@@ -83,6 +108,7 @@
 
 		<script type="text/javascript" src="./scripts/uiSlider.js"></script>
 		<script type="text/javascript" src="./scripts/location.js"></script>
+		<script type="text/javascript" src="./scripts/voice.js"></script>
 		<script type="module" src="./scripts/app.js"></script>
 	</body>
 </html>
