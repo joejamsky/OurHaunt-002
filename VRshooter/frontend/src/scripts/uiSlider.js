@@ -37,7 +37,6 @@ const slideData = [
 ];
 
 function initSlider(){
-    
     $("#ui-slider").slick({
         // normal options...
         dots: false,
@@ -51,7 +50,9 @@ function initSlider(){
 
 function initAbout(){
     $('#about-button').on("click", function(){
-        $( "#about-page" ).show();
+        setTimeout(() => {
+            $( "#about-page" ).show();
+          }, 250);
     })
     $('#about-close').on("click", function(){
         $('#about-page').hide();
@@ -61,14 +62,16 @@ function initAbout(){
 function initDetailsButtons(){
     $('.details-button').each(function() {
         $(this).on("click", function() {
-            $( ".item-details-container" ).show();
+            setTimeout(() => {
+                $( ".item-details-toggle-layer" ).show();
+              }, 250);
         })
     })
     
 
     $('.details-close-button').each(function() {
         $(this).on("click", function() {
-            $( ".item-details-container" ).hide();
+            $( ".item-details-toggle-layer" ).hide();
         })
     })
 }
@@ -86,13 +89,17 @@ window.onload = function() {
                     <div class='slide-body' id='` + slide.slideID + `'>
                         
                         
-                            <button class="details-button" data-slide-button-id="` + index + `">?</button>
                         
-                        <div class="item-details-container"> 
-                            <div class="item-details">                             
-                                <div class='slide-item-summary'> Summary: ` + slide.summaryText + `</div>
-                                <div class='slide-item-info'> Info: </div>
-                                <button class="details-close-button" data-slide-close-button-id=` + index + `> EXIT </button>
+                        <div>
+                            <button class="details-button" data-slide-button-id="` + index + `">?</button>
+                        </div>
+                        
+                        <div class="item-details-toggle-layer"> 
+                            <div class="item-details-container">                             
+                                <div class="item-details">                             
+                                    <div class='slide-item-summary'> Summary: ` + slide.summaryText + `</div>
+                                    <button class="details-close-button" data-slide-close-button-id=` + index + `> EXIT </button>
+                                </div>    
                             </div>
                         </div>
 

@@ -3,6 +3,28 @@ const voiceFormInput = document.getElementById('voice-input')
 const voiceFormMicButton = document.getElementById('voice-mic-button')
 
 
+
+// // Styling effects
+// voiceFormMicButton.addEventListener("touchstart", function() {
+
+// }, true);
+
+
+
+
+
+// Functionality
+
+var fontarr = ["font-family: courier new, sans-serif", 
+               "font-family: comic sans, sans-serif", 
+               "font-family: arial black, sans-serif"];
+
+function fontRandomizer(input){ 
+    const fontchange = fontarr[Math.floor(((Math.random() * 3) + 1)%3)];
+     
+    return "<span style=\"" + fontchange + "\">" + input + "</span>"
+}
+
 function typeWriterEffect(text, elementId = 'voice-response', delay = 250) {
     const element = document.getElementById(elementId);
     let currentText = '';
@@ -10,7 +32,10 @@ function typeWriterEffect(text, elementId = 'voice-response', delay = 250) {
   
     function type() {
       if (index < text.length) {
+        // console.log('text', text)
         currentText += text.charAt(index);
+        // console.log('text', currentText)
+        // element.innerHTML = fontRandomizer(currentText);
         element.innerText = currentText;
         index++;
         setTimeout(type, delay);
@@ -19,6 +44,8 @@ function typeWriterEffect(text, elementId = 'voice-response', delay = 250) {
   
     type();
 }
+
+
 
 function checkInputPhrase(phrase) {
     console.log('phrase', phrase)
@@ -39,8 +66,6 @@ if(SpeechRecognition) {
     recognition.continuous = true;
     // recognition.lang = "en-US";
 
-
-    voiceFormMicButton.classList.remove('hide')
     const micIcon = voiceFormMicButton.firstElementChild;
 
     voiceFormMicButton.addEventListener("click", micBtnClick);
@@ -106,6 +131,8 @@ if(SpeechRecognition) {
   
 }
 else {
+    // voiceFormMicButton.classList.add('hide')
+    // if i want text input unhide text input here
     console.log("Your Browser does not support speech Recognition");
     alert("Your Browser does not support Speech Recognition");
 }

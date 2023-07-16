@@ -1,0 +1,32 @@
+#gps-module-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#gps-module{
+	width: 125px;
+	height: 125px;
+	border-radius: 50%;
+	background-color: black;
+	margin-top: 25px;
+	position: relative;
+	border-top: dashed 10px white;
+	border-bottom: dashed 10px white;
+	border-left: solid 1px white;
+	border-right: solid 1px white;
+}
+
+#gps-identifier{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

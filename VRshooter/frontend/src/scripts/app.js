@@ -18,13 +18,16 @@ const videoWidth = window.innerWidth;
 const videoHeight = window.innerHeight * (70 / 100);
 
 const startButton = document.getElementById("start-button");
-
+const startOverlay = document.getElementById("start-overlay");
 
 startButton.addEventListener("click", handleInitClick);
 
 function handleInitClick() {
-    const startOverlay = document.getElementById("start-overlay");
-    startOverlay.remove();
+    setTimeout(() => {
+        startOverlay.remove();
+      }, 250);
+    
+
 
     startVideo();
     initLocation();
@@ -183,7 +186,7 @@ function initScene() {
         wireframe: true,
     });
     const helper = new THREE.Mesh(helperGeometry, helperMaterial);
-    scene.add(helper);
+    // scene.add(helper);
     // </ 
 
 

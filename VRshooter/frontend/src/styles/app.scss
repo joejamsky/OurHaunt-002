@@ -1,4 +1,8 @@
-@use 'voice';
+@use 'items/voice';
+@use 'items/gps';
+@use 'slider-ui/slider-ui';
+@use 'about/about-page';
+@use 'variables/variables';
 
 body {
 	margin: 0;
@@ -15,27 +19,16 @@ body {
 	color: red;
 }
 
-
-a {
-	color: #ff0;
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-
 .hide {
 	display: none;
 }
 
 button {
 	cursor: pointer;
-	text-transform: uppercase;
 }
 
 #debug {
+	display: none;
 	position: absolute;
 	opacity: 0.75;
 	top: 0px;
@@ -55,13 +48,14 @@ a, button, input, select {
 	pointer-events: auto;
 }
 
-.dg.ac {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	z-index: 2 !important; /* TODO Solve this in HTML */
-}
+// Is this necessary?
+// .dg.ac {
+// 	-moz-user-select: none;
+// 	-webkit-user-select: none;
+// 	-ms-user-select: none;
+// 	user-select: none;
+// 	z-index: 2 !important; /* TODO Solve this in HTML */
+// }
 
 #start-overlay {
 	position: absolute;
@@ -72,38 +66,72 @@ a, button, input, select {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 5%;
+	gap: 10%;
 	justify-content: center;
 	background: rgba(0,0,0,1);
     z-index: 100000;
 }
 
 #start-overlay button {
-	background: #ffffff;
-	border: solid 1px #000;
-	color: #000000;
-	padding: 16px 20px;
-	text-transform: uppercase;
-	cursor: pointer;
-	width: 20vw;
-	height: 20vw;
-	border-radius: 50%;
-	font-size: 40px;
-	font-weight: 500;
-	// letter-spacing: -3.5px;
-	letter-spacing: -2px;
-	box-shadow: inset 0px 0px 25px 28px #818181;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-	min-width: 160px;
-    min-height: 160px;
+	background: #000;
+    border-top: 10px #fff dashed;
+    border-bottom: 10px #fff dashed;
+    border-left: 2px #fff solid;
+    border-right: 2px #fff solid;
+    color: #fff;
+    padding: 16px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: 500;
+    // min-width: 175px;
+    // min-height: 175px;
 }
 
-#notSupported {
-	width: 50%;
-	margin: auto;
-	background-color: #f00;
-	margin-top: 20px;
-	padding: 10px;
+// @keyframes pulseMenuClick {
+// 	0% {
+// 		border-radius: 10%;
+// 		border-top: 10px #fff dashed;
+// 		border-bottom: 10px #fff dashed;
+// 	}
+// 	50% {
+// 		border-radius: 50%;
+// 		border-top: 30px #fff dashed;
+// 		border-bottom: 30px #fff dashed;
+// 	}
+// 	100% {
+// 		border-radius: 10%;
+// 		border-top: 10px #fff dashed;
+// 		border-bottom: 10px #fff dashed;
+// 	}
+// }
+
+@keyframes pulseMenuClick {
+	0% {
+		border-top: 6px white solid;
+		border-bottom: 6px white solid;
+		border-left: 0px white solid;
+		border-right: 0px white solid;
+	}
+	50% {
+		border-top: 60px white solid;
+		border-bottom: 60px white solid;
+		border-left: 1px white solid;
+		border-right: 1px white solid;
+	}
+	100% {
+		border-top: 6px white solid;
+		border-bottom: 6px white solid;
+		border-left: 0px white solid;
+		border-right: 0px white solid;
+	}
+}
+
+#start-overlay button:active {
+	animation: pulseMenuClick 0.1s 1 normal linear;
 }
 
 video{
@@ -121,17 +149,16 @@ video{
 	background-image: url("../textures/screen-static.gif");
 	background-size: cover;
 	width: 100%;
-	height: 70%;		// height until ui bar
+	height: variables.$video-height;		// height until ui bar
 	position: absolute;
 	top: 0;
 	left: 0;
 	opacity: 0;
 }
 
-
 #outofbounds-warning-container{
 	width: 100%;
-	height: 70%;		// height until ui bar
+	height: variables.$video-height;		// height until ui bar
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -141,7 +168,6 @@ video{
 	align-items: center;
 	opacity: 0;
 }
-
 
 @keyframes pulseWarning {
 	0% {
@@ -158,12 +184,10 @@ video{
 	}
 }
 
-
 #outofbounds-warning {
 	font-size: 50px;
 	animation: pulseWarning 2.5s infinite ease-in-out;
 }
-
 
 #ui-container {
 	position: absolute;
@@ -171,285 +195,6 @@ video{
 	left: 0;
 	z-index: 100;
 	// background-color: rgb(50, 50, 50);
-	height: 30%;
+	height: variables.$ui-height;
 	width: 100vw;
-}
-
-#ui-slider-title-bar{
-	width: 100%;
-	height: 14px;
-	background-color: rgb(255, 255, 255);
-	position: absolute;
-	top:8px;
-	left:0;
-}
-
-#ui-slider-title-container{
-	position: absolute;
-	top: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-	border: solid 2px gold;
-    width: 40%;
-    height: 25px;
-    border-radius: 6px;
-	background-color: brown;
-}
-
-#ui-slider {
-	// width: 100%;
-	height: 100%;
-	margin: 0;
-}
-
-
-// Leave this alone. This is for slick slider
-.slide-card {
-	height: inherit;
-	width: 100%;
-	display: flex !important;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	// overflow-y: visible;
-	border: solid 1px red;
-}
-
-// Use this as the container for the slider content
-.slide-body {
-	height: inherit;
-	width: 100%;
-	position: relative;
-	
-	display: flex !important;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	overflow: hidden;
-	// padding: 20px;
-	// background-color: rgb(65, 65, 65);
-}
-
-
-.item-details-container {
-	display: none;
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 100%;
-	
-	height: 100%;
-}
-
-.item-details{
-	border: solid 1px red;
-	background-color: rgba(187, 187, 187, 0.8);
-    display: flex;
-    position: absolute;
-    height: 100%;
-    width: 85%;
-    color: #0d0080;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    left: 50%;
-    gap: 20%;
-    transform: translate(-50%, 0);
-}
-
-.details-close-button{
-	background-color: black;
-	color: white;
-}
-
-// .details-button-container {
-// 	position: absolute;
-//     border: solid 1px red;
-//     width: 90px;
-//     height: 90px;
-//     overflow: hidden;
-//     bottom: 0;
-// 	left: 0;
-// }
-
-.details-button {
-	background-color: rgb(180, 179, 91);
-	border-radius: 50%;
-	height: 85px;
-	width: 85px;
-	color: rgb(77, 53, 4);
-	font-weight: 800;
-	border: solid 4px rgb(235, 208, 57);
-	// justify-self: baseline;
-    position: absolute;
-	bottom: -15px;
-    left: -15px;
-	padding: 0;
-	font-size: 42px;
-	box-shadow: inset 0px 0px  6px 8px #818181;
-
-	// font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.details-button::before {
-	background-color: rgb(180, 179, 91);
-	border-radius: 50%;
-	height: 85px;
-	width: 85px;
-	bottom: -15px;
-    left: -15px;
-	position: absolute;
-}
-
-.details-close-button {
-	// position: absolute;
-	top: 40px;
-	right: 40px;
-}
-
-.slide-item-name {
-	position: absolute;
-	top: 0;
-
-	// height: 20%;
-	margin: 0 auto;
-	// background-color: green;
-}
-
-.slick-list {
-	height: 100%;
-	// overflow: visible !important;
-}
-
-.slick-track {
-	height: 100%;
-}
-
-
-
-
-
-
-
-
-
-
-// About page
-#about-page {
-	display: none;
-
-}
-
-.about-page-details {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: rgb(32, 32, 32);
-}
-
-#about-close{
-	position: absolute;
-	top: 50px;
-	right: 50px;
-	cursor: pointer;
-	transform: rotate(180deg);
-}
-
-.about-page-copy h1{
-	// text-align: center;
-	margin-bottom: 10vh;
-}
-
-#close-line-l,
-#close-line-r{
-	width: 35px;
-	height: 3px;
-	background-color: red;
-}
-
-#close-line-l{
-	transform: rotate(45deg);
-}
-#close-line-r{
-	transform: rotate(-45deg);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-//Items
-
-#gps-module-container {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-#gps-module{
-	width: 150px;
-	height: 150px;
-	border-radius: 50%;
-	background-color: green;
-	margin-top: 25px;
-	position: relative;
-}
-
-#gps-identifier{
-	width: 10px;
-	height: 10px;
-	border-radius: 50%;
-	background-color: red;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-
-
-
-#voice-module-container{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-#voice-identifier {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-#voice-mic-button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    background-color: green;
-    color: white;
-}
-
-#voice-response {
-	padding: 0 10px;
 }
