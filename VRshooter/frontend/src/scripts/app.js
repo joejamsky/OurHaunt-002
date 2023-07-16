@@ -162,7 +162,7 @@ function initMonster() {
 
 function handleIntersectVibration(mesh) {
     if (mesh.x <= 1 && mesh.z <= 1) {
-        navigator.vibrate([10,10,10,10]);
+        navigator.vibrate(10);
     }
 }
 
