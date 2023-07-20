@@ -33,6 +33,24 @@ const slideData = [
         itemName: 'Writing Book', 
         unlocked: false,
         summaryText: "Allows spirits to write messages." 
+    },
+    {
+        slideID: 'slide-Lights',
+        itemName: 'Lighting', 
+        unlocked: false,
+        summaryText: "Set lights." 
+    },
+    {
+        slideID: 'slide-Sacrifice',
+        itemName: 'Sacrifice', 
+        unlocked: false,
+        summaryText: "Sacifice object to the spirit." 
+    },
+    {
+        slideID: 'slide-Gram',
+        itemName: 'Gram', 
+        unlocked: false,
+        summaryText: "Place gram" 
     }
 ];
 

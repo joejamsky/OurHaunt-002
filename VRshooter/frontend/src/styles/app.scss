@@ -1,5 +1,6 @@
 @use 'items/voice';
 @use 'items/gps';
+@use 'items/sound';
 @use 'slider-ui/slider-ui';
 @use 'about/about-page';
 @use 'variables/variables';
@@ -79,7 +80,6 @@ a, button, input, select {
     border-left: 2px #fff solid;
     border-right: 2px #fff solid;
     color: #fff;
-    padding: 16px 20px;
     text-transform: uppercase;
     cursor: pointer;
     width: 175px;

@@ -38,6 +38,12 @@ function images() {
       .pipe(dest('./frontend/dist/textures/'));
 }
 
+function assets() {
+  return src('./frontend/src/assets/**')
+    .pipe(replace('src/assets', 'assets'))
+    .pipe(dest('./frontend/dist/assets/'))
+}
+
 // Server
 const browserSync = require('browser-sync').create();
 
@@ -57,8 +63,8 @@ function browserSyncReload(cb) {
 
 function watchTask() {
   watch('./frontend/*.html', series(copyHTML, browserSyncReload));
-  watch(['./frontend/src/styles/**/*.scss', './frontend/src/scripts/**/*.js'], series(styles, scripts, browserSyncReload));
+  watch(['./frontend/src/styles/**/*.scss', './frontend/src/scripts/**/*.js', './frontend/src/assets/**'], series(styles, scripts, assets, browserSyncReload));
   watch('./frontend/src/textures/**/*.{jpg,jpeg,png,gif,svg}', series(images, browserSyncReload));
 }
 
-exports.default = series(styles, scripts, copyHTML, images, browsersyncServer, watchTask);
+exports.default = series(styles, scripts, assets, copyHTML, images, browsersyncServer, watchTask);
