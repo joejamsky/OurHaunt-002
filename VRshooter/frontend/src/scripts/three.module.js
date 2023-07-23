@@ -43061,7 +43061,6 @@ class Audio extends Object3D {
 
 		this.listener = listener;
 		this.context = listener.context;
-
 		this.gain = this.context.createGain();
 		this.gain.connect( listener.getInput() );
 

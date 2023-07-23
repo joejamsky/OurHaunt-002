@@ -149,20 +149,63 @@ function moveObjectRandom(mesh) {
 
 }
 
+const listener = new THREE.AudioListener();
+const audioObject = new THREE.PositionalAudio(listener);
+
 function initMonster() {
     const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
     const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
-
-
     monsterMesh.position.set(0, 1, -3);
+
+
+    const audioLoader = new THREE.AudioLoader();
+    // const audioFileUrl = 'path/to/audio/file.mp3';
+
+    audioLoader.load(audioFileUrl, (audioBuffer) => {
+
+        const audioSource = audioContext.createBufferSource();
+        audioSource.buffer = audioBuffer;
+        console.log('audioSource',audioSource)
+
+        // Create a Three.js audio object
+        
+        console.log('audioObject',audioObject)
+        audioObject.setBuffer(audioBuffer);
+        audioObject.setRefDistance(10); // Set the reference distance for volume falloff
+        audioObject.setDistanceModel('linear'); // Use linear distance model for volume
+        audioObject.setRolloffFactor(1); // Set the rolloff factor for volume falloff
+
+        // Attach the audio object to the desired object in the scene
+        monsterMesh.add(audioObject);
+        console.log('monsterMesh',monsterMesh)
+        // Start playing the audio
+        audioObject.play();
+    });
+
+
     scene.add(monsterMesh);
     moveObjectRandom(monsterMesh)
 }
 
+
+function updateVolumeBasedOnProximity() {
+    const cameraPosition = camera.position;
+    const objectPosition = monsterMesh.position;
+
+    // Calculate the distance between the camera and the object
+    const distance = cameraPosition.distanceTo(objectPosition);
+
+    // Update the volume based on the distance
+    audioObject.setVolume(1 / distance);
+}
+  
+
+
+
 function handleIntersectVibration(mesh) {
     if (mesh.x <= 1 && mesh.z <= 1) {
-        navigator.vibrate(10);
+        // navigator.vibrate(10);
     }
 }
 
@@ -170,8 +213,12 @@ function handleIntersectVibration(mesh) {
 
 function initScene() {
 
+    
     camera = new THREE.PerspectiveCamera(60, videoWidth / videoHeight, 1, 1100);
     camera.position.set(0,1,0)
+
+
+    camera.add( listener );
 
     orientationControls = new DeviceOrientationControls(camera);
     raycaster = new THREE.Raycaster();
@@ -206,7 +253,6 @@ function initScene() {
 
 
 
-
 // Debug
 function rotateCamera() {
     // Rotate the camera around its Y-axis
@@ -217,6 +263,7 @@ function animate(time) {
     window.requestAnimationFrame(animate);
     
     orientationControls.update();
+    updateVolumeBasedOnProximity();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
     // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
