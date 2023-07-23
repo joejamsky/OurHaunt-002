@@ -57,6 +57,10 @@ function initSlides() {
     const soundDiv = document.getElementById('slide-SS')
     const soundModuleContainer = document.getElementById('sound-module-container')
     soundDiv.append(soundModuleContainer)
+
+    const emfDiv = document.getElementById('slide-EMF')
+    const emfModuleContainer = document.getElementById('emf-module-container')
+    emfDiv.append(emfModuleContainer)
 }
 
 
