@@ -150,7 +150,7 @@ function moveObjectRandom(mesh) {
 }
 
 const listener = new THREE.AudioListener();
-const audioObject = new THREE.PositionalAudio(listener);
+const audioObject = new THREE.PositionalAudio(listener);        // Create a Three.js audio object
 
 function initMonster() {
     const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
@@ -166,11 +166,7 @@ function initMonster() {
 
         const audioSource = audioContext.createBufferSource();
         audioSource.buffer = audioBuffer;
-        console.log('audioSource',audioSource)
-
-        // Create a Three.js audio object
         
-        console.log('audioObject',audioObject)
         audioObject.setBuffer(audioBuffer);
         audioObject.setRefDistance(10); // Set the reference distance for volume falloff
         audioObject.setDistanceModel('linear'); // Use linear distance model for volume
@@ -178,7 +174,7 @@ function initMonster() {
 
         // Attach the audio object to the desired object in the scene
         monsterMesh.add(audioObject);
-        console.log('monsterMesh',monsterMesh)
+
         // Start playing the audio
         audioObject.play();
     });
