@@ -20,6 +20,7 @@ const jsMinify = require('gulp-terser');
 function scripts() {
   return src('./frontend/src/scripts/**/*.js')
     .pipe(replace('src/textures/', 'textures/')) // Update style file paths
+    .pipe(replace('src/assets/', 'assets/')) // Update asset file paths
     .pipe(jsMinify())
     .pipe(dest('./frontend/dist/scripts/'));
 }
@@ -40,7 +41,6 @@ function images() {
 
 function assets() {
   return src('./frontend/src/assets/**')
-    .pipe(replace('src/assets', 'assets'))
     .pipe(dest('./frontend/dist/assets/'))
 }
 
