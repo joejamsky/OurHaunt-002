@@ -5,17 +5,18 @@
 const slideData = [
     
     { 
-        slideID: 'slide-EMF',
-        itemName: 'EMF Reader', 
-        unlocked: false,
-        summaryText: "Detects electromagnetic frequencies from spirits." 
-    },
-    { 
         slideID: 'slide-Voice',
         itemName: 'Voice', 
         unlocked: false,
         summaryText: "Allows you to communicate with spirit. Voice Commands: 'close channel', 'reset input', 'go';" 
     },
+    { 
+        slideID: 'slide-EMF',
+        itemName: 'EMF Reader', 
+        unlocked: false,
+        summaryText: "Detects electromagnetic frequencies from spirits." 
+    },
+
     { 
         slideID: 'slide-GPS',
         itemName: 'GPS', 
