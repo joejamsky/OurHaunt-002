@@ -103,6 +103,3 @@ const listenButton = document.getElementById('listen');
 listenButton.addEventListener('click', () => {
     renderOscilloscope();
 })
-listenButton.addEventListener('touchstart', () => {
-    renderOscilloscope();
-})

@@ -1,0 +1,85 @@
+#emf-module-container{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+
+    #emf-module{
+        width: 54%;
+        
+        height: 55%;
+        margin-top: 20px;
+        border-radius: 20px;
+        border: solid 1px white;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        padding: 6px 0 8px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+    }
+
+
+    #emf-lights,
+    #emf-range-numbers{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    #emf-range-numbers{
+        font-size: 14px;
+        gap: 23px;
+        border-bottom: 2px solid #fff;
+        border-radius: 20px;
+        border-left: 0px solid;
+        border-right: 0px solid white;
+        padding: 0px 10px;
+    }
+
+
+    .emf-light{
+        width: 20px;
+        height: 26px;
+        border-radius: 50%;
+        border-top: dotted 5px #fff;
+        border-bottom: solid 0px #fff;
+        border-left: solid 1px #fff;
+        border-right: solid 1px #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+	}
+        
+    .emf-light-bulb{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: white;
+	}
+
+    .emf-light-1{
+        background-color: rgb(0, 206, 0);
+    }
+    .emf-light-2{
+        background-color: darkgreen;
+    }
+    .emf-light-3{
+        background-color: #dbbc2f;
+    }
+    .emf-light-4{
+        background-color: orangered;
+    }
+    .emf-light-5{
+        background-color: darkred;
+    }
+
+    .emf-light-off{
+        background-color: transparent;
+    }
+}
