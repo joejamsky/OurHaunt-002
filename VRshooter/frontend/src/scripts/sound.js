@@ -1,5 +1,5 @@
 // Audio file URL
-const audioFileUrl = './src/assets/audio/ImperialMarch60.wav';
+const audioFileUrl = './dist/assets/audio/ImperialMarch60.wav';
 
 // Create an AudioContext instance
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();

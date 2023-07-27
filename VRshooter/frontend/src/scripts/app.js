@@ -157,30 +157,57 @@ function moveObjectRandom(mesh) {
 
 const listener = new THREE.AudioListener();
 const audioObject = new THREE.PositionalAudio(listener);        // Create a Three.js audio object
-// './src/assets/audio/ImperialMarch60.wav'
-// src/assets/audio/CantinaBand60.wav
-// const meshUrl = new URL ('./src/assets/mesh/ghostie-retop.obj', import.meta.url)
-// const meshUrl = './src/assets/mesh/ghostie-retop.obj'
-// dist/assets/audio/CantinaBand60.wav
-const meshUrl = 'http://localhost:3000/dist/assets/mesh/ghostie-retop.obj'
+
+// The index runs the dist js files so use the dist asset folder when referencing files
+const meshUrl = './dist/assets/mesh/ghostie-retop.obj'
 
 const loader = new OBJLoader();
 
-
-
-console.log('loader', loader)
-console.log('meshUrl.href', meshUrl)
-console.log('import', import.meta.url)
 function initMonster() {
-    var monsterGeo
     loader.load(meshUrl,
         (gltf) => {
             // Model loaded successfully, add it to the scene
-            monsterGeo = gltf;
-            // scene.add(model);
 
-            // Adjust the position, rotation, or scale of the model as needed
-            // model.position.set(0, 0, 0);
+            // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
+            const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            // monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
+            // monsterMesh.position.set(0, 1, -3);
+
+            
+            gltf.children[0].material = monsterMat;
+            monsterMesh = gltf.children[0]
+            monsterMesh.scale.set(0.2,0.2,0.2)
+            monsterMesh.position.set(0,1,-3)
+
+
+            const audioLoader = new THREE.AudioLoader();
+            // const audioFileUrl = 'path/to/audio/file.mp3';
+
+            audioLoader.load(audioFileUrl, (audioBuffer) => {
+
+                const audioSource = audioContext.createBufferSource();
+                audioSource.buffer = audioBuffer;
+                
+                audioObject.setBuffer(audioBuffer);
+                audioObject.setRefDistance(10); // Set the reference distance for volume falloff
+                audioObject.setDistanceModel('linear'); // Use linear distance model for volume
+                audioObject.setRolloffFactor(1); // Set the rolloff factor for volume falloff
+
+                // Attach the audio object to the desired object in the scene
+                monsterMesh.add(audioObject);
+
+                // Start playing the audio
+                audioObject.play();
+            });
+
+
+            // scene.add(monsterMesh);
+
+
+
+            scene.add( monsterMesh )
+            moveObjectRandom(monsterMesh)
+
         },
         undefined,
         (error) => {
@@ -188,44 +215,19 @@ function initMonster() {
         }
     );
 
-    // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
-    const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
-    monsterMesh.position.set(0, 1, -3);
 
 
-    const audioLoader = new THREE.AudioLoader();
-    // const audioFileUrl = 'path/to/audio/file.mp3';
 
-    audioLoader.load(audioFileUrl, (audioBuffer) => {
-
-        const audioSource = audioContext.createBufferSource();
-        audioSource.buffer = audioBuffer;
-        
-        audioObject.setBuffer(audioBuffer);
-        audioObject.setRefDistance(10); // Set the reference distance for volume falloff
-        audioObject.setDistanceModel('linear'); // Use linear distance model for volume
-        audioObject.setRolloffFactor(1); // Set the rolloff factor for volume falloff
-
-        // Attach the audio object to the desired object in the scene
-        monsterMesh.add(audioObject);
-
-        // Start playing the audio
-        audioObject.play();
-    });
-
-
-    scene.add(monsterMesh);
-    moveObjectRandom(monsterMesh)
+    
 }
 
 
-function updateVolumeBasedOnProximity() {
+function updateVolumeBasedOnProximity(camera, monster) {
     const cameraPosition = camera.position;
-    const objectPosition = monsterMesh.position;
+    const monsterPosition = monster.position;
 
     // Calculate the distance between the camera and the object
-    const distance = cameraPosition.distanceTo(objectPosition);
+    const distance = cameraPosition.distanceTo(monsterPosition);
 
     // Update the volume based on the distance
     audioObject.setVolume(1 / distance);
@@ -264,7 +266,7 @@ function initScene() {
         wireframe: true,
     });
     const helper = new THREE.Mesh(helperGeometry, helperMaterial);
-    // scene.add(helper);
+    scene.add(helper);
     // </ 
 
 
@@ -293,15 +295,16 @@ function rotateCamera() {
 function animate(time) {
     window.requestAnimationFrame(animate);
     
-    orientationControls.update();
-    updateVolumeBasedOnProximity();
+    // orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
+    rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
     TWEEN.update();
 
-
-    handleIntersectVibration(monsterMesh.position)
+    if(monsterMesh && monsterMesh.position){
+        updateVolumeBasedOnProximity(camera, monsterMesh);
+        handleIntersectVibration(monsterMesh.position)
+    }
     
 
     // Check if ray trace intersects any objects
