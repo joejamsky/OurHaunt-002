@@ -295,10 +295,10 @@ function rotateCamera() {
 function animate(time) {
     window.requestAnimationFrame(animate);
     
-    // orientationControls.update();
+    orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
+    // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
     TWEEN.update();
 
     if(monsterMesh && monsterMesh.position){

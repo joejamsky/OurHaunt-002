@@ -28,8 +28,8 @@ function scripts() {
 // Copy index.html to dist folder
 function copyHTML() {
   return src('./frontend/index.html')
-    .pipe(replace('dist/styles/', 'styles/')) // Update style file paths
-    .pipe(replace('dist/scripts/', 'scripts/')) // Update script file paths
+    .pipe(replace('dist/styles/', 'styles/')) // Update style file paths. Need to use dist folder for styles because sass is compiled
+    .pipe(replace('src/scripts/', 'scripts/')) // Update script file paths
     .pipe(dest('./frontend/dist/'));
 }
 

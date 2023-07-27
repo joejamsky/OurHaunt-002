@@ -21,9 +21,7 @@
 					"three": "https://unpkg.com/three@0.138.3/build/three.module.js"
 				}
 			}
-		</script>
-		<script type="module" src="./scripts/DeviceOrientationControls.js"></script>
-		
+		</script>		
 
 		<!-- TWEEN -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/20.0.0/tween.umd.js"></script>
@@ -36,7 +34,8 @@
 		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
 
 		<!-- CUSTOM STYLES -->
-		<link type="text/css" rel="stylesheet" href="./styles/app.css">
+		<!-- Need to use dist folder for styles because sass is compiled -->
+		<link type="text/css" rel="stylesheet" href="./styles/app.css">		
 	</head>
 	<body>
 		<div id="debug">
@@ -178,7 +177,7 @@
 
 
 		
-
+		<script type="module" src="./scripts/DeviceOrientationControls.js"></script>
 		<script type="text/javascript" src="./scripts/uiSlider.js"></script>
 		<script type="text/javascript" src="./scripts/location.js"></script>
 		<script type="text/javascript" src="./scripts/voice.js"></script>
