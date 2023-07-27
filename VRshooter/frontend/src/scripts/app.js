@@ -295,12 +295,14 @@ function rotateCamera() {
 function animate(time) {
     window.requestAnimationFrame(animate);
     
-    // orientationControls.update();
+    orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
+    // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
     TWEEN.update();
 
+    // TODO update so that the mesh is added to the scene before the animate function is fired so the animate function doesn't
+    // throw an error when trying to run these other functions
     if(monsterMesh && monsterMesh.position){
         updateVolumeBasedOnProximity(camera, monsterMesh);
         handleIntersectVibration(monsterMesh.position)
