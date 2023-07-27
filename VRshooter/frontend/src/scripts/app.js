@@ -159,7 +159,7 @@ const listener = new THREE.AudioListener();
 const audioObject = new THREE.PositionalAudio(listener);        // Create a Three.js audio object
 
 // The index runs the dist js files so use the dist asset folder when referencing files
-const meshUrl = './dist/assets/mesh/ghostie-retop.obj'
+const meshUrl = '../src/assets/mesh/ghostie-retop.obj'
 
 const loader = new OBJLoader();
 
@@ -295,10 +295,10 @@ function rotateCamera() {
 function animate(time) {
     window.requestAnimationFrame(animate);
     
-    orientationControls.update();
+    // orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
+    rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
     TWEEN.update();
 
     if(monsterMesh && monsterMesh.position){
