@@ -1,5 +1,7 @@
-import * as THREE from "./three.module.js";
+import * as THREE from 'three';
+import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
 import { DeviceOrientationControls } from "./DeviceOrientationControls.js";
+import { OBJLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/OBJLoader.js';
 
 
 let camera,
@@ -155,9 +157,38 @@ function moveObjectRandom(mesh) {
 
 const listener = new THREE.AudioListener();
 const audioObject = new THREE.PositionalAudio(listener);        // Create a Three.js audio object
+// './src/assets/audio/ImperialMarch60.wav'
+// src/assets/audio/CantinaBand60.wav
+// const meshUrl = new URL ('./src/assets/mesh/ghostie-retop.obj', import.meta.url)
+// const meshUrl = './src/assets/mesh/ghostie-retop.obj'
+// dist/assets/audio/CantinaBand60.wav
+const meshUrl = 'http://localhost:3000/dist/assets/mesh/ghostie-retop.obj'
 
+const loader = new OBJLoader();
+
+
+
+console.log('loader', loader)
+console.log('meshUrl.href', meshUrl)
+console.log('import', import.meta.url)
 function initMonster() {
-    const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
+    var monsterGeo
+    loader.load(meshUrl,
+        (gltf) => {
+            // Model loaded successfully, add it to the scene
+            monsterGeo = gltf;
+            // scene.add(model);
+
+            // Adjust the position, rotation, or scale of the model as needed
+            // model.position.set(0, 0, 0);
+        },
+        undefined,
+        (error) => {
+            console.error('Error loading 3D model:', error);
+        }
+    );
+
+    // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
     const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
     monsterMesh.position.set(0, 1, -3);

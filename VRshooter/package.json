@@ -13,7 +13,7 @@
     "gulp-template": "^5.0.0",
     "gulp-terser": "^2.1.0",
     "sass": "^1.57.1",
-    "three": "^0.148.0"
+    "save": "^2.9.0"
   },
   "devDependencies": {
     "browser-sync": "^2.27.11",
