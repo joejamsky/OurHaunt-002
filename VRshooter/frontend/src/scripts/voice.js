@@ -60,21 +60,21 @@ function checkInputPhrase(phrase) {
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; // if none exists -> undefined
 
 if(SpeechRecognition) {
-  console.log("Speech recognition connected.");
+    console.log("Speech recognition connected.");
   
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
     // recognition.lang = "en-US";
 
     const micIcon = voiceFormMicButton.firstElementChild;
+    const micLight = document.getElementsByClassName('voice-light-bulb')[0];
 
     voiceFormMicButton.addEventListener("click", micBtnClick);
     function micBtnClick() {
-        if(micIcon.classList.contains("fa-microphone")) { // Start Voice Recognition
-        recognition.start(); // First time you have to allow access to mic!
-        }
-        else {
-        recognition.stop();
+        if(micIcon.classList.contains("fa-microphone")) {
+            recognition.start();         // Start Voice Recognition. First time you have to allow access to mic!
+        } else {
+            recognition.stop();
         }
     }
 
@@ -82,6 +82,7 @@ if(SpeechRecognition) {
     function startSpeechRecognition() {
         micIcon.classList.remove("fa-microphone");
         micIcon.classList.add("fa-ear-listen");
+        micLight.classList.remove("voice-light-off");
         voiceFormInput.focus();
         console.log("Voice activated, SPEAK");
     }
@@ -90,6 +91,7 @@ if(SpeechRecognition) {
     function endSpeechRecognition() {
         micIcon.classList.remove("fa-ear-listen");
         micIcon.classList.add("fa-microphone");
+        micLight.classList.add("voice-light-off");
         voiceFormInput.focus();
         console.log("Speech recognition service disconnected");
         checkInputPhrase(transcript)

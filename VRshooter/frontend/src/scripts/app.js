@@ -197,7 +197,7 @@ function initMonster() {
                 monsterMesh.add(audioObject);
 
                 // Start playing the audio
-                audioObject.play();
+                // audioObject.play();
             });
 
 
