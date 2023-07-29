@@ -4,6 +4,18 @@
 
 const slideData = [
     
+    {
+        slideID: 'slide-Glyph',
+        itemName: 'Glyph', 
+        unlocked: false,
+        summaryText: "Place the appropriate glyphs to trap or release spirit." 
+    },
+    {
+        slideID: 'slide-Offering',
+        itemName: 'Offerings', 
+        unlocked: false,
+        summaryText: "Present an object to the spirit." 
+    },
     { 
         slideID: 'slide-Voice',
         itemName: 'Voice', 
@@ -16,7 +28,6 @@ const slideData = [
         unlocked: false,
         summaryText: "Detects electromagnetic frequencies from spirits." 
     },
-
     { 
         slideID: 'slide-GPS',
         itemName: 'GPS', 
@@ -28,31 +39,8 @@ const slideData = [
         itemName: 'Sound Sensor',
         unlocked: false,
         summaryText: "Detects sounds from spirits." 
-    },
-    { 
-        slideID: 'slide-WB',
-        itemName: 'Writing Book', 
-        unlocked: false,
-        summaryText: "Allows spirits to write messages." 
-    },
-    {
-        slideID: 'slide-Lights',
-        itemName: 'Lighting', 
-        unlocked: false,
-        summaryText: "Set lights." 
-    },
-    {
-        slideID: 'slide-Sacrifice',
-        itemName: 'Sacrifice', 
-        unlocked: false,
-        summaryText: "Sacifice object to the spirit." 
-    },
-    {
-        slideID: 'slide-Gram',
-        itemName: 'Gram', 
-        unlocked: false,
-        summaryText: "Place gram" 
     }
+
 ];
 
 function initSlider(){

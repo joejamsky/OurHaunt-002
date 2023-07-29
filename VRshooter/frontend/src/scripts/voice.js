@@ -2,6 +2,26 @@ const voiceForm = document.getElementById('voice-form')
 const voiceFormInput = document.getElementById('voice-input')
 const voiceFormMicButton = document.getElementById('voice-mic-button')
 
+let monsterData
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function handleTextArray(textArray) {
+    return textArray.length === 1 ? textArray[0] : textArray.slice(0, -1).join(', ') + ', and ' + textArray[textArray.length - 1];
+}
+
+fetch('../src/assets/data/ghostProperties.json')
+  .then(response => response.json())
+  .then(data => {
+    // Use the parsed JSON data here
+    monsterData = data[getRandomInt(2)] 
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the fetch
+    console.error('Error loading JSON:', error);
+});
 
 
 // // Styling effects
@@ -48,12 +68,129 @@ function typeWriterEffect(text, elementId = 'voice-response', delay = 250) {
 
 
 function checkInputPhrase(phrase) {
-    console.log('phrase', phrase)
-    if(phrase.toLowerCase().includes('name')){
-        typeWriterEffect('My name is Baba Yaga.');
-    } else if (phrase.toLowerCase().includes('help')) {
-        typeWriterEffect('There is no help.');
+    
+    switch(phrase){
+        case "how old are you":
+        case "how young are you":
+        case "what is your age":
+        case "age":
+            typeWriterEffect(monsterData.age);
+            break;
+        case "what's your name":
+        case "what is your name":
+        case "what can i call you":
+        case "can you give me your name":
+        case "name":
+            typeWriterEffect(monsterData.name);
+            break;
+        case "what is your birth date":
+        case "what is your birthday":
+        case "when is your birth date":
+        case "when is your birthday":
+        case "what day were you born":
+        case "when were you born":
+        case "birth date":
+        case "birthday":
+            typeWriterEffect(`I was born ${monsterData.birthDate.month}/${monsterData.birthDate.day}/${monsterData.birthDate.year}.`);
+            break;
+        case "what is your death date":
+        case "what is your death day":
+        case "when is your death date":
+        case "when is your death day":
+        case "death date":
+        case "death day":
+            typeWriterEffect(`I died ${monsterData.deathDate.month}/${monsterData.deathDate.day}/${monsterData.deathDate.year}.`);
+            break;
+        case "how did you die":
+        case "what was your cause of death":
+        case "cause of death":
+            typeWriterEffect(monsterData.deathCause);
+            break;
+        case "what do you want":
+        case "why are you here":
+        case "what is your motive":
+        case "how can i help":
+            typeWriterEffect(monsterData.motive);
+            break;
+        case "where you from":
+        case "where are you from":
+            typeWriterEffect(`I am from ${monsterData.address.city}.`);
+            break;
+        case "what do you like to do":
+        case "what did you like to do":
+        case "hobbies":
+            typeWriterEffect(`I liked ${handleTextArray(monsterData.hobbies)}.`);
+            break;
+        case "are you telling the truth":
+            if(monsterData.honest){
+                typeWriterEffect(`Yes.`);
+            } else if(getRandomInt(2) === 0) {
+                typeWriterEffect(`Yes.`);
+            } else {
+                typeWriterEffect(`No.`);
+            }
+            break;
+        case "do you have a mother":
+        case "where is your mother":
+        case "mother":
+            if(monsterData.relationships.mom){
+                typeWriterEffect(`I have a mother but I don't know where she is`);
+            } else {
+                typeWriterEffect(`I don't have a mother`);
+            }
+            break;
+        case "what was your job":
+        case "job":
+        case "occupation":
+            typeWriterEffect(monsterData.occupation);
+            break;
+        case "were you rich":
+        case "were you poor":
+        case "how much money did you make":
+        case "how much were you worth":
+        case "income":
+            typeWriterEffect(monsterData.income);
+            break;
+        case "what is your favorite food":
+        case "do you have a favorite food":
+            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.food)}.`);
+            break;
+        case "what is your favorite book":
+        case "do you have a favorite book":
+            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.book)}.`);
+            break;
+        case "what is your favorite place":
+        case "do you have a favorite place":
+            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.place)}.`);
+            break;
+        case "what is your favorite band":
+        case "do you have a favorite band":
+        case "who is your favorite musician":
+        case "do you have a favorite musician":
+            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.music)}.`);
+            break;
+        case "what is your favorite film":
+        case "do you have a favorite film":
+            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.film)}.`);
+            break;
+        case "what is your favorite sports team":
+        case "what is your favorite sport":
+        case "do you have a favorite sports team":
+        case "do you have a favorite sport":
+            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.sport)}.`);
+            break;
+        case "do you have a favorite animal":
+            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.animal)}.`);
+            break;
+        default: 
+        typeWriterEffect("...?");
     }
+
+    // if(phrase.includes('name')){
+    //     typeWriterEffect('My name is Baba Yaga.');
+    // } else if (phrase.includes('help')) {
+    //     typeWriterEffect('There is no help.');
+    // }
 }
 
 // The speech recognition interface lives on the browser’s window object
@@ -87,6 +224,8 @@ if(SpeechRecognition) {
         console.log("Voice activated, SPEAK");
     }
 
+    var transcript
+
     recognition.addEventListener("end", endSpeechRecognition); // <=> recognition.onend = function() {...}
     function endSpeechRecognition() {
         micIcon.classList.remove("fa-ear-listen");
@@ -94,11 +233,11 @@ if(SpeechRecognition) {
         micLight.classList.add("voice-light-off");
         voiceFormInput.focus();
         console.log("Speech recognition service disconnected");
-        checkInputPhrase(transcript)
+        checkInputPhrase(transcript.toLowerCase().trim())
     }
 
 
-    var transcript
+    
     recognition.addEventListener("result", resultOfSpeechRecognition); // <=> recognition.onresult = function(event) {...} - Fires when you stop talking
     function resultOfSpeechRecognition(event) {
         const current = event.resultIndex;

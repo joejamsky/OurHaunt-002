@@ -1,0 +1,41 @@
+#glyph-module-container{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+
+    #glyph-module{
+        overflow-y: scroll;
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0px 20px;
+        justify-content: center;
+        align-items: center;
+        
+        margin: 25px 0 0;
+        padding: 10px;
+        border-radius: 10px;
+        border: solid 1px white;
+        border-bottom: double 0px white;
+        border-top: double 0px white;
+    }
+
+    .glyph-item {
+        width: 60px;
+        height: 60px;
+        border: dashed 1px white;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 0px 5px 1px aliceblue;
+    }
+
+    
+}

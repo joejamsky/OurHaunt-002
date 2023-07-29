@@ -63,6 +63,14 @@ function initSlides() {
     const emfDiv = document.getElementById('slide-EMF')
     const emfModuleContainer = document.getElementById('emf-module-container')
     emfDiv.append(emfModuleContainer)
+
+    const offeringDiv = document.getElementById('slide-Offering')
+    const offeringModuleContainer = document.getElementById('offering-module-container')
+    offeringDiv.append(offeringModuleContainer)
+
+    const glyphDiv = document.getElementById('slide-Glyph')
+    const glyphModuleContainer = document.getElementById('glyph-module-container')
+    glyphDiv.append(glyphModuleContainer)
 }
 
 

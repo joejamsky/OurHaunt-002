@@ -2,6 +2,8 @@
 @use 'items/gps';
 @use 'items/sound';
 @use 'items/emf';
+@use 'items/offering';
+@use 'items/glyph';
 @use 'slider-ui/slider-ui';
 @use 'about/about-page';
 @use 'variables/variables';
@@ -146,6 +148,11 @@ video{
 	/* height: 100vh; */
 }
 
+#tutorial{
+	position: relative;
+	z-index: 100000;
+}
+
 #static-overlay{
 	background-image: url("../textures/screen-static.gif");
 	background-size: cover;
@@ -168,6 +175,10 @@ video{
 	justify-content: center;
 	align-items: center;
 	opacity: 0;
+}
+
+#outofbounds-warning {
+	font-size: 9vw;
 }
 
 @keyframes pulseWarning {
