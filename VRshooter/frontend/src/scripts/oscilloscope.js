@@ -5,18 +5,15 @@ const audioFileUrl = '../src/assets/audio/ImperialMarch60.wav';
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 
-function initAudio() {
-
-}
-
-
-function renderOscilloscope() {
+function renderOscilloscope(audioBuffer) {
     
     // Load the audio file
-    fetch(audioFileUrl)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
+    // fetch(audioFileUrl)
+    // .then(response => response.arrayBuffer())
+    // .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+    // .then(audioBuffer => {
+        
+        // console.log('audiobuffer js', audiobuffer)
 
         // Get SVG element
         const svg = document.getElementById('oscilloscope-svg');
@@ -24,6 +21,9 @@ function renderOscilloscope() {
         // Set SVG dimensions based on audio length
         const width = svg.clientWidth;
         const height = svg.clientHeight;
+
+        console.log('width',width)
+        console.log('height',height)
 
         // Clear SVG
         svg.innerHTML = '';
@@ -38,12 +38,15 @@ function renderOscilloscope() {
         // Create AnalyserNode
         const analyserNode = audioContext.createAnalyser();
         analyserNode.fftSize = 2048; // Adjust the fftSize for smoother waveform
-
+        
         // Connect the AnalyserNode to the audioContext
         const source = audioContext.createBufferSource();
+        console.log('audioBuffer', audioBuffer)
         source.buffer = audioBuffer;
         source.connect(analyserNode);
-        analyserNode.connect(audioContext.destination);
+        // analyserNode.connect(audioContext.destination);
+        console.log('analyserNode2', analyserNode)
+
 
         // Draw oscilloscope waveform
         const drawOscilloscope = () => {
@@ -89,17 +92,16 @@ function renderOscilloscope() {
             }
         };
 
-        // Start playing the audio
         source.start();
 
         // Start drawing the oscilloscope waveform
         drawOscilloscope();
-    })
-    .catch(error => console.error('Error loading audio:', error));
+    // })
+    // .catch(error => console.error('Error loading audio:', error));
 }
   
 
-const listenButton = document.getElementById('listen');
-listenButton.addEventListener('click', () => {
+const micButton = document.getElementById('mic-activate-button');
+micButton.addEventListener('click', () => {
     renderOscilloscope();
 })

@@ -56,9 +56,9 @@ function initSlides() {
     const voiceModuleContainer = document.getElementById('voice-module-container')
     voiceDiv.append(voiceModuleContainer)
 
-    const soundDiv = document.getElementById('slide-SS')
-    const soundModuleContainer = document.getElementById('sound-module-container')
-    soundDiv.append(soundModuleContainer)
+    const oscilloscopeDiv = document.getElementById('slide-Oscilloscope')
+    const oscilloscopeModuleContainer = document.getElementById('oscilloscope-module-container')
+    oscilloscopeDiv.append(oscilloscopeModuleContainer)
 
     const emfDiv = document.getElementById('slide-EMF')
     const emfModuleContainer = document.getElementById('emf-module-container')
@@ -195,7 +195,8 @@ function initMonster() {
 
                 const audioSource = audioContext.createBufferSource();
                 audioSource.buffer = audioBuffer;
-                
+
+                console.log('audioObject', audioObject)
                 audioObject.setBuffer(audioBuffer);
                 audioObject.setRefDistance(10); // Set the reference distance for volume falloff
                 audioObject.setDistanceModel('linear'); // Use linear distance model for volume
@@ -203,9 +204,10 @@ function initMonster() {
 
                 // Attach the audio object to the desired object in the scene
                 monsterMesh.add(audioObject);
+                audioObject.play();
+                renderOscilloscope(audioBuffer)
 
                 // Start playing the audio
-                audioObject.play();
             });
 
 
@@ -222,11 +224,6 @@ function initMonster() {
             console.error('Error loading 3D model:', error);
         }
     );
-
-
-
-
-    
 }
 
 

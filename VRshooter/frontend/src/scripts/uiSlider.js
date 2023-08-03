@@ -35,8 +35,8 @@ const slideData = [
         summaryText: "Detects distance from objective." 
     },
     { 
-        slideID: 'slide-SS',
-        itemName: 'Sound Sensor',
+        slideID: 'slide-Oscilloscope',
+        itemName: 'Oscilloscope',
         unlocked: false,
         summaryText: "Detects sounds from spirits." 
     }
