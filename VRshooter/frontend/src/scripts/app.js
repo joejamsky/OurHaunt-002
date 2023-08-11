@@ -283,6 +283,15 @@ function initScene() {
     // </ 
 
 
+    const geometry = new THREE.PlaneGeometry( 10, 10 );
+    const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+    const groundPlane = new THREE.Mesh( geometry, material );
+    groundPlane.position.set(0,0,0);
+    scene.add( groundPlane );
+
+
+
+
     // < Setup renderer
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
