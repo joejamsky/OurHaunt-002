@@ -191,7 +191,7 @@ function initMonster() {
             gltf.children[0].material = monsterMat;
             monsterMesh = gltf.children[0]
             monsterMesh.scale.set(0.2,0.2,0.2)
-            monsterMesh.position.set(0,1,-3)
+            monsterMesh.position.set(0,cameraHeight,-3)
 
 
             // const audioFileUrl = 'path/to/audio/file.mp3';
@@ -256,12 +256,13 @@ function handleIntersectVibration(mesh) {
 }
 
 
+const cameraHeight = 2;
 
 function initScene() {
 
     
     camera = new THREE.PerspectiveCamera(60, videoWidth / videoHeight, 1, 1100);
-    camera.position.set(0,1,0)
+    camera.position.set(0,cameraHeight,0)
 
 
     camera.add( listener );
@@ -281,14 +282,19 @@ function initScene() {
     const helper = new THREE.Mesh(helperGeometry, helperMaterial);
     scene.add(helper);
     // </ 
+            // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
 
 
-    const geometry = new THREE.PlaneGeometry( 10, 10 );
-    const material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
-    const groundPlane = new THREE.Mesh( geometry, material );
-    groundPlane.position.set(0,0,0);
-    scene.add( groundPlane );
-
+    const groundGeometry = new THREE.PlaneGeometry(10, 10); // Width and height of the ground
+    const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Green color
+    const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+    
+    // Rotate the ground to be horizontal
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.set(0,0,0)
+    
+    // Add the ground to the scene
+    scene.add(ground);
 
 
 
@@ -368,7 +374,7 @@ function shootObject() {
     // const gravity = new THREE.Vector3(0,-1,0)
     // camera.getWorldDirection(cameraDirection);
     // const combined = new THREE.Vector3();
-    console.log('camerad', cameraDirection.clone())
+    // console.log('camerad', cameraDirection.clone())
 
     // combined.addVectors(cameraDirection, gravity)
     // initialVelocity = combined.clone();
@@ -396,8 +402,7 @@ function animate() {
     }
     
     const delta = clock.getDelta();
-    
-   
+
     
     sceneOfferingObjects.forEach((object, i) => {
         object.speed -= 0.2 * delta;
