@@ -53,7 +53,8 @@
             "sport": ["no sports"],
             "animal": ["dogs"]
         },
-        "items": ["pizza", "book", "meat", "apple"]
+        "items": ["pizza", "book", "meat", "apple"],
+        "hostility": 0
     },
     {
         "name": "Jane Boe",
@@ -109,6 +110,7 @@
             "sport": ["..."],
             "animal": ["dogs"]
         },
-        "items": ["blood"]
+        "items": ["blood"],
+        "hostility": 0
     }
 ]

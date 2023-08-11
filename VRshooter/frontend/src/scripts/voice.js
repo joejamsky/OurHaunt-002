@@ -2,7 +2,7 @@ const voiceForm = document.getElementById('voice-form')
 const voiceFormInput = document.getElementById('voice-input')
 const voiceFormMicButton = document.getElementById('voice-mic-button')
 
-let monsterData
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -11,17 +11,6 @@ function getRandomInt(max) {
 function handleTextArray(textArray) {
     return textArray.length === 1 ? textArray[0] : textArray.slice(0, -1).join(', ') + ', and ' + textArray[textArray.length - 1];
 }
-
-fetch('../src/assets/data/ghostProperties.json')
-  .then(response => response.json())
-  .then(data => {
-    // Use the parsed JSON data here
-    monsterData = data[getRandomInt(2)] 
-  })
-  .catch(error => {
-    // Handle any errors that occurred during the fetch
-    console.error('Error loading JSON:', error);
-});
 
 
 // // Styling effects
@@ -183,7 +172,8 @@ function checkInputPhrase(phrase) {
             typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.animal)}.`);
             break;
         default: 
-        typeWriterEffect("...?");
+            typeWriterEffect("...?");
+            addHostility()
     }
 
     // if(phrase.includes('name')){

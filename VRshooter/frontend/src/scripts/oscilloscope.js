@@ -4,6 +4,7 @@ const audioFileUrl = '../src/assets/audio/ImperialMarch60.wav';
 // Create an AudioContext instance
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
+let oscilloscopeActive = false
 
 function renderOscilloscope(audioBuffer) {
     
@@ -37,7 +38,7 @@ function renderOscilloscope(audioBuffer) {
 
         // Create AnalyserNode
         const analyserNode = audioContext.createAnalyser();
-        analyserNode.fftSize = 2048; // Adjust the fftSize for smoother waveform
+        analyserNode.fftSize = 256; // Adjust the fftSize for smoother waveform
         
         // Connect the AnalyserNode to the audioContext
         const source = audioContext.createBufferSource();
@@ -96,12 +97,16 @@ function renderOscilloscope(audioBuffer) {
 
         // Start drawing the oscilloscope waveform
         drawOscilloscope();
+
     // })
     // .catch(error => console.error('Error loading audio:', error));
 }
   
+function toggleOscilloscope() {
+    oscilloscopeActive = !oscilloscopeActive
+}
 
-const micButton = document.getElementById('mic-activate-button');
-micButton.addEventListener('click', () => {
-    renderOscilloscope();
+const oscilloscopeButton = document.getElementById('oscilloscope-activate-button');
+oscilloscopeButton.addEventListener('click', () => {
+    toggleOscilloscope();
 })

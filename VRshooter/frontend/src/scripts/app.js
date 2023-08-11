@@ -16,6 +16,7 @@ let camera,
 sceneCubes = [];
 cubesDestroyed = 0;
 
+
 const videoWidth = window.innerWidth;
 const videoHeight = window.innerHeight * (70 / 100);
 
@@ -113,18 +114,22 @@ function generateSplitRandomClamped() {
     return adjusted;
 }
 
-function addItemTimed() {
-    // if (sceneCubes.length < 5) {
-    //     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    //     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    //     const cube = new THREE.Mesh(geometry, material);
-    //     let xPos = generateSplitRandomClamped();
-    //     let yPos = THREE.MathUtils.randFloat(0, 5);
-    //     let zPos = generateSplitRandomClamped();
-    //     cube.position.set(xPos, yPos, zPos);
-    //     scene.add(cube);
-    //     sceneCubes.push(cube.id);
-    // }
+
+
+
+function addOfferingOnClick() {
+    if (sceneOfferingObjects.length < 5) {
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.velocity = new THREE.Vector3(0, 0, 0);
+        let xPos = generateSplitRandomClamped();
+        let yPos = THREE.MathUtils.randFloat(0, 5);
+        let zPos = generateSplitRandomClamped();
+        cube.position.set(xPos, yPos, zPos);
+        sceneOfferingObjects.push(cube);
+        scene.add(cube);
+    }
 
 }
 
@@ -165,6 +170,7 @@ function moveObjectRandom(mesh) {
 
 const listener = new THREE.AudioListener();
 const audioObject = new THREE.PositionalAudio(listener);        // Create a Three.js audio object
+const audioLoader = new THREE.AudioLoader();
 
 // The index runs the dist js files so use the dist asset folder when referencing files
 const meshUrl = '../src/assets/mesh/ghostie-retop.obj'
@@ -188,32 +194,30 @@ function initMonster() {
             monsterMesh.position.set(0,1,-3)
 
 
-            const audioLoader = new THREE.AudioLoader();
             // const audioFileUrl = 'path/to/audio/file.mp3';
 
             audioLoader.load(audioFileUrl, (audioBuffer) => {
 
+                console.log('Loaded audioBuffer:', audioBuffer);
+
                 const audioSource = audioContext.createBufferSource();
                 audioSource.buffer = audioBuffer;
 
-                console.log('audioObject', audioObject)
                 audioObject.setBuffer(audioBuffer);
                 audioObject.setRefDistance(10); // Set the reference distance for volume falloff
                 audioObject.setDistanceModel('linear'); // Use linear distance model for volume
                 audioObject.setRolloffFactor(1); // Set the rolloff factor for volume falloff
-
+                audioObject.setVolume(0)  //0 to 1 for volume
+                audioObject.setLoop(true);
+                
+                
                 // Attach the audio object to the desired object in the scene
                 monsterMesh.add(audioObject);
                 audioObject.play();
+
                 renderOscilloscope(audioBuffer)
 
-                // Start playing the audio
             });
-
-
-            // scene.add(monsterMesh);
-
-
 
             scene.add( monsterMesh )
             moveObjectRandom(monsterMesh)
@@ -227,15 +231,19 @@ function initMonster() {
 }
 
 
-function updateVolumeBasedOnProximity(camera, monster) {
-    const cameraPosition = camera.position;
-    const monsterPosition = monster.position;
-
-    // Calculate the distance between the camera and the object
-    const distance = cameraPosition.distanceTo(monsterPosition);
-
-    // Update the volume based on the distance
-    audioObject.setVolume(1 / distance);
+function updateVolumeBasedOnProximity(camera, monster, active) {
+    if(active === false){
+        audioObject.setVolume(0)
+    } else {
+        const cameraPosition = camera.position;
+        const monsterPosition = monster.position;
+    
+        // Calculate the distance between the camera and the object
+        const distance = cameraPosition.distanceTo(monsterPosition);
+    
+        // Update the volume based on the distance
+        audioObject.setVolume(1 / distance);
+    }
 }
   
 
@@ -297,10 +305,75 @@ function rotateCamera() {
     camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
 
-function animate(time) {
+
+
+const gravity = new THREE.Vector3(0, -0.1, 0);
+let sceneOfferingObjects = []
+let initialVelocity 
+
+const offeringDivs = document.getElementsByClassName('offering-item')
+
+let pressHold = 1;
+Array.from(offeringDivs).forEach(offeringDiv => {
+    offeringDiv.addEventListener('touchstart', setHoldTimer)
+    // offeringDiv.addEventListener('mousedown', setHoldTimer)
+});
+
+Array.from(offeringDivs).forEach(offeringDiv => {
+    offeringDiv.addEventListener('touchend', shootObject)
+    // offeringDiv.addEventListener('mouseup', shootObject)
+});
+
+function setHoldTimer(){
+    setInterval(function(){
+        pressHold++;
+    }, 600);
+
+    return false;
+}
+
+function shootObject() {
+    
+    const geometry = new THREE.SphereGeometry(0.1, 32, 32);
+    const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    const shootObject = new THREE.Mesh(geometry, material);
+    shootObject.position.set(0, 1, 0);
+    shootObject.velocity = new THREE.Vector3(0, 0, 0);
+    shootObject.displacement = new THREE.Vector3(0,0,0);
+
+    if(pressHold > 10){
+        shootObject.speed = 10;
+    } else {
+        shootObject.speed = pressHold;
+    }
+    pressHold = 1
+    shootObject.direction = new THREE.Vector3();
+    camera.getWorldDirection(shootObject.direction);
+    console.log('direction', shootObject.direction)
+
+
+    sceneOfferingObjects.push(shootObject);
+
+    scene.add(shootObject);
+    // const cameraDirection = new THREE.Vector3();
+    // const gravity = new THREE.Vector3(0,-1,0)
+    // camera.getWorldDirection(cameraDirection);
+    // const combined = new THREE.Vector3();
+    console.log('camerad', cameraDirection.clone())
+
+    // combined.addVectors(cameraDirection, gravity)
+    // initialVelocity = combined.clone();
+}
+
+let clock = new THREE.Clock();
+// let speed = 1;
+const direction = new THREE.Vector3(0,-10,-10);
+// const velocity = new THREE.Vector3();
+
+function animate() {
     window.requestAnimationFrame(animate);
     
-    orientationControls.update();
+    // orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
     // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
@@ -309,10 +382,33 @@ function animate(time) {
     // TODO update so that the mesh is added to the scene before the animate function is fired so the animate function doesn't
     // throw an error when trying to run these other functions
     if(monsterMesh && monsterMesh.position){
-        updateVolumeBasedOnProximity(camera, monsterMesh);
-        handleIntersectVibration(monsterMesh.position)
+        updateVolumeBasedOnProximity(camera, monsterMesh, oscilloscopeActive);
+        // handleIntersectVibration(monsterMesh.position)
     }
     
+    const delta = clock.getDelta();
+    
+   
+    
+    sceneOfferingObjects.forEach((object, i) => {
+        object.speed -= 0.2 * delta;
+        object.speed = Math.max(object.speed, 0)
+        console.log('i', i)
+        console.log('velocity', object.velocity)
+        console.log('displacement', object.displacement)
+        object.velocity.copy(object.direction).multiplyScalar(object.speed)
+        // const displacement =  new THREE.Vector3();
+
+        object.displacement.copy(object.velocity).multiplyScalar(delta)
+        
+        object.position.add(object.displacement);
+
+        // console.log('object pos', object.position)
+        // Apply floor constraint
+        if (object.position.y < 0) {
+            object.position.y = 0;
+        }
+    });
 
     // Check if ray trace intersects any objects
     for (let i = 0; i < sceneObjectIntersects.length; i++) {
