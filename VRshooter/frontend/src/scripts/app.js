@@ -317,7 +317,7 @@ function initScene() {
 // Debug
 function rotateCamera() {
     // Rotate the camera around its Y-axis
-    camera.rotation.y += 0.01; // Adjust the rotation speed as needed
+    camera.rotation.y += 0.001; // Adjust the rotation speed as needed
 }
 
 
@@ -352,7 +352,7 @@ function shootObject() {
     const geometry = new THREE.SphereGeometry(0.1, 32, 32);
     const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     const shootObject = new THREE.Mesh(geometry, material);
-    shootObject.position.set(0, 1, 0);
+    shootObject.position.set(0, 10, 0);
     shootObject.velocity = new THREE.Vector3(0, 0, 0);
     shootObject.displacement = new THREE.Vector3(0,0,0);
 
@@ -388,10 +388,10 @@ const direction = new THREE.Vector3(0,-10,-10);
 function animate() {
     window.requestAnimationFrame(animate);
     
-    orientationControls.update();
+    // orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
+    rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
     TWEEN.update();
 
     // TODO update so that the mesh is added to the scene before the animate function is fired so the animate function doesn't
@@ -405,22 +405,22 @@ function animate() {
 
     
     sceneOfferingObjects.forEach((object, i) => {
-        object.speed -= 0.2 * delta;
-        object.speed = Math.max(object.speed, 0)
-        console.log('i', i)
-        console.log('velocity', object.velocity)
-        console.log('displacement', object.displacement)
-        object.velocity.copy(object.direction).multiplyScalar(object.speed)
-        // const displacement =  new THREE.Vector3();
+        // object.speed -= 0.2 * delta;
+        // object.speed = Math.max(object.speed, 0)
+        // object.velocity.copy(object.direction).multiplyScalar(object.speed)
+        // object.displacement.copy(object.velocity).multiplyScalar(delta)
+        // // console.log('position', object.position)
+        // // console.log('displacement', object.displacement)
+        // // console.log('speed',  object.speed)
+        // object.position.add(object.displacement);
 
-        object.displacement.copy(object.velocity).multiplyScalar(delta)
-        
-        object.position.add(object.displacement);
+        // const displacement = initialVelocity.clone().multiplyScalar(time).add(gravity.clone().multiplyScalar(0.5 * time * time));
+        // ball.position.copy(displacement);
 
-        // console.log('object pos', object.position)
         // Apply floor constraint
-        if (object.position.y < 0) {
+        if (object.position.y < 0.1) {
             object.position.y = 0;
+            object.speed = 0
         }
     });
 

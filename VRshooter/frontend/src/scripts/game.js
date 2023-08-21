@@ -37,3 +37,24 @@ function removeHostility() {
         }
     })
 }
+
+
+// Slide position
+
+let slide 
+
+function setSlide(slide) {
+    slide = slide
+}
+
+function getSlide(){
+    return slide
+}
+
+function checkSlide(){
+    if(slide === 5){
+        activateOscilloscope()
+    } else {
+        disableOscilloscope()
+    }
+}

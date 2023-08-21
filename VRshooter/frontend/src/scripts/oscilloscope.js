@@ -101,12 +101,28 @@ function renderOscilloscope(audioBuffer) {
     // })
     // .catch(error => console.error('Error loading audio:', error));
 }
-  
+
 function toggleOscilloscope() {
     oscilloscopeActive = !oscilloscopeActive
 }
 
-const oscilloscopeButton = document.getElementById('oscilloscope-activate-button');
-oscilloscopeButton.addEventListener('click', () => {
-    toggleOscilloscope();
-})
+function activateOscilloscope() {
+    oscilloscopeActive = true
+}
+
+function disableOscilloscope() {
+    oscilloscopeActive = false
+}
+
+console.log('slider')
+
+const oscilloscopeSlider = document.getElementById('oscilloscope-slider');
+const oscilloscopeValueInput = document.getElementById('oscilloscope-valueInput');
+
+
+
+// Add event listener to the oscilloscopeSlider for input changes
+oscilloscopeSlider.addEventListener('input', (e) => {
+    // Update the value of the input field when the oscilloscopeSlider value changes
+    oscilloscopeValueInput.value = parseFloat(e.target.value).toFixed(1);
+});

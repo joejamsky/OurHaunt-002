@@ -53,6 +53,12 @@ function initSlider(){
         // centerMode: true,
         arrows: false,
       });
+
+
+    $("#ui-slider").on('afterChange', function(event, slick, currentSlide) {
+        setSlide(currentSlide);
+        checkSlide(currentSlide);
+    });
 }
 
 function initAbout(){
