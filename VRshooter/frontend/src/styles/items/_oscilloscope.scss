@@ -63,7 +63,7 @@
 	}
 
 	#oscilloscope-activate-button{
-		width: 80px;
+		width: 50px;
 		height: 50px;
 		border-radius: 17px;
 		border: none;
@@ -72,10 +72,14 @@
 		border: 6px white solid;
 		border-left: 0px white solid;
 		border-right: 0px white solid;
+		position: absolute;
+		left: 15px;
+		top: 50px;;
+		top: 50px;
 	}
 
 	
-	#oscilloscope-valueInput[readonly][disabled]{
+	#oscilloscope-valueInput{
 		background-color: transparent;
 		font-family: 'digital-clock-font';
 		width: 130px;
@@ -86,22 +90,30 @@
 		border-top: 8px white solid;
 		border-bottom: double 4px #fff;
 		color: white;
-		padding: 10px 6px 6px;
+		padding: 15px 6px 3px;
 		border-radius: 20px;
+		border-bottom-left-radius: 28px;
+		border-bottom-right-radius: 28px;
+		letter-spacing: -5px;
+	}
+	
+	.hz{
+		font-size: 10px;
+		letter-spacing: 0px;
+		margin-left: 6px;
 	}
 
-	
 	// #oscilloscope-slider
 	input[type=range] {
 		-webkit-appearance: none;
 		margin: 0;
-		width: 140px;
+		width: 110px;
 		height: 30px;
 
 		background: transparent;
 		position: absolute;
-		right: -40px;
-		top: 50%;
+		right: -30px;
+		top: 40%;
 		transform: rotate(-90deg) translate(0, -50%);
 	}
 

@@ -147,8 +147,9 @@
 					</div>		
 
 					<input type="range" id="oscilloscope-slider" min="100" max="900" step="50" value="400">
-					<input type="number" id="oscilloscope-valueInput" value="400.0" readonly disabled>
-				
+					<div id="oscilloscope-valueInput">400.0<span class="hz">hz</span></div>
+					<button id="oscilloscope-activate-button"><i class="fa-solid fa-power-off"></i></button>
+		
 			</div>
 		</div>
 
@@ -230,7 +231,7 @@
 
 		<div id="glyph-module-container">
 
-			<div id="glyph-up-arrow">&#9650;</div>
+			<!-- <div id="glyph-up-arrow">&#9650;</div> -->
 
 			<div id="glyph-module">
 				
@@ -337,7 +338,7 @@
 
 			</div>
 			
-			<div id="glyph-down-arrow">&#9660;</div>
+			<!-- <div id="glyph-down-arrow">&#9660;</div> -->
 		</div>
 
 		

@@ -120,7 +120,7 @@ function generateSplitRandomClamped() {
 function addOfferingOnClick() {
     if (sceneOfferingObjects.length < 5) {
         const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
         const cube = new THREE.Mesh(geometry, material);
         cube.velocity = new THREE.Vector3(0, 0, 0);
         let xPos = generateSplitRandomClamped();
@@ -183,7 +183,7 @@ function initMonster() {
             // Model loaded successfully, add it to the scene
 
             // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
-            const monsterMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            const monsterMat = new THREE.MeshStandardMaterial({ color: 0xffffff });
             // monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
             // monsterMesh.position.set(0, 1, -3);
 
@@ -285,8 +285,13 @@ function initScene() {
             // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
 
 
+    const textureLoader = new THREE.TextureLoader();
+    const textureUrl = '../src/assets/texture/pentagram.png'
+    const texture = textureLoader.load(textureUrl);
+
+
     const groundGeometry = new THREE.PlaneGeometry(10, 10); // Width and height of the ground
-    const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Green color
+    const groundMaterial = new THREE.MeshStandardMaterial({ map: texture }); // Green color
     const ground = new THREE.Mesh(groundGeometry, groundMaterial);
     
     // Rotate the ground to be horizontal
@@ -296,6 +301,16 @@ function initScene() {
     // Add the ground to the scene
     scene.add(ground);
 
+    const ambLight = new THREE.AmbientLight( 0xffffff, 0.02 ); // soft white light
+    scene.add( ambLight );
+    const dirLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+    dirLight.position.set(0.1, -1, 0.1); 
+    // dirLight.target.position.set(0, -10, 0);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.width = 1024;
+    dirLight.shadow.mapSize.height = 1024;
+
+    scene.add( dirLight );
 
 
     // < Setup renderer
@@ -388,10 +403,10 @@ const direction = new THREE.Vector3(0,-10,-10);
 function animate() {
     window.requestAnimationFrame(animate);
     
-    // orientationControls.update();
+    orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
-    rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
+    // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
     TWEEN.update();
 
     // TODO update so that the mesh is added to the scene before the animate function is fired so the animate function doesn't
