@@ -183,7 +183,7 @@ function initMonster() {
             // Model loaded successfully, add it to the scene
 
             // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
-            const monsterMat = new THREE.MeshStandardMaterial({ color: 0xffffff });
+            const monsterMat = new THREE.MeshStandardMaterial({ color: 0xffffff, flatShading: true });
             // monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
             // monsterMesh.position.set(0, 1, -3);
 
@@ -407,11 +407,11 @@ const direction = new THREE.Vector3(0,-10,-10);
 function animate() {
     window.requestAnimationFrame(animate);
     
-    // orientationControls.update();
+    orientationControls.update();
     raycaster.setFromCamera(pointerPosition, camera);
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
     // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
-    // TWEEN.update();
+    TWEEN.update();
 
     // TODO update so that the mesh is added to the scene before the animate function is fired so the animate function doesn't
     // throw an error when trying to run these other functions
