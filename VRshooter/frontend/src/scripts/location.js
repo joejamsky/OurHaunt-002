@@ -100,21 +100,21 @@ function currentLocation(position) {
 
 
     // Update the distance in the HTML div and change the text color based on whether the user is within the radius
-    if (distanceFromHotspotTotal > radius) {
-        $("#slide-GPS > .slide-item-info ").html('You are outside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
-        staticOverlay.style.opacity = '1';
-        outofboundsWarning.style.opacity = '1';
-        // navigator.vibrate([ 100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100 ]); 
-        // navigator.vibrate(10); 
-    } else if (distanceFromHotspotTotal > radius - 2) {
-        $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
-        // staticOverlay.style.opacity = `${distanceFromHotspotLat / 10}`;
-        outofboundsWarning.style.opacity = `${distanceFromHotspotLat / 10}`;
-    } else {
-        $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
-        // staticOverlay.style.opacity = '0';
-        outofboundsWarning.style.opacity = '0';
-    }
+    // if (distanceFromHotspotTotal > radius) {
+    //     $("#slide-GPS > .slide-item-info ").html('You are outside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
+    //     staticOverlay.style.opacity = '1';
+    //     outofboundsWarning.style.opacity = '1';
+    //     // navigator.vibrate([ 100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30, 100, 30, 100 ]); 
+    //     // navigator.vibrate(10); 
+    // } else if (distanceFromHotspotTotal > radius - 2) {
+    //     $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
+    //     staticOverlay.style.opacity = `${distanceFromHotspotLat / 10}`;
+    //     outofboundsWarning.style.opacity = `${distanceFromHotspotLat / 10}`;
+    // } else {
+    //     $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
+    //     staticOverlay.style.opacity = '0';
+    //     outofboundsWarning.style.opacity = '0';
+    // }
 
 
 
