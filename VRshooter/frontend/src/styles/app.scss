@@ -155,14 +155,14 @@ video{
 }
 
 #static-overlay{
-	background-image: url("../textures/screen-static.gif");
+	background-image: url("../assets/textures/screen-static.gif");
 	background-size: cover;
 	width: 100%;
 	height: variables.$video-height;		// height until ui bar
 	position: absolute;
 	top: 0;
 	left: 0;
-	opacity: 0;
+	opacity: 1;
 }
 
 #outofbounds-warning-container{

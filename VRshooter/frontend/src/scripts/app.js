@@ -173,7 +173,7 @@ const audioObject = new THREE.PositionalAudio(listener);        // Create a Thre
 const audioLoader = new THREE.AudioLoader();
 
 // The index runs the dist js files so use the dist asset folder when referencing files
-const meshUrl = '../src/assets/mesh/ghostie-retop.obj'
+const meshUrl = '../src/assets/meshes/ghostie-retop.obj'
 
 const loader = new OBJLoader();
 

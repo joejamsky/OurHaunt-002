@@ -108,11 +108,11 @@ function currentLocation(position) {
         // navigator.vibrate(10); 
     } else if (distanceFromHotspotTotal > radius - 2) {
         $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
-        staticOverlay.style.opacity = `${distanceFromHotspotLat / 10}`;
+        // staticOverlay.style.opacity = `${distanceFromHotspotLat / 10}`;
         outofboundsWarning.style.opacity = `${distanceFromHotspotLat / 10}`;
     } else {
         $("#slide-GPS > .slide-item-info ").html('You are inside the radius. Distance from center: ' + distanceFromHotspotTotal.toFixed(2) + 'm')
-        staticOverlay.style.opacity = '0';
+        // staticOverlay.style.opacity = '0';
         outofboundsWarning.style.opacity = '0';
     }
 
