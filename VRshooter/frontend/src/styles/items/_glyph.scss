@@ -9,20 +9,33 @@
 
     #glyph-module{
         overflow-y: scroll;
-        width: 70%;
+        width: 50%;
+
+        
+        margin: 10px 0 10px;
+        padding: 10px;
+        border-radius: 40px;
+        border: double  10px #fff;
+        border-bottom: double 4px #fff;
+        border-top: double 4px #fff;
+    }
+
+    .glyph-items-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 10px 0 30px;
+    }
+
+    .glyph-list {
+        width: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 0px 20px;
+        gap: 14px 20px;
         justify-content: center;
         align-items: center;
-        
-        margin: 25px 0 0;
-        padding: 10px;
-        border-radius: 10px;
-        border: solid 1px white;
-        border-bottom: double 0px white;
-        border-top: double 0px white;
     }
 
     .glyph-item {
@@ -37,5 +50,19 @@
         box-shadow: 0px 0px 5px 1px aliceblue;
     }
 
-    
+    #glyph-up-arrow {
+        font-size: 20px;
+        margin-top: 30px;
+        transform: scaleX(2.0);
+
+    }
+
+    #glyph-down-arrow{
+		font-size: 20px;
+		// position: absolute;
+		// bottom: 10px;
+        margin-bottom: 10px;
+        transform: scaleX(2.0);
+
+	}
 }
