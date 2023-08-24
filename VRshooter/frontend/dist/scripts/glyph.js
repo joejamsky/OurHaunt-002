@@ -1,0 +1,1 @@
+$(".glyph-list").each((function(){const i=$(this).find(".glyph-item");i.click((function(){i.removeClass("active"),$(this).addClass("active")}))}));

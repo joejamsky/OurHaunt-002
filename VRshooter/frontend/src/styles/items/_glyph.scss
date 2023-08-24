@@ -9,23 +9,27 @@
 
     #glyph-module{
         overflow-y: scroll;
-        width: 61%;
+        width: 80%;
 
-        
-        margin: 45px 0 15px;
-        padding: 10px;
-        border-radius: 40px;
-        border: double  10px #fff;
+        height: 110px;
+        margin: 30px 0 8px;
+        padding: 5px;
+        border-radius: 25px;
+        // border: double  10px #fff;
         border-bottom: double 4px #fff;
         border-top: double 4px #fff;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
     }
 
     .glyph-items-container{
         display: flex;
+        width: 33%;
         flex-direction: column;
         align-items: center;
-        gap: 14px;
-        margin: 0 0 30px;
+        gap: 5px;
+        // margin: 0 0 30px;
     }
 
     .glyph-list {
@@ -33,9 +37,12 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 14px;
+        gap: 20px;
         justify-content: center;
         align-items: center;
+        overflow-y: scroll;
+        height: 100%;
+        padding: 10px 0;
     }
 
     .glyph-item {
@@ -50,19 +57,32 @@
         box-shadow: 0px 0px 5px 1px aliceblue;
     }
 
-    #glyph-up-arrow {
-        font-size: 20px;
-        margin-top: 30px;
-        transform: scaleX(2.0);
-
+    .glyph-item.active {
+        background-color: #fff;
+        color: black;
     }
 
-    #glyph-down-arrow{
-		font-size: 20px;
-		// position: absolute;
-		// bottom: 10px;
-        margin-bottom: 10px;
-        transform: scaleX(2.0);
+    // #glyph-up-arrow {
+    //     font-size: 20px;
+    //     margin-top: 30px;
+    //     transform: scaleX(2.0);
 
-	}
+    // }
+
+    // #glyph-down-arrow{
+	// 	font-size: 20px;
+	// 	// position: absolute;
+	// 	// bottom: 10px;
+    //     margin-bottom: 10px;
+    //     transform: scaleX(2.0);
+
+	// }
+
+    #glyph-confirm-button {
+        border: dotted 1px white;
+        padding: 5px 20px;
+        border-radius: 10px;
+        border-right: none;
+        border-left: none;
+    }
 }
