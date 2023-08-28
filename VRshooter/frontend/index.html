@@ -146,9 +146,14 @@
 						<svg id="oscilloscope-svg" width="200" height="60"></svg>
 					</div>		
 
-					<input type="range" id="oscilloscope-slider" min="100" max="900" step="50" value="400">
-					<div id="oscilloscope-valueInput">400.0<span class="hz">hz</span></div>
-					<button id="oscilloscope-activate-button"><i class="fa-solid fa-power-off"></i></button>
+					<input type="range" id="oscilloscope-slider-integer" min="100" max="900" step="50" value="400">
+					<div id="oscilloscope-values-container">
+						<div id="oscilloscope-value-integer">400</div>
+						<div id="oscilloscope-value-decimal">.00</div>
+						<div class="hz">hz</div>
+					</div>
+					<input type="range" id="oscilloscope-slider-decimal" min="00" max="90" step="10" value="00">
+					<!-- <button id="oscilloscope-activate-button"><i class="fa-solid fa-power-off"></i></button> -->
 		
 			</div>
 		</div>
@@ -320,6 +325,7 @@
 
 		
 		<script type="module" src="./src/scripts/DeviceOrientationControls.js"></script>
+		<script type="text/javascript" src="./src/scripts/entityGenerator.js"></script>
 		<script type="text/javascript" src="./src/scripts/game.js"></script>
 		<script type="text/javascript" src="./src/scripts/glyph.js"></script>
 		<script type="text/javascript" src="./src/scripts/uiSlider.js"></script>
