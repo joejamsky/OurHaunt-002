@@ -4,9 +4,9 @@ const voiceFormMicButton = document.getElementById('voice-mic-button')
 
 
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
+// function getRandomInt(max) {
+//     return Math.floor(Math.random() * max);
+// }
 
 function handleTextArray(textArray) {
     return textArray.length === 1 ? textArray[0] : textArray.slice(0, -1).join(', ') + ', and ' + textArray[textArray.length - 1];
@@ -113,7 +113,8 @@ function checkInputPhrase(phrase) {
         case "are you telling the truth":
             if(monsterData.honest){
                 typeWriterEffect(`Yes.`);
-            } else if(getRandomInt(2) === 0) {
+            // } else if(getRandomInt(2) === 0) {
+            } else if(true) {       // This is temperarily disabled until i get 'getrandomint' sorted. There are two functions named getrandomint. the other is in entity generator. until then this will be disables. This needs to be reworked anyway though
                 typeWriterEffect(`Yes.`);
             } else {
                 typeWriterEffect(`No.`);

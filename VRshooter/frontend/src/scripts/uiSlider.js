@@ -39,6 +39,12 @@ const slideData = [
         itemName: 'Oscilloscope',
         unlocked: false,
         summaryText: "Detects sounds from spirits." 
+    },
+    { 
+        slideID: 'slide-Temp',
+        itemName: 'Temperature',
+        unlocked: false,
+        summaryText: "Adjusts surrounding temperature." 
     }
 
 ];
@@ -129,19 +135,3 @@ window.onload = function() {
         alert("jQuery is not loaded.");
     }
 }
-
-
-// const scrollableDiv = document.getElementById('glyph-module');
-// const glyphUpArrow = document.getElementById('glyph-up-arrow')
-// const glyphDownArrow = document.getElementById('glyph-down-arrow')
-
-// scrollableDiv.addEventListener('scroll', function() {
-//     if (scrollableDiv.scrollTop === 0) {
-//         glyphUpArrow.innerHTML = '&#9651;'
-//       } else if (scrollableDiv.scrollTop + scrollableDiv.clientHeight === scrollableDiv.scrollHeight) {
-//         glyphDownArrow.innerHTML = '&#9661;'
-//       } else {
-//         glyphUpArrow.innerHTML = '&#9650;'
-//         glyphDownArrow.innerHTML = '&#9660;'
-//       }
-//   });

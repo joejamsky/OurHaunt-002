@@ -1,0 +1,78 @@
+
+{ 
+  "key": "HOBBIES_TYPE",
+  "data": [
+    {
+      "EVIL": [
+        "Trolling",
+        "Vandalism",
+        "Bullying",
+        "Spreading Rumors",
+        "Pranking",
+        "Gossiping",
+        "Sabotaging Others",
+        "Identity Theft",
+        "Online Scamming",
+        "Hacking"
+      ]
+    },
+    {
+      "NEUTRAL": [
+        "Painting",
+        "Cooking",
+        "Gardening",
+        "Playing music",
+        "Reading",
+        "Photography",
+        "Hiking",
+        "Writing",
+        "Swimming",
+        "Dancing",
+        "Yoga",
+        "Biking",
+        "Woodworking",
+        "Sculpting",
+        "Collecting Stamps",
+        "Bird Watching",
+        "Camping",
+        "Fishing",
+        "Pottery",
+        "Knitting",
+        "Rock Climbing",
+        "Meditation",
+        "Chess",
+        "Singing",
+        "Traveling",
+        "Model Building",
+        "Origami",
+        "Skydiving",
+        "Gaming",
+        "Volunteering",
+        "Astronomy",
+        "Running",
+        "Basketball",
+        "Drawing",
+        "Football",
+        "Soccer",
+        "Piano",
+        "Tennis",
+        "Martial Arts",
+        "Baking",
+        "Climbing",
+        "Scuba Diving",
+        "Sewing",
+        "Crossfit",
+        "Calligraphy",
+        "Surfing",
+        "Taekwondo",
+        "Archery",
+        "Writing Poetry",
+        "Skiing",
+        "Acting",
+        "Pilates",
+        "Kickboxing",
+        "Golf"
+      ]  
+    }
+  ]
+}

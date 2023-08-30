@@ -13,14 +13,14 @@
 
         height: 110px;
         margin: 30px 0 8px;
-        padding: 5px;
+        padding: 5px 15px;
         border-radius: 25px;
         // border: double  10px #fff;
         border-bottom: double 4px #fff;
         border-top: double 4px #fff;
         display: flex;
         flex-direction: row;
-        gap: 5px;
+        gap: 15px;
     }
 
     .glyph-items-container{
@@ -43,6 +43,7 @@
         overflow-y: scroll;
         height: 100%;
         padding: 10px 0;
+        border-radius: 40%;
     }
 
     .glyph-item {
@@ -54,7 +55,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0px 0px 5px 1px aliceblue;
+        // box-shadow: 0px 0px 5px 1px aliceblue;
     }
 
     .glyph-item.active {
@@ -62,27 +63,18 @@
         color: black;
     }
 
-    // #glyph-up-arrow {
-    //     font-size: 20px;
-    //     margin-top: 30px;
-    //     transform: scaleX(2.0);
-
-    // }
-
-    // #glyph-down-arrow{
-	// 	font-size: 20px;
-	// 	// position: absolute;
-	// 	// bottom: 10px;
-    //     margin-bottom: 10px;
-    //     transform: scaleX(2.0);
-
-	// }
-
     #glyph-confirm-button {
         border: dotted 1px white;
         padding: 5px 20px;
         border-radius: 10px;
         border-right: none;
         border-left: none;
+    }
+
+    .scroll-up {
+        border-top: dotted 1px white;
+    }
+    .scroll-down {
+        border-bottom: dotted 1px white;
     }
 }

@@ -72,6 +72,10 @@ function initSlides() {
     const glyphDiv = document.getElementById('slide-Glyph')
     const glyphModuleContainer = document.getElementById('glyph-module-container')
     glyphDiv.append(glyphModuleContainer)
+
+    const tempDiv = document.getElementById('slide-Temp')
+    const tempModuleContainer = document.getElementById('temperature-module-container')
+    tempDiv.append(tempModuleContainer)
 }
 
 

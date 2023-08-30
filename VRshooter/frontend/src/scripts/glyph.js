@@ -130,22 +130,24 @@
 //     }
 // }
 
+const scrollableGlyphDivs = document.getElementsByClassName('glyph-list');
+// const glyphUpArrow = document.getElementById('glyph-up-arrow')
+// const glyphDownArrow = document.getElementById('glyph-down-arrow')
 
-// // const scrollableDiv = document.getElementById('glyph-module');
-// // const glyphUpArrow = document.getElementById('glyph-up-arrow')
-// // const glyphDownArrow = document.getElementById('glyph-down-arrow')
-
-// // scrollableDiv.addEventListener('scroll', function() {
-// //     if (scrollableDiv.scrollTop === 0) {
-// //         glyphUpArrow.innerHTML = '&#9651;'
-// //       } else if (scrollableDiv.scrollTop + scrollableDiv.clientHeight === scrollableDiv.scrollHeight) {
-// //         glyphDownArrow.innerHTML = '&#9661;'
-// //       } else {
-// //         glyphUpArrow.innerHTML = '&#9650;'
-// //         glyphDownArrow.innerHTML = '&#9660;'
-// //       }
-// //   });
-
+Array.from(scrollableGlyphDivs).forEach(item => {
+    item.addEventListener('scroll', function() {
+      if (item.scrollTop === 0) {
+          item.classList.remove('scroll-up')
+          item.classList.add('scroll-down')
+        } else if (item.scrollTop + item.clientHeight === item.scrollHeight) {
+          item.classList.add('scroll-up')
+          item.classList.remove('scroll-down')
+        } else {
+          item.classList.add('scroll-down')
+          item.classList.add('scroll-up')
+        }
+    }); 
+})
 
 
 $('.glyph-list').each(function() {

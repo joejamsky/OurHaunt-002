@@ -100,6 +100,7 @@
 		<div id="gps-module-container">
 			<div id="gps-module">
 				<div id="gps-identifier"></div>
+				<div id="gps-spread"></div>
 			</div>
 		</div>
 
@@ -236,15 +237,12 @@
 
 		<div id="glyph-module-container">
 
-			<!-- <div id="glyph-up-arrow">&#9650;</div> -->
-
 			<div id="glyph-module">
 				
 				<div class="glyph-items-container">
 					<div>Glyphs</div>
-					<div class="glyph-list">
+					<div class="glyph-list scroll-down">
 						
-	
 						<div class="glyph-item">
 							<i class="fa-solid fa-star"></i>
 						</div>
@@ -264,36 +262,37 @@
 				</div>
 
 				<div class="glyph-items-container">
-					<div>Lights</div>
-					<div class="glyph-list">
+					<div>Candles</div>
+					<div class="glyph-list scroll-down">
 						
-
 						<div class="glyph-item">
-							candles
+							Red
 						</div>
 						<div class="glyph-item">
-							lanterns
+							Orange
 						</div>
 						<div class="glyph-item">
-							fairy lights
+							Yellow
 						</div>
 						<div class="glyph-item">
-							mushrooms
+							Green
 						</div>
 						<div class="glyph-item">
-							electricity
+							Blue
 						</div>
 						<div class="glyph-item">
-							neon
+							Indigo
+						</div>
+						<div class="glyph-item">
+							Violet
 						</div>
 					</div>
 				</div>
 
 				<div class="glyph-items-container">
 					<div>Promises</div>
-					<div class="glyph-list">
+					<div class="glyph-list scroll-down">
 						
-
 						<div class="glyph-item">
 							Blood
 						</div>
@@ -301,16 +300,16 @@
 							Letter
 						</div>
 						<div class="glyph-item">
-							Wedding Proposal
+							Ring
 						</div>
 						<div class="glyph-item">
-							secrecy
+							Secrecy
 						</div>
 						<div class="glyph-item">
-							non harm or leave this place
+							Pacifism
 						</div>
 						<div class="glyph-item">
-							neon
+							Love
 						</div>
 					</div>
 				</div>
@@ -320,7 +319,17 @@
 			<div id="glyph-confirm-button">
 				<i class="fa-solid fa-check"></i>
 			</div>
-			<!-- <div id="glyph-down-arrow">&#9660;</div> -->
+			
+		</div>
+
+		<div id="temperature-module-container">
+			<div id="temperature-module">
+				
+					<button id="temperature-minus"></button>
+					<input id="temperature-quantity" min="-10" max="120" name="temperature-quantity" value="10" step="1" type="number">
+					<button id="temperature-plus"></button>
+				
+			</div>
 		</div>
 
 		
@@ -330,6 +339,7 @@
 		<script type="text/javascript" src="./src/scripts/glyph.js"></script>
 		<script type="text/javascript" src="./src/scripts/uiSlider.js"></script>
 		<script type="text/javascript" src="./src/scripts/location.js"></script>
+		<script type="text/javascript" src="./src/scripts/temperature.js"></script>
 		<script type="text/javascript" src="./src/scripts/voice.js"></script>
 		<script type="text/javascript" src="./src/scripts/oscilloscope.js"></script>
 		<script type="module" src="./src/scripts/app.js"></script>

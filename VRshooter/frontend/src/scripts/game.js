@@ -1,7 +1,7 @@
 let monsterData
 
 
-fetch('../src/assets/data/ghostProperties.json')
+fetch('../src/assets/data/entityProperties.json')
   .then(response => response.json())
   .then(data => {
     // Use the parsed JSON data here
