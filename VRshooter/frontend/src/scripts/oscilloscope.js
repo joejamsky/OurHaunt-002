@@ -23,8 +23,8 @@ function renderOscilloscope(audioBuffer) {
         const width = svg.clientWidth;
         const height = svg.clientHeight;
 
-        console.log('width',width)
-        console.log('height',height)
+        // console.log('width',width)
+        // console.log('height',height)
 
         // Clear SVG
         svg.innerHTML = '';
@@ -42,11 +42,11 @@ function renderOscilloscope(audioBuffer) {
         
         // Connect the AnalyserNode to the audioContext
         const source = audioContext.createBufferSource();
-        console.log('audioBuffer', audioBuffer)
+        // console.log('audioBuffer', audioBuffer)
         source.buffer = audioBuffer;
         source.connect(analyserNode);
         // analyserNode.connect(audioContext.destination);
-        console.log('analyserNode2', analyserNode)
+        // console.log('analyserNode2', analyserNode)
 
 
         // Draw oscilloscope waveform

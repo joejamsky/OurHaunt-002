@@ -1,16 +1,16 @@
 let monsterData
 
 
-fetch('../src/assets/data/entityProperties.json')
-  .then(response => response.json())
-  .then(data => {
-    // Use the parsed JSON data here
-    monsterData = data[getRandomInt(2)] 
-  })
-  .catch(error => {
-    // Handle any errors that occurred during the fetch
-    console.error('Error loading JSON:', error);
-});
+// fetch('../src/assets/data/entityProperties.json')
+//   .then(response => response.json())
+//   .then(data => {
+//     // Use the parsed JSON data here
+//     monsterData = data[getRandomInt(2)] 
+//   })
+//   .catch(error => {
+//     // Handle any errors that occurred during the fetch
+//     console.error('Error loading JSON:', error);
+// });
 
 
 const emfLights = document.querySelectorAll('.emf-light-bulb')

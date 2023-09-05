@@ -1,8 +1,7 @@
 
 { 
   "key": "NAME_TYPES",
-  "data":[
-    {
+  "data": {
       "Demon": [
       "Aamon",
       "Amon",
@@ -313,9 +312,7 @@
       "Zartai-Zartanai",
       "Zepar",
       "Ziminiar"
-      ]
-    },
-    {
+      ],
       "Angel": [
       "Abatur",
       "Adathan",
@@ -474,9 +471,7 @@
       "Zephaniel",
       "Zephon",
       "Zihrun"
-      ]
-    },
-    {
+      ],
       "Fey": [
       "Auberon",
       "Briarrose",
@@ -582,9 +577,7 @@
       "Xenon",
       "Yseult",
       "Zinnia"
-      ]
-    },
-    {
+      ],
       "Ghost": [
       "Liam",
       "Noah",
@@ -826,9 +819,7 @@
       "Nevaeh",
       "Aria",
       "Grace"
-      ]
-    },
-    {
+      ],
       "Critter": [
       "Buddy",
       "Luna",
@@ -922,9 +913,7 @@
       "Honey",
       "Charlie",
       "Pearl"
-      ]
-    },
-    {  
+      ],
       "Bork": [
       "Zorblak",
       "Vixara",
@@ -1026,6 +1015,5 @@
       "Glynda",
       "Zyvona"
       ]
-    }
-  ]
+  }
 }

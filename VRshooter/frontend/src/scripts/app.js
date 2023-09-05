@@ -202,7 +202,7 @@ function initMonster() {
 
             audioLoader.load(audioFileUrl, (audioBuffer) => {
 
-                console.log('Loaded audioBuffer:', audioBuffer);
+                // console.log('Loaded audioBuffer:', audioBuffer);
 
                 const audioSource = audioContext.createBufferSource();
                 audioSource.buffer = audioBuffer;
@@ -294,7 +294,7 @@ function initScene() {
     const texture = textureLoader.load(textureUrl);
 
 
-    console.log('texture', texture)
+    // console.log('texture', texture)
     const groundGeometry = new THREE.PlaneGeometry(10, 10); // Width and height of the ground
     const groundMaterial = new THREE.MeshStandardMaterial({ map: texture, transparent: true });
     // const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xff00ff }); 
