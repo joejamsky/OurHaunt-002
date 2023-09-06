@@ -63,14 +63,14 @@ function checkInputPhrase(phrase) {
         case "how young are you":
         case "what is your age":
         case "age":
-            typeWriterEffect(monsterData.age);
+            typeWriterEffect(GLOBAL_ENTITY.Age);
             break;
         case "what's your name":
         case "what is your name":
         case "what can i call you":
         case "can you give me your name":
         case "name":
-            typeWriterEffect(monsterData.name);
+            typeWriterEffect(GLOBAL_ENTITY.Name);
             break;
         case "what is your birth date":
         case "what is your birthday":
@@ -80,7 +80,7 @@ function checkInputPhrase(phrase) {
         case "when were you born":
         case "birth date":
         case "birthday":
-            typeWriterEffect(`I was born ${monsterData.birthDate.month}/${monsterData.birthDate.day}/${monsterData.birthDate.year}.`);
+            typeWriterEffect(`I was born ${GLOBAL_ENTITY.Birthdate.month}/${GLOBAL_ENTITY.Birthdate.day}/${GLOBAL_ENTITY.Birthdate.year}.`);
             break;
         case "what is your death date":
         case "what is your death day":
@@ -88,30 +88,30 @@ function checkInputPhrase(phrase) {
         case "when is your death day":
         case "death date":
         case "death day":
-            typeWriterEffect(`I died ${monsterData.deathDate.month}/${monsterData.deathDate.day}/${monsterData.deathDate.year}.`);
+            typeWriterEffect(`I died ${GLOBAL_ENTITY.Deathdate.month}/${GLOBAL_ENTITY.Deathdate.day}/${GLOBAL_ENTITY.Deathdate.year}.`);
             break;
         case "how did you die":
         case "what was your cause of death":
         case "cause of death":
-            typeWriterEffect(monsterData.deathCause);
+            typeWriterEffect(GLOBAL_ENTITY.CauseOfDeath);
             break;
         case "what do you want":
         case "why are you here":
         case "what is your motive":
         case "how can i help":
-            typeWriterEffect(monsterData.motive);
+            typeWriterEffect(GLOBAL_ENTITY.Intention);
             break;
-        case "where you from":
-        case "where are you from":
-            typeWriterEffect(`I am from ${monsterData.address.city}.`);
-            break;
+        // case "where you from":
+        // case "where are you from":
+        //     typeWriterEffect(`I am from ${GLOBAL_ENTITY.address.city}.`);
+        //     break;
         case "what do you like to do":
         case "what did you like to do":
         case "hobbies":
-            typeWriterEffect(`I liked ${handleTextArray(monsterData.hobbies)}.`);
+            typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Hobbies)}.`);
             break;
         case "are you telling the truth":
-            if(monsterData.honest){
+            if(GLOBAL_ENTITY.Ordered === "lawful"){
                 typeWriterEffect(`Yes.`);
             // } else if(getRandomInt(2) === 0) {
             } else if(true) {       // This is temperarily disabled until i get 'getrandomint' sorted. There are two functions named getrandomint. the other is in entity generator. until then this will be disables. This needs to be reworked anyway though
@@ -123,7 +123,7 @@ function checkInputPhrase(phrase) {
         case "do you have a mother":
         case "where is your mother":
         case "mother":
-            if(monsterData.relationships.mom){
+            if(GLOBAL_ENTITY.Relationships.Mom){
                 typeWriterEffect(`I have a mother but I don't know where she is`);
             } else {
                 typeWriterEffect(`I don't have a mother`);
@@ -132,46 +132,63 @@ function checkInputPhrase(phrase) {
         case "what was your job":
         case "job":
         case "occupation":
-            typeWriterEffect(monsterData.occupation);
+            typeWriterEffect(GLOBAL_ENTITY.Profession);
             break;
         case "were you rich":
         case "were you poor":
         case "how much money did you make":
         case "how much were you worth":
         case "income":
-            typeWriterEffect(monsterData.income);
+            typeWriterEffect(GLOBAL_ENTITY.Income);
             break;
         case "what is your favorite food":
         case "do you have a favorite food":
-            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.food)}.`);
+            typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.Food)}.`);
             break;
-        case "what is your favorite book":
-        case "do you have a favorite book":
-            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.book)}.`);
-            break;
-        case "what is your favorite place":
-        case "do you have a favorite place":
-            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.place)}.`);
+        case "what is your favorite drink":
+        case "do you have a favorite drink":
+            typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.Drink)}.`);
             break;
         case "what is your favorite band":
         case "do you have a favorite band":
         case "who is your favorite musician":
         case "do you have a favorite musician":
-            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.music)}.`);
+            typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.Music)}.`);
             break;
+        case "what is your favorite book":
+        case "do you have a favorite book":
+            typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.Literature)}.`);
+            break;
+
+        // case "what is your favorite place":
+        // case "do you have a favorite place":
+        //     typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.place)}.`);
+        //     break;
+
         case "what is your favorite film":
         case "do you have a favorite film":
-            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.film)}.`);
+            typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.Film)}.`);
             break;
-        case "what is your favorite sports team":
-        case "what is your favorite sport":
-        case "do you have a favorite sports team":
-        case "do you have a favorite sport":
-            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.sport)}.`);
+        case "what is your favorite clothing":
+        case "do you have a favorite clothing":
+        case "do you have a favorite outfit":
+        case "do you have a favorite piece of clothing":
+        case "do you have a favorite article of clothing":
+            typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.Film)}.`);
             break;
-        case "do you have a favorite animal":
-            typeWriterEffect(`I liked ${handleTextArray(monsterData.favorites.animal)}.`);
+        case "what is your favorite color":
+        case "do you have a favorite color":
+            typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.Color)}.`);
             break;
+        // case "what is your favorite sports team":
+        // case "what is your favorite sport":
+        // case "do you have a favorite sports team":
+        // case "do you have a favorite sport":
+        //     typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.sport)}.`);
+        //     break;
+        // case "do you have a favorite animal":
+        //     typeWriterEffect(`I liked ${handleTextArray(GLOBAL_ENTITY.Favorites.animal)}.`);
+        //     break;
         default: 
             typeWriterEffect("...?");
             addHostility()

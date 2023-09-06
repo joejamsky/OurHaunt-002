@@ -416,7 +416,7 @@ function animate() {
     const sceneObjectIntersects = raycaster.intersectObjects(scene.children);
     // rotateCamera();     // This is for debug. Don't forget to comment out orientation controls.
     TWEEN.update();
-
+    console.log('entity', GLOBAL_ENTITY)
     // TODO update so that the mesh is added to the scene before the animate function is fired so the animate function doesn't
     // throw an error when trying to run these other functions
     if(monsterMesh && monsterMesh.position){

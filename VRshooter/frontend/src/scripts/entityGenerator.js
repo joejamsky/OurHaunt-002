@@ -7,45 +7,19 @@ const ENTITY_TYPES = [
   "Bork"
 ]
 
-
-const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-const formatYear = (year) => {
-  if (year <= 0) {
-      return `${year} BCE`;
-  } else {
-      return year.toString();
-  }
-}
-
-const getRandomDate = (oldestYear = -271821, latestYearModifier = 2) => {
-  const presentYear = new Date().getFullYear() - latestYearModifier;
-
-  const randomYear = getRandomInt(oldestYear, presentYear);
-  const randomMonth = getRandomInt(1, 12);
-  const randomDay = getRandomInt(1, 28); // Assuming all months have 28 days for simplicity
-  
-  const formattedDate = new Date(randomYear, randomMonth - 1, randomDay);
-
-  return formattedDate;
-}
-
-
 const JSON_DATA_FILES = [
+  "entityFocuses.json", 
   "entityCausesOfDeath.json", 
   "entityFavorites.json",
   "entityHobbies.json",
   "entityIntentions.json",
-  "entityJobs.json",
+  "entityProfessions.json",
   "entityNames.json",
   "entityPhysicalProperties.json"
 ]
 
 let dataObj = {};
+let GLOBAL_ENTITY;
 
 async function fetchData(){
   for (let i = 0; i < JSON_DATA_FILES.length; i++)   {
@@ -63,22 +37,27 @@ async function fetchData(){
 };
 
 
-// const Entity = fetchData().then(()=>{
-const entity = fetchData().then(()=>{
-  console.log('dataObj', dataObj)
-  const entityObj = new entityTemplate(generateRandomEntityType())
-  console.log("entity done", entityObj)
+fetchData().then(()=>{
+  GLOBAL_ENTITY = new entityTemplate();
 });
 
 
-const getEntityTypeIndex = (entityType) => {
-  return ENTITY_TYPES.findIndex(item => item === entityType)
-}
-
-const generateRandomEntityType = () => {
-  return ENTITY_TYPES[getRandomInt(0,ENTITY_TYPES.length - 1)]
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+
+const getRandomDate = (oldestYearModifier = 271821, latestYearModifier = 2) => {
+  const presentYear = new Date().getFullYear() - latestYearModifier;
+  const oldestYear = presentYear - oldestYearModifier;
+  const randomYear = getRandomInt(oldestYear, presentYear);
+  const randomMonth = getRandomInt(1, 12);
+  const randomDay = getRandomInt(1, 28); // Assuming all months have 28 days for simplicity
+  
+  return new Date(randomYear, randomMonth - 1, randomDay);
+}
 
 const generateRandomName = (entityType, entityGender) => {
   const dataSection = dataObj.NAME_TYPES[0][entityType]
@@ -98,66 +77,24 @@ const generateRandomName = (entityType, entityGender) => {
 }
 
 const generateRandomNames = (entityType, entityGender, numberOfNames = 1) => {
-
-  if(numberOfNames > 1) {
-    let names = []
-    for(let i = 0; i < numberOfNames; i++) {
-      names.push(generateRandomName(entityType, entityGender))
-    }
-    return names
-  } else {
-    return generateRandomName(entityType, entityGender)
+  let names = []
+  for(let i = 0; i < numberOfNames; i++) {
+    names.push(generateRandomName(entityType, entityGender))
   }
-}
-
-const generateEntityStats = () => {
-  
-
+  return names
 }
 
 
-const generateRandomGender = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['GENDER_TYPES'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-}
-
-const generateRandomSound = (entityType) => {
-  switch(entityType) {
-    case "Demon":
-      return false
-     
-    case "Angel":
-      return false
-     
-    case "Fey":
-      return false
-     
-    case "Ghost":
-      return false
-     
-    case "Critter":
-      return false
-     
-    case "Bork":
-      return false
-     
-    default:
-      return "Error"
-  }
-}
-
-// const getRandomDate = (oldestYear = -271821, latestYearModifier = 2) => {
 const generateRandomBirthdate = (entityType) => {
   const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_AGES'][entityType]
-  const maxAge = dataSection[0] === null ?  undefined : dataSection[0];
-  const minAge = dataSection[1] === null ? undefined: dataSection[1];
+  const maxAge = dataSection[0] === null ? undefined : dataSection[0];
+  const minAge = dataSection[1] === null ? undefined : dataSection[1];
   return getRandomDate(maxAge, minAge)
 
 }
 
 const calculateAge = (birthdate) => {
-  const currentDate = new Date(); // Get the current date
+  const currentDate = new Date(); 
   const birthYear = birthdate.getFullYear();
   const currentYear = currentDate.getFullYear();
   const birthMonth = birthdate.getMonth();
@@ -175,9 +112,8 @@ const calculateAge = (birthdate) => {
   return age;
 }
 
-//wrie a function that takes in a birthdate and an age and returns a deathdate
-const calculateDeathdate = (birthdate, age) => {
-  const currentDate = new Date(); // Get the current date
+const generateRandomAge = (birthdate) => {
+  const currentDate = new Date(); 
   const birthYear = birthdate.getFullYear();
   const currentYear = currentDate.getFullYear();
   const birthMonth = birthdate.getMonth();
@@ -185,116 +121,58 @@ const calculateDeathdate = (birthdate, age) => {
   const birthDay = birthdate.getDate();
   const currentDay = currentDate.getDate();
 
-  let deathYear = birthYear + age;
-  let deathMonth = birthMonth;
-  let deathDay = birthDay;
+  let age = currentYear - birthYear;
 
   // Check if the birthday has already occurred this year
   if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
-    deathYear--;
+    age--;
   }
 
-  return new Date(deathYear, deathMonth, deathDay);
+  return getRandomInt(0, age);
 }
 
+
+const calculateDeathdate = (birthdate, age) => {
+  // Get the birth year from the birthdate
+  const birthYear = birthdate.getFullYear();
+
+  // Calculate the year of death based on age
+  const deathYear = birthYear + age;
+
+  // Get the birth month and day
+  const birthMonth = birthdate.getMonth();
+  const birthDay = birthdate.getDate();
+
+  let randomMonth = getRandomInt(0, birthMonth);
+  if (randomMonth === birthMonth) {
+    // If the random month is the same as the birth month, generate a day before the birthday
+    randomDay = getRandomInt(0, birthDay - 1);
+  } else {
+    randomDay = getRandomInt(0, 28);
+  }
+
+  return new Date(deathYear, randomMonth, randomDay);
+}
+
+const generateRandomPhysicalProperty = (entityType, property) => {
+  const dataSection = dataObj.PHYSICAL_PROPERTIES[0][property][entityType]
+  const dataSectionLength = dataSection.length - 1
+  return dataSection[getRandomInt(0, dataSectionLength)]
+};
+
+// cause of death and random focus can be combined into one function
 const generateRandomCauseofDeath = () => {
   const dataSection = dataObj.DEATH_TYPES[0]
   const dataLength = dataSection.length - 1
   return dataSection[getRandomInt(0, dataLength)]
 }
 
-const generateRandomHeight = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_HEIGHTS'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomWeight = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_WEIGHTS'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomArms = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_ARMS'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomLegs = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_LEGS'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomTails = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_TAILS'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomWings = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_WINGS'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomSpeed = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_SPEED'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomStealth = (entityType) => {  
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_STEALTH'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomTemperature = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_TEMPERATURE'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomMorality = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_MORALITY'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
-const generateRandomOrdered = (entityType) => {
-  const dataSection = dataObj.PHYSICAL_PROPERTIES[0]['ENTITY_ORDERS'][entityType]
-  const dataSectionLength = dataSection.length - 1
-  return dataSection[getRandomInt(0, dataSectionLength)]
-};
-
+// cause of death and random focus can be combined into one function
 const generateRandomFocus = (entityType) => {  
-  const FOCUS_TYPES = [
-    "Old Mirror",
-    "Music Box",
-    "Family Heirloom",
-    "Vintage Doll",
-    "Locked Chest",
-    "Painting or Portrait",
-    "Pocket Watch",
-    "Ancient Book",
-    "Jewelry",
-    "Weapon",
-    "Cursed Painting",
-    "Antique Furniture",
-    "Symbolic Amulet",
-    "Vintage Phonograph",
-    "Haunted Sculpture",
-    "Family Portrait Album",
-    "Broken Pocket Watch",
-    "Mysterious Gemstone",
-    "Forgotten Relic",
-    "Time-Worn Journal"
-  ]
-  const dataLength = FOCUS_TYPES.length - 1;
+  const dataSection = dataObj.FOCUS_TYPES[0]
+  const dataLength = dataSection.length - 1;
 
-  return FOCUS_TYPES[getRandomInt(0,dataLength)]
+  return dataSection[getRandomInt(0,dataLength)]
 };
 
 const generateRandomIntention = (entityType, morality) => {
@@ -394,50 +272,50 @@ const generateRandomFavorites = (entityType, numberOfFavorites, favoriteType) =>
 }
 
 class entityTemplate {
-  constructor(entityType) {
-    this.EntityType =  entityType,                    
-    this.Gender = generateRandomGender(entityType);   
-    this.Sound = generateRandomSound(entityType);     // needs work
-    this.Name = generateRandomName(entityType, this.Gender); 
-    this.Birthdate = generateRandomBirthdate(entityType);   
-    this.Age = calculateAge(this.Birthdate);                // needs work
-    this.Deathdate = entityType === "Ghost" ? calculateDeathdate(this.Birthdate, this.Age) : false; 
-    this.CauseOfDeath = entityType === "Ghost" ? generateRandomCauseofDeath() : false;      
-    this.Height = generateRandomHeight(entityType);
-    this.Weight = generateRandomWeight(entityType);
-    this.Arms = generateRandomArms(entityType);
-    this.Legs = generateRandomLegs(entityType);;
-    this.Tails = generateRandomTails(entityType);;
-    this.Wings = generateRandomWings(entityType);;
+  constructor() {
+    this.EntityType = generateRandomPhysicalProperty("Ghost", "ENTITY_TYPES");                    
+    this.Gender = generateRandomPhysicalProperty(this.EntityType, "ENTITY_GENDERS");   
+    this.Sound = generateRandomPhysicalProperty(this.EntityType, "ENTITY_SOUNDS");     // needs work
+    this.Name = generateRandomName(this.EntityType, this.Gender); 
+    this.Birthdate = generateRandomBirthdate(this.EntityType);   
+    this.Age = this.EntityType === "Ghost" ? generateRandomAge(this.Birthdate) : calculateAge(this.Birthdate);
+    this.Deathdate = this.EntityType === "Ghost" ? calculateDeathdate(this.Birthdate, this.Age + 1) : false; 
+    this.CauseOfDeath = this.EntityType === "Ghost" ? generateRandomCauseofDeath() : false;      
+    this.Height = generateRandomPhysicalProperty(this.EntityType, "ENTITY_HEIGHTS");
+    this.Weight = generateRandomPhysicalProperty(this.EntityType, "ENTITY_WEIGHTS");
+    this.Arms = generateRandomPhysicalProperty(this.EntityType, "ENTITY_ARMS");
+    this.Legs = generateRandomPhysicalProperty(this.EntityType, "ENTITY_LEGS");;
+    this.Tails = generateRandomPhysicalProperty(this.EntityType, "ENTITY_TAILS");;
+    this.Wings = generateRandomPhysicalProperty(this.EntityType, "ENTITY_WINGS");;
     // this.Flight = calculateWings();
-    this.Speed = generateRandomSpeed(entityType);
-    this.Stealth = generateRandomStealth(entityType);   // Does this determine the size of the blip or whether the blip works at all?
-    this.Temperature = generateRandomTemperature(entityType);
-    this.Morality = generateRandomMorality(entityType);
-    this.Ordered = generateRandomOrdered(entityType);
-    this.Focus = generateRandomFocus(entityType);
-    this.Intention = generateRandomIntention(entityType, this.Morality);
+    this.Speed = generateRandomPhysicalProperty(this.EntityType, "ENTITY_SPEED");
+    this.Stealth = generateRandomPhysicalProperty(this.EntityType, "ENTITY_STEALTH");   // Does this determine the size of the blip or whether the blip works at all?
+    this.Temperature = generateRandomPhysicalProperty(this.EntityType, "ENTITY_TEMPERATURE");
+    this.Morality = generateRandomPhysicalProperty(this.EntityType, "ENTITY_MORALITY");
+    this.Ordered = generateRandomPhysicalProperty(this.EntityType, "ENTITY_ORDERS");
+    this.Focus = generateRandomFocus(this.EntityType);
+    this.Intention = generateRandomIntention(this.EntityType, this.Morality);
     this.Relationships = {
-      Partner: generateRandomName(entityType, this.Gender), 
-      Mom: generateRandomName(entityType, "f"),
-      Dad: generateRandomName(entityType, "m"),
-      Siblings: generateRandomNames(entityType, generateRandomGender(entityType), getRandomInt(1,5)), 
-      Friends: generateRandomNames(entityType, generateRandomGender(entityType), getRandomInt(1,5)), 
+      Partner: generateRandomName(this.EntityType, this.Gender), 
+      Mom: generateRandomName(this.EntityType, "f"),
+      Dad: generateRandomName(this.EntityType, "m"),
+      Siblings: generateRandomNames(this.EntityType, generateRandomPhysicalProperty(this.EntityType, "ENTITY_GENDERS"), getRandomInt(1,5)), 
+      Friends: generateRandomNames(this.EntityType, generateRandomPhysicalProperty(this.EntityType, "ENTITY_GENDERS"), getRandomInt(1,5)), 
     };
-    this.Hobbies = generateRandomHobbies(entityType, this.Morality, this.Ordered, getRandomInt(1, 3));
-    this.Profession = generateRandomProfession(entityType, this.Birthdate);
-    this.Income = generateRandomIncome(entityType);
+    this.Hobbies = generateRandomHobbies(this.EntityType, this.Morality, this.Ordered, getRandomInt(1, 3));
+    this.Profession = generateRandomProfession(this.EntityType, this.Birthdate);
+    this.Income = generateRandomIncome(this.EntityType);
     this.Favorites = {
-      Food: generateRandomFavorites(entityType, getRandomInt(1,2), "FOOD_TYPES"), 
-      Drink: generateRandomFavorites(entityType, getRandomInt(1,2), "DRINK_TYPES"), 
-      Music: generateRandomFavorites(entityType, getRandomInt(1,3), "MUSIC_TYPES"), 
-      Literature: generateRandomFavorites(entityType, getRandomInt(1,3), "BOOK_TYPES"), 
-      Film: generateRandomFavorites(entityType, getRandomInt(1,3), "MOVIE_TYPES"), 
-      Fashion: generateRandomFavorites(entityType, getRandomInt(1,2), "FASHION_TYPES"), 
-      Color: generateRandomFavorites(entityType, getRandomInt(1,1), "COLOR_TYPES"), 
+      Food: generateRandomFavorites(this.EntityType, getRandomInt(1,2), "FOOD_TYPES"), 
+      Drink: generateRandomFavorites(this.EntityType, getRandomInt(1,2), "DRINK_TYPES"), 
+      Music: generateRandomFavorites(this.EntityType, getRandomInt(1,3), "MUSIC_TYPES"), 
+      Literature: generateRandomFavorites(this.EntityType, getRandomInt(1,3), "BOOK_TYPES"), 
+      Film: generateRandomFavorites(this.EntityType, getRandomInt(1,3), "MOVIE_TYPES"), 
+      Fashion: generateRandomFavorites(this.EntityType, getRandomInt(1,2), "FASHION_TYPES"), 
+      Color: generateRandomFavorites(this.EntityType, getRandomInt(1,1), "COLOR_TYPES"), 
     };
-    this.Introversion = generateRandomIntroversion(entityType);
-    // this.Personality = generateRandomPersonality(entityType);    // What does personality do? Is this for Meyer's Briggs?
+    this.Introversion = generateRandomIntroversion(this.EntityType);
+    // this.Personality = generateRandomPersonality(this.EntityType);    // What does personality do? Is this for Meyer's Briggs?
     this.Hostility = 0;       // This is the value that gets read by the EMF reader.
     this.Trust = 0;           // This is the value that gets read by the Visibility meter. The more trust bigger blip? 1 glyph makes them visible?
   }

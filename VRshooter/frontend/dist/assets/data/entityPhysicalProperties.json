@@ -8,13 +8,32 @@
         "MIN_WEIGHT": "2",
         "MAX_WEIGHT": "1000",
 
-        "GENDER_TYPES": {
+        "ENTITY_TYPES": {
+            "Demon": ["Demon"], 
+            "Angel": ["Angel"],
+            "Fey": ["Fey"],
+            "Ghost": ["Ghost"],
+            "Critter": ["Critter"],
+            "Bork": ["Bork"],
+            "All": ["Demon", "Angel", "Fey", "Ghost", "Critter", "Bork"]
+        },
+        "ENTITY_GENDERS": {
             "Demon": ["none","m","f","mm","ff","mf","x","y","z"],
             "Angel": ["none","m","f"],
             "Fey": ["m","f"],
             "Ghost": ["none","m","f"],
             "Critter": ["m","f"],
-            "Bork": ["x","y","z"]
+            "Bork": ["x","y","z"],
+            "All": ["none","m","f","mm","ff","mf","x","y","z"]
+        },
+        "ENTITY_SOUNDS": {
+            "Demon": ["sound-01.mp3"],
+            "Angel": ["sound-01.mp3"],
+            "Fey": ["sound-01.mp3"],
+            "Ghost": ["sound-01.mp3"],
+            "Critter": ["sound-01.mp3"],
+            "Bork": ["sound-01.mp3"],
+            "All": ["sound-01.mp3"]
         },
         "ENTITY_AGES": {
             "Demon": [null, 100],
@@ -39,14 +58,6 @@
             "Ghost": [8, 400],
             "Critter": [5, 500],
             "Bork": [200, 400]
-        },
-        "ENTITY_GENDERS": {
-            "Demon": [0, 5],
-            "Angel": [5, 5],
-            "Fey": [0, 1],
-            "Ghost": [0, 1],
-            "Critter": [0, 1],
-            "Bork": [6, 8]
         },
         "ENTITY_ARMS": {
             "Demon": [2, 12],
@@ -118,7 +129,8 @@
             "Fey": ["good", "neutral", "evil"],
             "Ghost": ["good", "neutral", "evil"],
             "Critter": ["good", "neutral"],
-            "Bork": ["neutral", "evil"] 
+            "Bork": ["neutral", "evil"],
+            "All": ["good", "neutral", "evil"]
         },
         "ENTITY_ORDERS": {
             "Demon": ["chaotic"],
@@ -126,7 +138,8 @@
             "Fey": ["chaotic", "neutral", "lawful"],
             "Ghost": ["chaotic", "neutral", "lawful"],
             "Critter": ["neutral"],
-            "Bork": ["neutral", "lawful"] 
+            "Bork": ["neutral", "lawful"],
+            "All": ["chaotic", "neutral", "lawful"] 
         }
     }
 }
