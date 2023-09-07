@@ -39,6 +39,7 @@ async function fetchData(){
 
 fetchData().then(()=>{
   GLOBAL_ENTITY = new entityTemplate();
+  console.log('done', GLOBAL_ENTITY)
 });
 
 
@@ -294,6 +295,9 @@ class entityTemplate {
     this.Morality = generateRandomPhysicalProperty(this.EntityType, "ENTITY_MORALITY");
     this.Ordered = generateRandomPhysicalProperty(this.EntityType, "ENTITY_ORDERS");
     this.Focus = generateRandomFocus(this.EntityType);
+    this.Glyph = generateRandomPhysicalProperty(this.EntityType, "ENTITY_GLYPHS");
+    this.Candles = generateRandomPhysicalProperty(this.EntityType, "ENTITY_CANDLES");
+    this.Promise = generateRandomPhysicalProperty(this.EntityType, "ENTITY_PROMISES");
     this.Intention = generateRandomIntention(this.EntityType, this.Morality);
     this.Relationships = {
       Partner: generateRandomName(this.EntityType, this.Gender), 

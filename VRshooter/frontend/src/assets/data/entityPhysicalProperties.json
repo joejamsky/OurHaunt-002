@@ -7,6 +7,8 @@
         "MAX_HEIGHT": "14",
         "MIN_WEIGHT": "2",
         "MAX_WEIGHT": "1000",
+        "Elemental": ["Elemental"],
+        "Hometown": "New York City",
 
         "ENTITY_TYPES": {
             "Demon": ["Demon"], 
@@ -15,7 +17,7 @@
             "Ghost": ["Ghost"],
             "Critter": ["Critter"],
             "Bork": ["Bork"],
-            "All": ["Demon", "Angel", "Fey", "Ghost", "Critter", "Bork"]
+            "All": ["Demon", "Angel", "Fey", "Ghost", "Critter", "Bork"]            
         },
         "ENTITY_GENDERS": {
             "Demon": ["none","m","f","mm","ff","mf","x","y","z"],
@@ -113,7 +115,7 @@
             "Fey": [0, 10],
             "Ghost": [0, 5],
             "Critter": [0, 5],
-            "Bork": [2, 7] 
+            "Bork": [2, 7]
         },
         "ENTITY_TEMPERATURE": {
             "Demon": [100, 120],
@@ -140,6 +142,56 @@
             "Critter": ["neutral"],
             "Bork": ["neutral", "lawful"],
             "All": ["chaotic", "neutral", "lawful"] 
+        },
+        "ENTITY_GLYPHS": {
+            "Demon": ["Pentagram", "Blood"],
+            "Angel": ["Rune", "Flower"],
+            "Fey": ["Elemental", "Flower", "Salt"],
+            "Ghost": ["Pentagram", "Chalk", "Flower"],
+            "Critter": ["Chalk", "Salt", "Flower"],
+            "All": [    
+                "Pentagram",
+                "Rune",
+                "Elemental",
+                "Blood",
+                "Sigil",
+                "Chalk",
+                "Salt",
+                "Flower"
+            ]
+        },
+        "ENTITY_CANDLES": {
+            "Demon": ["Red", "Black"],
+            "Angel": ["White", "Blue"],
+            "Fey": ["Green", "Yellow", "Red"],
+            "Ghost": ["Black", "White", "Purple"],
+            "Critter": ["Black", "Orange", "Blue"],
+            "All": [    
+                "Red",
+                "White",
+                "Black",
+                "Blue",
+                "Green",
+                "Yellow",
+                "Purple",
+                "Orange"
+            ]
+        },
+        "ENTITY_PROMISES": {
+            "Demon": ["Secrecy", "Chaos"],
+            "Angel": ["Peace", "Love"],
+            "Fey": ["Kibble", "Peace", "Chaos"],
+            "Ghost": ["Letter", "Ring", "Love", "Chaos", "Secrecy"],
+            "Critter": ["Kibble"],
+            "All": [    
+                "Letter",
+                "Ring",
+                "Secrecy",
+                "Peace",
+                "Love",
+                "Kibble",
+                "Chaos"
+            ]
         }
     }
 }

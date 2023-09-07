@@ -1,0 +1,35 @@
+{
+    "key": "GLYPH_TYPES",
+    "data": {
+        "Glyph": [
+            "Pentagram",
+            "Rune",
+            "Elemental",
+            "Blood",
+            "Sigil",
+            "Chalk",
+            "Salt",
+            "Flower"
+        ],
+        "Candles": [
+            "Red",
+            "White",
+            "Black",
+            "Blue",
+            "Green",
+            "Yellow",
+            "Purple",
+            "Orange"
+        ],
+        "Promises": [
+            "Letter",
+            "Ring",
+            "Secrecy",
+            "Peace",
+            "Love",
+            "Kibble"
+        ]
+        
+        
+    }
+}
