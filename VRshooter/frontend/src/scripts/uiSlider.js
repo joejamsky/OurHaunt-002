@@ -45,6 +45,12 @@ const slideData = [
         itemName: 'Temperature',
         unlocked: false,
         summaryText: "Adjusts surrounding temperature." 
+    },
+    { 
+        slideID: 'slide-Arc',
+        itemName: 'Arc',
+        unlocked: false,
+        summaryText: "Adjusts arc fence power." 
     }
 
 ];
