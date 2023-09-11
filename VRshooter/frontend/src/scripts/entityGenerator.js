@@ -274,7 +274,7 @@ const generateRandomFavorites = (entityType, numberOfFavorites, favoriteType) =>
 
 class entityTemplate {
   constructor() {
-    this.EntityType = generateRandomPhysicalProperty("Ghost", "ENTITY_TYPES");                    
+    this.EntityType = generateRandomPhysicalProperty("All", "ENTITY_TYPES");                    
     this.Gender = generateRandomPhysicalProperty(this.EntityType, "ENTITY_GENDERS");   
     this.Sound = generateRandomPhysicalProperty(this.EntityType, "ENTITY_SOUNDS");     // needs work
     this.Name = generateRandomName(this.EntityType, this.Gender); 

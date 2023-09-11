@@ -1,6 +1,6 @@
 @use 'items/voice';
 @use 'items/gps';
-@use 'items/arc';
+@use 'items/filter';
 @use 'items/oscilloscope';
 @use 'items/emf';
 @use 'items/offering';
@@ -165,6 +165,15 @@ video{
 	top: 0;
 	left: 0;
 	opacity: 0;
+}
+
+#filter-overlay{
+	width: 100%;
+	height: variables.$video-height;		// height until ui bar
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0);
 }
 
 #outofbounds-warning-container{

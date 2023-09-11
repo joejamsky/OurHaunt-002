@@ -125,8 +125,12 @@ const oscilloscopeSliderDecimal = document.getElementById('oscilloscope-slider-d
 const oscilloscopeValueInteger = document.getElementById('oscilloscope-value-integer');
 const oscilloscopeValueDecimal = document.getElementById('oscilloscope-value-decimal');
 
-
-
+// src="./src/assets/icons/alien.svg"
+const oscilloscopeGlyphs = ["alien2.svg", 
+"angel3.svg", 
+"rune3.svg", 
+"pentagram2.svg", 
+"rune2.svg"]
 
 // Add event listener to the oscilloscopeSlider for input changes
 oscilloscopeSliderInteger.addEventListener('input', (e) => {
@@ -136,5 +140,5 @@ oscilloscopeSliderInteger.addEventListener('input', (e) => {
 
 oscilloscopeSliderDecimal.addEventListener('input', (e) => {
     // Update the value of the input field when the oscilloscopeSlider value changes
-    oscilloscopeValueDecimal.innerHTML = `.${parseFloat(e.target.value)}`;
+    oscilloscopeValueDecimal.innerHTML = `<img src='./src/assets/icons/${oscilloscopeGlyphs[parseFloat(e.target.value)]}' />`;
 });

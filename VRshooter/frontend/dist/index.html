@@ -83,6 +83,10 @@
 		<div id="outofbounds-warning-container">
 			<h1 id="outofbounds-warning">Leaving Haunt</h1>
 		</div>
+
+		<div id="filter-overlay">
+		</div>
+
 		<video id="video" autoplay></video>
 
 		<div id="tutorial">
@@ -104,18 +108,39 @@
 			</div>
 		</div>
 
-		<div id="arc-fence-module-container">
-			<div id="arc-fence-module">
-				<label class="switch">
-					<input type="checkbox">
-					<span class="slider"></span>
-				  </label>
-				  
-				  <!-- Rounded switch -->
-				  <label class="switch">
-					<input type="checkbox">
-					<span class="slider round"></span>
-				  </label>
+		<div id="filter-module-container">
+			<div id="filter-module">
+		  
+				<div class="filter-switch-container">
+					<div class="filter-light">
+						<div class="filter-light-bulb filter-light-off r-bulb"></div>
+					</div>
+					<label class="filter-switch ">
+						<input type="checkbox" class="checkbox r-switch">
+						<span class="filter-slider"></span>
+					</label>
+				</div>
+
+				<div class="filter-switch-container">
+					<div class="filter-light">
+						<div class="filter-light-bulb filter-light-off g-bulb"></div>
+					</div>
+					<label class="filter-switch ">
+						<input type="checkbox" class="checkbox g-switch">
+						<span class="filter-slider"></span>
+					</label>
+				</div>
+
+				<div class="filter-switch-container">
+					<div class="filter-light">
+						<div class="filter-light-bulb filter-light-off b-bulb"></div>
+					</div>
+					<label class="filter-switch ">
+						<input type="checkbox" class="checkbox b-switch">
+						<span class="filter-slider"></span>
+					</label>
+				</div>
+
 			</div>
 
 		</div>
@@ -166,10 +191,11 @@
 					<input type="range" id="oscilloscope-slider-integer" min="100" max="900" step="50" value="400">
 					<div id="oscilloscope-values-container">
 						<div id="oscilloscope-value-integer">400</div>
-						<div id="oscilloscope-value-decimal">.00</div>
-						<div class="hz">hz</div>
+						<!-- <div class="hz">.hz</div> -->
+						<div id="oscilloscope-value-decimal"><img src="./src/assets/icons/alien2.svg"/>
+						</div>
 					</div>
-					<input type="range" id="oscilloscope-slider-decimal" min="00" max="90" step="10" value="00">
+					<input type="range" id="oscilloscope-slider-decimal" min="0" max="4" step="1" value="0">
 					<!-- <button id="oscilloscope-activate-button"><i class="fa-solid fa-power-off"></i></button> -->
 		
 			</div>
@@ -356,6 +382,7 @@
 		<script type="text/javascript" src="./scripts/entityGenerator.js"></script>
 		<script type="text/javascript" src="./scripts/game.js"></script>
 		<script type="text/javascript" src="./scripts/glyph.js"></script>
+		<script type="text/javascript" src="./scripts/filter.js"></script>
 		<script type="text/javascript" src="./scripts/uiSlider.js"></script>
 		<script type="text/javascript" src="./scripts/location.js"></script>
 		<script type="text/javascript" src="./scripts/temperature.js"></script>

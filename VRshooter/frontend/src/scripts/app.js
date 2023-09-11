@@ -77,9 +77,9 @@ function initSlides() {
     const tempModuleContainer = document.getElementById('temperature-module-container')
     tempDiv.append(tempModuleContainer)
 
-    const arcFenceDiv = document.getElementById('slide-Arc')
-    const arcFenceModuleContainer = document.getElementById('arc-fence-module-container')
-    arcFenceDiv.append(arcFenceModuleContainer)
+    const filterDiv = document.getElementById('slide-Filter')
+    const filterModuleContainer = document.getElementById('filter-module-container')
+    filterDiv.append(filterModuleContainer)
 }
 
 
