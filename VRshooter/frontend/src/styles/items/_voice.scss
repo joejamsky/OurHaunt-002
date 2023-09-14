@@ -26,6 +26,8 @@
 		border-left: double 4px #fff;
 		border-right: double 4px #fff;
 		border-bottom: dashed 2px #fff;
+
+
 	}
 
 	#voice-board{
@@ -42,7 +44,8 @@
 		border-right: dashed 2px #fff;
 		border-bottom: double 4px #fff;
 		box-sizing: border-box;
-
+		display: flex;
+		flex-direction: column;
 	}
 
 	.voice-board-pin{
@@ -134,6 +137,13 @@
     	line-height: 16px;
 	}
 
+	#voice-request {
+		margin: auto 10px 14px;
+		padding: 0px;
+    	line-height: 16px;
+		border-top: solid 1px white;
+    	padding-top: 5px;
+	}
 
 	.voice-light{
 		width: 34px;

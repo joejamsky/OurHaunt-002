@@ -135,10 +135,15 @@ const oscilloscopeGlyphs = ["alien2.svg",
 // Add event listener to the oscilloscopeSlider for input changes
 oscilloscopeSliderInteger.addEventListener('input', (e) => {
     // Update the value of the input field when the oscilloscopeSlider value changes
-    oscilloscopeValueInteger.innerHTML = `${parseFloat(e.target.value)}`;
+    oscilloscopeValueInteger.innerHTML = `${parseFloat(e.target.value).toFixed(1)}`;
 });
 
 oscilloscopeSliderDecimal.addEventListener('input', (e) => {
     // Update the value of the input field when the oscilloscopeSlider value changes
-    oscilloscopeValueDecimal.innerHTML = `<img src='./src/assets/icons/${oscilloscopeGlyphs[parseFloat(e.target.value)]}' />`;
+    if(e.target.value == 0){
+        oscilloscopeValueDecimal.innerHTML = `AM`;
+    } else {
+        oscilloscopeValueDecimal.innerHTML = `FM`;
+    }
+
 });

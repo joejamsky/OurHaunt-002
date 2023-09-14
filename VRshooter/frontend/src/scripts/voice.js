@@ -1,6 +1,7 @@
 const voiceForm = document.getElementById('voice-form')
 const voiceFormInput = document.getElementById('voice-input')
 const voiceFormMicButton = document.getElementById('voice-mic-button')
+const voiceRequest = document.getElementById('voice-request');
 
 
 
@@ -215,6 +216,7 @@ if(SpeechRecognition) {
     const micLight = document.getElementsByClassName('voice-light-bulb')[0];
 
     voiceFormMicButton.addEventListener("click", micBtnClick);
+    
     function micBtnClick() {
         if(micIcon.classList.contains("fa-microphone")) {
             recognition.start();         // Start Voice Recognition. First time you have to allow access to mic!
@@ -224,7 +226,7 @@ if(SpeechRecognition) {
     }
 
     recognition.addEventListener("start", startSpeechRecognition); // <=> recognition.onstart = function() {...}
-    function startSpeechRecognition() {
+    function startSpeechRecognition(event) {
         micIcon.classList.remove("fa-microphone");
         micIcon.classList.add("fa-ear-listen");
         micLight.classList.remove("voice-light-off");
@@ -245,30 +247,50 @@ if(SpeechRecognition) {
     }
 
 
+    recognition.onresult = function(event) {
+        let finalTranscript = '';
+        let interimTranscript = '';
     
-    recognition.addEventListener("result", resultOfSpeechRecognition); // <=> recognition.onresult = function(event) {...} - Fires when you stop talking
+        // Loop through the results
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            const transcript = event.results[i][0].transcript;
+    
+            if (event.results[i].isFinal) {
+                finalTranscript += transcript + ' ';
+            } else {
+                interimTranscript += transcript;
+            }
+        }
+    
+        console.log('interimTranscript', interimTranscript)
+        console.log('finalTranscript', finalTranscript)
+        typeWriterEffect(finalTranscript, 'voice-request', 50);
+    };
+    
+    recognition.addEventListener("result", resultOfSpeechRecognition); // same as recognition.onresult = function(event) {...} - Fires when you stop talking
     function resultOfSpeechRecognition(event) {
         const current = event.resultIndex;
         transcript = event.results[current][0].transcript;
         
-        console.log('transcript', transcript)
+        
+        
         if(transcript.toLowerCase().trim()==="close channel") {
         recognition.stop();
         }
-        else if(!voiceFormInput.value) {
-            voiceFormInput.value = transcript;
-        }
+        // else if(!voiceFormInput.value) {
+        //     voiceFormInput.value = transcript;
+        // }
         else {
-        if(transcript.toLowerCase().trim()==="go") {
-            // voiceForm.submit();      // default behavior will submit to google on that form. Leaving this just in case I want to setup chatgpt
+        // if(transcript.toLowerCase().trim()==="go") {
+        //     // voiceForm.submit();      // default behavior will submit to google on that form. Leaving this just in case I want to setup chatgpt
             
-        }
-        else if(transcript.toLowerCase().trim()==="reset input") {
-            voiceFormInput.value = "";
-        }
-        else {
+        // }
+        // else if(transcript.toLowerCase().trim()==="reset input") {
+        //     voiceFormInput.value = "";
+        // }
+        // else {
             voiceFormInput.value = transcript;
-        }
+        // }
         }
         // voiceFormInput.value = transcript;
         // voiceFormInput.focus();

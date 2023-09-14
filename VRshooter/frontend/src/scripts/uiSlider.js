@@ -8,48 +8,56 @@ const slideData = [
         slideID: 'slide-Glyph',
         itemName: 'Glyph', 
         unlocked: false,
+        itemIcon: 'gate.svg',
         summaryText: "Place the appropriate glyphs to trap or release spirit." 
     },
     {
         slideID: 'slide-Offering',
         itemName: 'Offerings', 
         unlocked: false,
+        itemIcon: 'gate.svg',
         summaryText: "Present an object to the spirit." 
     },
     { 
         slideID: 'slide-Voice',
         itemName: 'Voice', 
         unlocked: false,
+        itemIcon: 'recorder.svg',
         summaryText: "Allows you to communicate with spirit. Voice Commands: 'close channel', 'reset input', 'go';" 
     },
     { 
         slideID: 'slide-EMF',
         itemName: 'EMF Reader', 
         unlocked: false,
+        itemIcon: 'emf.svg',
         summaryText: "Detects electromagnetic frequencies from spirits." 
     },
     { 
         slideID: 'slide-GPS',
         itemName: 'GPS', 
         unlocked: true,
+        itemIcon: 'gate.svg',
         summaryText: "Detects distance from objective." 
     },
     { 
         slideID: 'slide-Oscilloscope',
         itemName: 'Oscilloscope',
         unlocked: false,
+        itemIcon: 'recorder.svg',
         summaryText: "Detects sounds from spirits." 
     },
     { 
         slideID: 'slide-Temp',
         itemName: 'Temperature',
         unlocked: false,
+        itemIcon: 'recorder.svg',
         summaryText: "Adjusts surrounding temperature." 
     },
     { 
         slideID: 'slide-Filter',
         itemName: 'Filter',
         unlocked: false,
+        itemIcon: 'camera.svg',
         summaryText: "Adjusts camera filter." 
     }
 
@@ -127,7 +135,6 @@ window.onload = function() {
                                 </div>    
                             </div>
                         </div>
-
                         <div class='slide-item-name'>` + slide.itemName + `</div>
                     </div>
                 </div>`)
@@ -141,3 +148,4 @@ window.onload = function() {
         alert("jQuery is not loaded.");
     }
 }
+// {/* <div class='slide-item-name'><img src='../src/assets/icons/` + slide.itemIcon + `' /></div> */}

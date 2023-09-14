@@ -134,6 +134,7 @@
     left: -15px;
 	padding: 0;
 	font-size: 26px;
+	z-index: 1;
 	// box-shadow: -7px 9px 26px -10px #fff;
 
 	// font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -180,6 +181,11 @@
 	// height: 20%;
 	margin: 0 auto;
 	// background-color: green;
+
+	img {
+		height: 30px;
+		width: 30px;
+	}
 }
 
 .slick-list {
