@@ -40,8 +40,8 @@ function getSlide(){
 
 function checkSlide(){
     if(slide === 5){
-        activateOscilloscope()
+        activateRadio()
     } else {
-        disableOscilloscope()
+        disableRadio()
     }
 }

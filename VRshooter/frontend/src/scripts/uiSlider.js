@@ -1,64 +1,75 @@
 // import $ from 'jquery'
 // import 'slick-carousel'
 
+// item ideas. Tonics that can cure sanity or calm spirit
+// Incense that can calm spirit or make it angry.
+// MP3 player that can play music to calm spirit or make it angry.
+// Mortar and pestle to make tonics.
 
 const slideData = [
     
     {
-        slideID: 'slide-Glyph',
-        itemName: 'Glyph', 
+        slideID: 'slide-portal',
+        itemName: 'Eldritch Portal', 
         unlocked: false,
         itemIcon: 'gate.svg',
-        summaryText: "Place the appropriate glyphs to trap or release spirit." 
+        summaryText: "Identify characteristics about the spirit to activate the portal. Once activated, the portal is open your judgement will determine the spirits fate." 
     },
-    {
-        slideID: 'slide-Offering',
-        itemName: 'Offerings', 
-        unlocked: false,
-        itemIcon: 'gate.svg',
-        summaryText: "Present an object to the spirit." 
-    },
+    // {
+    //     slideID: 'slide-tonics',
+    //     itemName: 'Tonics', 
+    //     unlocked: false,
+    //     itemIcon: 'gate.svg',
+    //     summaryText: "Click to consume tonic." 
+    // },
     { 
-        slideID: 'slide-Voice',
+        slideID: 'slide-voice',
         itemName: 'Voice', 
         unlocked: false,
         itemIcon: 'recorder.svg',
-        summaryText: "Allows you to communicate with spirit. Voice Commands: 'close channel', 'reset input', 'go';" 
+        summaryText: "Allows you to communicate with spirit. Press record button to begin voice recording. The red light indicates that recording is active. Press the button again to end recording." 
     },
     { 
-        slideID: 'slide-EMF',
+        slideID: 'slide-emf',
         itemName: 'EMF Reader', 
         unlocked: false,
         itemIcon: 'emf.svg',
-        summaryText: "Detects electromagnetic frequencies from spirits." 
+        summaryText: "Detects electromagnetic energy from spirits. The angrier the spirit, the higher the reading." 
     },
     { 
-        slideID: 'slide-GPS',
-        itemName: 'GPS', 
+        slideID: 'slide-motion',
+        itemName: 'Motion Sensor', 
         unlocked: true,
         itemIcon: 'gate.svg',
-        summaryText: "Detects distance from objective." 
+        summaryText: "Detects movement of the spirit." 
     },
     { 
-        slideID: 'slide-Oscilloscope',
-        itemName: 'Oscilloscope',
+        slideID: 'slide-radio',
+        itemName: 'Radio',
         unlocked: false,
         itemIcon: 'recorder.svg',
-        summaryText: "Detects sounds from spirits." 
+        summaryText: "Detects sounds from the spirits." 
     },
     { 
-        slideID: 'slide-Temp',
-        itemName: 'Temperature',
+        slideID: 'slide-judgement',
+        itemName: 'Judgement',
         unlocked: false,
         itemIcon: 'recorder.svg',
-        summaryText: "Adjusts surrounding temperature." 
+        summaryText: "Decide the fate of the spirit." 
     },
+    // { 
+    //     slideID: 'slide-Temp',
+    //     itemName: 'Temperature',
+    //     unlocked: false,
+    //     itemIcon: 'recorder.svg',
+    //     summaryText: "Adjusts surrounding temperature." 
+    // },
     { 
-        slideID: 'slide-Filter',
-        itemName: 'Filter',
+        slideID: 'slide-filter',
+        itemName: 'Camera Filter',
         unlocked: false,
         itemIcon: 'camera.svg',
-        summaryText: "Adjusts camera filter." 
+        summaryText: "Adjusts the camera's filter. Toggle the switches to reveal the identity of the spirit." 
     }
 
 ];

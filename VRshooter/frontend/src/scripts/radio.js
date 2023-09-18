@@ -4,9 +4,9 @@ const audioFileUrl = '../src/assets/audio/ImperialMarch60.wav';
 // Create an AudioContext instance
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-let oscilloscopeActive = false
+let radioActive = false
 
-function renderOscilloscope(audioBuffer) {
+function renderRadio(audioBuffer) {
     
     // Load the audio file
     // fetch(audioFileUrl)
@@ -17,7 +17,7 @@ function renderOscilloscope(audioBuffer) {
         // console.log('audiobuffer js', audiobuffer)
 
         // Get SVG element
-        const svg = document.getElementById('oscilloscope-svg');
+        const svg = document.getElementById('radio-svg');
 
         // Set SVG dimensions based on audio length
         const width = svg.clientWidth;
@@ -49,8 +49,8 @@ function renderOscilloscope(audioBuffer) {
         // console.log('analyserNode2', analyserNode)
 
 
-        // Draw oscilloscope waveform
-        const drawOscilloscope = () => {
+        // Draw radio waveform
+        const drawRadio = () => {
             // Get the current waveform data from the AnalyserNode
             const dataArray = new Float32Array(analyserNode.fftSize);
             analyserNode.getFloatTimeDomainData(dataArray);
@@ -89,61 +89,61 @@ function renderOscilloscope(audioBuffer) {
 
             // Request animation frame for continuous rendering
             if (audioContext.state === 'running') {
-                requestAnimationFrame(drawOscilloscope);
+                requestAnimationFrame(drawRadio);
             }
         };
 
         source.start();
 
-        // Start drawing the oscilloscope waveform
-        drawOscilloscope();
+        // Start drawing the radio waveform
+        drawRadio();
 
     // })
     // .catch(error => console.error('Error loading audio:', error));
 }
 
-// const oscilloscopeButton = document.getElementById('oscilloscope-activate-button');
-// oscilloscopeButton.addEventListener('click', () => {
-//     toggleOscilloscope();
+// const radioButton = document.getElementById('radio-activate-button');
+// radioButton.addEventListener('click', () => {
+//     toggleRadio();
 // })
 
-function toggleOscilloscope() {
-    oscilloscopeActive = !oscilloscopeActive
+function toggleRadio() {
+    radioActive = !radioActive
 }
 
-function activateOscilloscope() {
-    oscilloscopeActive = true
+function activateRadio() {
+    radioActive = true
 }
 
-function disableOscilloscope() {
-    oscilloscopeActive = false
+function disableRadio() {
+    radioActive = false
 }
 
 
-const oscilloscopeSliderInteger = document.getElementById('oscilloscope-slider-integer');
-const oscilloscopeSliderDecimal = document.getElementById('oscilloscope-slider-decimal');
-const oscilloscopeValueInteger = document.getElementById('oscilloscope-value-integer');
-const oscilloscopeValueDecimal = document.getElementById('oscilloscope-value-decimal');
+const radioSliderInteger = document.getElementById('radio-slider-integer');
+const radioSliderDecimal = document.getElementById('radio-slider-decimal');
+const radioValueInteger = document.getElementById('radio-value-integer');
+const radioValueDecimal = document.getElementById('radio-value-decimal');
 
 // src="./src/assets/icons/alien.svg"
-const oscilloscopeGlyphs = ["alien2.svg", 
+const radioGlyphs = ["alien2.svg", 
 "angel3.svg", 
 "rune3.svg", 
 "pentagram2.svg", 
 "rune2.svg"]
 
-// Add event listener to the oscilloscopeSlider for input changes
-oscilloscopeSliderInteger.addEventListener('input', (e) => {
-    // Update the value of the input field when the oscilloscopeSlider value changes
-    oscilloscopeValueInteger.innerHTML = `${parseFloat(e.target.value).toFixed(1)}`;
+// Add event listener to the radioSlider for input changes
+radioSliderInteger.addEventListener('input', (e) => {
+    // Update the value of the input field when the radioSlider value changes
+    radioValueInteger.innerHTML = `${parseFloat(e.target.value).toFixed(1)}`;
 });
 
-oscilloscopeSliderDecimal.addEventListener('input', (e) => {
-    // Update the value of the input field when the oscilloscopeSlider value changes
+radioSliderDecimal.addEventListener('input', (e) => {
+    // Update the value of the input field when the radioSlider value changes
     if(e.target.value == 0){
-        oscilloscopeValueDecimal.innerHTML = `AM`;
+        radioValueDecimal.innerHTML = `AM`;
     } else {
-        oscilloscopeValueDecimal.innerHTML = `FM`;
+        radioValueDecimal.innerHTML = `FM`;
     }
 
 });

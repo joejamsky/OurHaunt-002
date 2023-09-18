@@ -49,35 +49,39 @@ function onWindowResize() {
 
 
 function initSlides() {
-    const gpsDiv = document.getElementById('slide-GPS')
-    const gpsModuleContainer = document.getElementById('gps-module-container')
-    gpsDiv.append(gpsModuleContainer)
+    const motionDiv = document.getElementById('slide-motion')
+    const motionModuleContainer = document.getElementById('motion-module-container')
+    motionDiv.append(motionModuleContainer)
 
-    const voiceDiv = document.getElementById('slide-Voice')
+    const voiceDiv = document.getElementById('slide-voice')
     const voiceModuleContainer = document.getElementById('voice-module-container')
     voiceDiv.append(voiceModuleContainer)
 
-    const oscilloscopeDiv = document.getElementById('slide-Oscilloscope')
-    const oscilloscopeModuleContainer = document.getElementById('oscilloscope-module-container')
-    oscilloscopeDiv.append(oscilloscopeModuleContainer)
+    const radioDiv = document.getElementById('slide-radio')
+    const radioModuleContainer = document.getElementById('radio-module-container')
+    radioDiv.append(radioModuleContainer)
 
-    const emfDiv = document.getElementById('slide-EMF')
+    const emfDiv = document.getElementById('slide-emf')
     const emfModuleContainer = document.getElementById('emf-module-container')
     emfDiv.append(emfModuleContainer)
 
-    const offeringDiv = document.getElementById('slide-Offering')
-    const offeringModuleContainer = document.getElementById('offering-module-container')
-    offeringDiv.append(offeringModuleContainer)
+    // const offeringDiv = document.getElementById('slide-Offering')
+    // const offeringModuleContainer = document.getElementById('offering-module-container')
+    // offeringDiv.append(offeringModuleContainer)
 
-    const glyphDiv = document.getElementById('slide-Glyph')
-    const glyphModuleContainer = document.getElementById('glyph-module-container')
-    glyphDiv.append(glyphModuleContainer)
+    const portalDiv = document.getElementById('slide-portal')
+    const portalModuleContainer = document.getElementById('portal-module-container')
+    portalDiv.append(portalModuleContainer)
 
-    const tempDiv = document.getElementById('slide-Temp')
-    const tempModuleContainer = document.getElementById('temperature-module-container')
-    tempDiv.append(tempModuleContainer)
+    // const tempDiv = document.getElementById('slide-Temp')
+    // const tempModuleContainer = document.getElementById('temperature-module-container')
+    // tempDiv.append(tempModuleContainer)
 
-    const filterDiv = document.getElementById('slide-Filter')
+    const judgementDiv = document.getElementById('slide-judgement')
+    const judgementModuleContainer = document.getElementById('judgement-module-container')
+    judgementDiv.append(judgementModuleContainer)
+
+    const filterDiv = document.getElementById('slide-filter')
     const filterModuleContainer = document.getElementById('filter-module-container')
     filterDiv.append(filterModuleContainer)
 }
@@ -223,7 +227,7 @@ function initMonster() {
                 monsterMesh.add(audioObject);
                 audioObject.play();
 
-                renderOscilloscope(audioBuffer)
+                renderRadio(audioBuffer)
 
             });
 
@@ -424,7 +428,7 @@ function animate() {
     // TODO update so that the mesh is added to the scene before the animate function is fired so the animate function doesn't
     // throw an error when trying to run these other functions
     if(monsterMesh && monsterMesh.position){
-        updateVolumeBasedOnProximity(camera, monsterMesh, oscilloscopeActive);
+        updateVolumeBasedOnProximity(camera, monsterMesh, radioActive);
         // handleIntersectVibration(monsterMesh.position)
     }
     

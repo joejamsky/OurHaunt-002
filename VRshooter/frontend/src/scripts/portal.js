@@ -1,6 +1,6 @@
-const scrollableGlyphDivs = document.getElementsByClassName('glyph-list');
+const scrollablePortalDivs = document.getElementsByClassName('portal-list');
 
-Array.from(scrollableGlyphDivs).forEach(item => {
+Array.from(scrollablePortalDivs).forEach(item => {
     item.addEventListener('scroll', function() {
       if (item.scrollTop === 0) {
           item.classList.remove('scroll-up')
@@ -16,15 +16,15 @@ Array.from(scrollableGlyphDivs).forEach(item => {
 })
 
 
-$('.glyph-list').each(function() {
-    const glyphItems = $(this).find(".glyph-item");
+$('.portal-list').each(function() {
+    const portalItems = $(this).find(".portal-item");
 
-    glyphItems.click(function() {
+    portalItems.click(function() {
       var $this = $(this);
       if ($this.hasClass("active")) {
         $this.removeClass("active");
       } else {
-        glyphItems.removeClass("active");
+        portalItems.removeClass("active");
         $this.addClass("active");
       }
     });

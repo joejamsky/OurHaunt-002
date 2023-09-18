@@ -244,6 +244,7 @@ if(SpeechRecognition) {
         voiceFormInput.focus();
         console.log("Speech recognition service disconnected");
         checkInputPhrase(transcript.toLowerCase().trim())
+        document.getElementById('voice-request').innerText = ""
     }
 
 
