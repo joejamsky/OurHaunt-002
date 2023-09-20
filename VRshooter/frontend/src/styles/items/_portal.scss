@@ -9,11 +9,11 @@
 
     #portal-module{
         overflow-y: scroll;
-        width: 80%;
+        width: 240px;
 
         height: 110px;
         margin: 0px 0 8px;
-        padding: 5px 15px;
+        padding: 10px 15px;
         border-radius: 25px;
         // border: double  10px #fff;
         border-bottom: double 4px #fff;
@@ -43,7 +43,7 @@
         overflow-y: scroll;
         height: 100%;
         padding: 10px 0;
-        border-radius: 40%;
+        border-radius: 20%;
     }
 
     .portal-item {
@@ -72,9 +72,9 @@
     }
 
     .scroll-up {
-        border-top: dotted 1px white;
+        border-top: solid 2px white;
     }
     .scroll-down {
-        border-bottom: dotted 1px white;
+        border-bottom: solid 2px white;
     }
 }

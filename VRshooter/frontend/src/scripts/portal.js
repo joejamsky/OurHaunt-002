@@ -5,7 +5,7 @@ Array.from(scrollablePortalDivs).forEach(item => {
       if (item.scrollTop === 0) {
           item.classList.remove('scroll-up')
           item.classList.add('scroll-down')
-        } else if (item.scrollTop + item.clientHeight === item.scrollHeight) {
+        } else if (item.scrollTop + item.clientHeight > item.scrollHeight - 10) {
           item.classList.add('scroll-up')
           item.classList.remove('scroll-down')
         } else {

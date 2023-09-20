@@ -33,7 +33,6 @@ function handleInitClick() {
 
 
     startVideo();
-    initLocation();
     initScene();
     initSlides();
     initMonster();
@@ -429,6 +428,7 @@ function animate() {
     // throw an error when trying to run these other functions
     if(monsterMesh && monsterMesh.position){
         updateVolumeBasedOnProximity(camera, monsterMesh, radioActive);
+        updatePip(monsterMesh.position)
         // handleIntersectVibration(monsterMesh.position)
     }
     
