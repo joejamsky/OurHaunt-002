@@ -167,14 +167,13 @@
             "Ghost": ["Black", "White", "Purple"],
             "Critter": ["Black", "Orange", "Blue"],
             "All": [    
-                "Red",
-                "White",
-                "Black",
-                "Blue",
-                "Green",
-                "Yellow",
-                "Purple",
-                "Orange"
+                "960000",
+                "969696",
+                "000096",
+                "009600",
+                "969600",
+                "960096",
+                "009696"
             ]
         },
         "ENTITY_PROMISES": {
@@ -192,6 +191,22 @@
                 "Kibble",
                 "Chaos"
             ]
+        },
+        "ENTITY_FREQUENCY": {
+            "Demon":    [88.1, 107.9],
+            "Angel":    [88.1, 107.9],
+            "Fey":      [88.1, 107.9],
+            "Ghost":    [88.1, 107.9],
+            "Critter":  [88.1, 107.9],
+            "Bork":     [88.1, 107.9] 
+        },
+        "ENTITY_MODULATION": {
+            "Demon":    [0,1],
+            "Angel":    [0,1],
+            "Fey":      [0,1],
+            "Ghost":    [0,1],
+            "Critter":  [0,1],
+            "Bork":     [0,1] 
         }
     }
 }

@@ -49,6 +49,10 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+const getRandomFloat = (min, max) => {
+  const randomFloat = Math.random() * (max - min) + min;
+  return parseFloat(randomFloat.toFixed(1));
+}
 
 const getRandomDate = (oldestYearModifier = 271821, latestYearModifier = 2) => {
   const presentYear = new Date().getFullYear() - latestYearModifier;
@@ -296,7 +300,7 @@ class entityTemplate {
     this.Ordered = generateRandomPhysicalProperty(this.EntityType, "ENTITY_ORDERS");
     this.Focus = generateRandomFocus(this.EntityType);
     this.Glyph = generateRandomPhysicalProperty(this.EntityType, "ENTITY_GLYPHS");
-    this.Candles = generateRandomPhysicalProperty(this.EntityType, "ENTITY_CANDLES");
+    this.Candles = generateRandomPhysicalProperty("All", "ENTITY_CANDLES");
     this.Promise = generateRandomPhysicalProperty(this.EntityType, "ENTITY_PROMISES");
     this.Intention = generateRandomIntention(this.EntityType, this.Morality);
     this.Relationships = {
@@ -322,5 +326,7 @@ class entityTemplate {
     // this.Personality = generateRandomPersonality(this.EntityType);    // What does personality do? Is this for Meyer's Briggs?
     this.Hostility = 0;       // This is the value that gets read by the EMF reader.
     this.Trust = 0;           // This is the value that gets read by the Visibility meter. The more trust bigger blip? 1 glyph makes them visible?
+    this.Frequency = getRandomFloat(88.1, 107.9)
+    this.Modulation = generateRandomPhysicalProperty(this.EntityType, "ENTITY_MODULATION")
   }
 }

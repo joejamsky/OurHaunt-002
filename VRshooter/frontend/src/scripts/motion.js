@@ -11,5 +11,5 @@ function convertRange(value, min1 = -10, max1 = 10, min2 = 0, max2 = 100) {
 const updatePip = (position) => {
     motionIdentifier.style.top = `${convertRange(position.y)}%`
     motionIdentifier.style.left = `${convertRange(position.x)}%`
-    motionIdentifier.style.transform = `translate(-${convertRange(position.y)}%, -${convertRange(position.x)}%)`
+    motionIdentifier.style.transform = `translate(-${convertRange(position.x)}%, -${convertRange(position.y)}%)`
 }

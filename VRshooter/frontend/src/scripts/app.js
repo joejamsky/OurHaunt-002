@@ -36,6 +36,7 @@ function handleInitClick() {
     initScene();
     initSlides();
     initMonster();
+    initRadio();
     animate();
 }
 
@@ -203,6 +204,7 @@ function initMonster() {
             monsterMesh = gltf.children[0]
             monsterMesh.scale.set(0.2,0.2,0.2)
             monsterMesh.position.set(0,cameraHeight,-3)
+            monsterMesh.visible = false;
 
 
             // const audioFileUrl = 'path/to/audio/file.mp3';
@@ -415,6 +417,17 @@ let clock = new THREE.Clock();
 const direction = new THREE.Vector3(0,-10,-10);
 // const velocity = new THREE.Vector3();
 
+
+let wasVisible = true; // Initialize a variable to track the previous state
+
+function toggleVisibility() {
+    console.log('filter', filterBool)
+    if (filterBool !== wasVisible) { // Check if the boolean has changed
+        monsterMesh.visible = filterBool; // Set the visibility of the mesh based on the boolean
+        wasVisible = filterBool; // Update the previous state
+    }
+}
+
 function animate() {
     window.requestAnimationFrame(animate);
     
@@ -429,9 +442,12 @@ function animate() {
     if(monsterMesh && monsterMesh.position){
         updateVolumeBasedOnProximity(camera, monsterMesh, radioActive);
         updatePip(monsterMesh.position)
+
         // handleIntersectVibration(monsterMesh.position)
+        toggleVisibility()
     }
     
+    console.log('filterBool', filterBool)
     const delta = clock.getDelta();
 
     
