@@ -196,3 +196,26 @@
 .slick-track {
 	height: 100%;
 }
+
+.slick-prev {
+	left: 0px;
+	top: 15px;
+	z-index: 10;
+}
+.slick-prev::before {
+	content: "\25C0";
+	font-size: 10px;
+	color: white;
+	
+}
+.slick-next {
+	right: 0px;
+	top: 15px;
+	z-index: 10;
+}
+.slick-next::before {
+	content: "\25B6";
+	font-size: 10px;
+	color: white;
+	
+}

@@ -7,7 +7,13 @@
 // Mortar and pestle to make tonics.
 
 const slideData = [
-    
+    { 
+        slideID: 'slide-motion',
+        itemName: 'Motion Sensor', 
+        unlocked: true,
+        itemIcon: 'gate.svg',
+        summaryText: "Detects movement of the spirit." 
+    },
     {
         slideID: 'slide-portal',
         itemName: 'Eldritch Portal', 
@@ -36,13 +42,7 @@ const slideData = [
         itemIcon: 'emf.svg',
         summaryText: "Detects electromagnetic energy from spirits. The angrier the spirit, the higher the reading." 
     },
-    { 
-        slideID: 'slide-motion',
-        itemName: 'Motion Sensor', 
-        unlocked: true,
-        itemIcon: 'gate.svg',
-        summaryText: "Detects movement of the spirit." 
-    },
+
     { 
         slideID: 'slide-radio',
         itemName: 'Radio',
@@ -82,7 +82,7 @@ function initSlider(){
         slidesToShow: 1,
         // adaptiveHeight: true,
         // centerMode: true,
-        arrows: false,
+        arrows: true,
       });
 
 

@@ -421,7 +421,6 @@ const direction = new THREE.Vector3(0,-10,-10);
 let wasVisible = true; // Initialize a variable to track the previous state
 
 function toggleVisibility() {
-    console.log('filter', filterBool)
     if (filterBool !== wasVisible) { // Check if the boolean has changed
         monsterMesh.visible = filterBool; // Set the visibility of the mesh based on the boolean
         wasVisible = filterBool; // Update the previous state
@@ -447,7 +446,6 @@ function animate() {
         toggleVisibility()
     }
     
-    console.log('filterBool', filterBool)
     const delta = clock.getDelta();
 
     
