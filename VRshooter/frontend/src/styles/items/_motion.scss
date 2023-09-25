@@ -47,18 +47,18 @@
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	// background-color: black;
-	background-color: red;
+	background-color: black;
+	// background-color: red;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
-#motion-north {
-	position: absolute;
-	top: -30px;
-	left: 50%;
-	transform: translate(-50%, 0);
-    font-size: 20px;
-}
+// #motion-north {
+// 	position: absolute;
+// 	top: -30px;
+// 	left: 50%;
+// 	transform: translate(-50%, 0);
+//     font-size: 20px;
+// }

@@ -1,3 +1,5 @@
+import { swapTexture } from './app.js';
+
 const scrollablePortalDivs = document.getElementsByClassName('portal-list');
 
 Array.from(scrollablePortalDivs).forEach(item => {
@@ -19,7 +21,7 @@ Array.from(scrollablePortalDivs).forEach(item => {
 $('.portal-list').each(function() {
     const portalItems = $(this).find(".portal-item");
 
-    portalItems.click(function() {
+    portalItems.click(function(e) {
       var $this = $(this);
       if ($this.hasClass("active")) {
         $this.removeClass("active");
@@ -27,6 +29,9 @@ $('.portal-list').each(function() {
         portalItems.removeClass("active");
         $this.addClass("active");
       }
+      // swapTexture(this.dataset.texture);
+
+      swapTexture(1);
     });
 })
 

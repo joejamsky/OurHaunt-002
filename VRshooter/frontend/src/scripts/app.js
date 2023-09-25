@@ -145,12 +145,12 @@ function addOfferingOnClick() {
 
 }
 
-const maxX = 10;
-const maxY = 3;
-const maxZ = 10;
-const minX = -10;
-const minY = 0;
-const minZ = -10;
+const maxX = 8;
+const maxY = 10;
+const maxZ = 8;
+const minX = -8;
+const minY = 1;
+const minZ = -8;
 
 function getRandomPosition() {
     var x = Math.floor(Math.random() * (maxX - minX) + minX); 
@@ -268,12 +268,26 @@ function handleIntersectVibration(mesh) {
     }
 }
 
+const texturesFiles = [ 
+    '../src/assets/textures/portal/pentagram.png',
+    '../src/assets/textures/portal/pentagram-transparency.png'
+]
+const textures = []
+
+function swapTexture (index) {
+    // get the ground mesh
+    const ground = scene.getObjectByName('Ground');
+    // swap in the new texture
+    console.log('scene', ground)
+    ground.material.map = textures[index];
+    ground.material.needsUpdate = true;
+}
+
+export { swapTexture }
 
 const cameraHeight = 10;
 
 function initScene() {
-
-    
     camera = new THREE.PerspectiveCamera(60, videoWidth / videoHeight, 1, 1100);
     camera.position.set(0,cameraHeight,0)
 
@@ -293,23 +307,31 @@ function initScene() {
         wireframe: true,
     });
     const helper = new THREE.Mesh(helperGeometry, helperMaterial);
-    scene.add(helper);
+    // scene.add(helper);
     // </ 
-            // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
+    // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
 
-            
-    const textureLoader = new THREE.TextureLoader();
-    const textureUrl = '../src/assets/textures/gateway/pentagram.png'
-    const texture = textureLoader.load(textureUrl);
+    
 
+
+    texturesFiles.forEach(textureFile => {
+        const textureLoader = new THREE.TextureLoader();
+        const texture = textureLoader.load(textureFile);
+        textures.push(texture)
+    })
+
+    // const textureLoader = new THREE.TextureLoader();
+    // const textureUrl = '../src/assets/textures/portal/pentagram.png'
+    // const texture = textureLoader.load(textureUrl);
 
     // console.log('texture', texture)
     const groundGeometry = new THREE.PlaneGeometry(10, 10); // Width and height of the ground
-    const groundMaterial = new THREE.MeshStandardMaterial({ map: texture, transparent: true });
-    // const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xff00ff }); 
-    
+    const groundMaterial = new THREE.MeshStandardMaterial({ map: textures[0], transparent: true });
+   
+
     const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-    
+    ground.name = 'Ground'
+
     // Rotate the ground to be horizontal
     ground.rotation.x = -Math.PI / 2;
     ground.position.set(0,0,0)
