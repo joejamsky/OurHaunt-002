@@ -53,3 +53,11 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+#motion-north {
+	position: absolute;
+	top: -30px;
+	left: 50%;
+	transform: translate(-50%, 0);
+    font-size: 20px;
+}
