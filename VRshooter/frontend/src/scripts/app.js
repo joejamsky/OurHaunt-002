@@ -204,7 +204,7 @@ function initMonster() {
             monsterMesh = gltf.children[0]
             monsterMesh.scale.set(0.2,0.2,0.2)
             monsterMesh.position.set(0,cameraHeight,-3)
-            monsterMesh.visible = false;
+            monsterMesh.visible = true;
 
 
             // const audioFileUrl = 'path/to/audio/file.mp3';
@@ -233,7 +233,7 @@ function initMonster() {
             });
 
             scene.add( monsterMesh )
-            moveObjectRandom(monsterMesh)
+            // moveObjectRandom(monsterMesh)
 
         },
         undefined,
@@ -269,7 +269,7 @@ function handleIntersectVibration(mesh) {
 }
 
 
-const cameraHeight = 2;
+const cameraHeight = 10;
 
 function initScene() {
 
@@ -349,7 +349,7 @@ function initScene() {
 // Debug
 function rotateCamera() {
     // Rotate the camera around its Y-axis
-    camera.rotation.y += 0.001; // Adjust the rotation speed as needed
+    camera.rotation.y += 0.01; // Adjust the rotation speed as needed
 }
 
 
@@ -441,7 +441,7 @@ function animate() {
     if(monsterMesh && monsterMesh.position){
         updateVolumeBasedOnProximity(camera, monsterMesh, radioActive);
         updatePip(monsterMesh.position)
-
+        updateTrackerRotation(THREE.Math.radToDeg(camera.rotation.y))
         // handleIntersectVibration(monsterMesh.position)
         toggleVisibility()
     }

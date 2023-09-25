@@ -10,13 +10,13 @@ function convertRange(value, min1 = -10, max1 = 10, min2 = 0, max2 = 100) {
 }
 
 const updateTrackerRotation = (position) => {    
-    motionModule.style.transform = `rotate(${position.alpha}deg)`;
+    motionModule.style.transform = `rotate(${position}deg)`;
 }
 
 const updatePip = (position) => {
-    motionIdentifier.style.top = `${convertRange(position.y)}%`
+    motionIdentifier.style.top = `${convertRange(position.z)}%`
     motionIdentifier.style.left = `${convertRange(position.x)}%`
-    motionIdentifier.style.transform = `translate(-${convertRange(position.x)}%, -${convertRange(position.y)}%)`
+    motionIdentifier.style.transform = `translate(-${convertRange(position.x)}%, -${convertRange(position.z)}%)`
 }
 
 window.addEventListener("deviceorientation", (event) => {

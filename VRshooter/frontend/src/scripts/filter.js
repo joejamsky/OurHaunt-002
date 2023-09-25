@@ -1,4 +1,4 @@
-let filterBool = false;
+let filterBool = true;
 
 document.addEventListener("DOMContentLoaded", function () {
 
