@@ -233,7 +233,7 @@ function initMonster() {
             });
 
             scene.add( monsterMesh )
-            // moveObjectRandom(monsterMesh)
+            moveObjectRandom(monsterMesh)
 
         },
         undefined,
@@ -396,7 +396,6 @@ function shootObject() {
     pressHold = 1
     shootObject.direction = new THREE.Vector3();
     camera.getWorldDirection(shootObject.direction);
-    console.log('direction', shootObject.direction)
 
 
     sceneOfferingObjects.push(shootObject);
