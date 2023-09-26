@@ -11,7 +11,8 @@
             "Creating Chaos", 
             "Fueling Despair", 
             "Gathering Souls", 
-            "Achieving Immortality"
+            "Achieving Immortality",
+            "Release evil into the world"
         ],
         "GOOD_INTENTIONS": [
             "Protection", 
@@ -23,7 +24,8 @@
             "Healing", 
             "Helping Lost Souls To The Afterlife", 
             "Fostering Unity", 
-            "Undertaking Acts of Kindness"
+            "Undertaking Acts of Kindness",
+            "Say goodbye to loved ones"
         ],
         "NEUTRAL_INTENTIONS": [
             "Attachment to the Location", 
@@ -32,7 +34,10 @@
             "Witness to Significant Events", 
             "Maintaining Balance", 
             "Exploring Unexplored Emotions", 
-            "Lost Spirit"
+            "Lost Spirit",
+            "Still in love with someone",
+            "Trapped and cannot release myself"
+
         ],
         "SCIENTIFIC_INTENTIONS": [
             "Study of Unique Ecosystems", 

@@ -29,11 +29,28 @@ $('.portal-list').each(function() {
         portalItems.removeClass("active");
         $this.addClass("active");
       }
-      // swapTexture(this.dataset.texture);
-
-      swapTexture(1);
     });
 })
 
+$('.glyph-list .portal-item').each(function() {
+  $(this).click(function(e) {
+    e.preventDefault();
+    swapTexture(this.dataset.index, e.target.classList.contains('active'));
+  })
+})
 
+$('.candle-list .portal-item').each(function() {
+  $(this).click(function(e) {
+    e.preventDefault();
+    console.log('candle item clicked')
+  })
+})
+
+
+$('.focus-list .portal-item').each(function() {
+  $(this).click(function(e) {
+    e.preventDefault();
+    console.log('focus item clicked')
+  })
+})
 

@@ -36,6 +36,7 @@ function handleInitClick() {
     initScene();
     initSlides();
     initMonster();
+    // initModels();
     initRadio();
     animate();
 }
@@ -187,7 +188,41 @@ const audioLoader = new THREE.AudioLoader();
 // The index runs the dist js files so use the dist asset folder when referencing files
 const meshUrl = '../src/assets/meshes/ghostie-retop.obj'
 
+
 const loader = new OBJLoader();
+
+// Figure this out later. Need to figure out how to load multiple models
+// const modelPaths = ['../src/assets/meshes/candle.obj']
+// function loadModel(modelPath) {
+//     return new Promise((resolve, reject) => {
+//         // const loader = new THREE.GLTFLoader(); // Double loader. Not sure why this is needed.
+//         loader.load(modelPath, (gltf) => {
+//             resolve(gltf.scene);
+//         }, undefined, (error) => {
+//             reject(error);
+//         });
+//     });
+// }
+
+// const loadModelPromises = modelPaths.map(loadModel);
+
+
+// function initModels(){
+
+//     Promise.all(loadModelPromises)
+//     .then((models) => {
+//         // All models are loaded successfully, you can now add them to your scene.
+//         models.forEach((model, index) => {
+//             // Position, scale, or manipulate the loaded models as needed.
+//             model.position.set(index * 2, 0, 0); // Example: Position models side by side
+//             scene.add(model);
+//         });
+//     })
+//     .catch((error) => {
+//         console.error('Error loading models:', error);
+//     });
+// }
+
 
 function initMonster() {
     loader.load(meshUrl,
@@ -269,16 +304,21 @@ function handleIntersectVibration(mesh) {
 }
 
 const texturesFiles = [ 
+    '../src/assets/textures/portal/blood-glyph.png',
+    '../src/assets/textures/portal/elemental-glyph.png',
+    '../src/assets/textures/portal/floral-glyph.png',
     '../src/assets/textures/portal/pentagram.png',
-    '../src/assets/textures/portal/pentagram-transparency.png'
+    '../src/assets/textures/portal/runic-glyph.png',
+    '../src/assets/textures/portal/salt-glyph.png',
+    '../src/assets/textures/portal/sigil-glyph.png'
 ]
 const textures = []
 
-function swapTexture (index) {
+function swapTexture (index, toggle) {
     // get the ground mesh
     const ground = scene.getObjectByName('Ground');
     // swap in the new texture
-    console.log('scene', ground)
+    ground.material.opacity = toggle ? 1 : 0;
     ground.material.map = textures[index];
     ground.material.needsUpdate = true;
 }
@@ -320,13 +360,8 @@ function initScene() {
         textures.push(texture)
     })
 
-    // const textureLoader = new THREE.TextureLoader();
-    // const textureUrl = '../src/assets/textures/portal/pentagram.png'
-    // const texture = textureLoader.load(textureUrl);
-
-    // console.log('texture', texture)
     const groundGeometry = new THREE.PlaneGeometry(10, 10); // Width and height of the ground
-    const groundMaterial = new THREE.MeshStandardMaterial({ map: textures[0], transparent: true });
+    const groundMaterial = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0 });
    
 
     const ground = new THREE.Mesh(groundGeometry, groundMaterial);
@@ -338,6 +373,8 @@ function initScene() {
     
     // Add the ground to the scene
     scene.add(ground);
+
+    const candleGeometry = new THREE.CylinderGeometry(0.1, 0.1, 0.5, 32);
 
     const ambLight = new THREE.AmbientLight( 0xffffff, 0.5 ); // soft white light
     // const ambLight = new THREE.AmbientLight( 0xffffff, 0.02 ); // soft white light

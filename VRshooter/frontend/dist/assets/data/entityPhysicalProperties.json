@@ -147,15 +147,14 @@
             "Demon": ["Pentagram", "Blood"],
             "Angel": ["Rune", "Flower"],
             "Fey": ["Elemental", "Flower", "Salt"],
-            "Ghost": ["Pentagram", "Chalk", "Flower"],
-            "Critter": ["Chalk", "Salt", "Flower"],
+            "Ghost": ["Pentagram", "Flower"],
+            "Critter": ["Salt", "Flower"],
             "All": [    
                 "Pentagram",
                 "Rune",
                 "Elemental",
                 "Blood",
                 "Sigil",
-                "Chalk",
                 "Salt",
                 "Flower"
             ]
