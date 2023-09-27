@@ -294,8 +294,25 @@ function updateVolumeBasedOnProximity(camera, monster, active) {
     }
 }
   
+zPositionSlider.addEventListener('input', () => {
+    const ground = scene.getObjectByName('Ground');
 
+    const zPosition = parseFloat(zPositionSlider.value);
+    ground.position.z = zPosition; // Update the Z position of the mesh
+});
 
+yPositionSlider.addEventListener('input', () => {
+    const ground = scene.getObjectByName('Ground');
+
+    const yPosition = parseFloat(yPositionSlider.value);
+    ground.position.y = yPosition; // Update the Z position of the mesh
+});
+
+fovSlider.addEventListener('input', () => {
+    const fov = parseFloat(fovSlider.value);
+    camera.fov = fov; // Update the camera's FOV
+    camera.updateProjectionMatrix(); // Apply the changes
+});
 
 function handleIntersectVibration(mesh) {
     if (mesh.x <= 1 && mesh.z <= 1) {
@@ -364,12 +381,13 @@ function initScene() {
     const groundMaterial = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0 });
    
 
+
     const ground = new THREE.Mesh(groundGeometry, groundMaterial);
     ground.name = 'Ground'
 
     // Rotate the ground to be horizontal
     ground.rotation.x = -Math.PI / 2;
-    ground.position.set(0,0,0)
+    ground.position.set(0,0,-3)
     
     // Add the ground to the scene
     scene.add(ground);
