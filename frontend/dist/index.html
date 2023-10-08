@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>VR Shooter</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<!-- JQUERY -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+		<!-- FONT AWESOME -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
+		<!-- THREE -->
+		<!-- https://stackoverflow.com/questions/67883095/three-js-problems-with-importing-gltfloaders -->
+		<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "https://unpkg.com/three@0.138.3/build/three.module.js"
+				}
+			}
+		</script>		
+
+		<!-- TWEEN -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/20.0.0/tween.umd.js"></script>
+
+		<!-- SLICK -->
+		<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+		<!-- Add the slick-theme.css if you want default styling -->
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+		<!-- Add the slick-theme.css if you want default styling -->
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
+
+		<!-- CUSTOM STYLES -->
+		<!-- Need to use dist folder for styles because sass is compiled -->
+		<link type="text/css" rel="stylesheet" href="./styles/app.css">		
+	</head>
+	<body>
+		<div id="debug">
+			Debug
+			<div id="start-lat">start-lat</div>
+			<div id="start-lon">start-lon</div>
+			<div id="current-lat">current-lat</div>
+			<div id="current-lon">current-lon</div>
+			<div id="stabalized-lat">stabalized-lat</div>
+			<div id="stabalized-lon">stabalized-lon</div>
+			<div id="distance-lat">distance-lat</div>
+			<div id="distance-lon">distance-lon</div>
+			<div id="distance-total">distance-total</div>
+			<input type="range" id="fovSlider" min="1" max="179" value="60">
+			<input type="range" id="zPositionSlider" min="-10" max="10" step="0.1" value="0">
+			<input type="range" id="yPositionSlider" min="-10" max="10" step="0.1" value="0">
+
+
+		</div>
+
+		<div id="start-overlay">
+			<button id="start-button"><i class="fa-solid fa-power-off"></i></button>
+			<button id="about-button"><i class="fas fa-heart"></i></button>
+			<div id="about-page">
+				<div class="about-page-details">
+					<div id="about-close">
+						<div id="close-line-l"></div>
+						<div id="close-line-r"></div>
+					</div>
+					<div class="about-page-copy">
+						<h1>About Page</h1>
+						<h3>Requirements:</h3>
+						<p>This game works best on Chrome and was designed assuming the following parameters are met.</p>
+						<ul>
+							<li>Network connection</li>
+							<li>GPS location activated</li>
+							<li>Access to camera</li>
+							<li>Access to microphone</li>
+						</ul>
+						<p class="warning">None of the data, the GPS location, video or microphone feed is saved or viewable.</p>
+						<h3>Credits:</h3>
+						<p>It's yo boy</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="static-overlay"></div>
+		<div id="outofbounds-warning-container">
+			<h1 id="outofbounds-warning">Leaving Haunt</h1>
+		</div>
+
+		<div id="filter-overlay">
+		</div>
+
+		<video id="video" autoplay></video>
+
+		<div id="tutorial">
+
+		</div>
+
+
+		<div id="ui-container">
+			<div id="ui-slider-title-bar"></div>
+			<div id="ui-slider-title-container"></div>
+			<div id="ui-slider"></div>
+		</div>
+
+		
+		<div id="motion-module-container">
+			<div id="motion-module">
+				<div id="motion-spread"></div>
+				<div id="motion-identifier"></div>
+			</div>
+		</div>
+
+		<div id="filter-module-container">
+			<div id="filter-module">
+		  
+				<div class="filter-switch-container">
+					<div class="filter-light">
+						<div class="filter-light-bulb filter-light-off r-bulb"></div>
+					</div>
+					<label class="filter-switch ">
+						<input type="checkbox" class="checkbox r-switch">
+						<span class="filter-slider"></span>
+					</label>
+				</div>
+
+				<div class="filter-switch-container">
+					<div class="filter-light">
+						<div class="filter-light-bulb filter-light-off g-bulb"></div>
+					</div>
+					<label class="filter-switch ">
+						<input type="checkbox" class="checkbox g-switch">
+						<span class="filter-slider"></span>
+					</label>
+				</div>
+
+				<div class="filter-switch-container">
+					<div class="filter-light">
+						<div class="filter-light-bulb filter-light-off b-bulb"></div>
+					</div>
+					<label class="filter-switch ">
+						<input type="checkbox" class="checkbox b-switch">
+						<span class="filter-slider"></span>
+					</label>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div id="voice-module-container">
+			<div id="voice-module">
+
+				<div id="voice-board-border">	
+					<div class="voice-board-pin tl-pin"></div>	
+					<div class="voice-board-pin tr-pin"></div>	
+					<div class="voice-board-pin bl-pin"></div>	
+					<div class="voice-board-pin br-pin"></div>				
+					<div id="voice-board">
+						<div class="voice-board-pin tl-pin"></div>	
+						<div class="voice-board-pin tr-pin"></div>	
+						<div class="voice-board-pin bl-pin"></div>	
+						<div class="voice-board-pin br-pin"></div>	
+						<p id="voice-response"></p>
+						<p id="voice-request"></p>
+					</div>
+				</div>
+
+
+				<div id="voice-identifier">
+					<div class="voice-light">
+						<div class="voice-light-bulb voice-light-off"></div>
+					</div>
+
+					<form action="https://www.google.com/search" method="get" target="_blank" id="voice-form">
+						<input name="message" type="text" placeholder="Speak a message..." id="voice-input" class="hide" autocomplete="off" autofocus>
+						<button type="button" id="voice-mic-button" class=""><i class="fas fa-microphone"></i></button>
+						<!-- <button type="button" id="voice-mic-button"><i class="fas fa-microphone"></i></button> -->
+					</form>
+					
+
+				</div>
+			</div>
+		</div>
+
+
+		<div id="radio-module-container">
+			<div id="radio-module">
+					  
+					<div id="radio">
+						<svg id="radio-svg" width="200" height="60"></svg>
+					</div>		
+
+					<input type="range" id="radio-slider-integer" min="88.1" max="107.9" step="0.1" value="88.1">
+					<div id="radio-values-container">
+						<div id="radio-value-integer">97.1</div>
+						<div class="hz">Mhz</div>
+						<div id="radio-value-decimal">AM</div>
+					</div>
+					<input type="range" id="radio-slider-decimal" min="0" max="1" step="1" value="0">
+					<!-- <button id="radio-activate-button"><i class="fa-solid fa-power-off"></i></button> -->
+		
+			</div>
+		</div>
+
+
+		<div id="emf-module-container">
+			<div id="emf-module">
+					<div id="emf-lights">
+						<div class="emf-light">
+							<div class="emf-light-bulb emf-light-1"></div>
+						</div>
+						<div class="emf-light">
+							<div class="emf-light-bulb emf-light-2 emf-light-off"></div>
+						</div>
+						<div class="emf-light">
+							<div class="emf-light-bulb emf-light-3 emf-light-off"></div>
+						</div>
+						<div class="emf-light">
+							<div class="emf-light-bulb emf-light-4 emf-light-off"></div>
+						</div>
+						<div class="emf-light">
+							<div class="emf-light-bulb emf-light-5 emf-light-off"></div>
+						</div>
+					</div>
+					<div id="emf-range-numbers">
+						<div>1.5</div>
+						<div>2.5</div>
+						<div>10</div>
+						<div>20+mG</div>
+					</div>
+			</div>
+		</div>
+
+		<!-- <div id="offering-module-container">
+			<div id="offering-module">
+				<div class="offering-item">
+					Meat
+				</div>
+				<div class="offering-item">
+					Apple
+				</div>
+				<div class="offering-item">
+					Pizza
+				</div>
+				<div class="offering-item">
+					Water
+				</div>
+				<div class="offering-item">
+					Blood
+				</div>
+				<div class="offering-item">
+					Book
+				</div>
+				<div class="offering-item">
+					Letter
+				</div>
+				<div class="offering-item">
+					Candle
+				</div>
+				<div class="offering-item">
+					Flowers
+				</div>
+				<div class="offering-item">
+					Blanket
+				</div>
+				<div class="offering-item">
+					Mirror
+				</div>
+				<div class="offering-item">
+					Crucifix
+				</div>
+				<div class="offering-item">
+					Doll
+				</div>
+				<div class="offering-item">
+					Ball
+				</div>
+			</div>
+		</div> -->
+
+		<div id="portal-module-container">
+
+			<div id="portal-module">
+				
+				<div class="portal-items-container">
+					<div>Glyphs</div>
+					<div class="portal-list scroll-down glyph-list">						
+						<div class="portal-item" data-index="0">
+							Blood
+						</div>
+						<div class="portal-item" data-index="1">
+							Elemental
+						</div>
+						<div class="portal-item" data-index="2">
+							Natural
+						</div>
+						<div class="portal-item" data-index="3">
+							Pentagram
+						</div>
+						<div class="portal-item" data-index="4">
+							Runic
+						</div>
+						<div class="portal-item" data-index="5">
+							Salt
+						</div>
+						<div class="portal-item glyph-item" data-index="6">
+							Sigil
+						</div>
+					</div>
+				</div>
+
+				<div class="portal-items-container">
+					<div>Candles</div>
+					<div class="portal-list scroll-down candle-list">
+						
+						<div class="portal-item">
+							Red
+						</div>
+						<div class="portal-item">
+							Orange
+						</div>
+						<div class="portal-item">
+							Yellow
+						</div>
+						<div class="portal-item">
+							Green
+						</div>
+						<div class="portal-item">
+							Blue
+						</div>
+						<div class="portal-item">
+							Indigo
+						</div>
+						<div class="portal-item">
+							Violet
+						</div>
+					</div>
+				</div>
+
+				<div class="portal-items-container">
+					<div>Promises</div>
+					<div class="portal-list scroll-down focus-list">
+						
+						<div class="portal-item">
+							Blood
+						</div>
+						<div class="portal-item">
+							Letter
+						</div>
+						<div class="portal-item">
+							Ring
+						</div>
+						<div class="portal-item">
+							Secrecy
+						</div>
+						<div class="portal-item">
+							Pacifism
+						</div>
+						<div class="portal-item">
+							Love
+						</div>
+						<div class="portal-item">
+							Kibble
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div id="judgement-module-container">
+			<div id="judgement-module">
+				<div id="judgement-condemn" class="judgement-button">
+					condemn
+					<img src="" alt="">
+				</div>
+				<div id="judgement-rescue" class="judgement-button">
+					rescue
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+
+		<!-- <div id="temperature-module-container">
+			<div id="temperature-module">
+				
+					<button id="temperature-minus"></button>
+					<input id="temperature-quantity" min="-10" max="120" name="temperature-quantity" value="10" step="1" type="number">
+					<button id="temperature-plus"></button>
+				
+			</div>
+		</div> -->
+
+		
+		<script type="module" src="./scripts/DeviceOrientationControls.js"></script>
+		<script type="text/javascript" src="./scripts/entityGenerator.js"></script>
+		<script type="text/javascript" src="./scripts/game.js"></script>
+		
+		<script type="text/javascript" src="./scripts/filter.js"></script>
+		<script type="text/javascript" src="./scripts/uiSlider.js"></script>
+		<script type="text/javascript" src="./scripts/motion.js"></script>
+		<script type="text/javascript" src="./scripts/temperature.js"></script>
+		<script type="text/javascript" src="./scripts/voice.js"></script>
+		<script type="text/javascript" src="./scripts/radio.js"></script>
+		<script type="module" src="./scripts/app.js"></script>
+		<script type="module" src="./scripts/portal.js"></script>
+		<script type="module" src="./scripts/script.js"></script>
+		<script type="text/javascript" src="./scripts/offering.js"></script>
+	</body>
+</html>

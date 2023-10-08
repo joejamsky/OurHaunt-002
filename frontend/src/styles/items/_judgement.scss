@@ -1,0 +1,27 @@
+#judgement-module-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#judgement-module{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.judgement-button{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: solid 1px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
