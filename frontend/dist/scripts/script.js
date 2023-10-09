@@ -1,1 +1,1 @@
-fetch("/.netlify/functions/fetch-data").then((e=>e.ok?e:Promise.reject("Failed to fetch"))).then((e=>{console.log("Netlify data"),console.log(e)})).catch((e=>{console.error("Netlify Error:",e)}));
+fetch("../netlify/functions/fetch-data").then((e=>e.ok?e:Promise.reject("Failed to fetch"))).then((e=>{console.log("Netlify data"),console.log(e)})).catch((e=>{console.error("Netlify Error:",e)}));

@@ -1,7 +1,7 @@
 
 
 // frontend code
-fetch('/.netlify/functions/fetch-data')
+fetch('../netlify/functions/fetch-data')
   .then(response => {
     if (!response.ok) {
       // The response status was not in the 200-299 range
