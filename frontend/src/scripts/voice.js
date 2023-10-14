@@ -227,7 +227,7 @@ async function getChatGPTMessage (voiceMessage = "This is a test voice message, 
         
         console.log('Message to GPT-3:', voiceMessage);
         const data = await response.json();
-        console.log('data', data);
+        console.log('data from GPT-3', data);
         const message = data.response.choices[0].message.content;
         console.log('Message from GPT-3:', message);
         return message;
