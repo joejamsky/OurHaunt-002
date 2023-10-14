@@ -1,12 +1,13 @@
 // Import dependencies using ESM syntax
 import pkg from 'gulp';
+import { exec } from 'child_process';
 const { src, dest, series, watch } = pkg;
 import replace from 'gulp-replace';
 import fs from 'fs';
 import dotenv from 'dotenv';
 
 import sass from 'gulp-sass';
-import sassCompiler from 'sass';
+import * as sassCompiler from 'sass';
 const scss = sass(sassCompiler);
 import autoprefixer from 'gulp-autoprefixer';
 import cssMinify from 'gulp-clean-css';
@@ -39,9 +40,27 @@ function env(done) {
 function injectEnvVars() {
   return src('./src/scripts/**/*.js')  // Source path of your scripts
     .pipe(replace('__GPT_API_KEY__', process.env.GPT_API_KEY))  // Replace placeholder with actual value
-    .pipe(dest('./dist/scripts'))  // Destination path of your scripts
+    .pipe(dest('./public/scripts'))  // Destination path of your scripts
     .pipe(dest('./src/scripts'));  // Destination path of your scripts
 }
+
+function netlifyDev(cb) {
+  const netlify = exec('netlify dev', (err, stdout, stderr) => {
+    console.log(stdout);
+    console.error(stderr);
+    cb(err);
+  });
+  
+  netlify.stdout.on('data', (data) => {
+    console.log(data.toString());
+  });
+  
+  netlify.stderr.on('data', (data) => {
+    console.error(data.toString());
+  });
+}
+
+
 
 // styles task
 function styles() {
@@ -49,7 +68,7 @@ function styles() {
     .pipe(scss())
     .pipe(autoprefixer('last 2 versions'))
     .pipe(cssMinify())
-    .pipe(dest('./dist/styles/'));
+    .pipe(dest('./public/styles/'));
 }
 
 // scripts task
@@ -58,28 +77,28 @@ function scripts() {
     .pipe(replace('src/textures/', 'textures/')) // Update style file paths
     .pipe(replace('src/assets/', 'assets/')) // Update asset file paths
     .pipe(jsMinify())
-    .pipe(dest('./dist/scripts/'));
+    .pipe(dest('./public/scripts/'));
 }
 
 // copyHTML task
 function copyHTML() {
   return src('./index.html')
-    .pipe(replace('dist/styles/', 'styles/')) // Update style file paths. Need to use dist folder for styles because sass is compiled
+    .pipe(replace('public/styles/', 'styles/')) // Update style file paths. Need to use public folder for styles because sass is compiled
     .pipe(replace('src/scripts/', 'scripts/')) // Update script file paths
     .pipe(replace('src/assets/', 'assets/')) // Update script file paths
-    .pipe(dest('./dist/'));
+    .pipe(dest('./public/'));
 }
 
 // images task
 function images() {
   return src('./src/textures/**/*.{jpg,jpeg,png,gif,svg}')
-    .pipe(dest('./dist/textures/'));
+    .pipe(dest('./public/textures/'));
 }
 
 // assets task
 function assets() {
   return src('./src/assets/**')
-    .pipe(dest('./dist/assets/'))
+    .pipe(dest('./public/assets/'))
 }
 
 // browsersyncServer task
@@ -106,4 +125,5 @@ function watchTask() {
 }
 
 // Exporting the default task using ESM syntax
-export default series(injectEnvVars, env, styles, scripts, assets, copyHTML, images, browsersyncServer, watchTask);
+// export default series(injectEnvVars, env, styles, scripts, assets, copyHTML, images, browsersyncServer, watchTask);
+export default series(injectEnvVars, env, styles, scripts, assets, copyHTML, images, netlifyDev);

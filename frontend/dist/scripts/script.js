@@ -1,1 +1,0 @@
-fetch("/.netlify/functions/hello-world/hello-world").then((o=>o.ok?o:Promise.reject("Failed to fetch"))).then((o=>{console.log("Netlify data"),console.log(o)})).catch((o=>{console.error("Netlify Error:",o)}));

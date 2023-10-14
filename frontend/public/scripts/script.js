@@ -1,0 +1,1 @@
+fetch("/.netlify/functions/chatgpt/chatgpt").then((t=>t.ok?t.json():Promise.reject("Failed to fetch"))).then((t=>{console.log("Netlify data"),console.log(t)})).catch((t=>{console.error("Netlify Error:",t)}));

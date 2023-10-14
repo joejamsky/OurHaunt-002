@@ -205,6 +205,38 @@ function checkInputPhrase(phrase) {
 // The speech recognition interface lives on the browser’s window object
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; // if none exists -> undefined
 
+async function fetchAndType(transcript) {
+    console.log('fetch and type message', transcript)
+    try {
+        const message = await getChatGPTMessage(transcript);
+        typeWriterEffect(message);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function getChatGPTMessage (voiceMessage = "This is a test voice message, say 1234 if you get it"){
+    try {
+        const response = await fetch('/.netlify/functions/chatgpt/chatgpt', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: voiceMessage }),
+        });
+        
+        console.log('Message to GPT-3:', voiceMessage);
+        const data = await response.json();
+        console.log('data', data);
+        const message = data.response.choices[0].message.content;
+        console.log('Message from GPT-3:', message);
+        return message;
+    } catch (error) {
+        console.error('Netlify Error:', error);
+    }
+}
+
+
 if(SpeechRecognition) {
     console.log("Speech recognition connected.");
   
@@ -243,7 +275,8 @@ if(SpeechRecognition) {
         micLight.classList.add("voice-light-off");
         voiceFormInput.focus();
         console.log("Speech recognition service disconnected");
-        checkInputPhrase(transcript.toLowerCase().trim())
+        fetchAndType(transcript)
+        // checkInputPhrase(transcript.toLowerCase().trim())
         document.getElementById('voice-request').innerText = ""
     }
 
@@ -308,38 +341,3 @@ else {
     console.log("Your Browser does not support speech Recognition");
     alert("Your Browser does not support Speech Recognition");
 }
-
-
-
-
-
-
-
-
-// Chat GPT hookup.
-// Need API key
-// async function sendMessage(message) {
-//     const response = await fetch('https://api.openai.com/v1/chat/completions', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': 'Bearer YOUR_API_KEY',
-//       },
-//       body: JSON.stringify({
-//         model: 'gpt-3.5-turbo',
-//         messages: [{ role: 'system', content: 'You are a helpful assistant.' }, { role: 'user', content: message }],
-//       }),
-//     });
-  
-//     const data = await response.json();
-//     const reply = data.choices[0].message.content;
-//     return reply;
-//   }
-  
-//   // Example usage:
-//   sendMessage('Hello, how are you?').then(reply => {
-//     console.log('Bot:', reply);
-//   }).catch(error => {
-//     console.error('Error:', error);
-//   });
-  
