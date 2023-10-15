@@ -1,4 +1,4 @@
-import { OpenAI } from "openai";
+const OpenAI = require("openai");
 
 const handler = async function(event, context) {
   try {
