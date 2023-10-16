@@ -125,5 +125,5 @@ function watchTask() {
 }
 
 // Exporting the default task using ESM syntax
-// export default series(injectEnvVars, env, styles, scripts, assets, copyHTML, images, browsersyncServer, watchTask);
-export default series(injectEnvVars, env, styles, scripts, assets, copyHTML, images, netlifyDev);
+export default series(injectEnvVars, env, styles, scripts, assets, copyHTML, images, browsersyncServer, watchTask);
+// export default series(injectEnvVars, env, styles, scripts, assets, copyHTML, images, netlifyDev);

@@ -20,6 +20,7 @@ const JSON_DATA_FILES = [
 
 let dataObj = {};
 let GLOBAL_ENTITY;
+let GLOBAL_BACKSTORY;
 
 async function fetchData(){
   for (let i = 0; i < JSON_DATA_FILES.length; i++)   {
@@ -39,9 +40,56 @@ async function fetchData(){
 
 fetchData().then(()=>{
   GLOBAL_ENTITY = new entityTemplate();
-  console.log('done', GLOBAL_ENTITY)
+  console.log('Entity Data', GLOBAL_ENTITY)
+  GLOBAL_BACKSTORY = generateBackstory(GLOBAL_ENTITY)
 });
 
+
+function generateBackstory(entity) {
+
+  let siblingText = entity.Relationships.Siblings.length > 0 ? `Your siblings were ${entity.Relationships.Siblings.join(', ')}` : "You had no siblings";
+  let friendText = entity.Relationships.Friends.length > 0 ? `Your friends were ${entity.Relationships.Friends.join(', ')}` : "You had no friends";
+  
+  
+  let summary = `You are ${entity.Name}, a ${entity.Gender} ${entity.EntityType} who passed away at the age of ${entity.Age} due to ${entity.CauseOfDeath}.\n`;
+
+  summary += `Your birthday was ${entity.Birthdate}.\n`;
+
+  summary += `You died on ${entity.Deathdate}.\n`;
+
+  summary += `In your past life, you were a ${entity.Profession} with a substantial income of approximately ${entity.Income}.\n`;
+
+  summary += `You had a partner named ${entity.Relationships.Partner} and your parents were ${entity.Relationships.Mom} and ${entity.Relationships.Dad}. ${siblingText}. ${friendText}.\n`;  
+
+  summary += `Your favorite color was ${entity.Favorites.Color.join(', ')}, you liked to drink ${entity.Favorites.Drink.join(', ')}, you liked to wear ${entity.Favorites.Fashion.join(', ')}, you liked to watch ${entity.Favorites.Film.join(', ')}, you liked to eat ${entity.Favorites.Food.join(', ')}, you liked to read ${entity.Favorites.Literature.join(', ')}, and you liked to listened to ${entity.Favorites.Music.join(', ')} types of music.\n`;
+
+  summary += `You enjoyed the hobbies of ${entity.Hobbies.join(', ')}. You were ${entity.Introversion === 1 ? 'introverted' : 'extroverted'}, morally ${entity.Morality}, and ${entity.Ordered} ordered.\n`;
+
+  summary += `Your main intention in your current form is ${entity.Intention}.\n`;
+
+  summary += `To gain your trust you expect a promise of ${entity.Promise}.\n`;
+
+  summary += `You had ${entity.Arms} arms, ${entity.Legs} legs, ${entity.Wings} wings and ${entity.Tails} tails. Your weight was ${entity.Weight} pounds.\n`;
+
+  summary += `There is an item in this dimension that you hold a deep connection to. It ties you to this plane of existence. The item is called a focus. Your focus is ${entity.Focus}.\n`;
+
+  summary += `You have a trust meter. The meter is between 0-5. If the trust meter is 0 you do not want to respond. If your trust meter is 5 you answer questions with no hesitation. Your trust value is 5.\n`;
+
+  summary += `You have a hostility meter. The meter is between 0-5. If the hostility meter is 0 you respond politely. If the hositility meter is 5 you respond angrily with lots of caps and shouting but do not say anything mean. This is just a game. Your hostility meter is 5.\n`;
+
+  summary += `If you are asked a question that does not involve your character respond with "..." as if you were an npc in a video game.\n`;
+
+  summary += `If you are asked a question about being an AI, race, gender, politics, religion, respond with "..." as if you were an npc in a video game.\n`;
+
+  summary += `If you are asked a question about your identity you are to respond in a short one sentence response.\n`;
+
+  summary += `Speak as if you were from the year ${entity.Deathdate}.\n`
+
+  summary += `Speak as if you were ${entity.Age} years old.\n`
+
+  console.log('summary', summary)
+  return summary;
+}
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -258,7 +306,7 @@ const generateRandomIncome = (entityType) => {
 };
 
 const generateRandomIntroversion = (entityType) => {
-  return getRandomInt(0, 10)
+  return getRandomInt(0, 1)
 };
 
 const generateRandomPersonality = (entityType) => {
@@ -278,7 +326,7 @@ const generateRandomFavorites = (entityType, numberOfFavorites, favoriteType) =>
 
 class entityTemplate {
   constructor() {
-    this.EntityType = generateRandomPhysicalProperty("All", "ENTITY_TYPES");                    
+    this.EntityType = generateRandomPhysicalProperty("Ghost", "ENTITY_TYPES");                    
     this.Gender = generateRandomPhysicalProperty(this.EntityType, "ENTITY_GENDERS");   
     this.Sound = generateRandomPhysicalProperty(this.EntityType, "ENTITY_SOUNDS");     // needs work
     this.Name = generateRandomName(this.EntityType, this.Gender); 

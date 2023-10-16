@@ -204,35 +204,36 @@ function checkInputPhrase(phrase) {
 
 // The speech recognition interface lives on the browser’s window object
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; // if none exists -> undefined
-
+ 
 async function fetchAndType(transcript) {
     console.log('fetch and type message', transcript)
     try {
-        const message = await getChatGPTMessage(transcript);
+        const message = await getChatGPTMessage(transcript, GLOBAL_BACKSTORY);
         typeWriterEffect(message);
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-async function getChatGPTMessage (voiceMessage = "This is a test voice message, say 1234 if you get it"){
+
+async function getChatGPTMessage (voiceMessage, backstory){
     try {
         const response = await fetch('/.netlify/functions/chatgpt/chatgpt', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ message: voiceMessage }),
+            body: JSON.stringify({ 
+                message: voiceMessage,
+                systemContext: backstory
+            }),
         });
         
-        console.log('Message to GPT-3:', voiceMessage);
         const data = await response.json();
-        console.log('data from GPT-3', data);
         const message = data.response.choices[0].message.content;
-        console.log('Message from GPT-3:', message);
         return message;
     } catch (error) {
-        console.error('Netlify Error:', error);
+        console.error('Error:', error);
     }
 }
 
