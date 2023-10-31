@@ -1,0 +1,17 @@
+{
+    "key": "CHARACTER_ARCHTYPES",
+    "data": {
+        "Hero": "the protagonist who rises to meet a challenge and saves the day.",
+        "Mentor": "You are an old wise teacher.",
+        "Rebel": "You challenges traditional norms and stands apart from society.",
+        "Lover": " love, romance, and emotional bonds.",
+        "Explorer": "Searches for new experiences, usually very adventurous.",
+        "Sage": "A wise figure with knowledge for those who inquire.",
+        "Innocent": "Pure, uncorrupted by the world; often a child or someone with child-like qualities.",
+        "Jester or Trickster": "Provides comic relief but also may serve to question the status quo.",
+        "Villain": "The antagonist, who opposes the hero.",
+        "Everyman": "Represents the average, ordinary person.",
+        "Mother Figure": "Nurturing and caring, often a source of emotional support.",
+        "Ruler": "Holds power, whether it's the head of a family or the leader of a nation."
+    }   
+}

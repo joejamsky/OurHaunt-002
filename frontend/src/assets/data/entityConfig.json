@@ -1,0 +1,276 @@
+{
+    "Types": ["Ghost", "Angel", "Demon"],
+    "Gender": {
+        "All": ["Male", "Female", "All"],
+        "Ghost": ["Male", "Female", "All"],
+        "Angel": ["Male", "Female", "All"],
+        "Demon": ["Male", "Female", "All"]
+    },
+    "Name": {
+        "Ghost": {
+            "All": ["Abigail", "Addison", "Aiden", "Alexander", "Alfie", "Amelia", "Andrew", "Anthony", "Archie", "Aria", "Arthur", "Aubrey", "Audrey", "Aurora", "Ava", "Avery", "Benjamin", "Brooklyn", "Caleb", "Carter", "Charlie", "Charlotte", "Chloe", "Daniel", "David", "Dylan", "Eleanor", "Eliana", "Elijah", "Elizabeth", "Ella", "Ellie", "Emily", "Emma", "Ethan", "Evelyn", "Freddie", "Gabriel", "Genesis", "George", "Grace", "Hannah", "Harley", "Harper", "Harry", "Henry", "Isaac", "Isabella", "Jack", "Jackson", "James", "Jayden", "John", "Joseph", "Joshua", "Julian", "Layla", "Leah", "Leo", "Levi", "Liam", "Lila", "Lily", "Logan", "Lucas", "Lucy", "Luke", "Mason", "Mateo", "Matthew", "Maya", "Mia", "Michael", "Muhammad", "Naomi", "Natalie", "Nevaeh", "Nicholas", "Noah", "Nora", "Nova", "Oliver", "Olivia", "Oscar", "Owen", "Paisley", "Peyton", "Riley", "Ruby", "Sadie", "Samuel", "Savannah", "Scarlett", "Sebastian", "Sofia", "Sophia", "Stella", "Theo", "Thomas", "Victoria", "William", "Willow", "Wyatt", "Zoe"],
+            "Male": ["Addison", "Aiden", "Alexander", "Alfie", "Andrew", "Anthony", "Archie", "Arthur", "Avery", "Benjamin", "Brooklyn", "Caleb", "Carter", "Charlie", "Daniel", "David", "Dylan", "Elijah", "Ethan", "Freddie", "Gabriel", "Genesis", "George", "Harley", "Harper", "Harry", "Henry", "Isaac", "Jack", "Jackson", "James", "Jayden", "John", "Joseph", "Joshua", "Julian", "Leo", "Levi", "Liam", "Logan", "Lucas", "Luke", "Mason", "Mateo", "Matthew", "Michael", "Muhammad", "Nicholas", "Noah", "Nova", "Oliver", "Oscar", "Owen", "Paisley", "Peyton", "Riley", "Samuel", "Sebastian", "Theo", "Thomas", "William", "Willow", "Wyatt"],
+            "Female": ["Abigail", "Amelia", "Aria","Aubrey", "Audrey", "Aurora", "Ava", "Avery", "Brooklyn", "Charlie", "Charlotte", "Chloe", "Danielle", "Eleanor", "Eliana", "Elizabeth", "Ella", "Ellie", "Emily", "Emma", "Evelyn", "Gabriela", "Genesis", "Grace", "Hannah", "Harley", "Harper",  "Isabella", "Jackson", "Jayden", "Juliana", "Layla", "Leah", "Leo", "Levi", "Lila", "Lily", "Lucy", "Maya", "Mia", "Naomi", "Natalie", "Nevaeh", "Nora", "Nova", "Olivia", "Paisley", "Peyton", "Riley", "Ruby", "Sadie", "Savannah", "Scarlett", "Sofia", "Sophia", "Stella", "Victoria", "Willow", "Zoe"],
+            "None": [false]
+        },
+        "Angel": {
+            "All": ["Abatur", "Adathan", "Agiel", "Aglibol", "Amitiel", "Ananiel", "Anush", "Arakiel", "Arariel", "Archangel", "Apollyon", "Ariel", "Armaros", "Artiya'il", "Asbeel", "Azazel", "Azrael", "Barachiel", "Barbiel", "Baraqiel", "Bene Elohim", "Beburos", "Bezaliel", "Bihram Rabba", "Camael", "Cambiel", "Cassiel", "Chazaqiel", "Cherub", "Daniel", "Dadrail", "Daveithai", "Dominions", "Dumah", "Eleleth", "Etinsib Ziwa", "Gabriel", "Gadreel", "Gamaliel", "Gubran", "Hadarniel", "Hahasiah", "Hanibal", "Hamaliel", "Haniel", "Harmozel", "Harut", "Hashmal", "Hamalat al-Arsh", "Hibil Ziwa", "Hofniel", "Imamiah", "Ieshim", "Israfil", "Jegudiel", "Jehoel", "Jequn", "Jerahmeel", "Jophiel", "Kadkadael", "Kalka'il", "Kepharel", "Kerubiel", "Kiraman Katibin", "Kokabiel", "Kundaliel", "Kushiel", "Lailah", "Maalik", "Macroprosopus", "Malakbel", "Matriel", "Mebahiah", "Metatron", "Michael", "Moroni", "Mu’aqqibat", "Munkar", "Marfeil", "Muriel", "Nakir", "Nanael", "Nathaniel", "Nbat", "Netzach", "Nidbai", "Nithael", "Nsab", "Nuriel", "Ophaniel", "Oroiael", "Pahaliah", "Penemue", "Phanuel", "Powers", "Poyel", "Pravuil", "Principalities", "Ptahil", "Puriel", "Radueriel", "Raguel", "Ramiel", "Raphael", "Raziel", "Rikbiel", "Sabriel", "Sachiel", "Sahaquiel", "Sam Ziwa", "Samael", "Samyaza", "Sandalphon", "Sarathiel", "Sariel", "Saureil", "Shamnail", "Shamsiel", "Sheetil", "Shihlun", "Shilmai", "Sidriel", "Simat Hayyi", "Song-Uttering Choirs", "Tamiel", "Tarwan", "Temeluchus", "Tennin", "Thrones", "Turail", "Turiel", "Urfeil", "Uriel", "Uziel", "Vasiariah", "Vehuel", "Verchiel", "Virtues", "Watcher", "Wormwood", "Yadathan", "Yarhibol", "Yawar Ziwa", "Yomiel", "Yufin-Yufafin", "Yukabar", "Yukašar", "Yurba", "Yushamin", "Zachariel", "Zadkiel", "Zagagel", "Zaphkiel", "Zaqiel", "Zephaniel", "Zephon", "Zihrun"],
+            "Male": ["Abatur", "Adathan", "Agiel", "Aglibol", "Amitiel", "Ananiel", "Anush", "Arakiel", "Arariel", "Archangel", "Apollyon", "Ariel", "Armaros", "Artiya'il", "Asbeel", "Azazel", "Azrael", "Barachiel", "Barbiel", "Baraqiel", "Bene Elohim", "Beburos", "Bezaliel", "Bihram Rabba", "Camael", "Cambiel", "Cassiel", "Chazaqiel", "Cherub", "Daniel", "Dadrail", "Daveithai", "Dominions", "Dumah", "Eleleth", "Etinsib Ziwa", "Gabriel", "Gadreel", "Gamaliel", "Gubran", "Hadarniel", "Hahasiah", "Hanibal", "Hamaliel", "Haniel", "Harmozel", "Harut", "Hashmal", "Hamalat al-Arsh", "Hibil Ziwa", "Hofniel", "Imamiah", "Ieshim", "Israfil", "Jegudiel", "Jehoel", "Jequn", "Jerahmeel", "Jophiel", "Kadkadael", "Kalka'il", "Kepharel", "Kerubiel", "Kiraman Katibin", "Kokabiel", "Kundaliel", "Kushiel", "Lailah", "Maalik", "Macroprosopus", "Malakbel", "Matriel", "Mebahiah", "Metatron", "Michael", "Moroni", "Mu’aqqibat", "Munkar", "Marfeil", "Muriel", "Nakir", "Nanael", "Nathaniel", "Nbat", "Netzach", "Nidbai", "Nithael", "Nsab", "Nuriel", "Ophaniel", "Oroiael", "Pahaliah", "Penemue", "Phanuel", "Powers", "Poyel", "Pravuil", "Principalities", "Ptahil", "Puriel", "Radueriel", "Raguel", "Ramiel", "Raphael", "Raziel", "Rikbiel", "Sabriel", "Sachiel", "Sahaquiel", "Sam Ziwa", "Samael", "Samyaza", "Sandalphon", "Sarathiel", "Sariel", "Saureil", "Shamnail", "Shamsiel", "Sheetil", "Shihlun", "Shilmai", "Sidriel", "Simat Hayyi", "Song-Uttering Choirs", "Tamiel", "Tarwan", "Temeluchus", "Tennin", "Thrones", "Turail", "Turiel", "Urfeil", "Uriel", "Uziel", "Vasiariah", "Vehuel", "Verchiel", "Virtues", "Watcher", "Wormwood", "Yadathan", "Yarhibol", "Yawar Ziwa", "Yomiel", "Yufin-Yufafin", "Yukabar", "Yukašar", "Yurba", "Yushamin", "Zachariel", "Zadkiel", "Zagagel", "Zaphkiel", "Zaqiel", "Zephaniel", "Zephon", "Zihrun"],
+            "Female": ["Abatur", "Adathan", "Agiel", "Aglibol", "Amitiel", "Ananiel", "Anush", "Arakiel", "Arariel", "Archangel", "Apollyon", "Ariel", "Armaros", "Artiya'il", "Asbeel", "Azazel", "Azrael", "Barachiel", "Barbiel", "Baraqiel", "Bene Elohim", "Beburos", "Bezaliel", "Bihram Rabba", "Camael", "Cambiel", "Cassiel", "Chazaqiel", "Cherub", "Daniel", "Dadrail", "Daveithai", "Dominions", "Dumah", "Eleleth", "Etinsib Ziwa", "Gabriel", "Gadreel", "Gamaliel", "Gubran", "Hadarniel", "Hahasiah", "Hanibal", "Hamaliel", "Haniel", "Harmozel", "Harut", "Hashmal", "Hamalat al-Arsh", "Hibil Ziwa", "Hofniel", "Imamiah", "Ieshim", "Israfil", "Jegudiel", "Jehoel", "Jequn", "Jerahmeel", "Jophiel", "Kadkadael", "Kalka'il", "Kepharel", "Kerubiel", "Kiraman Katibin", "Kokabiel", "Kundaliel", "Kushiel", "Lailah", "Maalik", "Macroprosopus", "Malakbel", "Matriel", "Mebahiah", "Metatron", "Michael", "Moroni", "Mu’aqqibat", "Munkar", "Marfeil", "Muriel", "Nakir", "Nanael", "Nathaniel", "Nbat", "Netzach", "Nidbai", "Nithael", "Nsab", "Nuriel", "Ophaniel", "Oroiael", "Pahaliah", "Penemue", "Phanuel", "Powers", "Poyel", "Pravuil", "Principalities", "Ptahil", "Puriel", "Radueriel", "Raguel", "Ramiel", "Raphael", "Raziel", "Rikbiel", "Sabriel", "Sachiel", "Sahaquiel", "Sam Ziwa", "Samael", "Samyaza", "Sandalphon", "Sarathiel", "Sariel", "Saureil", "Shamnail", "Shamsiel", "Sheetil", "Shihlun", "Shilmai", "Sidriel", "Simat Hayyi", "Song-Uttering Choirs", "Tamiel", "Tarwan", "Temeluchus", "Tennin", "Thrones", "Turail", "Turiel", "Urfeil", "Uriel", "Uziel", "Vasiariah", "Vehuel", "Verchiel", "Virtues", "Watcher", "Wormwood", "Yadathan", "Yarhibol", "Yawar Ziwa", "Yomiel", "Yufin-Yufafin", "Yukabar", "Yukašar", "Yurba", "Yushamin", "Zachariel", "Zadkiel", "Zagagel", "Zaphkiel", "Zaqiel", "Zephaniel", "Zephon", "Zihrun"],
+            "None": [false]
+        },
+        "Demon": {
+            "All": ["Aamon", "Amon", "Abaddon", "Apollyon", "Abezethibou", "Abraxas", "Abyzou", "Achlys", "Adrammelech", "Aeshma", "Agaliarept", "Agrat bat Mahlat", "Agares", "Agiel", "Ahriman", "Angra Mainyu", "Aim", "Haborym", "Aka Manah", "Akem Manah", "Akoman", "Akvan", "Akuma", "Al Ana", "Ala", "Alal", "Alastor", "Alloces", "Allocer", "Allu", "Amaymon", "Amdusias", "Amy", "Anammelech", "Anathan", "Anqa", "Ancitif", "Andhaka", "Andras", "Andrealphus", "Andromalius", "Anti", "Antichrist", "Anzu", "Apaosha", "Apep", "Apophis", "Armaros", "Archon", "Arunasura", "Asag", "Asakku", "Asb'el", "Asmodai", "Asmodeus", "Astaroth", "Asura", "Azazel", "Azaz'el", "Azi Dahaka", "Dahak", "Baal", "Bael", "Babi ngepet", "Bakasura", "Baku", "Balam", "Balberith", "Bali Raj", "Banshee", "Baphomet", "Barbas", "Barbatos", "Barong", "Bathin", "Mathim", "Bathym", "Marthim", "Beelzebub", "Belial", "Beleth", "Belphegor", "Berith", "Beherit", "Bhūta", "Bifrons", "Boruta", "Botis", "Buer", "Bukavac", "Bune", "Bushyasta", "Caim", "Camio", "Charun", "Chemosh", "Choronzon", "Chort", "Cimejes", "Kimaris", "Cimeies", "Corson", "Crocell", "Procell", "Daeva", "Dagon", "Dajjal", "Dantalion", "Danjal", "Decarabia", "Demogorgon", "Dev", "Devil", "Div-e Sepid", "Djall", "Drekavac", "Dzoavits", "Eblis", "Iblis", "Ibris", "Eligos", "Eisheth", "Erlik", "Focalor", "Foras", "Forcas", "Forras", "Forneus", "Furcas", "Forcas", "Furfur", "Gaap", "Gader'el", "Gadulta", "Gaf", "Gaki", "Gamigin", "Ghaddar", "Ghoul", "Giu", "Glasya-Labolas", "Caacrinolaas", "Caassimolar", "Classyalabolas", "Glassia-labolis", "Gorgon", "Gremory", "Gomory", "Grigori", "Gualichu", "Guayota", "Gusion", "Gusoin", "Gusoyn", "Haagenti", "Hag", "Halphas", "Malthus", "Haures", "Flauros", "Flavros", "Hauras", "Havres", "Hinn", "Hanbi", "Hannya", "Ifrit", "Incubus", "Ipos", "Ipes", "Imp", "Jinn", "Jikininki", "Kabandha", "Kabhanda", "Kara İye", "Kasadya", "Kokabiel", "Kore", "Kroni", "Krampus", "Krun", "Killakee Cat", "Kukudh", "Kulshedra", "Kumbhakarna", "Lamia", "Latabi", "Legion", "Lechies", "Leonard", "Leyak", "Lempo", "Leraje", "Leraie", "Leviathan", "Lili", "Lilin", "Lilim", "Lilith", "Ljubi", "Lucifer", "Lucifuge Rofocale", "Mag", "Marid", "Malphas", "Mammon", "Mara", "Maricha", "Marax", "Morax", "Foraii", "Marchosias", "Mastema", "Mazoku", "Mephistopheles", "Merihem", "Moloch", "Murmur", "Mahishasur", "Naamah", "Naberius", "Cerbere", "Naberus", "Nalai", "Ninurta", "Niuli", "Namtar", "Nar as-samum", "Oni", "Onoskelis", "Orcus", "Orias", "Oriax", "Orobas", "Ose", "Ördög", "O Tokata", "Paimon", "Pazuzu", "Pelesit", "Phenex", "Penemue", "Pocong", "Pontianak", "Preta", "Printer's devil", "Pruflas", "Puloman", "Qin", "Rahab", "Raum", "Ronove", "Rusalka", "Rakshasa", "Rangda", "Ruha", "Sabnock", "Saleos", "Samael", "Satan", "Satanachia", "Seir", "Semyaza", "Shax", "Chax", "Shaitan", "Shedim", "Shdum", "Sitri", "Stihi", "Stolas", "Solas", "Suanggi", "Succubus", "Surgat", "Sut", "Shinigami", "Shuten Doji", "Tannin", "El Tío", "Tengu", "Titivillus", "Toyol", "Tuchulcha", "Ukobach", "Unclean spirit", "Ur", "Valac", "Valefar", "Malaphar", "Malephar", "Vanth", "Vapula", "Vassago", "Vepar", "Vine", "Wechuge", "Wendigo", "Xaphan", "Xezbeth", "Yan-gant-y-tan", "Yeqon", "Zabaniyya", "Zagan", "Zahreil", "Zartai-Zartanai", "Zepar", "Ziminiar"],
+            "Male": ["Aamon", "Amon", "Abaddon", "Apollyon", "Abezethibou", "Abraxas", "Abyzou", "Achlys", "Adrammelech", "Aeshma", "Agaliarept", "Agrat bat Mahlat", "Agares", "Agiel", "Ahriman", "Angra Mainyu", "Aim", "Haborym", "Aka Manah", "Akem Manah", "Akoman", "Akvan", "Akuma", "Al Ana", "Ala", "Alal", "Alastor", "Alloces", "Allocer", "Allu", "Amaymon", "Amdusias", "Amy", "Anammelech", "Anathan", "Anqa", "Ancitif", "Andhaka", "Andras", "Andrealphus", "Andromalius", "Anti", "Antichrist", "Anzu", "Apaosha", "Apep", "Apophis", "Armaros", "Archon", "Arunasura", "Asag", "Asakku", "Asb'el", "Asmodai", "Asmodeus", "Astaroth", "Asura", "Azazel", "Azaz'el", "Azi Dahaka", "Dahak", "Baal", "Bael", "Babi ngepet", "Bakasura", "Baku", "Balam", "Balberith", "Bali Raj", "Banshee", "Baphomet", "Barbas", "Barbatos", "Barong", "Bathin", "Mathim", "Bathym", "Marthim", "Beelzebub", "Belial", "Beleth", "Belphegor", "Berith", "Beherit", "Bhūta", "Bifrons", "Boruta", "Botis", "Buer", "Bukavac", "Bune", "Bushyasta", "Caim", "Camio", "Charun", "Chemosh", "Choronzon", "Chort", "Cimejes", "Kimaris", "Cimeies", "Corson", "Crocell", "Procell", "Daeva", "Dagon", "Dajjal", "Dantalion", "Danjal", "Decarabia", "Demogorgon", "Dev", "Devil", "Div-e Sepid", "Djall", "Drekavac", "Dzoavits", "Eblis", "Iblis", "Ibris", "Eligos", "Eisheth", "Erlik", "Focalor", "Foras", "Forcas", "Forras", "Forneus", "Furcas", "Forcas", "Furfur", "Gaap", "Gader'el", "Gadulta", "Gaf", "Gaki", "Gamigin", "Ghaddar", "Ghoul", "Giu", "Glasya-Labolas", "Caacrinolaas", "Caassimolar", "Classyalabolas", "Glassia-labolis", "Gorgon", "Gremory", "Gomory", "Grigori", "Gualichu", "Guayota", "Gusion", "Gusoin", "Gusoyn", "Haagenti", "Hag", "Halphas", "Malthus", "Haures", "Flauros", "Flavros", "Hauras", "Havres", "Hinn", "Hanbi", "Hannya", "Ifrit", "Incubus", "Ipos", "Ipes", "Imp", "Jinn", "Jikininki", "Kabandha", "Kabhanda", "Kara İye", "Kasadya", "Kokabiel", "Kore", "Kroni", "Krampus", "Krun", "Killakee Cat", "Kukudh", "Kulshedra", "Kumbhakarna", "Lamia", "Latabi", "Legion", "Lechies", "Leonard", "Leyak", "Lempo", "Leraje", "Leraie", "Leviathan", "Lili", "Lilin", "Lilim", "Lilith", "Ljubi", "Lucifer", "Lucifuge Rofocale", "Mag", "Marid", "Malphas", "Mammon", "Mara", "Maricha", "Marax", "Morax", "Foraii", "Marchosias", "Mastema", "Mazoku", "Mephistopheles", "Merihem", "Moloch", "Murmur", "Mahishasur", "Naamah", "Naberius", "Cerbere", "Naberus", "Nalai", "Ninurta", "Niuli", "Namtar", "Nar as-samum", "Oni", "Onoskelis", "Orcus", "Orias", "Oriax", "Orobas", "Ose", "Ördög", "O Tokata", "Paimon", "Pazuzu", "Pelesit", "Phenex", "Penemue", "Pocong", "Pontianak", "Preta", "Printer's devil", "Pruflas", "Puloman", "Qin", "Rahab", "Raum", "Ronove", "Rusalka", "Rakshasa", "Rangda", "Ruha", "Sabnock", "Saleos", "Samael", "Satan", "Satanachia", "Seir", "Semyaza", "Shax", "Chax", "Shaitan", "Shedim", "Shdum", "Sitri", "Stihi", "Stolas", "Solas", "Suanggi", "Succubus", "Surgat", "Sut", "Shinigami", "Shuten Doji", "Tannin", "El Tío", "Tengu", "Titivillus", "Toyol", "Tuchulcha", "Ukobach", "Unclean spirit", "Ur", "Valac", "Valefar", "Malaphar", "Malephar", "Vanth", "Vapula", "Vassago", "Vepar", "Vine", "Wechuge", "Wendigo", "Xaphan", "Xezbeth", "Yan-gant-y-tan", "Yeqon", "Zabaniyya", "Zagan", "Zahreil", "Zartai-Zartanai", "Zepar", "Ziminiar"],
+            "Female": ["Aamon", "Amon", "Abaddon", "Apollyon", "Abezethibou", "Abraxas", "Abyzou", "Achlys", "Adrammelech", "Aeshma", "Agaliarept", "Agrat bat Mahlat", "Agares", "Agiel", "Ahriman", "Angra Mainyu", "Aim", "Haborym", "Aka Manah", "Akem Manah", "Akoman", "Akvan", "Akuma", "Al Ana", "Ala", "Alal", "Alastor", "Alloces", "Allocer", "Allu", "Amaymon", "Amdusias", "Amy", "Anammelech", "Anathan", "Anqa", "Ancitif", "Andhaka", "Andras", "Andrealphus", "Andromalius", "Anti", "Antichrist", "Anzu", "Apaosha", "Apep", "Apophis", "Armaros", "Archon", "Arunasura", "Asag", "Asakku", "Asb'el", "Asmodai", "Asmodeus", "Astaroth", "Asura", "Azazel", "Azaz'el", "Azi Dahaka", "Dahak", "Baal", "Bael", "Babi ngepet", "Bakasura", "Baku", "Balam", "Balberith", "Bali Raj", "Banshee", "Baphomet", "Barbas", "Barbatos", "Barong", "Bathin", "Mathim", "Bathym", "Marthim", "Beelzebub", "Belial", "Beleth", "Belphegor", "Berith", "Beherit", "Bhūta", "Bifrons", "Boruta", "Botis", "Buer", "Bukavac", "Bune", "Bushyasta", "Caim", "Camio", "Charun", "Chemosh", "Choronzon", "Chort", "Cimejes", "Kimaris", "Cimeies", "Corson", "Crocell", "Procell", "Daeva", "Dagon", "Dajjal", "Dantalion", "Danjal", "Decarabia", "Demogorgon", "Dev", "Devil", "Div-e Sepid", "Djall", "Drekavac", "Dzoavits", "Eblis", "Iblis", "Ibris", "Eligos", "Eisheth", "Erlik", "Focalor", "Foras", "Forcas", "Forras", "Forneus", "Furcas", "Forcas", "Furfur", "Gaap", "Gader'el", "Gadulta", "Gaf", "Gaki", "Gamigin", "Ghaddar", "Ghoul", "Giu", "Glasya-Labolas", "Caacrinolaas", "Caassimolar", "Classyalabolas", "Glassia-labolis", "Gorgon", "Gremory", "Gomory", "Grigori", "Gualichu", "Guayota", "Gusion", "Gusoin", "Gusoyn", "Haagenti", "Hag", "Halphas", "Malthus", "Haures", "Flauros", "Flavros", "Hauras", "Havres", "Hinn", "Hanbi", "Hannya", "Ifrit", "Incubus", "Ipos", "Ipes", "Imp", "Jinn", "Jikininki", "Kabandha", "Kabhanda", "Kara İye", "Kasadya", "Kokabiel", "Kore", "Kroni", "Krampus", "Krun", "Killakee Cat", "Kukudh", "Kulshedra", "Kumbhakarna", "Lamia", "Latabi", "Legion", "Lechies", "Leonard", "Leyak", "Lempo", "Leraje", "Leraie", "Leviathan", "Lili", "Lilin", "Lilim", "Lilith", "Ljubi", "Lucifer", "Lucifuge Rofocale", "Mag", "Marid", "Malphas", "Mammon", "Mara", "Maricha", "Marax", "Morax", "Foraii", "Marchosias", "Mastema", "Mazoku", "Mephistopheles", "Merihem", "Moloch", "Murmur", "Mahishasur", "Naamah", "Naberius", "Cerbere", "Naberus", "Nalai", "Ninurta", "Niuli", "Namtar", "Nar as-samum", "Oni", "Onoskelis", "Orcus", "Orias", "Oriax", "Orobas", "Ose", "Ördög", "O Tokata", "Paimon", "Pazuzu", "Pelesit", "Phenex", "Penemue", "Pocong", "Pontianak", "Preta", "Printer's devil", "Pruflas", "Puloman", "Qin", "Rahab", "Raum", "Ronove", "Rusalka", "Rakshasa", "Rangda", "Ruha", "Sabnock", "Saleos", "Samael", "Satan", "Satanachia", "Seir", "Semyaza", "Shax", "Chax", "Shaitan", "Shedim", "Shdum", "Sitri", "Stihi", "Stolas", "Solas", "Suanggi", "Succubus", "Surgat", "Sut", "Shinigami", "Shuten Doji", "Tannin", "El Tío", "Tengu", "Titivillus", "Toyol", "Tuchulcha", "Ukobach", "Unclean spirit", "Ur", "Valac", "Valefar", "Malaphar", "Malephar", "Vanth", "Vapula", "Vassago", "Vepar", "Vine", "Wechuge", "Wendigo", "Xaphan", "Xezbeth", "Yan-gant-y-tan", "Yeqon", "Zabaniyya", "Zagan", "Zahreil", "Zartai-Zartanai", "Zepar", "Ziminiar"],
+            "None": [false]
+        }
+    },
+    "Birthyear": {
+        "Ghost": [2000, 2],
+        "Angel": [25000, 2],
+        "Demon": [25000, 2]
+    }, 
+    "Lifespan": {
+        "Ghost": [10, 120],
+        "Angel": [14, 1000],
+        "Demon": [20, 1000]
+    },  
+    "CurrentAge": 0,
+    "Deathdate": "",
+    "DeathAge": 0,
+    "CauseOfDeath": {
+        "All": ["A fall during a hike", "Accidental drowning", "Accidental fall", "Accidental fire", "Accidental gunshot", "Accidental poisoning", "Allergic reaction", "Animal attack", "Astral projection gone wrong", "Being crushed by heavy machinery", "Blood loss", "Boating accident", "Building collapse", "Car accident", "Car malfunction", "Carbon monoxide poisoning", "Cave-in during mining", "Choking on food", "Complications during surgery", "Deadly curse or hex", "Disease outbreak", "Dismemberment", "Drowning", "Drug overdose", "Earthquake", "Electrocution", "Electromagnetic interference", "Electromagnetic pulse", "Exploring a dangerous area", "Explosion", "Exposure to extreme cold", "Failed bungee jump", "Failed parachute", "Fall from height", "Falling object", "Fatal animal encounter", "Fire", "Freak accident", "Freezing to death", "Gas explosion", "Gas leak", "Gunshot wound", "Hanged", "Heart attack", "Heatstroke", "Hypothermia", "Illness", "Industrial accident", "Industrial chemical exposure", "Infection", "Lightning strike", "Lost in the wilderness", "Mountain climbing accident", "Overdose of medication", "Overexertion", "Plane crash in remote area", "Plane crash", "Poisoning", "Poisonous plant ingestion", "Possession leading to death", "Radiation exposure", "Radiation leak", "Radiation poisoning", "Ritual gone awry", "Ritual sacrifice", "Ritualistic suicide", "Sleepwalking accident", "Spelunking accident", "Spontaneous combustion", "Stabbing", "Starvation due to being lost", "Starvation", "Strangulation", "Struck by lightning", "Sudden allergic reaction", "Sudden illness", "Suffocation", "Suicide", "Toxic gas inhalation", "Traffic collision", "Trapped in a collapsed building", "Tunnel collapse", "Unintentional overdose", "Vehicular collision", "Volcanic eruption", "Workplace accident"],
+        "Ghost": ["A fall during a hike", "Accidental drowning", "Accidental fall", "Accidental fire", "Accidental gunshot", "Accidental poisoning", "Allergic reaction", "Animal attack", "Astral projection gone wrong", "Being crushed by heavy machinery", "Blood loss", "Boating accident", "Building collapse", "Car accident", "Car malfunction", "Carbon monoxide poisoning", "Cave-in during mining", "Choking on food", "Complications during surgery", "Deadly curse or hex", "Disease outbreak", "Dismemberment", "Drowning", "Drug overdose", "Earthquake", "Electrocution", "Electromagnetic interference", "Electromagnetic pulse", "Exploring a dangerous area", "Explosion", "Exposure to extreme cold", "Failed bungee jump", "Failed parachute", "Fall from height", "Falling object", "Fatal animal encounter", "Fire", "Freak accident", "Freezing to death", "Gas explosion", "Gas leak", "Gunshot wound", "Hanged", "Heart attack", "Heatstroke", "Hypothermia", "Illness", "Industrial accident", "Industrial chemical exposure", "Infection", "Lightning strike", "Lost in the wilderness", "Mountain climbing accident", "Overdose of medication", "Overexertion", "Plane crash in remote area", "Plane crash", "Poisoning", "Poisonous plant ingestion", "Possession leading to death", "Radiation exposure", "Radiation leak", "Radiation poisoning", "Ritual gone awry", "Ritual sacrifice", "Ritualistic suicide", "Sleepwalking accident", "Spelunking accident", "Spontaneous combustion", "Stabbing", "Starvation due to being lost", "Starvation", "Strangulation", "Struck by lightning", "Sudden allergic reaction", "Sudden illness", "Suffocation", "Suicide", "Toxic gas inhalation", "Traffic collision", "Trapped in a collapsed building", "Tunnel collapse", "Unintentional overdose", "Vehicular collision", "Volcanic eruption", "Workplace accident"],
+        "Angel": ["A fall during a hike", "Accidental drowning", "Accidental fall", "Accidental fire", "Accidental gunshot", "Accidental poisoning", "Allergic reaction", "Animal attack", "Astral projection gone wrong", "Being crushed by heavy machinery", "Blood loss", "Boating accident", "Building collapse", "Car accident", "Car malfunction", "Carbon monoxide poisoning", "Cave-in during mining", "Choking on food", "Complications during surgery", "Deadly curse or hex", "Disease outbreak", "Dismemberment", "Drowning", "Drug overdose", "Earthquake", "Electrocution", "Electromagnetic interference", "Electromagnetic pulse", "Exploring a dangerous area", "Explosion", "Exposure to extreme cold", "Failed bungee jump", "Failed parachute", "Fall from height", "Falling object", "Fatal animal encounter", "Fire", "Freak accident", "Freezing to death", "Gas explosion", "Gas leak", "Gunshot wound", "Hanged", "Heart attack", "Heatstroke", "Hypothermia", "Illness", "Industrial accident", "Industrial chemical exposure", "Infection", "Lightning strike", "Lost in the wilderness", "Mountain climbing accident", "Overdose of medication", "Overexertion", "Plane crash in remote area", "Plane crash", "Poisoning", "Poisonous plant ingestion", "Possession leading to death", "Radiation exposure", "Radiation leak", "Radiation poisoning", "Ritual gone awry", "Ritual sacrifice", "Ritualistic suicide", "Sleepwalking accident", "Spelunking accident", "Spontaneous combustion", "Stabbing", "Starvation due to being lost", "Starvation", "Strangulation", "Struck by lightning", "Sudden allergic reaction", "Sudden illness", "Suffocation", "Suicide", "Toxic gas inhalation", "Traffic collision", "Trapped in a collapsed building", "Tunnel collapse", "Unintentional overdose", "Vehicular collision", "Volcanic eruption", "Workplace accident"],
+        "Demon": ["A fall during a hike", "Accidental drowning", "Accidental fall", "Accidental fire", "Accidental gunshot", "Accidental poisoning", "Allergic reaction", "Animal attack", "Astral projection gone wrong", "Being crushed by heavy machinery", "Blood loss", "Boating accident", "Building collapse", "Car accident", "Car malfunction", "Carbon monoxide poisoning", "Cave-in during mining", "Choking on food", "Complications during surgery", "Deadly curse or hex", "Disease outbreak", "Dismemberment", "Drowning", "Drug overdose", "Earthquake", "Electrocution", "Electromagnetic interference", "Electromagnetic pulse", "Exploring a dangerous area", "Explosion", "Exposure to extreme cold", "Failed bungee jump", "Failed parachute", "Fall from height", "Falling object", "Fatal animal encounter", "Fire", "Freak accident", "Freezing to death", "Gas explosion", "Gas leak", "Gunshot wound", "Hanged", "Heart attack", "Heatstroke", "Hypothermia", "Illness", "Industrial accident", "Industrial chemical exposure", "Infection", "Lightning strike", "Lost in the wilderness", "Mountain climbing accident", "Overdose of medication", "Overexertion", "Plane crash in remote area", "Plane crash", "Poisoning", "Poisonous plant ingestion", "Possession leading to death", "Radiation exposure", "Radiation leak", "Radiation poisoning", "Ritual gone awry", "Ritual sacrifice", "Ritualistic suicide", "Sleepwalking accident", "Spelunking accident", "Spontaneous combustion", "Stabbing", "Starvation due to being lost", "Starvation", "Strangulation", "Struck by lightning", "Sudden allergic reaction", "Sudden illness", "Suffocation", "Suicide", "Toxic gas inhalation", "Traffic collision", "Trapped in a collapsed building", "Tunnel collapse", "Unintentional overdose", "Vehicular collision", "Volcanic eruption", "Workplace accident"]
+    },
+    "Height": {
+        "Ghost": [1, 8],
+        "Angel": [4, 8],
+        "Demon": [7, 16]
+    },  
+    "Weight": {
+        "Ghost": [8, 400],
+        "Angel": [100, 240],
+        "Demon": [240, 500]
+    },
+    "Arms": {
+        "Ghost": [2, 2],
+        "Angel": [2, 2],
+        "Demon": [2, 12]
+    },
+    "Legs": {
+        "Ghost": [2, 2],
+        "Angel": [2, 2],
+        "Demon": [2, 12]
+    },
+    "Tails": {
+        "Ghost": [0, 0],
+        "Angel": [0, 0],
+        "Demon": [0, 12]
+    },
+    "Wings": {
+        "Ghost": [0, 0],
+        "Angel": [2, 2],
+        "Demon": [2, 12]
+    },
+    "Flying": {
+        "Ghost": [0, 0],
+        "Angel": [0, 1],
+        "Demon": [0, 1]
+    },
+    "Speed": {
+        "Ghost": [0,1],
+        "Angel": [0,10],
+        "Demon": [0,6]
+    },
+    "Stealth": {
+        "Ghost": [0,5],
+        "Angel": [0,6],
+        "Demon": [0,1]
+    },
+    "Temperature": {
+        "Ghost": [30, 40],
+        "Angel": [70, 75],
+        "Demon": [100, 120]
+    },
+    "Morality": {
+        "All": ["Good", "Neutral", "Evil"],
+        "Ghost": ["Good", "Neutral", "Evil"],
+        "Angel": ["Good"],
+        "Demon": ["Evil"]
+    },
+    "Order": {
+        "All": ["Chaotic", "Neutral", "Lawful"], 
+        "Ghost": ["Chaotic", "Neutral", "Lawful"],
+        "Angel": ["Lawful"],
+        "Demon": ["Chaotic"]
+    },
+    "Motive": {
+        "All": ["Good", "Neutral", "Evil", "Scientific"], 
+        "Ghost": ["Good", "Neutral", "Evil", "Scientific"],
+        "Angel": ["Good"],
+        "Demon": ["Evil"]
+    },
+    "ArtisticStyle": {
+        "Modern": ["Beatnik", "Bohemian", "Bookworm", "Cowboy/Cowgirl", "Emo", "Fitness buff", "Flapper", "Foodie", "Geek", "Goth", "Hippie", "Hipster", "K-pop stan", "Memelord", "Metalhead", "Nerd", "Otaku", "Outdoor enthusiast", "Philosopher", "Preppy", "Punk", "Raver", "Skater", "Sneakerhead", "Spiritual Seeker", "Techie", "Yogi"],
+        "PreModern": ["Alchemist", "Courtier", "Cowhand", "Explorer", "Gladiator", "Hermit", "Knight", "Lord/Lady of a plot of land", "Minstrel", "Monk/Nun", "Peasant", "Philosopher", "Pirate", "Samurai", "Scribe", "Shaman", "Troubadour", "Viking"]
+    },
+    "SpeechModifier": {
+        "All": ["Angsty Teen", "Arrogant", "Bubbly", "Cheesey dad jokes", "Confused", "Dumb", "Sad", "Sarcastic", "Stutter"],
+        "Ghost": ["Angsty Teen", "Arrogant", "Bubbly", "Cheesey dad jokes", "Confused", "Dumb", "Sad", "Sarcastic", "Stutter"],
+        "Angel": ["Bubbly", "Cheesey dad jokes"],
+        "Demon": ["Angsty Teen", "Arrogant", "Sarcastic", "Stutter"]
+    },
+    "Focus": {
+        "All": ["Ancient Book", "Antique Furniture", "Broken Pocket Watch", "Cursed Painting", "Family Heirloom", "Family Portrait Album", "Forgotten Relic", "Haunted Sculpture", "Jewelry", "Locked Chest", "Music Box", "Mysterious Gemstone", "Old Mirror", "Painting or Portrait", "Pocket Watch", "Symbolic Amulet", "Time-Worn Journal", "Vintage Doll", "Vintage Phonograph", "Weapon"],
+        "Ghost": ["Ancient Book", "Antique Furniture", "Broken Pocket Watch", "Cursed Painting", "Family Heirloom", "Family Portrait Album", "Forgotten Relic", "Haunted Sculpture", "Jewelry", "Locked Chest", "Music Box", "Mysterious Gemstone", "Old Mirror", "Painting or Portrait", "Pocket Watch", "Symbolic Amulet", "Time-Worn Journal", "Vintage Doll", "Vintage Phonograph", "Weapon"],
+        "Angel": ["Ancient Book", "Antique Furniture", "Broken Pocket Watch", "Cursed Painting", "Family Heirloom", "Family Portrait Album", "Forgotten Relic", "Haunted Sculpture", "Jewelry", "Locked Chest", "Music Box", "Mysterious Gemstone", "Old Mirror", "Painting or Portrait", "Pocket Watch", "Symbolic Amulet", "Time-Worn Journal", "Vintage Doll", "Vintage Phonograph", "Weapon"],
+        "Demon": ["Ancient Book", "Antique Furniture", "Broken Pocket Watch", "Cursed Painting", "Family Heirloom", "Family Portrait Album", "Forgotten Relic", "Haunted Sculpture", "Jewelry", "Locked Chest", "Music Box", "Mysterious Gemstone", "Old Mirror", "Painting or Portrait", "Pocket Watch", "Symbolic Amulet", "Time-Worn Journal", "Vintage Doll", "Vintage Phonograph", "Weapon"]
+    },
+    "Glyph": {
+        "All": ["Pentagram", "Rune", "Elemental", "Blood", "Sigil", "Salt", "Flower"],
+        "Ghost": ["Pentagram", "Flower"],
+        "Angel": ["Rune", "Flower"],
+        "Demon": ["Pentagram", "Blood"]
+    },
+    "Promise": {
+        "All": ["Letter", "Ring", "Secrecy", "Peace", "Love", "Kibble", "Chaos"],
+        "Ghost": ["Letter", "Ring", "Love", "Chaos", "Secrecy"],
+        "Angel": ["Peace", "Love"],
+        "Demon": ["Secrecy", "Chaos"]
+    },
+    "Intention": {
+        "Good": ["Protection", "Resolution of Unfinished Business", "Warning", "Guidance and Inspiration", "Comforting the Grieving", "Preserving History", "Healing", "Helping Lost Souls To The Afterlife", "Fostering Unity", "Undertaking Acts of Kindness", "Say goodbye to loved ones"],
+        "Neutral": ["Attachment to the Location", "Curiosity", "Unresolved Decisions", "Witness to Significant Events", "Maintaining Balance", "Exploring Unexplored Emotions", "Lost Spirit", "Still in love with someone", "Trapped and cannot release myself"],
+        "Evil": ["Seeking Revenge", "Spreading Fear", "Corrupting the Innocent", "Seize Power", "Protect Secrets", "Feeding on Emotions", "Creating Chaos", "Fueling Despair", "Gathering Souls", "Achieving Immortality", "Release evil into the world"],
+        "Scientific": ["Study of Unique Ecosystems", "Geological Investigations", "Climate Research", "Biosphere Exploration", "Cultural Anthropology", "Archaeological Discoveries", "Astronomical Observations", "Oceanic Research", "Medical Research", "Strange Energy", "Psychokinetic Projection", "Dimensional Rift", "Time Dilation"]
+    },
+    "Relationships": {
+        "Partners": {
+            "Ghost": ["All"],
+            "Angel": ["None"],
+            "Demon": ["None"]
+        },
+        "Mom": {
+            "Ghost": ["Female"],
+            "Angel": ["Female"],
+            "Demon": ["Female"] 
+        },
+        "Dad": {
+            "Ghost": ["Male"],
+            "Angel": ["Male"],
+            "Demon": ["Male"]
+        },
+        "Siblings": {
+            "Ghost": [0,10],
+            "Angel": [0,5],
+            "Demon": [0,5] 
+        },
+        "Friends": {
+            "Ghost": [0,10],
+            "Angel": [0,10],
+            "Demon": [0,1] 
+        }
+    },
+    "Hobbies": {
+        "Good": ["Animal Care", "Beach Cleanup", "Beekeeping", "Blood Donation", "Charity Work", "Community Service", "Composting", "Counseling", "Disaster Relief", "Farming", "Fostering Animals", "Fundraising", "Home Renovation for the Underprivileged", "Humanitarian Aid", "Learning First Aid", "Mentoring", "Organic Gardening", "Peer Tutoring", "Planting Trees", "Recycling", "Soup Kitchen Volunteering", "Teaching", "Tutoring Underprivileged Kids", "Upcycling", "Vegan Cooking", "Wildlife Conservation", "Writing Letters to the Elderly", "Youth Coaching"],
+        "Neutral": ["Acting", "Archery", "Astronomy", "Baking", "Basketball", "Biking", "Bird Watching", "Calligraphy", "Camping", "Chess", "Climbing", "Collecting Stamps", "Cooking", "Crossfit", "Dancing", "Drawing", "Fishing", "Football", "Gaming", "Gardening", "Golf", "Hiking", "Kickboxing", "Knitting", "Martial Arts", "Meditation", "Model Building", "Origami", "Painting", "Photography", "Piano", "Pilates", "Playing music", "Pottery", "Reading", "Rock Climbing", "Running", "Scuba Diving", "Sculpting", "Sewing", "Singing", "Skiing", "Skydiving", "Soccer", "Surfing", "Swimming", "Taekwondo", "Tennis", "Traveling", "Volunteering", "Woodworking", "Writing Poetry", "Writing", "Yoga"],
+        "Evil": ["Bullying", "Gossiping", "Hacking", "Identity Theft", "Online Scamming", "Pranking", "Sabotaging Others", "Spreading Rumors", "Trolling", "Vandalism"]
+    },
+    "Profession": {
+        "All": [
+            "Accountant", "Aerospace Engineer", "Animator", "Architect", "Banker", "Biomedical Engineer", "Biotechnologist", "Business Analyst", "Chef", "Chemist", "Civil Engineer", "Clinical Psychologist", "Computer Programmer", "Content Writer", "Curator", "Data Analyst", "Dental Hygienist", "Dentist", "Digital Illustrator", "Digital Marketer", "Digital Marketing Manager", "Economist", "Educational Psychologist", "Electrician", "Environmental Engineer", "Environmental Scientist", "Event Planner", "Fashion Designer", "Financial Analyst", "Financial Manager", "Financial Planner", "Fitness Instructor", "Flight Attendant", "Forensic Scientist", "Game Developer", "Geographer", "Geologist", "Graphic Designer", "HR Specialist", "Healthcare Administrator", "Human Resources Manager", "IT Consultant", "IT Manager", "Industrial Designer", "Insurance Agent", "Interior Designer", "Journalist", "Lawyer", "Librarian", "Logistics Coordinator", "Market Analyst", "Market Research Analyst", "Marketing Manager", "Mathematician", "Mechanic", "Mechanical Engineer", "Medical Technologist", "Network Administrator", "Nurse", "Occupational Therapist", "Pediatrician", "Pharmaceutical Sales Representative", "Pharmacist", "Phlebotomist", "Photographer", "Physical Therapist", "Physical Trainer", "Physician", "Police Officer", "Product Manager", "Project Manager", "Psychologist", "Public Health Analyst", "Public Relations Specialist", "Radiologist", "Real Estate Agent", "Registered Dietitian", "Registered Nurse", "Research Scientist", "Sales Representative", "Social Media Manager", "Social Worker", "Software Developer", "Software Engineer", "Speech Therapist", "Supply Chain Manager", "Sustainability Analyst", "Teacher", "Technical Writer", "UX/UI Designer", "Veterinarian", "Video Editor", "Web Designer",
+            "Alchemist", "Apothecary", "Armorer", "Artist", "Astrologer", "Baker", "Barber", "Bard", "Barmaid", "Barman", "Beekeeper", "Bishop", "Blacksmith", "Bookbinder", "Brewer", "Candlemaker", "Carpenter", "Cartographer", "Chandler", "Charioteer", "Cobbler", "Coin Mintmaster", "Coppersmith", "Courier", "Courtesan", "Dancer", "Falconer", "Farmer", "Fisher", "Gladiator", "Glassblower", "Governer", "Governess", "Healer", "Herbalist", "Hunter-Gatherer", "Innkeeper", "Jester", "Jeweler", "King", "Knight", "Leatherworker", "Mason", "Mercenary", "Merchant", "Miner", "Monk", "Navigator", "Nomad", "Nun", "Oracle", "Page", "Philosopher", "Physician", "Potter", "Priest", "Queen", "Sailmaker", "Sailor", "Scribe", "Sculptor", "Serpent Charmer", "Shaman", "Ship Captain", "Shipwright", "Shoemaker", "Silversmith", "Soldier", "Spice Merchant", "Stonemason", "Tailor", "Tanner", "Tavern Keeper", "Tax Collector", "Tribal Chief", "Viking Raider", "Vintner", "Wainwright", "Warrior", "Weaver"
+        ],
+        "Ghost": {
+            "Modern": ["Accountant", "Aerospace Engineer", "Animator", "Architect", "Banker", "Biomedical Engineer", "Biotechnologist", "Business Analyst", "Chef", "Chemist", "Civil Engineer", "Clinical Psychologist", "Computer Programmer", "Content Writer", "Curator", "Data Analyst", "Dental Hygienist", "Dentist", "Digital Illustrator", "Digital Marketer", "Digital Marketing Manager", "Economist", "Educational Psychologist", "Electrician", "Environmental Engineer", "Environmental Scientist", "Event Planner", "Fashion Designer", "Financial Analyst", "Financial Manager", "Financial Planner", "Fitness Instructor", "Flight Attendant", "Forensic Scientist", "Game Developer", "Geographer", "Geologist", "Graphic Designer", "HR Specialist", "Healthcare Administrator", "Human Resources Manager", "IT Consultant", "IT Manager", "Industrial Designer", "Insurance Agent", "Interior Designer", "Journalist", "Lawyer", "Librarian", "Logistics Coordinator", "Market Analyst", "Market Research Analyst", "Marketing Manager", "Mathematician", "Mechanic", "Mechanical Engineer", "Medical Technologist", "Network Administrator", "Nurse", "Occupational Therapist", "Pediatrician", "Pharmaceutical Sales Representative", "Pharmacist", "Phlebotomist", "Photographer", "Physical Therapist", "Physical Trainer", "Physician", "Police Officer", "Product Manager", "Project Manager", "Psychologist", "Public Health Analyst", "Public Relations Specialist", "Radiologist", "Real Estate Agent", "Registered Dietitian", "Registered Nurse", "Research Scientist", "Sales Representative", "Social Media Manager", "Social Worker", "Software Developer", "Software Engineer", "Speech Therapist", "Supply Chain Manager", "Sustainability Analyst", "Teacher", "Technical Writer", "UX/UI Designer", "Veterinarian", "Video Editor", "Web Designer"],
+            "PreModern": ["Alchemist", "Apothecary", "Armorer", "Artist", "Astrologer", "Baker", "Barber", "Bard", "Barmaid", "Barman", "Beekeeper", "Bishop", "Blacksmith", "Bookbinder", "Brewer", "Candlemaker", "Carpenter", "Cartographer", "Chandler", "Charioteer", "Cobbler", "Coin Mintmaster", "Coppersmith", "Courier", "Courtesan", "Dancer", "Falconer", "Farmer", "Fisher", "Gladiator", "Glassblower", "Governer", "Governess", "Healer", "Herbalist", "Hunter-Gatherer", "Innkeeper", "Jester", "Jeweler", "King", "Knight", "Leatherworker", "Mason", "Mercenary", "Merchant", "Miner", "Monk", "Navigator", "Nomad", "Nun", "Oracle", "Page", "Philosopher", "Physician", "Potter", "Priest", "Queen", "Sailmaker", "Sailor", "Scribe", "Sculptor", "Serpent Charmer", "Shaman", "Ship Captain", "Shipwright", "Shoemaker", "Silversmith", "Soldier", "Spice Merchant", "Stonemason", "Tailor", "Tanner", "Tavern Keeper", "Tax Collector", "Tribal Chief", "Viking Raider", "Vintner", "Wainwright", "Warrior", "Weaver"]
+        },
+        "Angel": {
+            "Modern": ["Angelic Scholar", "Archangel", "Blessing Distributor", "Celestial Healer", "Choir Singer", "Cosmic Librarian", "Divine Artist", "Divine Messenger", "Dreamweaver", "Guardian Angel", "Guardian of Nature", "Love Advocate", "Miracle Worker", "Peace Ambassador", "Prayer Receiver", "Purity Inspector", "Seraphim Commander", "Seraphim Warrior", "Soul Guide", "Spiritual Counselor"],
+            "PreModern": ["Angelic Scholar", "Archangel", "Blessing Distributor", "Celestial Healer", "Choir Singer", "Cosmic Librarian", "Divine Artist", "Divine Messenger", "Dreamweaver", "Guardian Angel", "Guardian of Nature", "Love Advocate", "Miracle Worker", "Peace Ambassador", "Prayer Receiver", "Purity Inspector", "Seraphim Commander", "Seraphim Warrior", "Soul Guide", "Spiritual Counselor"]
+        },
+        "Demon": {
+            "Modern": ["Chaos Agent", "Contract Maker", "Corrupter", "Cursed Object Creator", "Dark Magician", "Deception Master", "Demon Summoner", "Demonic General", "Hellfire Pyrotechnician", "Infernal Negotiator", "Infernal Spy", "Possessor", "Shadowmancer", "Soul Collector", "Tempter", "Torturer", "Trickster", "Vengeance Dealer", "Vice Enabler", "War Instigator"],
+            "PreModern": ["Chaos Agent", "Contract Maker", "Corrupter", "Cursed Object Creator", "Dark Magician", "Deception Master", "Demon Summoner", "Demonic General", "Hellfire Pyrotechnician", "Infernal Negotiator", "Infernal Spy", "Possessor", "Shadowmancer", "Soul Collector", "Tempter", "Torturer", "Trickster", "Vengeance Dealer", "Vice Enabler", "War Instigator"]
+        }
+    },
+    "Income":  {
+        "Ghost": [0, 100000000],
+        "Angel": [0, 0],
+        "Demon": [0, 0]
+    },
+    "Favorites": {
+        "Foods": ["Avocado Toast", "Bacon", "Beef Tacos", "Burger", "Burritos", "Caramel Popcorn", "Cheesecake", "Chicken Wings", "Chocolate", "Churros", "Cinnamon Rolls", "Creme Brulee", "Crispy Fried Chicken", "Croissant", "Cupcakes", "Doughnuts", "French Fries", "Garlic Bread", "Gelato", "Grilled Cheese Sandwich", "Hamburger", "Ice Cream", "Lasagna", "Lobster", "Mango", "Mashed Potatoes", "Pancakes", "Pasta", "Pho", "Pizza", "Poutine", "Ramen", "Sashimi", "Shrimp Scampi", "Steak", "Strawberries", "Sushi", "Tacos", "Tiramisu", "Waffles"],
+        "Drinks": ["Almond Milk", "Apple Juice", "Beer", "Black Tea", "Cappuccino", "Chai Latte", "Chocolate Milkshake", "Coca-Cola", "Coconut Water", "Coffee", "Cranberry Juice", "Espresso", "Fruit Punch", "Ginger Ale", "Grape Juice", "Green Tea", "Hot Chocolate", "Hot Tea", "Iced Coffee", "Iced Lemon Tea", "Iced Tea", "Latte", "Lemon Water", "Lemonade", "Margarita", "Matcha Latte", "Milk", "Mojito", "Orange Juice", "Pepsi", "Piña Colada", "Pumpkin Spice Latte", "Red Wine", "Smoothie", "Soda", "Sprite", "Strawberry Banana Smoothie", "Tea", "Water", "Watermelon Juice", "Whiskey Sour", "White Russian", "White Wine"],
+        "Music": ["Acoustic", "Alternative", "Ambient", "Bluegrass", "Blues", "Classical", "Country", "Disco", "Dubstep", "Electronic Dance Music", "Folk", "Funk", "Fusion", "Gospel", "Hard Rock", "Hip Hop", "House", "Indie", "Jazz", "Latin", "Metal", "Pop Rock", "Pop", "Psychedelic", "Punk", "R&B", "Raggae", "Rap", "Reggae", "Rock", "Ska", "Soul", "Swing", "Techno", "Trance"],
+        "Literature": ["1984 by George Orwell", "A Tale of Two Cities by Charles Dickens", "Alice's Adventures in Wonderland by Lewis Carroll", "Animal Farm by George Orwell", "Anna Karenina by Leo Tolstoy", "Brave New World by Aldous Huxley", "Catch-22 by Joseph Heller", "Crime and Punishment by Fyodor Dostoevsky", "Don Quixote by Miguel de Cervantes", "Dracula by Bram Stoker", "Fahrenheit 451 by Ray Bradbury", "Frankenstein by Mary Shelley", "Gone with the Wind by Margaret Mitchell", "Harry Potter and the Sorcerer's Stone by J.K. Rowling", "Heart of Darkness by Joseph Conrad", "Jane Eyre by Charlotte Brontë", "Little Women by Louisa May Alcott", "Lord of the Flies by William Golding", "Moby-Dick by Herman Melville", "One Hundred Years of Solitude by Gabriel García Márquez", "Pride and Prejudice by Jane Austen", "Sense and Sensibility by Jane Austen", "Siddhartha by Hermann Hesse", "The Adventures of Huckleberry Finn by Mark Twain", "The Alchemist by Paulo Coelho", "The Catcher in the Rye by J.D. Salinger", "The Chronicles of Narnia by C.S. Lewis", "The Count of Monte Cristo by Alexandre Dumas", "The Da Vinci Code by Dan Brown", "The Divine Comedy by Dante Alighieri", "The Fault in Our Stars by John Green", "The Fellowship of the Ring by J.R.R. Tolkien", "The Girl on the Train by Paula Hawkins", "The Giver by Lois Lowry", "The Grapes of Wrath by John Steinbeck", "The Great Gatsby by F. Scott Fitzgerald", "The Handmaid's Tale by Margaret Atwood", "The Hobbit by J.R.R. Tolkien", "The Hound of the Baskervilles by Arthur Conan Doyle", "The Hunger Games by Suzanne Collins", "The Iliad by Homer", "The Kite Runner by Khaled Hosseini", "The Little Prince by Antoine de Saint-Exupéry", "The Lord of the Rings by J.R.R. Tolkien", "The Name of the Rose by Umberto Eco", "The Odyssey by Homer", "The Picture of Dorian Gray by Oscar Wilde", "The Road by Cormac McCarthy", "The Scarlet Letter by Nathaniel Hawthorne", "The Secret Garden by Frances Hodgson Burnett", "The Shining by Stephen King", "The Stand by Stephen King", "To Kill a Mockingbird by Harper Lee", "Treasure Island by Robert Louis Stevenson", "War and Peace by Leo Tolstoy", "Wuthering Heights by Emily Brontë"],
+        "Films": ["A Bug's Life", "Avatar", "Avengers", "Back to the Future", "Beauty and the Beast", "Black Panther", "Brave", "Cars", "Coco", "E.T.", "Fight Club", "Finding Dory", "Finding Nemo", "Forrest Gump", "Frozen", "Gladiator", "Guardians of the Galaxy", "Harry Potter", "Inception", "Inglourious Basterds", "Inside Out", "Interstellar",  "Jaws", "Jurassic Park", "La La Land", "Mad Max: Fury Road", "Monsters, Inc.", "Pirates of the Caribbean", "Pulp Fiction", "Ratatouille", "Spider-Man", "Star Wars", "The Big Lebowski", "The Breakfast Club", "The Dark Knight", "The Departed", "The Empire Strikes Back", "The Godfather", "The Grand Budapest Hotel", "The Green Mile", "The Incredibles", "The Lion King", "The Lord of the Rings", "The Matrix", "The Princess Bride", "The Revenant", "The Shape of Water", "The Shawshank Redemption", "The Silence of the Lambs", "The Social Network", "The Sound of Music", "The Terminator", "The Wizard of Oz", "Titanic", "Toy Story", "Up", "WALL-E"],
+        "Clothing": ["Antique Brooches", "Artisanal Accessories", "Bespoke Shoes", "Bespoke Tailored Pieces", "Cashmere Gloves", "Cashmere Sweaters", "Chic Hats", "Classic Trench Coats", "Cocktail Dresses", "Couture Gowns", "Cufflinks", "Custom-made Jewelry", "Custom-made Suits", "Denim Jeans", "Designer Handbags", "Designer Sneakers", "Diamond Jewelry", "Embellished Clutches", "Embroidered Jackets", "Smart Watches", "Fine Leather Belts", "Fur Coats", "Hand-painted Silk Kimonos", "Handcrafted Leather Bags", "Handwoven Textiles", "High-Heeled Shoes", "Leather Boots", "Leather Jackets", "Luxury Watches", "Pearl Necklaces", "Signature Perfumes", "Silk Blouses", "Silk Scarves", "Statement Earrings", "Tailored Suits", "Vintage Blazers", "Vintage Dresses", "Vintage Sunglasses"],
+        "Color": ["Beige", "Black", "Blue", "Brown", "Crimson", "Gold", "Gray", "Green", "Indigo", "Lavender", "Magenta", "Orange", "Pink", "Purple", "Red", "Silver", "Teal", "Turquoise", "White", "Yellow"]
+    },
+    "Introversion": {
+        "Ghost": [0,1],
+        "Angel": [0,1],
+        "Demon": [0,1]
+    },
+    "Truthiness": {
+        "Ghost": [0,1],
+        "Angel": [0,0],
+        "Demon": [0,1]
+    },
+    "Hostility": {
+        "Ghost": [0,1],
+        "Angel": [0,0],
+        "Demon": [0,1]
+    },
+    "Trust": {
+        "Ghost": [0,2],
+        "Angel": [0,2],
+        "Demon": [0,2]
+    },
+    "Frequency": {
+        "Ghost": [88.1, 107.9],
+        "Angel": [88.1, 107.9],
+        "Demon": [88.1, 107.9]
+    },
+    "Modulation": {
+        "Ghost":  [0,1],
+        "Angel":  [0,1],
+        "Demon":  [0,1]
+    },
+    "Color": {
+        "All": ["960000", "969696", "000096", "009600", "969600", "960096", "009696"],
+        "Ghost":  ["960000", "969696", "000096", "009600", "969600", "960096", "009696"],
+        "Angel":  ["960000", "969696", "000096", "009600", "969600", "960096", "009696"],
+        "Demon":  ["960000", "969696", "000096", "009600", "969600", "960096", "009696"]
+    },
+    "Sound": {
+        "All": ["Bells","Cackle","Chains","Choir","Cry","Flapping Wings","Footsteps","Growl","Grunt","Harp","Heartbeat","Hiss","Hum","Laughter","Moan","Scratching","Whips","Whisper"],
+        "Ghost":  ["Bells","Cackle","Chains","Choir","Cry","Flapping Wings","Footsteps","Growl","Grunt","Harp","Heartbeat","Hiss","Hum","Laughter","Moan","Scratching","Whips","Whisper"],
+        "Angel":  ["Harp", "Bells", "Choir", "Hum"],
+        "Demon":  ["Cackle","Chains","Cry","Flapping Wings","Footsteps","Growl","Grunt","Hiss","Hum","Laughter","Scratching","Whips","Whisper"]
+    },
+    "Emojis": {
+        "All": ["without emojis", "with emojis", "with ascii emojis", "with only emojis"],
+        "Ghost": ["without emojis", "with emojis", "with ascii emojis", "with only emojis"],
+        "Angel": ["without emojis", "with emojis", "with ascii emojis", "with only emojis"],
+        "Demon": ["without emojis"]
+    },
+    "TypingStyle": {
+        "All": ["standard", "with caps", "with alternating lowercase and uppercase", "with spelling mistakes", "with slang words"],
+        "Ghost": ["standard", "with caps", "with alternating lowercase and uppercase", "with spelling mistakes", "with slang words"],
+        "Angel": ["standard"],
+        "Demon": ["standard", "with caps", "with alternating lowercase and uppercase"]
+    },
+    "Chant": {
+        "Ghost": ["spiritus veritas"],
+        "Angel": ["arcanum animas"],
+        "Demon": ["nexus abyssus"]
+    }
+
+    
+}
+
