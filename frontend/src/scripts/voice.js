@@ -209,6 +209,7 @@ async function fetchAndType(transcript) {
     console.log('fetch and type message', transcript)
     try {
         const message = await getChatGPTMessage(transcript, GLOBAL_BACKSTORY);
+        console.log('gpt response', message)
         typeWriterEffect(message);
     } catch (error) {
         console.error('Error:', error);
