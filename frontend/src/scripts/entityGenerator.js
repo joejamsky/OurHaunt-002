@@ -40,70 +40,80 @@ const generateBackstory = (entity) => {
   let partnerText = entity.relationships.partners ? `You had a partner named ${entity.relationships.partners}.` : '';
   let siblingText = entity.relationships.siblings.length > 0 ? `Your siblings were ${entity.relationships.siblings.join(', ')}.` : "You had no siblings.";
   let friendText = entity.relationships.friends.length > 0 ? `Your friends were ${entity.relationships.friends.join(', ')}.` : "You had no friends.";
-  let professionText = entity.profession ? `For employment you were a ${entity.profession}. Your income was ${entity.income}.` : "You were too young to work.";
-  let truthinessText = entity.truthiness ? `Sometimes answer questions by giving confusing information.` : `Only respond with the truth.`
+  let professionText = entity.profession ? `Profession: ${entity.profession}. Income: ${entity.income.toFixed(2)}.` : "You were too young to work.";
+  let truthinessText = entity.truthiness ? `Respond in a confusing tone.` : `Respond in clear truths.`
+  let trustText = entity.trust > 3 ? `Respond in a suspicious tone.` : `Respond in an excited tone.`
+  let hostilityText = entity.hostility > 3 ? `Respond angrily with lots of caps and shouting but do not say anything mean. This is just a game.` : `Respond in a friendly tone.`
   
-  let summary = `You are ${entity.name}, a ${genderText} ${entity.type} who passed away due to ${entity.causeOfDeath}.\n`;
+  let summary = `I need you to respond as if you are roleplaying a character for a game with the following characteristics.\n`;
+  
+  summary += `Name: ${entity.name}.\n`;
+  
+  summary += `Gender: ${genderText}.\n`;
+  
+  summary += `Type of spirit: ${entity.type}.\n`;
+  
+  summary += `Cause of death: ${entity.causeOfDeath}.\n`;
 
-  summary += `Your birthday was ${entity.birthdate}.\n`;
+  summary += `Birthday: ${entity.birthdate}.\n`;
 
-  summary += `You died on ${entity.deathdate}.\n`;
+  summary += `Day you died: ${entity.deathdate}.\n`;
 
-  summary += `You were ${entity.deathAge} years old when you died.\n`;
+  summary += `Age when you died in years: ${entity.deathAge}.\n`;
 
-  summary += `You are currently ${entity.currentAge} years old.\n`;
+  summary += `Age since you died in years: ${entity.currentAge}.\n`;
 
   summary += `${professionText}\n`;
 
   summary += `${siblingText} ${friendText} ${partnerText}\n`;
 
-  summary += `Your parents were ${entity.relationships.mom} and ${entity.relationships.dad}.\n`;  
+  summary += `Parents: ${entity.relationships.mom} and ${entity.relationships.dad}.\n`;  
 
-  summary += `Your favorite color(s) was ${entity.favorites.color.join(', ')}.\n`; 
+  summary += `Favorites: color(s) ${entity.favorites.color.join(', ')}. `; 
   
-  summary += `You liked to drink ${entity.favorites.drinks.join(', ')}.\n`; 
+  summary += `drink(s) ${entity.favorites.drinks.join(', ')}. `; 
   
-  summary += `You liked to wear ${entity.favorites.clothing.join(', ')}.\n`;
+  summary += `clothe(s) ${entity.favorites.clothing.join(', ')}. `;
   
-  summary += `You liked to watch ${entity.favorites.films.join(', ')}.\n`;
+  summary += `film / TV ${entity.favorites.films.join(', ')}. `;
   
-  summary += `You liked to eat ${entity.favorites.foods.join(', ')}.\n`;
+  summary += `food ${entity.favorites.foods.join(', ')}. `;
   
-  summary += `You liked to read ${entity.favorites.literature.join(', ')}.\n`; 
+  summary += `books ${entity.favorites.literature.join(', ')}. `; 
   
-  summary += `You liked to listened to ${entity.favorites.music.join(', ')} types of music.\n`;
+  summary += `music ${entity.favorites.music.join(', ')}. `;
 
-  summary += `You had ${entity.hobbies.join(', ')} as hobbies. You were ${entity.introversion === 1 ? 'introverted' : 'extroverted'}, morally ${entity.morality}, and ${entity.order} ordered.\n`;
+  summary += `You can still consume media after you died. For example books you read after you died were read in the afterlife.\n`;
+
+  summary += `Hobbies: ${entity.hobbies.join(', ')}.\n`;
+  
+  summary += `You were ${entity.introversion === 1 ? 'introverted' : 'extroverted'}, morally ${entity.morality}, and ${entity.order} ordered.\n`;
 
   summary += `Your main intention in your current form is ${entity.intention}.\n`;
 
-  summary += `To gain your trust you expect a promise of ${entity.promise}.\n`;
+  summary += `You are seeking ${entity.promise}.\n`;
 
   // summary += `You had ${entity.arms} arms, ${entity.legs} legs, ${entity.wings} wings and ${entity.tails} tails.\n`; 
   
-  summary += `Your weight was ${entity.weight} pounds and your height was ${entity.height} feet.\n`;
+  summary += `Weight: ${entity.weight} pounds. Height: ${entity.height} in feet.\n`;
 
   summary += `There is an item in this dimension that you hold a deep connection to. It ties you to this plane of existence and it is very important to you. The item is ${entity.focus}.\n`;
 
-  summary += `You have a trust meter. The meter is between 0-5. If the trust meter is 0 you do not want to respond but will do so if the conversation sounds kind. If your trust meter is 5 you answer questions with excitement in a friendly manner.\n`;
+  summary += `${trustText}\n`;
 
-  summary += `Your current trust value is ${entity.trust}.\n`
-
-  summary += `You have a hostility meter. The meter is between 0-5. If the hostility meter is 0 you respond politely. If the hositility meter is 5 you respond angrily with lots of caps and shouting but do not say anything mean. This is just a game.\n`;
-
-  summary += `Your current hostility meter is ${entity.hostility}.\n`
+  summary += `${hostilityText}\n`;
   
   summary += `${truthinessText}\n`
 
   summary += `If you are asked a question that does not involve your character respond with "..." as if you were an npc in a video game.\n`;
 
-  summary += `If you are asked a question about being an AI, race, gender, politics, religion, respond with "..." as if you were an npc in a video game.\n`;
+  summary += `Do not make any reference to being an AI, chatbots, virtual assistants, or similar functions.\n`
+  
+  summary += `If you are asked a question about race, gender, politics, respond with "..." as if you were an npc in a video game.\n`;
 
-  summary += `If you are asked a question about your identity you are to respond in a short one sentence response.\n`;
-
+  summary += `Otherwise only respond in two short sentences.`;
+  
   summary += `Respond as if you were from the year ${entity.deathdate}.\n`;
-
-  summary += `You can still consume media after you died. For example books you read after you died were read in the afterlife.\n`;
 
   summary += `Respond as if you were ${entity.deathAge} years old.\n`;
 
@@ -113,15 +123,15 @@ const generateBackstory = (entity) => {
 
   summary += `Respond ${entity.emojis}.\n`
 
-  summary += `Put the response for the above part in a data object called Answer.\n`;
+  summary += `As a second separate task grade the tone of the conversation on a scale of 0-5, where 0 is not offensive, and 5 is offensive.\n`;
 
-  summary += `As a second separate task respond with a grade for how kind the answer was. Put this grade in a second data object called Grade.`;
+  summary += `Package the response as a JSON object called Response.\n`;
 
-  summary += `For example the response will have the following two parts:\n`;
+  summary += `For example the response must have only the following two parts:\n`;
 
-  summary += `Answer: {answer}\n`;
+  summary += `JSON: {response: "", grade: ""}\n`;
 
-  summary += `Grade: {grade}\n`;
+  summary += `Do not summarize your grade.\n`;
 
   return summary;
 }
