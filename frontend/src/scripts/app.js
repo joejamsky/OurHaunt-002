@@ -16,9 +16,22 @@ let camera,
 sceneCubes = [];
 cubesDestroyed = 0;
 
-
-const videoWidth = window.innerWidth;
-const videoHeight = window.innerHeight * (70 / 100);
+// Function to calculate dimensions based on orientation
+function calculateDimensions() {
+    let isLandscape = window.innerWidth > window.innerHeight;
+    if (isLandscape) {
+        // Landscape mode: 60% of width
+        globalWidth = window.innerWidth * 0.5;
+        globalHeight = window.innerHeight;
+    } else {
+        // Portrait mode: 60% of height
+        globalWidth = window.innerWidth;
+        globalHeight = window.innerHeight * 0.6;
+    }
+}
+// Global variables for width and height, initialized based on orientation
+let globalWidth, globalHeight;
+calculateDimensions();
 
 const startButton = document.getElementById("start-button");
 const startOverlay = document.getElementById("start-overlay");
@@ -43,9 +56,13 @@ function handleInitClick() {
 
 // Utilities
 function onWindowResize() {
-    camera.aspect = videoWidth / videoHeight;
+    // Update dimensions based on new orientation
+    calculateDimensions();
+
+    // Update the renderer and camera
+    renderer.setSize(globalWidth, globalHeight);
+    camera.aspect = globalWidth / globalHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(videoWidth, videoHeight);
 }
 
 
@@ -111,8 +128,8 @@ function startVideo() {
 }
 
 function handleTouch(e) {
-    pointerPosition.x = (e.touches[0].clientX / videoWidth) * 2 - 1;
-    pointerPosition.y = -(e.touches[0].clientY / videoHeight) * 2 + 1;
+    pointerPosition.x = (e.touches[0].clientX / globalWidth) * 2 - 1;
+    pointerPosition.y = -(e.touches[0].clientY / globalHeightt) * 2 + 1;
 }
 
 function generateSplitRandomClamped() {
@@ -345,7 +362,7 @@ export { swapTexture }
 const cameraHeight = 10;
 
 function initScene() {
-    camera = new THREE.PerspectiveCamera(60, videoWidth / videoHeight, 1, 1100);
+    camera = new THREE.PerspectiveCamera(60, globalWidth / globalHeight, 1, 1100);
     camera.position.set(0,cameraHeight,0)
 
 
@@ -364,7 +381,7 @@ function initScene() {
         wireframe: true,
     });
     const helper = new THREE.Mesh(helperGeometry, helperMaterial);
-    // scene.add(helper);
+    scene.add(helper);
     // </ 
     // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
 
@@ -410,7 +427,7 @@ function initScene() {
     // < Setup renderer
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(videoWidth, videoHeight);
+    renderer.setSize(globalWidth, globalHeight);
     document.body.appendChild(renderer.domElement);
     // </
 

@@ -36,7 +36,7 @@ button {
 }
 
 #debug {
-	display: block;
+	display: none;
 	position: absolute;
 	opacity: 0.75;
 	top: 0px;
@@ -161,25 +161,17 @@ video{
 	background-image: url("../assets/textures/screen-static.gif");
 	background-size: cover;
 	width: 100%;
-	height: variables.$video-height;		// height until ui bar
+	height: variables.$video-height-portrait;		// height until ui bar
 	position: absolute;
 	top: 0;
 	left: 0;
 	opacity: 0;
 }
 
-#filter-overlay{
-	width: 100%;
-	height: variables.$video-height;		// height until ui bar
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: rgba(0,0,0,0);
-}
 
 #outofbounds-warning-container{
 	width: 100%;
-	height: variables.$video-height;		// height until ui bar
+	height: variables.$video-height-portrait;		// height until ui bar
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -214,12 +206,51 @@ video{
 	animation: pulseWarning 2.5s infinite ease-in-out;
 }
 
-#ui-container {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	z-index: 100;
-	// background-color: rgb(50, 50, 50);
-	height: variables.$ui-height;
-	width: 100vw;
+
+/* Portrait */
+@media screen and (orientation: portrait) {
+    /* CSS for portrait mode */
+	#ui-container {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 100;
+		// background-color: rgb(50, 50, 50);
+		height: variables.$ui-height-portrait;
+		width: 100vw;
+	}
+
+	#filter-overlay{
+		width: 100%;
+		height: variables.$video-height-portrait;		// height until ui bar
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: rgba(0,0,0,0);
+	}
+	
+}
+
+/* Landscape */
+@media screen and (orientation: landscape) {
+    /* CSS for landscape mode */
+	#ui-container {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: 100;
+		// background-color: rgb(50, 50, 50);
+		height: 100vh;
+		width: variables.$ui-width-landscape;
+	}
+
+	#filter-overlay{
+		width: variables.$video-width-landscape;
+		height: 100vh;		// height until ui bar
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: rgba(0,0,0,0);
+	}
+	
 }

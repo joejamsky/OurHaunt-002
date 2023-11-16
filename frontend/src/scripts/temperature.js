@@ -2,15 +2,15 @@ const tempPlus = document.getElementById("temperature-plus")
 const tempMinus = document.getElementById("temperature-minus")
 const tempInput = document.getElementById("temperature-quantity")
 
-tempPlus.addEventListener('click', () => {
-    tempInput.stepUp()
-    handleActive(tempInput.value)
-})
+// tempPlus.addEventListener('click', () => {
+//     tempInput.stepUp()
+//     handleActive(tempInput.value)
+// })
 
-tempMinus.addEventListener('click', () => {
-    tempInput.stepDown()
-    handleActive(tempInput.value)
-})
+// tempMinus.addEventListener('click', () => {
+//     tempInput.stepDown()
+//     handleActive(tempInput.value)
+// })
 
 const handleActive = (value) => {
     if (parseInt(value) === -10){
