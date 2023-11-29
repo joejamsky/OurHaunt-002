@@ -1,18 +1,30 @@
-#ui-slider-title-bar{
-	width: 100%;
+#ui-slider-title-bar-right{
+	width: 30%;
 	height: 22px;
-	background-color: #8b7603;
+	background-color: #313131;
+	position: absolute;
+	top:4px;
+	right:0;
+	z-index: 1;
+}
+
+#ui-slider-title-bar-left{
+	width: 30%;
+	height: 22px;
+	background-color: #313131;
 	position: absolute;
 	top:4px;
 	left:0;
+	z-index: 1;
 }
+
 
 #ui-slider-title-container{
 	position: absolute;
 	top: 0;
     left: 50%;
     transform: translate(-50%, 0);
-	border: solid 2px #8b7603;
+	border: solid 2px #313131;
     width: 40%;
     height: 25px;
     border-radius: 6px;
@@ -130,8 +142,8 @@
     // border-bottom: 1px solid white;
 	// justify-self: baseline;
     position: absolute;
-	bottom: -15px;
-    left: -15px;
+	bottom: -11px;
+    left: -11px;
 	padding: 0;
 	font-size: 26px;
 	z-index: 1;
@@ -143,21 +155,21 @@
 @keyframes pulseDetailsClick {
 	0% {
 		border-top: 6px white solid;
-		border-bottom: 6px white solid;
-		border-left: 0px white solid;
-		border-right: 0px white solid;
+		border-left: 2px white solid;
+		border-right: 2px white solid;
+		border-bottom: 1px white solid;
 	}
 	50% {
-		border-top: 44px white solid;
-		border-bottom: 44px white solid;
-		border-left: 1px white solid;
-		border-right: 1px white solid;
+		border-top: 33px white solid;
+		border-bottom: 33px white solid;
+		border-left: 2px white solid;
+		border-right: 2px white solid;
 	}
 	100% {
 		border-top: 6px white solid;
-		border-bottom: 6px white solid;
-		border-left: 0px white solid;
-		border-right: 0px white solid;
+		border-left: 2px white solid;
+		border-right: 2px white solid;
+		border-bottom: 1px white solid;
 	}
 }
 
@@ -177,7 +189,7 @@
 .slide-item-name {
 	position: absolute;
 	top: 4px;
-	color: #8b7603;
+	color: white;
 	// height: 20%;
 	margin: 0 auto;
 	// background-color: green;
@@ -199,7 +211,7 @@
 
 .slick-prev {
 	left: 0px;
-	top: 15px;
+	top: 13px;
 	z-index: 10;
 }
 .slick-prev::before {
@@ -210,7 +222,7 @@
 }
 .slick-next {
 	right: 0px;
-	top: 15px;
+	top: 13px;
 	z-index: 10;
 }
 .slick-next::before {

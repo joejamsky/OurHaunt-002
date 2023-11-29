@@ -31,7 +31,6 @@ function calculateDimensions() {
 }
 // Global variables for width and height, initialized based on orientation
 let globalWidth, globalHeight;
-calculateDimensions();
 
 const startButton = document.getElementById("start-button");
 const startOverlay = document.getElementById("start-overlay");
@@ -44,7 +43,7 @@ function handleInitClick() {
       }, 250);
     
 
-
+    calculateDimensions();
     startVideo();
     initScene();
     initSlides();
@@ -129,7 +128,7 @@ function startVideo() {
 
 function handleTouch(e) {
     pointerPosition.x = (e.touches[0].clientX / globalWidth) * 2 - 1;
-    pointerPosition.y = -(e.touches[0].clientY / globalHeightt) * 2 + 1;
+    pointerPosition.y = -(e.touches[0].clientY / globalHeight) * 2 + 1;
 }
 
 function generateSplitRandomClamped() {
@@ -256,7 +255,7 @@ function initMonster() {
             monsterMesh = gltf.children[0]
             monsterMesh.scale.set(0.2,0.2,0.2)
             monsterMesh.position.set(0,cameraHeight,-3)
-            monsterMesh.visible = true;
+            monsterMesh.visible = false;
 
 
             // const audioFileUrl = 'path/to/audio/file.mp3';

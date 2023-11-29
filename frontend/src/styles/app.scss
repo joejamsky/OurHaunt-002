@@ -72,12 +72,23 @@ a, button, input, select {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	gap: 10%;
 	justify-content: center;
 	background: rgba(0,0,0,1);
     z-index: 100000;
+}
+
+@media screen and (orientation: portrait) {
+	#start-overlay {
+		flex-direction: column;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	#start-overlay {
+		flex-direction: row;
+	}
 }
 
 #start-overlay button {
@@ -97,24 +108,6 @@ a, button, input, select {
     // min-width: 175px;
     // min-height: 175px;
 }
-
-// @keyframes pulseMenuClick {
-// 	0% {
-// 		border-radius: 10%;
-// 		border-top: 10px #fff dashed;
-// 		border-bottom: 10px #fff dashed;
-// 	}
-// 	50% {
-// 		border-radius: 50%;
-// 		border-top: 30px #fff dashed;
-// 		border-bottom: 30px #fff dashed;
-// 	}
-// 	100% {
-// 		border-radius: 10%;
-// 		border-top: 10px #fff dashed;
-// 		border-bottom: 10px #fff dashed;
-// 	}
-// }
 
 @keyframes pulseMenuClick {
 	0% {
@@ -211,6 +204,8 @@ video{
 @media screen and (orientation: portrait) {
     /* CSS for portrait mode */
 	#ui-container {
+		box-sizing: border-box;
+		box-sizing: border-box;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -218,6 +213,8 @@ video{
 		// background-color: rgb(50, 50, 50);
 		height: variables.$ui-height-portrait;
 		width: 100vw;
+		box-shadow: inset 0px 5px 0px 0px #313131;
+		border-top: 2px solid #313131;
 	}
 
 	#filter-overlay{
@@ -235,6 +232,7 @@ video{
 @media screen and (orientation: landscape) {
     /* CSS for landscape mode */
 	#ui-container {
+		box-sizing: border-box;
 		position: absolute;
 		bottom: 0;
 		right: 0;
@@ -242,6 +240,8 @@ video{
 		// background-color: rgb(50, 50, 50);
 		height: 100vh;
 		width: variables.$ui-width-landscape;
+		box-shadow: inset 0px 5px 0px 0px #313131;
+		border-left: 2px solid #313131;
 	}
 
 	#filter-overlay{
