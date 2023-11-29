@@ -309,26 +309,6 @@ function updateVolumeBasedOnProximity(camera, monster, active) {
         audioObject.setVolume(1 / distance);
     }
 }
-  
-zPositionSlider.addEventListener('input', () => {
-    const ground = scene.getObjectByName('Ground');
-
-    const zPosition = parseFloat(zPositionSlider.value);
-    ground.position.z = zPosition; // Update the Z position of the mesh
-});
-
-yPositionSlider.addEventListener('input', () => {
-    const ground = scene.getObjectByName('Ground');
-
-    const yPosition = parseFloat(yPositionSlider.value);
-    ground.position.y = yPosition; // Update the Z position of the mesh
-});
-
-fovSlider.addEventListener('input', () => {
-    const fov = parseFloat(fovSlider.value);
-    camera.fov = fov; // Update the camera's FOV
-    camera.updateProjectionMatrix(); // Apply the changes
-});
 
 function handleIntersectVibration(mesh) {
     if (mesh.x <= 1 && mesh.z <= 1) {
