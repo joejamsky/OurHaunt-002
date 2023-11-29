@@ -7,7 +7,7 @@ const stabalizedLonDiv = document.getElementById("stabalized-lon");
 const distanceLatDiv = document.getElementById("distance-lat");
 const distanceLonDiv = document.getElementById("distance-lon");
 const distanceTotalDiv = document.getElementById("distance-total");
-const staticOverlay = document.getElementById("static-overlay");
+// const staticOverlay = document.getElementById("static-overlay");
 const outofboundsWarning = document.getElementById("outofbounds-warning-container");
 const gpsIdentifier = document.getElementById("gps-identifier");
 

@@ -10,6 +10,7 @@
 @use 'slider-ui/slider-ui';
 @use 'about/about-page';
 @use 'variables/variables';
+@use 'tutorial';
 @use 'fonts';
 
 body {
@@ -145,21 +146,16 @@ video{
 	/* height: 100vh; */
 }
 
-#tutorial{
-	position: relative;
-	z-index: 100000;
-}
-
-#static-overlay{
-	background-image: url("../assets/textures/screen-static.gif");
-	background-size: cover;
-	width: 100%;
-	height: variables.$video-height-portrait;		// height until ui bar
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-}
+// #static-overlay{
+// 	background-image: url("../assets/textures/screen-static.gif");
+// 	background-size: cover;
+// 	width: 100%;
+// 	height: variables.$video-height-portrait;		// height until ui bar
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	opacity: 0;
+// }
 
 
 #outofbounds-warning-container{

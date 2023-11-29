@@ -38,20 +38,8 @@
 		<link type="text/css" rel="stylesheet" href="./styles/app.css">		
 	</head>
 	<body>
-		<div id="debug">
-			Debug
-			<!-- <div id="start-lat">start-lat</div>
-			<div id="start-lon">start-lon</div>
-			<div id="current-lat">current-lat</div>
-			<div id="current-lon">current-lon</div>
-			<div id="stabalized-lat">stabalized-lat</div>
-			<div id="stabalized-lon">stabalized-lon</div>
-			<div id="distance-lat">distance-lat</div>
-			<div id="distance-lon">distance-lon</div>
-			<div id="distance-total">distance-total</div> -->
-			<div id="ghost-visible">Ghost Visible:</div>
-		</div>
 
+		<!-- Front Page -->
 		<div id="start-overlay">
 			<button id="start-button"><i class="fa-solid fa-power-off"></i></button>
 			<button id="about-button"><i class="fas fa-heart"></i></button>
@@ -79,28 +67,77 @@
 			</div>
 		</div>
 
+		<!-- Tutorial Page -->
+		<div id="tutorial" style="padding: 30px;">
+			<p>
+				There have been reports of metaphysical activity in this area.
+			</p>
+			<p>
+				You've been provided the following equipment:
+			</p>
+			<p style="text-align: center;">
+				Motion Sensor<br>
+				Voice Recorder<br>
+				EMF Reader<br>
+				Radio<br>
+				Camera.
+			</p>
+			<p>
+				Once you have collected enough information about the ghost,
+				create a Portal to contain the ghost.
+			</p>
+			<p>
+				Once the ghost is contained you will determine its fate. Will you condemn it or save it?
+			</p>
 
-		<div id="static-overlay"></div>
-		<div id="outofbounds-warning-container">
-			<h1 id="outofbounds-warning">Leaving Haunt</h1>
+			<button id="close-tutorial">&#x2715</button>
+	
 		</div>
 
-		<div id="filter-overlay">
+
+
+		<div id="game-container">
+
+			<div id="3d-container">
+				<div id="debug">
+					Debug
+					<!-- <div id="start-lat">start-lat</div>
+					<div id="start-lon">start-lon</div>
+					<div id="current-lat">current-lat</div>
+					<div id="current-lon">current-lon</div>
+					<div id="stabalized-lat">stabalized-lat</div>
+					<div id="stabalized-lon">stabalized-lon</div>
+					<div id="distance-lat">distance-lat</div>
+					<div id="distance-lon">distance-lon</div>
+					<div id="distance-total">distance-total</div> -->
+					<div id="ghost-visible">Ghost Visible:</div>
+				</div>
+		
+				<!-- <div id="static-overlay"></div> -->
+				<div id="outofbounds-warning-container">
+					<h1 id="outofbounds-warning">Leaving Haunt</h1>
+				</div>
+		
+				<div id="filter-overlay">
+				</div>
+		
+				<video id="video" autoplay></video>
+
+			</div>
+
+			
+			<div id="ui-container">
+				<div id="ui-slider-title-bar-left"></div>
+				<div id="ui-slider-title-container"></div>
+				<div id="ui-slider-title-bar-right"></div>
+				<div id="ui-slider"></div>
+			</div>
+
+
 		</div>
 
-		<video id="video" autoplay></video>
+	
 
-		<div id="tutorial">
-
-		</div>
-
-
-		<div id="ui-container">
-			<div id="ui-slider-title-bar-left"></div>
-			<div id="ui-slider-title-container"></div>
-			<div id="ui-slider-title-bar-right"></div>
-			<div id="ui-slider"></div>
-		</div>
 
 		
 		<div id="motion-module-container">
@@ -231,53 +268,6 @@
 			</div>
 		</div>
 
-		<!-- <div id="offering-module-container">
-			<div id="offering-module">
-				<div class="offering-item">
-					Meat
-				</div>
-				<div class="offering-item">
-					Apple
-				</div>
-				<div class="offering-item">
-					Pizza
-				</div>
-				<div class="offering-item">
-					Water
-				</div>
-				<div class="offering-item">
-					Blood
-				</div>
-				<div class="offering-item">
-					Book
-				</div>
-				<div class="offering-item">
-					Letter
-				</div>
-				<div class="offering-item">
-					Candle
-				</div>
-				<div class="offering-item">
-					Flowers
-				</div>
-				<div class="offering-item">
-					Blanket
-				</div>
-				<div class="offering-item">
-					Mirror
-				</div>
-				<div class="offering-item">
-					Crucifix
-				</div>
-				<div class="offering-item">
-					Doll
-				</div>
-				<div class="offering-item">
-					Ball
-				</div>
-			</div>
-		</div> -->
-
 		<div id="portal-module-container">
 
 			<div id="portal-module">
@@ -382,16 +372,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- <div id="temperature-module-container">
-			<div id="temperature-module">
-				
-					<button id="temperature-minus"></button>
-					<input id="temperature-quantity" min="-10" max="120" name="temperature-quantity" value="10" step="1" type="number">
-					<button id="temperature-plus"></button>
-				
-			</div>
-		</div> -->
 
 		
 		<script type="module" src="./scripts/DeviceOrientationControls.js"></script>

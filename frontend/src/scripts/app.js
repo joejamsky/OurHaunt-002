@@ -34,12 +34,22 @@ let globalWidth, globalHeight;
 
 const startButton = document.getElementById("start-button");
 const startOverlay = document.getElementById("start-overlay");
+const closeTutorial = document.getElementById("close-tutorial");
+closeTutorial.addEventListener("click", handleCloseTutorial);
+
+function handleCloseTutorial() {
+    setTimeout(() => {
+        $("#tutorial").hide()
+    }, 250);
+  
+}
 
 startButton.addEventListener("click", handleInitClick);
 
 function handleInitClick() {
     setTimeout(() => {
         startOverlay.remove();
+        $("#tutorial").show()
       }, 250);
     
 

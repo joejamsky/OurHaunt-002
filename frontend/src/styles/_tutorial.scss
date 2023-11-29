@@ -1,0 +1,54 @@
+
+
+#tutorial{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: black;
+	z-index: 100000;
+}
+
+#close-tutorial  {
+	background: #000;
+    border-top: 5px white dashed;
+    border-bottom: 5px white dashed;
+    border-left: 2px white solid;
+    border-right: 2px white solid;
+
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+	
+
+    color: #fff;
+	font-size: 25px;
+}
+
+@keyframes pulseTutorialClick {
+	0% {
+		border-top: 5px white solid;
+		border-bottom: 5px white solid;
+		border-left: 2px white solid;
+		border-right: 2px white solid;
+	}
+	50% {
+		border-top: 35px white solid;
+		border-bottom: 35px white solid;
+		border-left: 1px white solid;
+		border-right: 1px white solid;
+	}
+	100% {
+		border-top: 5px white solid;
+		border-bottom: 5px white solid;
+		border-left: 2px white solid;
+		border-right: 2px white solid;
+	}
+}
+
+#close-tutorial:active {
+	animation: pulseTutorialClick 0.1s 1 normal linear;
+}
