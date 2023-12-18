@@ -16,7 +16,7 @@ const slideData = [
     },
     {
         slideID: 'slide-portal',
-        itemName: 'Eldritch Portal', 
+        itemName: 'Portal', 
         unlocked: false,
         itemIcon: 'gate.svg',
         summaryText: "Identify characteristics about the spirit to activate the portal. Once activated, the portal is open your judgement will determine the spirits fate." 

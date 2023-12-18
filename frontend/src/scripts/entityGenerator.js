@@ -138,7 +138,7 @@ const generateBackstory = (entity) => {
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const getRandomElement = (array) => array[getRandomInt(0, array.length - 1)];
-const getRandomFloat = (min, max) => parseFloat((Math.random() * (max - min) + min).toFixed(2));
+const getRandomFloat = (min, max, dec = 0) => parseFloat((Math.random() * (max - min) + min).toFixed(dec));
 const generateSkewedRandom = (target, rangeMin, rangeMax, standardDeviation) => {
   if (rangeMax <= rangeMin) { // No range available, return the minimum value
     return rangeMin;
@@ -291,8 +291,8 @@ class EntityTemplate {
         this.deathdate = calculateDeathdate(this.birthdate, this.lifespan);
         this.deathAge = calculateAgeAtDeath(this.birthdate, this.deathdate);
         this.causeOfDeath = getRandomElement(config.CauseOfDeath[this.type]);
-        this.height = getRandomFloat(...config.Height[this.type]);
-        this.weight = getRandomFloat(...config.Weight[this.type]);
+        this.height = getRandomFloat(...config.Height[this.type], 1);
+        this.weight = getRandomFloat(...config.Weight[this.type], 2);
         this.arms = getRandomInt(...config.Arms[this.type]);
         this.legs = getRandomInt(...config.Legs[this.type]);
         this.tails = getRandomInt(...config.Tails[this.type]);
@@ -333,12 +333,13 @@ class EntityTemplate {
         this.truthiness = getRandomInt(...config.Truthiness[this.type]);
         this.hostility = getRandomInt(...config.Hostility[this.type]);
         this.trust = getRandomInt(...config.Trust[this.type]);
-        this.frequency = getRandomFloat(...config.Frequency[this.type]);
+        this.frequency = getRandomFloat(...config.Frequency[this.type], 1);
         this.modulation = getRandomInt(...config.Modulation[this.type]);
         this.color = getRandomElement(config.Color[this.type]);
         this.sound = getRandomElement(config.Sound[this.type]);
         this.emojis = getRandomElement(config.Emojis[this.type]);
         this.typingStyle = getRandomElement(config.TypingStyle[this.type]);
         this.chant = getRandomElement(config.Chant[this.type]);
+        this.candle = getRandomElement(config.Candles[this.type])
     }
 }

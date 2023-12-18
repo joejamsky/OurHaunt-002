@@ -49,7 +49,7 @@ startButton.addEventListener("click", handleInitClick);
 function handleInitClick() {
     setTimeout(() => {
         startOverlay.remove();
-        $("#tutorial").show()
+        $("#tutorial").css("display", "flex");
       }, 250);
     
 
@@ -506,6 +506,8 @@ function toggleVisibility() {
     if (filterBool !== wasVisible) { // Check if the boolean has changed
         monsterMesh.visible = filterBool; // Set the visibility of the mesh based on the boolean
         wasVisible = filterBool; // Update the previous state
+        // const startButton = document.getElementById("ghost-visible");
+        // startButton.innerHTML = "Ghost Visible: " + filterBool
     }
 }
 

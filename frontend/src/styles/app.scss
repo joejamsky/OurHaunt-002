@@ -38,6 +38,7 @@ button {
 
 #debug {
 	display: block;
+	display: none;
 	position: absolute;
 	opacity: 0.75;
 	top: 0px;
@@ -55,6 +56,10 @@ button {
 
 a, button, input, select {
 	pointer-events: auto;
+}
+
+.text-center{
+	text-align: center;
 }
 
 // Is this necessary?

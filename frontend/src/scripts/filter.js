@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
     const checkFilterMatch = (rgbaColor) => {
-        if(rgbaColor === GLOBAL_ENTITY.Candles){
+        if(rgbaColor === GLOBAL_ENTITY.candle){
             filterBool = true;
         } else {
             filterBool = false;

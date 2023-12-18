@@ -125,19 +125,11 @@ const radioSliderDecimal = document.getElementById('radio-slider-decimal');
 const radioValueInteger = document.getElementById('radio-value-integer');
 const radioValueDecimal = document.getElementById('radio-value-decimal');
 
-// src="./src/assets/icons/alien.svg"
-// const radioGlyphs = ["alien2.svg", 
-// "angel3.svg", 
-// "rune3.svg", 
-// "pentagram2.svg", 
-// "rune2.svg"]
 
 function initRadio() {
     setFrequency(88.1);
     setModulation(0);
     checkRadioMatch();
-    console.log('frequencyBool', frequencyBool)
-    console.log('modulationBool', modulationBool)
 }
 
 let frequencyBool = false,
@@ -146,7 +138,7 @@ let frequencyBool = false,
 
 const setFrequency = (value) => {
     const range = 1.0;
-    if (Math.abs(GLOBAL_ENTITY.Frequency - parseFloat(value)) <= range) {
+    if (Math.abs(GLOBAL_ENTITY.frequency - parseFloat(value)) <= range) {
         frequencyBool = true;
     } else {
         frequencyBool = false;
@@ -155,7 +147,7 @@ const setFrequency = (value) => {
 }
 
 const setModulation = (value) => {
-    if (parseInt(GLOBAL_ENTITY.Modulation) === parseInt(value)){
+    if (parseInt(GLOBAL_ENTITY.modulation) === parseInt(value)){
         modulationBool = true;
     } else {
         modulationBool = false;
