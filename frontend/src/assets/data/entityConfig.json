@@ -124,10 +124,10 @@
         "Demon": ["Angsty Teen", "Arrogant", "Sarcastic", "Stutter"]
     },
     "Focus": {
-        "All": ["Ancient Book", "Antique Furniture", "Broken Pocket Watch", "Cursed Painting", "Family Heirloom", "Family Portrait Album", "Forgotten Relic", "Haunted Sculpture", "Jewelry", "Locked Chest", "Music Box", "Mysterious Gemstone", "Old Mirror", "Painting or Portrait", "Pocket Watch", "Symbolic Amulet", "Time-Worn Journal", "Vintage Doll", "Vintage Phonograph", "Weapon"],
-        "Ghost": ["Ancient Book", "Antique Furniture", "Broken Pocket Watch", "Cursed Painting", "Family Heirloom", "Family Portrait Album", "Forgotten Relic", "Haunted Sculpture", "Jewelry", "Locked Chest", "Music Box", "Mysterious Gemstone", "Old Mirror", "Painting or Portrait", "Pocket Watch", "Symbolic Amulet", "Time-Worn Journal", "Vintage Doll", "Vintage Phonograph", "Weapon"],
-        "Angel": ["Ancient Book", "Antique Furniture", "Broken Pocket Watch", "Cursed Painting", "Family Heirloom", "Family Portrait Album", "Forgotten Relic", "Haunted Sculpture", "Jewelry", "Locked Chest", "Music Box", "Mysterious Gemstone", "Old Mirror", "Painting or Portrait", "Pocket Watch", "Symbolic Amulet", "Time-Worn Journal", "Vintage Doll", "Vintage Phonograph", "Weapon"],
-        "Demon": ["Ancient Book", "Antique Furniture", "Broken Pocket Watch", "Cursed Painting", "Family Heirloom", "Family Portrait Album", "Forgotten Relic", "Haunted Sculpture", "Jewelry", "Locked Chest", "Music Box", "Mysterious Gemstone", "Old Mirror", "Painting or Portrait", "Pocket Watch", "Symbolic Amulet", "Time-Worn Journal", "Vintage Doll", "Vintage Phonograph", "Weapon"]
+        "All": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Vintage Doll", "Knife"],
+        "Ghost": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Vintage Doll", "Knife"],
+        "Angel": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Vintage Doll", "Knife"],
+        "Demon": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Vintage Doll", "Knife"]
     },
     "Glyph": {
         "All": ["Pentagram", "Rune", "Elemental", "Blood", "Sigil", "Salt", "Flower"],
@@ -136,7 +136,7 @@
         "Demon": ["Pentagram", "Blood"]
     },
     "Promise": {
-        "All": ["Letter", "Ring", "Secrecy", "Peace", "Love", "Kibble", "Chaos"],
+        "All": ["Letter", "Ring", "Secrecy", "Peace", "Love", "Chaos"],
         "Ghost": ["Letter", "Ring", "Love", "Chaos", "Secrecy"],
         "Angel": ["Peace", "Love"],
         "Demon": ["Secrecy", "Chaos"]

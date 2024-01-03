@@ -2,24 +2,24 @@
 
 const emfLights = document.querySelectorAll('.emf-light-bulb')
 function addHostility() {
-    if(GLOBAL_ENTITY.hostility < 5){
-        GLOBAL_ENTITY.hostility += 1;
+    if(GLOBAL_ENTITY.questions < 5){
+        GLOBAL_ENTITY.questions += 1;
     }
     
     emfLights.forEach((light, i) => {
-        if(GLOBAL_ENTITY.hostility >= i){
+        if(GLOBAL_ENTITY.questions >= i){
             light.classList.remove('emf-light-off')
         }
     })
 }
 
 function removeHostility() {
-    if(GLOBAL_ENTITY.hostility > 0){
-        GLOBAL_ENTITY.hostility -= 1;
+    if(GLOBAL_ENTITY.questions > 0){
+        GLOBAL_ENTITY.questions -= 1;
     }
     
     emfLights.forEach((light, i) => {
-        if(GLOBAL_ENTITY.hostility < i){
+        if(GLOBAL_ENTITY.questions < i){
             light.classList.add('emf-light-off')
         }
     })

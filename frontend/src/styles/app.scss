@@ -255,3 +255,57 @@ video{
 	}
 	
 }
+
+.r-bulb {
+	background-color: #960000;
+	box-shadow: 0 0 4px 3px #960000;
+}
+.g-bulb {
+	background-color: #009600;
+	box-shadow: 0 0 4px 3px #009600;
+}
+.b-bulb {
+	background-color: #000096;
+	box-shadow: 0 0 4px 3px #000096;
+}
+.v-bulb {
+	background-color: #960096;
+	box-shadow: 0 0 4px 3px #960096;
+}
+.i-bulb {
+	background-color: #009696;
+	box-shadow: 0 0 4px 3px #009696;
+}
+.y-bulb {
+	background-color: #969600;
+	box-shadow: 0 0 4px 3px #969600;
+}
+.w-bulb {
+	background-color: #969696;
+	box-shadow: 0 0 4px 3px #969696;
+}
+
+.filter-light{
+	width: 34px;
+	height: 26px;
+	border-radius: 50%;
+	border-top: solid 4px #fff;
+	border-bottom: solid 1px #fff;
+	border-left: solid 1px #fff;
+	border-right: solid 1px #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.filter-light-bulb{
+	width: 3px;
+	height: 3px;
+	border-radius: 50%;
+	animation: pulselight 1.50s infinite linear;
+}
+
+.filter-light-off {
+	background-color: transparent;
+	box-shadow: none;
+}

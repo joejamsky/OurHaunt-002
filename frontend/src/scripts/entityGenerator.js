@@ -20,7 +20,7 @@ async function initEntity() {
   const dataObj = await fetchData(JSON_CONFIG);
 
   GLOBAL_ENTITY = new EntityTemplate(dataObj);
-  GLOBAL_BACKSTORY = generateBackstory(GLOBAL_ENTITY);
+  GLOBAL_BACKSTORY = generateBackstory2(GLOBAL_ENTITY);
 
   // console.log('data', dataObj)
   // console.log("init", GLOBAL_ENTITY);
@@ -31,6 +31,81 @@ async function initEntity() {
 initEntity().catch(e => console.error(e));
 
 
+const generateBackstory2 = (entity) => {
+
+  console.log("entity", entity)
+  let genderText = entity.gender === "All" ? `genderless` : entity.gender;
+  let partnerText = entity.relationships.partners ? `You had a partner named ${entity.relationships.partners}.` : '';
+  let siblingText = entity.relationships.siblings.length > 0 ? `Your siblings were ${entity.relationships.siblings.join(', ')}.` : "You had no siblings.";
+  let friendText = entity.relationships.friends.length > 0 ? `Your friends were ${entity.relationships.friends.join(', ')}.` : "You had no friends.";
+  let professionText = entity.profession ? `Profession: ${entity.profession}. Income: ${entity.income.toFixed(2)}.` : "You were too young to work.";
+
+  let summary = `You are playing a game. Someone will ask you questions and you will respond in json with a score from 0-5 depending on how close the question is to the truth. 0 for not close to the truth. 5 for it is the truth.\n`;
+
+  // summary += `Anything that doesn't have anything to do with  not involve your character respond with "..." as if you were an npc in a video game.\n`;
+
+  // summary += `Do not make any reference to being an AI, chatbots, virtual assistants, or similar functions.\n`
+  
+  // summary += `If you are asked a question about race, gender, politics, respond with "..." as if you were an npc in a video game.\n`;
+
+  summary += `Do not respond in any other way besides json and a rating from 0-5.\n`;
+
+  summary += `For example, every response should look like {grade: "int"}\n`;
+  
+  summary += `Name: ${entity.name}.\n`;
+  
+  summary += `Gender: ${genderText}.\n`;
+  
+  summary += `Type of spirit: ${entity.type}.\n`;
+  
+  summary += `Cause of death: ${entity.causeOfDeath}.\n`;
+
+  summary += `Birthday: ${entity.birthdate}.\n`;
+
+  summary += `Day you died: ${entity.deathdate}.\n`;
+
+  summary += `Age when you died in years: ${entity.deathAge}.\n`;
+
+  summary += `Age since you died in years: ${entity.currentAge}.\n`;
+
+  summary += `${professionText}\n`;
+
+  summary += `${siblingText} ${friendText} ${partnerText}\n`;
+
+  summary += `Parents: ${entity.relationships.mom} and ${entity.relationships.dad}.\n`;  
+
+  summary += `Favorites: color(s) ${entity.favorites.color.join(', ')}. `; 
+  
+  summary += `drink(s) ${entity.favorites.drinks.join(', ')}. `; 
+  
+  summary += `clothe(s) ${entity.favorites.clothing.join(', ')}. `;
+  
+  summary += `film / TV ${entity.favorites.films.join(', ')}. `;
+  
+  summary += `food ${entity.favorites.foods.join(', ')}. `;
+  
+  summary += `books ${entity.favorites.literature.join(', ')}. `; 
+  
+  summary += `music ${entity.favorites.music.join(', ')}. `;
+
+  summary += `You can still consume media after you died. For example books you read after you died were read in the afterlife.\n`;
+
+  summary += `Hobbies: ${entity.hobbies.join(', ')}.\n`;
+  
+  summary += `You were ${entity.introversion === 1 ? 'introverted' : 'extroverted'}, morally ${entity.morality}, and ${entity.order} ordered.\n`;
+
+  summary += `Your main intention in your current form is ${entity.intention}.\n`;
+
+  summary += `You are seeking ${entity.promise}.\n`;
+
+  // summary += `You had ${entity.arms} arms, ${entity.legs} legs, ${entity.wings} wings and ${entity.tails} tails.\n`; 
+  
+  summary += `Weight: ${entity.weight} pounds. Height: ${entity.height} in feet.\n`;
+
+  summary += `There is an item in this dimension that you hold a deep connection to. It ties you to this plane of existence and it is very important to you. The item is ${entity.focus}.\n`;
+
+  return summary;
+}
 
 
 const generateBackstory = (entity) => {
@@ -332,6 +407,7 @@ class EntityTemplate {
         this.introversion = getRandomInt(...config.Introversion[this.type]);
         this.truthiness = getRandomInt(...config.Truthiness[this.type]);
         this.hostility = getRandomInt(...config.Hostility[this.type]);
+        this.questions = 0;
         this.trust = getRandomInt(...config.Trust[this.type]);
         this.frequency = getRandomFloat(...config.Frequency[this.type], 1);
         this.modulation = getRandomInt(...config.Modulation[this.type]);

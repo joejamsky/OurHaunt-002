@@ -5,16 +5,19 @@ const handler = async function(event, context) {
     // Parse the request body from JSON
     const requestBody = event.body ? JSON.parse(event.body) : {};
     
-    // Get the message from the request body
-    let input = requestBody.message;
-    let systemContext = requestBody.systemContext
+    // Split message from front end into input and system context
+    let input = requestBody.message;  //This is the message from the user.
+    let systemContext = requestBody.systemContext //This is the backstory and context to setup the AI.
 
+    console.log('requestBody', requestBody)
+
+    //Debug parameters
     if (!input) {
-      // If no message was provided, use a default message
+      // If no message was provided, use a default message to debug
       input = "This is a debug message. If it has reached chatGPT please respond 'Error: You're input message is empty. From chatgpt'."
     }
     if (!systemContext) {
-      // systemContext = "You are a coding assistant trying to troubleshoot a chat game."
+      // If no context was provided, use a default context to debug
       systemContext = "Respond as if you are cookie monster."
     }
 

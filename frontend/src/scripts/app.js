@@ -207,9 +207,6 @@ function moveObjectRandom(mesh) {
 
 }
 
-const listener = new THREE.AudioListener();
-const audioObject = new THREE.PositionalAudio(listener);        // Create a Three.js audio object
-const audioLoader = new THREE.AudioLoader();
 
 // The index runs the dist js files so use the dist asset folder when referencing files
 const meshUrl = '../src/assets/meshes/ghostie-retop.obj'
@@ -249,48 +246,48 @@ const loader = new OBJLoader();
 //     });
 // }
 
+const audioListener = new THREE.AudioListener();
+const audioObject = new THREE.PositionalAudio(audioListener);        // Create a Three.js audio object
+const audioLoader = new THREE.AudioLoader();
+let gainNode;
 
 function initMonster() {
-    loader.load(meshUrl,
-        (gltf) => {
-            // Model loaded successfully, add it to the scene
-
-            // const monsterGeo = new THREE.BoxGeometry(1, 1, 1);
+    loader.load(meshUrl, (gltf) => {
+            //Model loaded successfully, add it to the scene
             const monsterMat = new THREE.MeshStandardMaterial({ color: 0xffffff, flatShading: true });
-            // monsterMesh = new THREE.Mesh(monsterGeo, monsterMat);
-            // monsterMesh.position.set(0, 1, -3);
-
-            
             gltf.children[0].material = monsterMat;
             monsterMesh = gltf.children[0]
             monsterMesh.scale.set(0.2,0.2,0.2)
             monsterMesh.position.set(0,cameraHeight,-3)
             monsterMesh.visible = false;
 
-
-            // const audioFileUrl = 'path/to/audio/file.mp3';
-
             audioLoader.load(audioFileUrl, (audioBuffer) => {
-
-                // console.log('Loaded audioBuffer:', audioBuffer);
-
-                const audioSource = audioContext.createBufferSource();
-                audioSource.buffer = audioBuffer;
-
+                //init Three.js spatial audio
                 audioObject.setBuffer(audioBuffer);
                 audioObject.setRefDistance(10); // Set the reference distance for volume falloff
                 audioObject.setDistanceModel('linear'); // Use linear distance model for volume
                 audioObject.setRolloffFactor(1); // Set the rolloff factor for volume falloff
                 audioObject.setVolume(0)  //0 to 1 for volume
-                audioObject.setLoop(true);
-                
-                
-                // Attach the audio object to the desired object in the scene
-                monsterMesh.add(audioObject);
-                audioObject.play();
+                audioObject.setLoop(true); // Loop the audio source for spatial audio
+                monsterMesh.add(audioObject); // Attach the audio object to the monster mesh
 
-                renderRadio(audioBuffer)
+                //init Visualizer audio
+                const audioSource = audioContext.createBufferSource();
+                audioSource.buffer = audioBuffer; // Loop the audio source for visualizer
+                audioSource.loop = true;
+                const analyserNode = audioContext.createAnalyser();
+                gainNode = audioContext.createGain(); //Create gain node for volume
+                gainNode.gain.value = 0; //Set volume to zero
+                
+                audioSource.connect(gainNode);
+                gainNode.connect(analyserNode);
+                // analyserNode.connect(audioContext.destination); //Do ont connect audio to speakers
+                
+                // Start both audio sources
+                audioObject.play();     //Start Threejs audio for spatial audio
+                audioSource.start();    //Start audio for visualizer
 
+                renderRadio(analyserNode)
             });
 
             scene.add( monsterMesh )
@@ -308,6 +305,10 @@ function initMonster() {
 function updateVolumeBasedOnProximity(camera, monster, active) {
     if(active === false){
         audioObject.setVolume(0)
+        if(gainNode && gainNode.gain){
+            gainNode.gain.value = 0;
+        }
+        
     } else {
         const cameraPosition = camera.position;
         const monsterPosition = monster.position;
@@ -317,6 +318,9 @@ function updateVolumeBasedOnProximity(camera, monster, active) {
     
         // Update the volume based on the distance
         audioObject.setVolume(1 / distance);
+        if(gainNode && gainNode.gain){
+            gainNode.gain.value = 1;
+        }
     }
 }
 
@@ -355,7 +359,7 @@ function initScene() {
     camera.position.set(0,cameraHeight,0)
 
 
-    camera.add( listener );
+    camera.add( audioListener );
 
     orientationControls = new DeviceOrientationControls(camera);
     raycaster = new THREE.Raycaster();

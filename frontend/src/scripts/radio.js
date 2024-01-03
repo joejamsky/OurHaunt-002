@@ -6,106 +6,48 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 let radioActive = false
 
-function renderRadio(audioBuffer) {
-    
-    // Load the audio file
-    // fetch(audioFileUrl)
-    // .then(response => response.arrayBuffer())
-    // .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-    // .then(audioBuffer => {
-        
-        // console.log('audiobuffer js', audiobuffer)
+function renderRadio(analyserNode) {
+    // Get SVG element and its dimensions
+    const svg = document.getElementById('radio-svg');
+    const width = svg.clientWidth;
+    const height = svg.clientHeight;
+    svg.innerHTML = ''; // Clear SVG
 
-        // Get SVG element
-        const svg = document.getElementById('radio-svg');
+    // Create SVG polyline element
+    const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    polyline.setAttribute('fill', 'none');
+    polyline.setAttribute('stroke', 'white');
+    polyline.setAttribute('stroke-width', '1');
+    svg.appendChild(polyline);
 
-        // Set SVG dimensions based on audio length
-        const width = svg.clientWidth;
-        const height = svg.clientHeight;
+    // Set up the AnalyserNode
+    analyserNode.fftSize = 2048;
+    const bufferLength = analyserNode.fftSize;
+    const dataArray = new Uint8Array(bufferLength);
 
-        // console.log('width',width)
-        // console.log('height',height)
+    // Function to draw the waveform
+    const drawRadio = () => {
+        analyserNode.getByteTimeDomainData(dataArray);
 
-        // Clear SVG
-        svg.innerHTML = '';
+        let points = '';
+        for (let i = 0; i < bufferLength; i++) {
+            const x = i * width / bufferLength;
+            const y = (dataArray[i] / 255.0) * height; // Direct mapping of amplitude to SVG height
 
-        // Create SVG polyline element
-        const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
-        polyline.setAttribute('fill', 'none');
-        polyline.setAttribute('stroke', 'white');
-        polyline.setAttribute('stroke-width', '1');
-        svg.appendChild(polyline);
+            points += `${x},${y} `;
+        }
 
-        // Create AnalyserNode
-        const analyserNode = audioContext.createAnalyser();
-        analyserNode.fftSize = 256; // Adjust the fftSize for smoother waveform
-        
-        // Connect the AnalyserNode to the audioContext
-        const source = audioContext.createBufferSource();
-        // console.log('audioBuffer', audioBuffer)
-        source.buffer = audioBuffer;
-        source.connect(analyserNode);
-        // analyserNode.connect(audioContext.destination);
-        // console.log('analyserNode2', analyserNode)
+        polyline.setAttribute('points', points);
 
+        // Request animation frame for continuous rendering
+        requestAnimationFrame(drawRadio);
+    };
 
-        // Draw radio waveform
-        const drawRadio = () => {
-            // Get the current waveform data from the AnalyserNode
-            const dataArray = new Float32Array(analyserNode.fftSize);
-            analyserNode.getFloatTimeDomainData(dataArray);
-
-            // Calculate the number of audio samples per SVG pixel
-            const samplesPerPixel = Math.floor(dataArray.length / width);
-
-            // Calculate the vertical scale factor for the waveform
-            const scaleFactor = height / 2;
-
-            // Build the points string for the polyline
-            let points = '';
-
-            // Iterate over SVG pixels and build the waveform points
-            for (let x = 0; x < width; x++) {
-                const startSample = x * samplesPerPixel;
-                const endSample = (x + 1) * samplesPerPixel;
-
-                let maxAmplitude = 0;
-
-                // Find the maximum amplitude within the current pixel range
-                for (let i = startSample; i < endSample; i++) {
-                const amplitude = Math.abs(dataArray[i]);
-                maxAmplitude = Math.max(maxAmplitude, amplitude);
-                }
-
-                // Calculate the y-coordinate for the waveform point
-                const y = height / 2 - maxAmplitude * scaleFactor;
-
-                // Append the point to the points string
-                points += `${x},${y} `;
-            }
-
-            // Set the points attribute of the polyline
-            polyline.setAttribute('points', points);
-
-            // Request animation frame for continuous rendering
-            if (audioContext.state === 'running') {
-                requestAnimationFrame(drawRadio);
-            }
-        };
-
-        source.start();
-
-        // Start drawing the radio waveform
-        drawRadio();
-
-    // })
-    // .catch(error => console.error('Error loading audio:', error));
+    // Start drawing the radio waveform
+    drawRadio();
 }
 
-// const radioButton = document.getElementById('radio-activate-button');
-// radioButton.addEventListener('click', () => {
-//     toggleRadio();
-// })
+
 
 function toggleRadio() {
     radioActive = !radioActive
@@ -155,12 +97,13 @@ const setModulation = (value) => {
     checkRadioMatch();
 }
 
-const radioValuesContainer = document.getElementById('radio-values-container');
 const checkRadioMatch = () => {
     if (modulationBool && frequencyBool){
-        radioValuesContainer.classList.add('active')
+        (document.getElementById('radio-values-container')).classList.add('active')
+        activateRadio()
     } else {
-        radioValuesContainer.classList.remove('active')
+        (document.getElementById('radio-values-container')).classList.remove('active')
+        disableRadio()
     }
 }
 

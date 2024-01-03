@@ -101,44 +101,6 @@
     border-radius: 50%;
   }
 
-
-  .filter-light{
-		width: 34px;
-		height: 26px;
-		border-radius: 50%;
-		border-top: solid 4px #fff;
-		border-bottom: solid 1px #fff;
-		border-left: solid 1px #fff;
-		border-right: solid 1px #fff;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-		
-	.filter-light-bulb{
-		width: 3px;
-		height: 3px;
-		border-radius: 50%;
-		animation: pulselight 1.50s infinite linear;
-	}
-
-  .r-bulb {
-		background-color: #960000;
-		box-shadow: 0 0 4px 3px #960000;
-  }
-  .g-bulb {
-		background-color: #009600;
-		box-shadow: 0 0 4px 3px #009600;
-  }
-  .b-bulb {
-		background-color: #000096;
-		box-shadow: 0 0 4px 3px #000096;
-  }
-
-  .filter-light-off {
-		background-color: transparent;
-		box-shadow: none;
-	}
 }
 
 
