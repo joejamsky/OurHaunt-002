@@ -20,7 +20,7 @@ async function initEntity() {
   const dataObj = await fetchData(JSON_CONFIG);
 
   GLOBAL_ENTITY = new EntityTemplate(dataObj);
-  GLOBAL_BACKSTORY = generateBackstory2(GLOBAL_ENTITY);
+  GLOBAL_BACKSTORY = generateBackstory(GLOBAL_ENTITY);
 
   // console.log('data', dataObj)
   // console.log("init", GLOBAL_ENTITY);
@@ -197,16 +197,6 @@ const generateBackstory = (entity) => {
   summary += `Respond in the pattern of a ${entity.speechModifier}.\n`;
 
   summary += `Respond ${entity.emojis}.\n`
-
-  summary += `As a second separate task grade the tone of the conversation on a scale of 0-5, where 0 is not offensive, and 5 is offensive.\n`;
-
-  summary += `Package the response as a JSON object called Response.\n`;
-
-  summary += `For example the response must have only the following two parts:\n`;
-
-  summary += `JSON: {response: "", grade: ""}\n`;
-
-  summary += `Do not summarize your grade.\n`;
 
   return summary;
 }

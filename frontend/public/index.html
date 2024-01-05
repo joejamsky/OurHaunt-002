@@ -186,9 +186,14 @@
 
 
 		<div id="voice-module-container">
-			<div id="voice-module">
 
-				<div id="voice-board-border">	
+			
+			<div id="voice-module">
+				<div id="voice-disable" class="disabled-tool">
+					<div>Connect Radio To Enable</div>
+				</div>
+
+				<div id="voice-board-border" class="hide">	
 					<div class="voice-board-pin tl-pin"></div>	
 					<div class="voice-board-pin tr-pin"></div>	
 					<div class="voice-board-pin bl-pin"></div>	
@@ -204,7 +209,7 @@
 				</div>
 
 
-				<div id="voice-identifier">
+				<div id="voice-identifier" class="hide">
 					<div class="voice-light">
 						<div class="voice-light-bulb voice-light-off"></div>
 					</div>
@@ -275,13 +280,13 @@
 				<div class="portal-items-container">
 					<div>Glyphs</div>
 					<div class="portal-list scroll-down glyph-list">						
-						<div class="portal-item" data-index="0">
+						<div class="portal-item" data-index="0" data-detail="angel">
 							<img src='../assets/icons/angel3.svg' />
 						</div>
-						<div class="portal-item" data-index="1">
+						<div class="portal-item" data-index="1" data-detail="demon">
 							<img src='../assets/icons/pentagram2.svg' />
 						</div>
-						<div class="portal-item" data-index="2">
+						<div class="portal-item" data-index="2" data-detail="ghost">
 							<img src='../assets/icons/human.svg' />
 						</div>
 					</div>
@@ -291,50 +296,50 @@
 					<div>Candles</div>
 					<div class="portal-list scroll-down candle-list">
 						
-						<div class="portal-item">
+						<div class="portal-item" data-detail="960000">
 							<div class="filter-light-bulb r-bulb"></div>
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="009600">
 							<div class="filter-light-bulb g-bulb"></div>
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="000096">
 							<div class="filter-light-bulb b-bulb"></div>
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="009696">
 							<div class="filter-light-bulb i-bulb"></div>
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="960096">
 							<div class="filter-light-bulb v-bulb"></div>
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="969600">
 							<div class="filter-light-bulb y-bulb"></div>
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="969696">
 							<div class="filter-light-bulb w-bulb"></div>
 						</div>
 					</div>
 				</div>
 
 				<div class="portal-items-container">
-					<div>Promises</div>
+					<div>Focus</div>
 					<div class="portal-list scroll-down focus-list">
 						
-						<div class="portal-item">
+						<div class="portal-item" data-detail="book">
 							<img src='../assets/icons/book.svg' />
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="pocket watch">
 							<img src='../assets/icons/watch.svg' />
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="gemstone">
 							<img src='../assets/icons/gem.svg' />
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="mirror">
 							<img src='../assets/icons/mirror.svg' />
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="doll">
 							<img src='../assets/icons/doll.svg' />
 						</div>
-						<div class="portal-item">
+						<div class="portal-item" data-detail="knife">
 							<img src='../assets/icons/knife.svg' />
 						</div>
 					</div>
@@ -347,14 +352,28 @@
 
 		<div id="judgement-module-container">
 			<div id="judgement-module">
-				<div id="judgement-condemn" class="judgement-button">
-					condemn
-					<img src="" alt="">
+
+				<div id="judgement-disable" class="disabled-tool">
+					<div>Complete Portal To Enable</div>
 				</div>
-				<div id="judgement-rescue" class="judgement-button">
-					rescue
-					<img src="" alt="">
+
+				<div class="judgement-row hide">
+					<div id="judgement-condemn" class="judgement-button">
+						condemn
+						<img src="" alt="">
+					</div>
+					<div id="judgement-rescue" class="judgement-button">
+						rescue
+						<img src="" alt="">
+					</div>
 				</div>
+
+				<div class="judgement-row hide">
+					<div id="judgement-confirm" class="judgement-button">
+						confirm
+					</div>
+				</div>
+
 			</div>
 		</div>
 
@@ -372,5 +391,6 @@
 		<script type="module" src="./scripts/app.js"></script>
 		<script type="module" src="./scripts/portal.js"></script>
 		<script type="text/javascript" src="./scripts/offering.js"></script>
+		<script type="text/javascript" src="./scripts/judgement.js"></script>
 	</body>
 </html>

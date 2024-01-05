@@ -99,10 +99,17 @@ const setModulation = (value) => {
 
 const checkRadioMatch = () => {
     if (modulationBool && frequencyBool){
-        (document.getElementById('radio-values-container')).classList.add('active')
+        (document.getElementById('radio-values-container')).classList.add('active');
+        (document.getElementById('voice-board-border')).classList.remove('hide');
+        (document.getElementById('voice-identifier')).classList.remove('hide');
+        (document.getElementById('voice-disable')).classList.add('hide');
+        
         activateRadio()
     } else {
-        (document.getElementById('radio-values-container')).classList.remove('active')
+        (document.getElementById('radio-values-container')).classList.remove('active');
+        (document.getElementById('voice-board-border')).classList.add('hide');
+        (document.getElementById('voice-identifier')).classList.add('hide');
+        (document.getElementById('voice-disable')).classList.remove('hide');
         disableRadio()
     }
 }

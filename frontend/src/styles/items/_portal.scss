@@ -23,6 +23,41 @@
         gap: 15px;
     }
 
+    #portal-module.active{
+        color: black;
+        background-color: white;
+        border-bottom: double 4px black;
+        border-top: double 4px black;
+
+        .portal-item {
+            border: dashed 1px black;
+            background-color: black;
+        }
+
+        .portal-item.active {
+            background-color: white;
+        }
+
+        .portal-item img{
+            filter: none;
+        }
+
+        .portal-item.active img{
+            filter: invert(100%) sepia(1%) saturate(7497%) hue-rotate(268deg) brightness(102%) contrast(101%);
+        }
+
+        #portal-confirm-button {
+            border: dotted 1px black;
+        }
+    
+        .scroll-up {
+            border-top: solid 2px black;
+        }
+        .scroll-down {
+            border-bottom: solid 2px black;
+        }
+    }
+
     .portal-items-container{
         display: flex;
         width: 33%;
@@ -66,6 +101,10 @@
     .portal-item.active {
         background-color: #fff;
         color: black;
+    }
+
+    .portal-item.active img{
+        filter: invert(100%) sepia(1%) saturate(7497%) hue-rotate(268deg) brightness(102%) contrast(101%);
     }
 
     #portal-confirm-button {

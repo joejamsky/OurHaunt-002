@@ -206,11 +206,9 @@ function checkInputPhrase(phrase) {
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; // if none exists -> undefined
 
 async function fetchAndType(transcript) {
-    console.log('fetch and type message', transcript)
     try {
         const message = await getChatGPTMessage(transcript, GLOBAL_BACKSTORY);
         addHostility()
-        console.log('questionCount',GLOBAL_ENTITY.questions)
         typeWriterEffect(message);
     } catch (error) {
         console.error('Error:', error);
@@ -219,8 +217,6 @@ async function fetchAndType(transcript) {
 
 
 async function getChatGPTMessage (voiceMessage, backstory){
-    console.log('voice message', voiceMessage)
-    console.log('backstory', backstory)
     try {
         const response = await fetch('/.netlify/functions/chatgpt/chatgpt', {
             method: 'POST',
@@ -234,7 +230,6 @@ async function getChatGPTMessage (voiceMessage, backstory){
         });
         
         const data = await response.json();
-        console.log('gpt response', data)
         const message = data.response.choices[0].message.content;
         return message;
     } catch (error) {

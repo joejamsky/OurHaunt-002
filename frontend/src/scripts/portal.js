@@ -1,6 +1,12 @@
 import { swapTexture } from './app.js';
 
 const scrollablePortalDivs = document.getElementsByClassName('portal-list');
+let portalStatus = {
+  type: false,
+  candle: false,
+  focus: false
+}
+let portalOpen = false
 
 Array.from(scrollablePortalDivs).forEach(item => {
     item.addEventListener('scroll', function() {
@@ -35,14 +41,17 @@ $('.portal-list').each(function() {
 $('.glyph-list .portal-item').each(function() {
   $(this).click(function(e) {
     e.preventDefault();
-    swapTexture(this.dataset.index, e.target.classList.contains('active'));
+    const dataDetail = $(e.target).closest('.portal-item').attr('data-detail');
+    handlePortalCheck('type', dataDetail);
+    // swapTexture(this.dataset.index, e.target.classList.contains('active'));  //This is setup to add the textures to the screen overlay
   })
 })
 
 $('.candle-list .portal-item').each(function() {
   $(this).click(function(e) {
     e.preventDefault();
-    console.log('candle item clicked')
+    const dataDetail = $(e.target).closest('.portal-item').attr('data-detail');
+    handlePortalCheck('candle', dataDetail);
   })
 })
 
@@ -50,7 +59,39 @@ $('.candle-list .portal-item').each(function() {
 $('.focus-list .portal-item').each(function() {
   $(this).click(function(e) {
     e.preventDefault();
-    console.log('focus item clicked')
+    const dataDetail = $(e.target).closest('.portal-item').attr('data-detail');
+    handlePortalCheck('focus', dataDetail);
   })
 })
 
+const handlePortalCheck = (item, detail) => {
+  console.log('item',item)
+  console.log('GLOBAL_ENTITY[item]',GLOBAL_ENTITY[item])
+  console.log('detail',detail)
+  console.log('check',GLOBAL_ENTITY[item].toLowerCase() === detail)
+  if (GLOBAL_ENTITY[item].toLowerCase() === detail) {
+    portalStatus[item] = !portalStatus[item]; // Toggle the status
+  } else {
+    portalStatus[item] = false; // Reset to false if it doesn't match
+  }
+
+  portalOpen = areAllTrue(portalStatus)
+  if(portalOpen){
+    $('#portal-module').addClass('active')
+    $('.judgement-row').removeClass('hide')
+    $('#judgement-disable').addClass('hide')
+  } else {
+    $('#portal-module').removeClass('active')
+    $('.judgement-row').addClass('hide')
+    $('#judgement-disable').removeClass('hide')
+  }
+}
+
+function areAllTrue(portalStatus) {
+  for (let key in portalStatus) {
+    if (portalStatus.hasOwnProperty(key) && !portalStatus[key]) {
+      return false;
+    }
+  }
+  return true;
+}

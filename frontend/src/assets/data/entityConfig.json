@@ -124,10 +124,10 @@
         "Demon": ["Angsty Teen", "Arrogant", "Sarcastic", "Stutter"]
     },
     "Focus": {
-        "All": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Vintage Doll", "Knife"],
-        "Ghost": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Vintage Doll", "Knife"],
-        "Angel": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Vintage Doll", "Knife"],
-        "Demon": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Vintage Doll", "Knife"]
+        "All": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Doll", "Knife"],
+        "Ghost": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Doll", "Knife"],
+        "Angel": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Doll", "Knife"],
+        "Demon": ["Book", "Pocket Watch", "Gemstone", "Mirror", "Doll", "Knife"]
     },
     "Glyph": {
         "All": ["Pentagram", "Rune", "Elemental", "Blood", "Sigil", "Salt", "Flower"],

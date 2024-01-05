@@ -29,7 +29,7 @@ body {
 }
 
 .hide {
-	display: none;
+	display: none !important;
 }
 
 button {
@@ -268,13 +268,13 @@ video{
 	background-color: #000096;
 	box-shadow: 0 0 4px 3px #000096;
 }
-.v-bulb {
-	background-color: #960096;
-	box-shadow: 0 0 4px 3px #960096;
-}
 .i-bulb {
 	background-color: #009696;
 	box-shadow: 0 0 4px 3px #009696;
+}
+.v-bulb {
+	background-color: #960096;
+	box-shadow: 0 0 4px 3px #960096;
 }
 .y-bulb {
 	background-color: #969600;
@@ -308,4 +308,31 @@ video{
 .filter-light-off {
 	background-color: transparent;
 	box-shadow: none;
+}
+
+.disabled-tool{
+	width: 100%;
+	height: 100%;
+	
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+.disabled-tool div{
+	background-color: #313131;
+	height:40%;
+	width: 65%;
+	border: 2px white dotted;
+    border-radius: 20px;
+	justify-content: center;
+    display: flex;
+    align-items: center;
+	padding: 20px;
+
 }

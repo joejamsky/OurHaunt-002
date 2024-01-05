@@ -9,6 +9,13 @@
 
 #judgement-module{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.judgement-row{
+    display: flex;
     flex-direction: row;
     gap: 20px;
     justify-content: center;
@@ -16,12 +23,17 @@
 }
 
 .judgement-button{
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
     border-radius: 50%;
     border: solid 1px white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.judgement-button.active{
+    background-color: white;
+    color: black;
 }
