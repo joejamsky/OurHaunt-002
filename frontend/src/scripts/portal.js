@@ -77,13 +77,11 @@ const handlePortalCheck = (item, detail) => {
 
   portalOpen = areAllTrue(portalStatus)
   if(portalOpen){
-    $('#portal-module').addClass('active')
+    $('.portal-module').addClass('active')
     $('.judgement-row').removeClass('hide')
-    $('#judgement-disable').addClass('hide')
   } else {
-    $('#portal-module').removeClass('active')
+    $('.portal-module').removeClass('active')
     $('.judgement-row').addClass('hide')
-    $('#judgement-disable').removeClass('hide')
   }
 }
 

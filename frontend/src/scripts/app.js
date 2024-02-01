@@ -26,7 +26,7 @@ function calculateDimensions() {
     } else {
         // Portrait mode: 60% of height
         globalWidth = window.innerWidth;
-        globalHeight = window.innerHeight * 0.6;
+        globalHeight = window.innerHeight * 0.5;
     }
 }
 // Global variables for width and height, initialized based on orientation
@@ -56,7 +56,6 @@ function handleInitClick() {
     calculateDimensions();
     startVideo();
     initScene();
-    initSlides();
     initMonster();
     // initModels();
     initRadio();
@@ -75,43 +74,7 @@ function onWindowResize() {
 }
 
 
-function initSlides() {
-    const motionDiv = document.getElementById('slide-motion')
-    const motionModuleContainer = document.getElementById('motion-module-container')
-    motionDiv.append(motionModuleContainer)
 
-    const voiceDiv = document.getElementById('slide-voice')
-    const voiceModuleContainer = document.getElementById('voice-module-container')
-    voiceDiv.append(voiceModuleContainer)
-
-    const radioDiv = document.getElementById('slide-radio')
-    const radioModuleContainer = document.getElementById('radio-module-container')
-    radioDiv.append(radioModuleContainer)
-
-    const emfDiv = document.getElementById('slide-emf')
-    const emfModuleContainer = document.getElementById('emf-module-container')
-    emfDiv.append(emfModuleContainer)
-
-    // const offeringDiv = document.getElementById('slide-Offering')
-    // const offeringModuleContainer = document.getElementById('offering-module-container')
-    // offeringDiv.append(offeringModuleContainer)
-
-    const portalDiv = document.getElementById('slide-portal')
-    const portalModuleContainer = document.getElementById('portal-module-container')
-    portalDiv.append(portalModuleContainer)
-
-    // const tempDiv = document.getElementById('slide-Temp')
-    // const tempModuleContainer = document.getElementById('temperature-module-container')
-    // tempDiv.append(tempModuleContainer)
-
-    const judgementDiv = document.getElementById('slide-judgement')
-    const judgementModuleContainer = document.getElementById('judgement-module-container')
-    judgementDiv.append(judgementModuleContainer)
-
-    const filterDiv = document.getElementById('slide-filter')
-    const filterModuleContainer = document.getElementById('filter-module-container')
-    filterDiv.append(filterModuleContainer)
-}
 
 
 function startVideo() {

@@ -406,6 +406,6 @@ class EntityTemplate {
         this.emojis = getRandomElement(config.Emojis[this.type]);
         this.typingStyle = getRandomElement(config.TypingStyle[this.type]);
         this.chant = getRandomElement(config.Chant[this.type]);
-        this.candle = getRandomElement(config.Candles[this.type])
+        this.candle = getRandomElement(config.Color.All)
     }
 }

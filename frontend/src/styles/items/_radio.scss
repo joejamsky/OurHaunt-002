@@ -1,26 +1,17 @@
-#radio-module-container{
+.radio-module{
 	$slider-thumb: 35px;
 	$slider-track: 35px;
-
+	
 	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 5px;
+	position: relative;
 
-	#radio-module{
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 5px;
-		position: relative;
-	}
-
-	#radio{
+	.radio{
 		width: 200px; 
 		height: 70px; 
 		border: dashed 2px white;
@@ -33,28 +24,11 @@
 
 	}
 
-	#radio-svg{
+	.radio-svg{
 		margin-top: 10px;
 	}
-
-	#radio-activate-button{
-		width: 50px;
-		height: 50px;
-		border-radius: 17px;
-		border: none;
-		background-color: black;
-		color: white;
-		border: 6px white solid;
-		border-left: 0px white solid;
-		border-right: 0px white solid;
-		position: absolute;
-		left: 15px;
-		top: 50px;;
-		top: 50px;
-	}
-
 	
-	#radio-values-container{
+	.radio-values-container{
 		display: flex;
 		flex-direction: row;
 		align-items: flex-end;
@@ -75,7 +49,7 @@
 		border-bottom-right-radius: 32px;
 	}
 
-	#radio-values-container.active {
+	.radio-values-container.active {
 		background-color: white;
 		color: black;
 		border: solid 1px black;
@@ -83,14 +57,14 @@
 		border-bottom: double 4px black;
 	}
 
-	#radio-value-decimal{
+	.radio-value-decimal{
 		font-size: 20px;
 		font-family: monospace;
 		letter-spacing: 0px;
 		margin-left: 6px;
 	}
 	
-	#radio-value-integer{
+	.radio-value-integer{
 		// height: 100%;
 		// border-bottom: 1px solid white;
 		// border-radius: 5px;
@@ -121,11 +95,11 @@
 		transform: rotate(-90deg) translate(0, -50%);
 	}
 
-	#radio-slider-decimal{		
+	.radio-slider-decimal{		
 		right: 6px;
 		
 	}
-	#radio-slider-integer{		
+	.radio-slider-integer{		
 		left: 6px;
 	}
 	input[type=range]:focus {
