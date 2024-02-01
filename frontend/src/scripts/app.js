@@ -96,6 +96,16 @@ function startVideo() {
         .catch((error) => {
             // alert('User denied the request to access the camera or environment camera not supported.');
             console.error("User denied the request to access the camera or environment camera not supported.", error);
+
+            // Try again with default camera
+            navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch((error) => {
+                console.error("Unable to access any camera.", error);
+            });
         });
 }
 

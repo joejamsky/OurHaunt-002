@@ -147,7 +147,23 @@ video{
 	right: 0;
 	width: 100%;
 	z-index: -1;
-	/* height: 100vh; */
+	overflow: hidden;
+}
+
+@media screen and (orientation: portrait) {
+	video{
+		height: variables.$video-height-portrait;
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	video{
+		height: 100%;
+		width: variables.$video-width-landscape;
+		object-fit: cover;
+	}
 }
 
 // #static-overlay{
