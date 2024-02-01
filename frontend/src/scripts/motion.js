@@ -1,5 +1,5 @@
 const $motionIdentifiers = $(".motion-identifier");
-const $motionModules = $(".motion-module"); 
+const $motionDials = $(".motion-dial"); 
 
 function convertRange(value, min1 = -10, max1 = 10, min2 = 0, max2 = 100) {
     var range1 = max1 - min1;
@@ -10,7 +10,7 @@ function convertRange(value, min1 = -10, max1 = 10, min2 = 0, max2 = 100) {
 }
 
 const updateTrackerRotation = (position) => {    
-    $motionModules.css('transform', `rotate(${position}deg)`);
+    $motionDials.css('transform', `rotate(${position}deg)`);
 }
 
 const updatePip = (position) => {

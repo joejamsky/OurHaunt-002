@@ -1,15 +1,50 @@
 .motion-module{
-	width: 125px;
-	height: 125px;
-	border-radius: 50%;
-	background-color: black;
-	margin-top: 25px;
+
 	position: relative;
-	border-top: dashed 10px white;
-	border-bottom: dashed 10px white;
-	border-left: solid 1px white;
-	border-right: solid 1px white;
-		
+    border-top: solid 4px #fff;
+	border-radius: 15px;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-left: double 4px white;
+    border-right: double 4px white;
+    padding: 0 40px;
+
+	.motion-border-left{
+		// border-right: solid 1px white;
+		// border-bottom: solid 1px white;
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		height: 15px;
+		width: 40px;
+		border-radius: 20%;
+		border-bottom-left-radius: 0px;
+	}
+	
+	.motion-border-right{
+		// border-left: solid 1px white;
+		// border-bottom: solid 1px white;
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		height: 15px;
+		width: 40px;
+		border-radius: 20%;
+		border-bottom-right-radius: 0px;
+	}
+	.motion-dial{
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background-color: black;
+		margin-top: 15px;
+		position: relative;
+		border-top: dashed 10px white;
+		border-bottom: dashed 10px white;
+		border-left: solid 1px white;
+		border-right: solid 1px white;
+	}
+			
 	.motion-spread{
 		position: absolute;
 		top: 0;
@@ -42,4 +77,5 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
+	
 }
