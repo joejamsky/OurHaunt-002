@@ -9,29 +9,6 @@
     border-right: double 4px white;
     padding: 0 40px;
 
-	.motion-border-left{
-		// border-right: solid 1px white;
-		// border-bottom: solid 1px white;
-		position: absolute;
-		bottom: 0px;
-		left: 0px;
-		height: 15px;
-		width: 40px;
-		border-radius: 20%;
-		border-bottom-left-radius: 0px;
-	}
-	
-	.motion-border-right{
-		// border-left: solid 1px white;
-		// border-bottom: solid 1px white;
-		position: absolute;
-		bottom: 0px;
-		right: 0px;
-		height: 15px;
-		width: 40px;
-		border-radius: 20%;
-		border-bottom-right-radius: 0px;
-	}
 	.motion-dial{
 		width: 100px;
 		height: 100px;

@@ -95,9 +95,41 @@
 		transform: rotate(-90deg) translate(0, -50%);
 	}
 
+	.radio-slider-integer-ticks{		
+		position: absolute;
+		top: 127px;
+		height: 46px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.integer-left{
+		left: 26px;
+	}
+	.integer-right{
+		left: 64px;
+	}
+
+	.radio-slider-integer-tick{
+		width: 3px;
+		border-bottom: solid 1px white;
+	}
+	.radio-slider-decimal-ticks{		
+		position: absolute;
+		top:45%;
+		height: 0px;
+		width: 3px;
+		border-bottom: solid 1px white;
+	}
+	.decimal-left{
+		right: 63px;
+	}
+	.decimal-right{
+		right: 25px;
+	}
+
 	.radio-slider-decimal{		
 		right: 6px;
-		
 	}
 	.radio-slider-integer{		
 		left: 6px;

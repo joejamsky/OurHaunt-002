@@ -1,48 +1,70 @@
 .emf-module{
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    position: relative;
 
-    width: 54%;
-    
-    height: 100px;
-    margin-top: 20px;
+
+    width: 40px;    
+    height: 260px;
+
     border-radius: 30px;
-    border: 4px double white;
-    border-top: 7px dashed white;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    padding: 8px 4px 8px 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    border-top: 4px double white;
+    // border-right: 4px double white;
+    border-bottom: 4px double white;
+    border-left: 1px dashed white;
 
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    padding: 4px 0px;
+    // margin-left: 10px;
+    // margin-top: 25px;
         
-    .emf-lights,
-    .emf-range-numbers{
+    .emf-lights{
         display: flex;
-        flex-direction: row;
-        gap: 20px;
+        flex-direction: column-reverse;
+        gap: 10px;
     }
 
     .emf-range-numbers{
-        font-size: 14px;
-        gap: 23px;
-        border-bottom: 2px solid #fff;
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+        font-size: 10px;
+        gap: 18px;
         border-radius: 20px;
         border-left: 0px solid;
         border-right: 0px solid white;
-        padding: 0px 10px;
+        padding: 0px 5px;
     }
 
+    .bottom-range{
+        position: absolute;
+        bottom: 24px;
+        right: -22px;
+
+    }
+    .top-range{
+        position: absolute;
+        top: -2px;
+        right: -15px;
+        text-decoration: underline;
+    }
+    .mg{
+        position: absolute;
+        bottom: -10px;
+        right: 0px;
+        text-decoration: underline;
+    }
 
     .emf-light{
-        width: 20px;
-        height: 26px;
+        position: relative;
+        width: 22px;
+        height: 20px;
         border-radius: 50%;
         border-top: solid 4px #fff;
         border-bottom: solid 1px #fff;
