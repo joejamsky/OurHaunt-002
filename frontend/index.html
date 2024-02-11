@@ -189,44 +189,51 @@
 
 			<div class="radio-module">
 
-				<div class="radio">
-					<svg id="radio-svg" class="radio-svg" width="200" height="60"></svg>
-				</div>		
-
 				<div class="radio-slider-integer-container">
 					<div class="radio-slider-integer-ticks integer-left">
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
 					</div>
 					<input type="range" class="radio-slider-integer" id="radio-slider-integer" min="88.1" max="107.9" step="0.1" value="88.1">
 					<div class="radio-slider-integer-ticks integer-right">
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
-						<div class="radio-slider-integer-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
+						<div class="radio-slider-tick"></div>
 					</div>
 				</div>
 
-				<div class="radio-values-container">
-					<div class="radio-value-integer" id="radio-value-integer">97.1</div>
-					<div class="hz">Mhz</div>
-					<div class="radio-value-decimal" id="radio-value-decimal">AM</div>
+				<div class="radio-interface">
+					<div class="radio">
+						<svg id="radio-svg" class="radio-svg" width="200" height="60"></svg>
+					</div>		
+	
+	
+					<div class="radio-values-container">
+						<div class="radio-value-integer" id="radio-value-integer">97.1</div>
+						<div class="hz">Mhz</div>
+						<div class="radio-value-decimal" id="radio-value-decimal">AM</div>
+					</div>
 				</div>
 
 				<div class="radio-slider-decimal-container">
-					<div class="radio-slider-decimal-ticks decimal-left"></div>
+					<div class="radio-slider-decimal-ticks decimal-left">
+						<div class="radio-slider-tick"></div>
+					</div>
 					<input type="range" class="radio-slider-decimal" id="radio-slider-decimal" min="0" max="1" step="1" value="0">
-					<div class="radio-slider-decimal-ticks decimal-right"></div>
+					<div class="radio-slider-decimal-ticks decimal-right">
+						<div class="radio-slider-tick"></div>
+					</div>
 				</div>
 				
 			</div>
@@ -269,9 +276,9 @@
 				</div>
 
 
-				<div class="emf-module">
+				<div class="emf-module hide">
 					<div class="emf-lights">
-						<div class="bottom-range">1.5<span class="mg">+mG</span></div>
+						<!-- <div class="bottom-range">1.5<span class="mg">+mG</span></div> -->
 						<div class="emf-light">
 							<div class="emf-light-bulb emf-light-1"></div>
 						</div>
@@ -293,7 +300,7 @@
 						<div class="emf-light">
 							<div class="emf-light-bulb emf-light-7 emf-light-off"></div>
 						</div>
-						<div class="top-range">20</div>
+						<!-- <div class="top-range">20</div> -->
 					</div>
 					<!-- <div class="emf-range-numbers">
 						<div>1.5</div>

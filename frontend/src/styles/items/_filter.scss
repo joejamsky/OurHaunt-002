@@ -3,17 +3,17 @@
   
   height: 110px;
   
-  padding: 20px 15px 10px 15px;
+  padding: 20px 10px 10px 10px;
   
-  border-bottom-left-radius: 55px;
-  border-bottom-right-radius: 55px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
   
   border-left: double 3px white;
   border-right: double 3px white;
   border-bottom: double 4px #fff;
-  // border-top: double 4px #fff;
+  border-top: dashed 1px white;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -102,12 +102,14 @@ const checkRadioMatch = () => {
         $('.radio-values-container').addClass('active');
         $('.voice-board-border').removeClass('hide');
         $('.voice-identifier').removeClass('hide');
+        $('.emf-module').removeClass('hide');
         $('.voice-disable').addClass('hide');
         activateRadio()
     } else {
         $('.radio-values-container').removeClass('active');
         $('.voice-board-border').addClass('hide');
         $('.voice-identifier').addClass('hide');
+        $('.emf-module').addClass('hide');
         $('.voice-disable').removeClass('hide');
         disableRadio()
     }

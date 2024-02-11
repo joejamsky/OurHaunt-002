@@ -5,11 +5,18 @@
 	width: 100%;
 	height: 100%;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	gap: 5px;
 	position: relative;
+
+	.radio-interface{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 
 	.radio{
 		width: 200px; 
@@ -81,51 +88,69 @@
 		line-height: 20px;
 	}
 
+	.radio-slider-integer-container,
+	.radio-slider-decimal-container{
+		position: relative;
+		height: 80px;
+		width: 80px;
+		// height: 34px;
+		// width: 80px;
+		// display: flex;
+		// flex-direction: row;
+	}
 	
 	input[type=range] {
 		-webkit-appearance: none;
 		margin: 0;
 		width: 80px;
-		height: 0;
+		height: 36px;
 
 		background: transparent;
 		position: absolute;
-		top: 45%;
-
-		transform: rotate(-90deg) translate(0, -50%);
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(-90deg);
 	}
 
-	.radio-slider-integer-ticks{		
-		position: absolute;
-		top: 127px;
-		height: 46px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-	.integer-left{
-		left: 26px;
-	}
-	.integer-right{
-		left: 64px;
-	}
-
-	.radio-slider-integer-tick{
-		width: 3px;
-		border-bottom: solid 1px white;
-	}
+	.radio-slider-integer-ticks,
 	.radio-slider-decimal-ticks{		
 		position: absolute;
-		top:45%;
-		height: 0px;
-		width: 3px;
-		border-bottom: solid 1px white;
+		width: 69%;
+		margin: 0 auto;
+		// height: 100%;
+		// top: 127px;
+		// height: 46px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		transform: rotate(-90deg);
+		// transform-origin: top left;
+		top: 50%;
+	}
+	.integer-left{
+		left: -5px;
+	}
+	.integer-right{
+		right: -5px;
+	}
+
+	.radio-slider-tick{
+		height: 3px;
+		width: 1px;
+		border-left: solid 1px white;
+	}
+
+
+	// Decimal slider
+	.radio-slider-decimal-ticks{		
+		justify-content: center;
 	}
 	.decimal-left{
-		right: 63px;
+		left: -5px;
 	}
 	.decimal-right{
-		right: 25px;
+		right: -5px;
 	}
 
 	.radio-slider-decimal{		
