@@ -1,0 +1,36 @@
+
+.vibration-module{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+
+}
+
+.vibration-top{
+  width: 300px;
+  height: 50px;
+  border: solid 1px white;
+  border-radius: 40px;
+
+}
+
+.vibration-bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.vibration-left-touch,
+.vibration-right-touch{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-top: double 4px white;
+  border-bottom: double 4px white;
+}

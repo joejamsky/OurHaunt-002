@@ -1,17 +1,31 @@
 const slideData = [
     { 
         slideID: 'slide-camera',
-        itemName: 'Camera',
+        itemName: 'Sight',
         unlocked: false,
         itemIcon: 'camera.svg',
         summaryText: "Adjusts the camera's filter. Toggle the switches to reveal the identity of the spirit." 
     },
     { 
         slideID: 'slide-radio',
-        itemName: 'Radio',
+        itemName: 'Sound',
         unlocked: false,
         itemIcon: 'recorder.svg',
         summaryText: "Detects sounds from the spirits." 
+    },
+    { 
+        slideID: 'slide-vibration',
+        itemName: 'touch',
+        unlocked: false,
+        itemIcon: 'recorder.svg',
+        summaryText: "Detects vibration of spirits." 
+    },
+    {
+        slideID: 'slide-portal',
+        itemName: 'Portal', 
+        unlocked: false,
+        itemIcon: 'gate.svg',
+        summaryText: "Identify characteristics about the spirit to activate the portal. Once activated, the portal is open your judgement will determine the spirits fate." 
     },
     { 
         slideID: 'slide-microphone',
@@ -20,19 +34,13 @@ const slideData = [
         itemIcon: 'recorder.svg',
         summaryText: "Allows you to communicate with spirit. Press record button to begin voice recording. The red light indicates that recording is active. Press the button again to end recording." 
     },
-    {
-        slideID: 'slide-portal',
-        itemName: 'Portal', 
-        unlocked: false,
-        itemIcon: 'gate.svg',
-        summaryText: "Identify characteristics about the spirit to activate the portal. Once activated, the portal is open your judgement will determine the spirits fate." 
-    }
 ];
 
 function initSlides() {
     $('.slide-camera').append($('.camera-module-container'));
     $('.slide-microphone').append($('.voice-module-container'));
     $('.slide-radio').append($('.radio-module-container'));
+    $('.slide-vibration').append($('.vibration-module-container'));
     $('.slide-portal').append($('.portal-module-container'));
 }
 
